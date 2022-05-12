@@ -1,0 +1,134 @@
+        <p-dialog [(visible)]="createEmployeDialog" [style]="{width: '70vw'}"
+                header="Employe" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Employe">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="1">Cin<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Cin"
+                                                   id="1" [(ngModel)]="selectedEmploye.cin"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validEmployeCin}"  />
+                                            <small class='p-error' *ngIf='!validEmployeCin'>Cin est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="2">Nom<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Nom"
+                                                   id="2" [(ngModel)]="selectedEmploye.nom"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validEmployeNom}"  />
+                                            <small class='p-error' *ngIf='!validEmployeNom'>Nom est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="3">Prenom<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Prenom"
+                                                   id="3" [(ngModel)]="selectedEmploye.prenom"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validEmployePrenom}"  />
+                                            <small class='p-error' *ngIf='!validEmployePrenom'>Prenom est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="4">Type employe</label>
+                                            <p-dropdown [options]="typeEmployes" [(ngModel)]="selectedEmploye.typeEmployeVo"
+                                                    id="4" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Type employe"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatetypeEmploye('typeEmploye')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="5">Total salaire net<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                                           placeholder="Total salaire net"
+                                                    [(ngModel)]="selectedEmploye.totalSalaireNet" [ngClass]="{'ng-invalid ng-dirty' : !validEmployeTotalSalaireNet}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validEmployeTotalSalaireNet'>TotalSalaireNet est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="6">Societe</label>
+                                            <p-dropdown [options]="societes" [(ngModel)]="selectedEmploye.societeVo"
+                                                    id="6" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="id"
+                                                    placeholder="Societe"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatesociete('societe')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="7">Nombre famille<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="7"
+                                                           placeholder="Nombre famille"
+                                                    [(ngModel)]="selectedEmploye.nombreFamille" [ngClass]="{'ng-invalid ng-dirty' : !validEmployeNombreFamille}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validEmployeNombreFamille'>NombreFamille est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="8">Declaration cnss</label>
+                                            <p-dropdown [options]="declarationCnsss" [(ngModel)]="selectedEmploye.declarationCnssVo"
+                                                    id="8" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="ref"
+                                                    placeholder="Declaration cnss"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatedeclarationCnss('declarationCnss')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                   <!-- <app-type-employe-create-admin></app-type-employe-create-admin>
+                    <app-societe-create-admin></app-societe-create-admin>
+                    <app-declaration-cnss-create-admin></app-declaration-cnss-create-admin> -->
+
+
+    </p-dialog>

@@ -1,0 +1,268 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreatePaiementDeclarationIs('paiementDeclarationIs')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchPaiementDeclarationIs.reference">
+                                    <label for="1">Reference</label>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPaiementDeclarationIs.datePaiementMin"
+                                    id="2-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="2-1">Date paiement Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPaiementDeclarationIs.datePaiementMax"
+                                    id="2-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="2-2">Date paiement Max</label>
+                        </span>
+
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPaiementDeclarationIs.totalMin"
+                                                             id="3-1"></p-inputNumber>
+                                              <label for="3-1">Total Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPaiementDeclarationIs.totalMax"
+                                                             id="3-2"></p-inputNumber>
+                                             <label for="3-2">Total Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPaiementDeclarationIs.montantCptTraiteurMin"
+                                                             id="4-1"></p-inputNumber>
+                                              <label for="4-1">Montant cpt traiteur Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPaiementDeclarationIs.montantCptTraiteurMax"
+                                                             id="4-2"></p-inputNumber>
+                                             <label for="4-2">Montant cpt traiteur Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPaiementDeclarationIs.montantCptValidateurMin"
+                                                             id="5-1"></p-inputNumber>
+                                              <label for="5-1">Montant cpt validateur Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPaiementDeclarationIs.montantCptValidateurMax"
+                                                             id="5-2"></p-inputNumber>
+                                             <label for="5-2">Montant cpt validateur Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPaiementDeclarationIs.resteMin"
+                                                             id="6-1"></p-inputNumber>
+                                              <label for="6-1">Reste Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPaiementDeclarationIs.resteMax"
+                                                             id="6-2"></p-inputNumber>
+                                             <label for="6-2">Reste Max</label>
+                                       </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="declarationIss" [(ngModel)]="searchPaiementDeclarationIs.declarationIsVo"
+                                        id="7"
+                                        [filter]="true" [showClear]="true"  placeholder="Declaration is"
+                                        optionLabel="reference">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="paiementDeclarationIss" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['reference', 'datePaiement', 'total', 'montantCptTraiteur', 'montantCptValidateur', 'reste', 'reference']" [(selection)]="selectedPaiementDeclarationIs"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Paiement declaration iss</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="reference">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Reference</span>
+                                        <p-sortIcon field="reference"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="datePaiement">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date paiement</span>
+                                        <p-sortIcon field="datePaiement"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="total">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Total</span>
+                                        <p-sortIcon field="total"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="montantCptTraiteur">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Montant cpt traiteur</span>
+                                        <p-sortIcon field="montantCptTraiteur"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="montantCptValidateur">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Montant cpt validateur</span>
+                                        <p-sortIcon field="montantCptValidateur"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="reste">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Reste</span>
+                                        <p-sortIcon field="reste"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="declarationIs">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Declaration is</span>
+                                        <p-sortIcon field="declarationIs"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-paiementDeclarationIs>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="paiementDeclarationIs"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{paiementDeclarationIs.reference}}</td>
+                            
+
+                            
+                                <td>{{paiementDeclarationIs.datePaiement | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                 <td>{{paiementDeclarationIs.total}}</td>
+                            
+
+                            
+                                 <td>{{paiementDeclarationIs.montantCptTraiteur}}</td>
+                            
+
+                            
+                                 <td>{{paiementDeclarationIs.montantCptValidateur}}</td>
+                            
+
+                            
+                                 <td>{{paiementDeclarationIs.reste}}</td>
+                            
+
+                            
+                                <td>{{paiementDeclarationIs.declarationIsVo?.reference}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editPaiementDeclarationIs(paiementDeclarationIs)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewPaiementDeclarationIs(paiementDeclarationIs)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deletePaiementDeclarationIs(paiementDeclarationIs)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicatePaiementDeclarationIs(paiementDeclarationIs)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{paiementDeclarationIss ? paiementDeclarationIss.length == 1 ? 'y a' : 'y a' : 'y a' }} {{paiementDeclarationIss ? paiementDeclarationIss.length : 0 }} {{paiementDeclarationIss ? paiementDeclarationIss.length == 1 ? 'paiementDeclarationIs' : 'paiementDeclarationIss' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-paiement-declaration-is-create-societe></app-paiement-declaration-is-create-societe>
+        <app-paiement-declaration-is-edit-societe></app-paiement-declaration-is-edit-societe>
+        <app-paiement-declaration-is-view-societe></app-paiement-declaration-is-view-societe>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

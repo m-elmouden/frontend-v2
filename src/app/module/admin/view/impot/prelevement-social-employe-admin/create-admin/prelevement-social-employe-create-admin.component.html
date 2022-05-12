@@ -1,0 +1,101 @@
+        <p-dialog [(visible)]="createPrelevementSocialEmployeDialog" [style]="{width: '70vw'}"
+                header="Prelevement social employe" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Prelevement social employe">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="1">Prelevement social</label>
+                                            <p-dropdown [options]="prelevementSocials" [(ngModel)]="selectedPrelevementSocialEmploye.prelevementSocialVo"
+                                                    id="1" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Prelevement social"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateprelevementSocial('prelevementSocial')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="2">Employe</label>
+                                            <p-dropdown [options]="employes" [(ngModel)]="selectedPrelevementSocialEmploye.employeVo"
+                                                    id="2" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="cin"
+                                                    placeholder="Employe"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateemploye('employe')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="3">Salaire brut imposable</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Salaire brut imposable"
+                                                    [(ngModel)]="selectedPrelevementSocialEmploye.salaireBrutImposable"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="4">Montant calculer</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                                           placeholder="Montant calculer"
+                                                    [(ngModel)]="selectedPrelevementSocialEmploye.montantCalculer"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="5">Declaration ir</label>
+                                            <p-dropdown [options]="declarationIrs" [(ngModel)]="selectedPrelevementSocialEmploye.declarationIrVo"
+                                                    id="5" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="refrerence"
+                                                    placeholder="Declaration ir"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatedeclarationIr('declarationIr')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-prelevement-social-create-admin></app-prelevement-social-create-admin>
+                    <app-employe-create-admin></app-employe-create-admin>
+                    <app-declaration-ir-create-admin></app-declaration-ir-create-admin>
+
+
+    </p-dialog>

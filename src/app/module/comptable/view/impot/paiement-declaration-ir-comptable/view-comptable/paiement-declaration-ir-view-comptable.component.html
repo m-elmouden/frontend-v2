@@ -1,0 +1,90 @@
+
+<p-dialog [(visible)]="viewPaiementDeclarationIrDialog" [style]="{width: '70vw'}"
+        header="Paiement declaration ir" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Paiement declaration ir">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="1">Reference</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Reference"  [(ngModel)]="selectedPaiementDeclarationIr.reference"
+                                           id="1" [(ngModel)]="selectedPaiementDeclarationIr.reference"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="2">Date paiement</label>
+                                    <p-calendar id="2" [disabled]="true"
+                                                placeholder="Date paiement"  [(ngModel)]="selectedPaiementDeclarationIr.datePaiement"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="3">Total</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Total"  [(ngModel)]="selectedPaiementDeclarationIr.total"
+                                            [(ngModel)]="selectedPaiementDeclarationIr.total"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="4">Montant cpt traiteur</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                                   placeholder="Montant cpt traiteur"  [(ngModel)]="selectedPaiementDeclarationIr.montantCptTraiteur"
+                                            [(ngModel)]="selectedPaiementDeclarationIr.montantCptTraiteur"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="5">Montant cpt validateur</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                                   placeholder="Montant cpt validateur"  [(ngModel)]="selectedPaiementDeclarationIr.montantCptValidateur"
+                                            [(ngModel)]="selectedPaiementDeclarationIr.montantCptValidateur"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="6">Reste</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
+                                                   placeholder="Reste"  [(ngModel)]="selectedPaiementDeclarationIr.reste"
+                                            [(ngModel)]="selectedPaiementDeclarationIr.reste"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="7">Declaration ir</label>
+                                    <p-dropdown [options]="declarationIrs" [(ngModel)]="selectedPaiementDeclarationIr.declarationIrVo"
+                                            id="7" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="refrerence"
+                                            placeholder="Declaration ir">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-declaration-ir-create-comptable></app-declaration-ir-create-comptable>
+
+
+
+</p-dialog>
+
+
+

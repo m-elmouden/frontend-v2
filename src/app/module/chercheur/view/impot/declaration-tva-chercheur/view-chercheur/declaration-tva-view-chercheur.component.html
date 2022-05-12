@@ -1,0 +1,201 @@
+
+<p-dialog [(visible)]="viewDeclarationTvaDialog" [style]="{width: '70vw'}"
+        header="Declaration tva" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Declaration tva">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="1">Reference</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Reference"  [(ngModel)]="selectedDeclarationTva.reference"
+                                           id="1" [(ngModel)]="selectedDeclarationTva.reference"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="2">Tvacollecter</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="2" [disabled]="true"
+                                                   placeholder="Tvacollecter"  [(ngModel)]="selectedDeclarationTva.tvacollecter"
+                                            [(ngModel)]="selectedDeclarationTva.tvacollecter"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="3">Tvaperdue</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Tvaperdue"  [(ngModel)]="selectedDeclarationTva.tvaperdue"
+                                            [(ngModel)]="selectedDeclarationTva.tvaperdue"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="4">Difference tva</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                                   placeholder="Difference tva"  [(ngModel)]="selectedDeclarationTva.differenceTva"
+                                            [(ngModel)]="selectedDeclarationTva.differenceTva"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="5">Montant tva calcule</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                                   placeholder="Montant tva calcule"  [(ngModel)]="selectedDeclarationTva.montantTvaCalcule"
+                                            [(ngModel)]="selectedDeclarationTva.montantTvaCalcule"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="6">Montant tva a paye</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
+                                                   placeholder="Montant tva a paye"  [(ngModel)]="selectedDeclarationTva.montantTvaAPaye"
+                                            [(ngModel)]="selectedDeclarationTva.montantTvaAPaye"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="7">Annee</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="7" [disabled]="true"
+                                                   placeholder="Annee"  [(ngModel)]="selectedDeclarationTva.annee"
+                                            [(ngModel)]="selectedDeclarationTva.annee"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="8">Mois</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="8" [disabled]="true"
+                                                   placeholder="Mois"  [(ngModel)]="selectedDeclarationTva.mois"
+                                            [(ngModel)]="selectedDeclarationTva.mois"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="9">Trimestre</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="9" [disabled]="true"
+                                                   placeholder="Trimestre"  [(ngModel)]="selectedDeclarationTva.trimestre"
+                                            [(ngModel)]="selectedDeclarationTva.trimestre"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="10">Societe</label>
+                                    <p-dropdown [options]="societes" [(ngModel)]="selectedDeclarationTva.societeVo"
+                                            id="10" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="id"
+                                            placeholder="Societe">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="11">Type declaration tva</label>
+                                    <p-dropdown [options]="typeDeclarationTvas" [(ngModel)]="selectedDeclarationTva.typeDeclarationTvaVo"
+                                            id="11" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Type declaration tva">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="12">Etat declaration tva</label>
+                                    <p-dropdown [options]="etatDeclarationTvas" [(ngModel)]="selectedDeclarationTva.etatDeclarationTvaVo"
+                                            id="12" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Etat declaration tva">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="13">Paiement declaration tva</label>
+                                    <p-dropdown [options]="paiementDeclarationTvas" [(ngModel)]="selectedDeclarationTva.paiementDeclarationTvaVo"
+                                            id="13" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Paiement declaration tva">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="14">Archive</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="14"  [disabled]="true" [(ngModel)]="selectedDeclarationTva.archive"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="15">Date archivage</label>
+                                    <p-calendar id="15" [disabled]="true"
+                                                placeholder="Date archivage"  [(ngModel)]="selectedDeclarationTva.dateArchivage"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="16">Date creation</label>
+                                    <p-calendar id="16" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedDeclarationTva.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="17">Admin</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="17"  [disabled]="true" [(ngModel)]="selectedDeclarationTva.admin"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="18">Visible</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="18"  [disabled]="true" [(ngModel)]="selectedDeclarationTva.visible"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="19">Username</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Username"  [(ngModel)]="selectedDeclarationTva.username"
+                                           id="19" [(ngModel)]="selectedDeclarationTva.username"
+                                           autofocus>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-societe-create-chercheur></app-societe-create-chercheur>
+            <app-type-declaration-tva-create-chercheur></app-type-declaration-tva-create-chercheur>
+            <app-etat-declaration-tva-create-chercheur></app-etat-declaration-tva-create-chercheur>
+            <app-paiement-declaration-tva-create-chercheur></app-paiement-declaration-tva-create-chercheur>
+
+
+
+</p-dialog>
+
+
+

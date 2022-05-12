@@ -1,0 +1,144 @@
+        <p-dialog [(visible)]="createAcompteDialog" [style]="{width: '70vw'}"
+                header="Acompte" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Acompte">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="1">Numero<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="1"
+                                                           placeholder="Numero"
+                                                    [(ngModel)]="selectedAcompte.numero" [ngClass]="{'ng-invalid ng-dirty' : !validAcompteNumero}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validAcompteNumero'>Numero est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="2">Annee<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="2"
+                                                           placeholder="Annee"
+                                                    [(ngModel)]="selectedAcompte.annee" [ngClass]="{'ng-invalid ng-dirty' : !validAcompteAnnee}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validAcompteAnnee'>Annee est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="3">Montant<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Montant"
+                                                    [(ngModel)]="selectedAcompte.montant" [ngClass]="{'ng-invalid ng-dirty' : !validAcompteMontant}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validAcompteMontant'>Montant est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-11 p-md-2">
+                                            <label for="4">Societe<span style="color: red;">*</span></label>
+                                            <p-dropdown [options]="societes" [(ngModel)]="selectedAcompte.societeVo"
+                                                    id="4" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="id"
+                                                    placeholder="Societe" [ngClass]="{'ng-invalid ng-dirty' : !validAcompteSociete}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validAcompteSociete'>Societe est obligatoire.</small>
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatesociete('societe')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="5">Archive</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="5"  [(ngModel)]="selectedAcompte.archive"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="6">Date archivage</label>
+                                            <p-calendar id="6"
+                                                        placeholder="Date archivage"  [(ngModel)]="selectedAcompte.dateArchivage"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="7">Date creation</label>
+                                            <p-calendar id="7"
+                                                        placeholder="Date creation"  [(ngModel)]="selectedAcompte.dateCreation"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="8">Admin</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="8"  [(ngModel)]="selectedAcompte.admin"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="9">Visible</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="9"  [(ngModel)]="selectedAcompte.visible"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="10">Username</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Username"
+                                                   id="10" [(ngModel)]="selectedAcompte.username"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-societe-create-chercheur></app-societe-create-chercheur>
+
+
+    </p-dialog>

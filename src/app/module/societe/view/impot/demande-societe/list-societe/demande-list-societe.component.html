@@ -1,0 +1,468 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateDemande('demande')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchDemande.reference">
+                                    <label for="1">Reference</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text"  [(ngModel)]="searchDemande.operation">
+                                    <label for="2">Operation</label>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDemande.dateDemandeMin"
+                                    id="3-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="3-1">Date demande Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDemande.dateDemandeMax"
+                                    id="3-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="3-2">Date demande Max</label>
+                        </span>
+
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDemande.anneeMin"
+                                                             id="4-1"></p-inputNumber>
+                                              <label for="4-1">Annee Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDemande.anneeMax"
+                                                             id="4-2"></p-inputNumber>
+                                             <label for="4-2">Annee Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDemande.moisMin"
+                                                             id="5-1"></p-inputNumber>
+                                              <label for="5-1">Mois Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDemande.moisMax"
+                                                             id="5-2"></p-inputNumber>
+                                             <label for="5-2">Mois Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDemande.trimestreMin"
+                                                             id="6-1"></p-inputNumber>
+                                              <label for="6-1">Trimestre Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDemande.trimestreMax"
+                                                             id="6-2"></p-inputNumber>
+                                             <label for="6-2">Trimestre Max</label>
+                                       </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="societes" [(ngModel)]="searchDemande.societeVo"
+                                        id="7"
+                                        [filter]="true" [showClear]="true"  placeholder="Societe"
+                                        optionLabel="id">
+                                </p-dropdown>
+                            </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="comptables" [(ngModel)]="searchDemande.comptableVo"
+                                        id="8"
+                                        [filter]="true" [showClear]="true"  placeholder="Comptable"
+                                        optionLabel="code">
+                                </p-dropdown>
+                            </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="etatDemandes" [(ngModel)]="searchDemande.etatDemandeVo"
+                                        id="9"
+                                        [filter]="true" [showClear]="true"  placeholder="Etat demande"
+                                        optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDemande.demandePieceJointesMin"
+                                                             id="11-1"></p-inputNumber>
+                                              <label for="11-1">Demande piece jointes Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDemande.demandePieceJointesMax"
+                                                             id="11-2"></p-inputNumber>
+                                             <label for="11-2">Demande piece jointes Max</label>
+                                       </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="13" [options]="yesOrNoArchive" [(ngModel)]="searchDemande.archive"
+                                            [filter]="false" [showClear]="true"  placeholder="Archive"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDemande.dateArchivageMin"
+                                    id="14-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="14-1">Date archivage Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDemande.dateArchivageMax"
+                                    id="14-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="14-2">Date archivage Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDemande.dateCreationMin"
+                                    id="15-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="15-1">Date creation Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDemande.dateCreationMax"
+                                    id="15-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="15-2">Date creation Max</label>
+                        </span>
+
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="16" [options]="yesOrNoAdmin" [(ngModel)]="searchDemande.admin"
+                                            [filter]="false" [showClear]="true"  placeholder="Admin"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="17" [options]="yesOrNoVisible" [(ngModel)]="searchDemande.visible"
+                                            [filter]="false" [showClear]="true"  placeholder="Visible"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="18"
+                                           type="text"  [(ngModel)]="searchDemande.username">
+                                    <label for="18">Username</label>
+                                </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="demandes" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['reference', 'operation', 'dateDemande', 'annee', 'mois', 'trimestre', 'id', 'code', 'libelle', 'archive', 'dateArchivage', 'dateCreation', 'admin', 'visible', 'username']" [(selection)]="selectedDemande"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Demandes</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="reference">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Reference</span>
+                                        <p-sortIcon field="reference"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="operation">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Operation</span>
+                                        <p-sortIcon field="operation"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateDemande">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date demande</span>
+                                        <p-sortIcon field="dateDemande"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="annee">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Annee</span>
+                                        <p-sortIcon field="annee"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="mois">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Mois</span>
+                                        <p-sortIcon field="mois"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="trimestre">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Trimestre</span>
+                                        <p-sortIcon field="trimestre"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="societe">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Societe</span>
+                                        <p-sortIcon field="societe"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="comptable">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Comptable</span>
+                                        <p-sortIcon field="comptable"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                <!-- 
+                                <th pSortableColumn="etatDemande">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Etat demande</span>
+                                        <p-sortIcon field="etatDemande"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+
+
+
+                                <!-- 
+                                <th pSortableColumn="archive">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Archive</span>
+                                        <p-sortIcon field="archive"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="dateArchivage">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date archivage</span>
+                                        <p-sortIcon field="dateArchivage"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="dateCreation">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date creation</span>
+                                        <p-sortIcon field="dateCreation"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="admin">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Admin</span>
+                                        <p-sortIcon field="admin"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="visible">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Visible</span>
+                                        <p-sortIcon field="visible"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="username">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Username</span>
+                                        <p-sortIcon field="username"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-demande>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="demande"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{demande.reference}}</td>
+                            
+
+                            
+                                 <td>{{demande.operation}}</td>
+                            
+
+                            
+                                <td>{{demande.dateDemande | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                 <td>{{demande.annee}}</td>
+                            
+
+                            
+                                 <td>{{demande.mois}}</td>
+                            
+
+                            
+                                 <td>{{demande.trimestre}}</td>
+                            
+
+                            
+                                <td>{{demande.societeVo?.id}}</td>
+                            
+
+                            
+                                <td>{{demande.comptableVo?.code}}</td>
+                            
+
+                             <!-- 
+                                <td>{{demande.etatDemandeVo?.libelle}}</td>
+                             --> 
+
+                             <!-- 
+                                <td><i *ngIf="demande.archive" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!demande.archive" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td>{{demande.dateArchivage | date:'dd-M-yyyy' }}</td>
+                             --> 
+
+                             <!-- 
+                                <td>{{demande.dateCreation | date:'dd-M-yyyy' }}</td>
+                             --> 
+
+                             <!-- 
+                                <td><i *ngIf="demande.admin" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!demande.admin" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td><i *ngIf="demande.visible" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!demande.visible" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{demande.username}}</td>
+                             --> 
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editDemande(demande)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewDemande(demande)"></button>
+                            <button *ngIf="!demande.archive" pButton pRipple icon="pi pi-calendar-minus" class="p-button-rounded p-button-help p-mr-2"
+                                    (click)="archiverDemande(demande)"></button>
+
+                            <button *ngIf="demande.archive" pButton pRipple icon="pi pi-calendar-plus" class="p-button-rounded p-button-secondary p-mr-2"
+                                    (click)="desarchiverDemande(demande)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateDemande(demande)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{demandes ? demandes.length == 1 ? 'y a' : 'y a' : 'y a' }} {{demandes ? demandes.length : 0 }} {{demandes ? demandes.length == 1 ? 'demande' : 'demandes' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-demande-create-societe></app-demande-create-societe>
+        <app-demande-edit-societe></app-demande-edit-societe>
+        <app-demande-view-societe></app-demande-view-societe>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

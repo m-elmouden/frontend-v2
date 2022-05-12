@@ -1,0 +1,62 @@
+
+<p-dialog [(visible)]="viewCompteComptableDialog" [style]="{width: '70vw'}"
+        header="Compte comptable" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Compte comptable">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Libelle</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Libelle"  [(ngModel)]="selectedCompteComptable.libelle"
+                                           id="1" [(ngModel)]="selectedCompteComptable.libelle"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Numero</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="2" [disabled]="true"
+                                                   placeholder="Numero"  [(ngModel)]="selectedCompteComptable.numero"
+                                            [(ngModel)]="selectedCompteComptable.numero"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Sous classe comptable</label>
+                                    <p-dropdown [options]="sousClasseComptables" [(ngModel)]="selectedCompteComptable.sousClasseComptableVo"
+                                            id="3" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Sous classe comptable">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-sous-classe-comptable-create-comptable></app-sous-classe-comptable-create-comptable>
+
+
+
+</p-dialog>
+
+
+

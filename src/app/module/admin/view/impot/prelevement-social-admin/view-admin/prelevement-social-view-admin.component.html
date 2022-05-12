@@ -1,0 +1,64 @@
+
+<p-dialog [(visible)]="viewPrelevementSocialDialog" [style]="{width: '70vw'}"
+        header="Prelevement social" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Prelevement social">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Libelle</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Libelle"  [(ngModel)]="selectedPrelevementSocial.libelle"
+                                           id="1" [(ngModel)]="selectedPrelevementSocial.libelle"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Pourcentage</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="2" [disabled]="true"
+                                                   placeholder="Pourcentage"  [(ngModel)]="selectedPrelevementSocial.pourcentage"
+                                            [(ngModel)]="selectedPrelevementSocial.pourcentage"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Date max</label>
+                                    <p-calendar id="3" [disabled]="true"
+                                                placeholder="Date max"  [(ngModel)]="selectedPrelevementSocial.dateMax"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="4">Date min</label>
+                                    <p-calendar id="4" [disabled]="true"
+                                                placeholder="Date min"  [(ngModel)]="selectedPrelevementSocial.dateMin"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+
+</p-dialog>
+
+
+

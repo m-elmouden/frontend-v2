@@ -1,0 +1,156 @@
+        <p-dialog [(visible)]="createTauxIsConfigDialog" [style]="{width: '70vw'}"
+                header="Taux is config" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Taux is config">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="1">Reference<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Reference"
+                                                   id="1" [(ngModel)]="selectedTauxIsConfig.reference"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validTauxIsConfigReference}"  />
+                                            <small class='p-error' *ngIf='!validTauxIsConfigReference'>Reference est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Cotisation minimale<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="2"
+                                                           placeholder="Cotisation minimale"
+                                                    [(ngModel)]="selectedTauxIsConfig.cotisationMinimale" [ngClass]="{'ng-invalid ng-dirty' : !validTauxIsConfigCotisationMinimale}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validTauxIsConfigCotisationMinimale'>CotisationMinimale est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="3">Date min<span style="color: red;">*</span></label>
+                                            <p-calendar id="3"
+                                                        placeholder="Date min"  [(ngModel)]="selectedTauxIsConfig.dateMin"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validTauxIsConfigDateMin}"  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validTauxIsConfigDateMin'>DateMin est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="4">Date max<span style="color: red;">*</span></label>
+                                            <p-calendar id="4"
+                                                        placeholder="Date max"  [(ngModel)]="selectedTauxIsConfig.dateMax"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validTauxIsConfigDateMax}"  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validTauxIsConfigDateMax'>DateMax est obligatoire.</small>
+                                        </div>
+
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Taux iss">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Reference<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Reference"
+                                                           id="1" [(ngModel)]="selectedTauxIss.reference"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validTauxIsReference}"  >
+                                                    <small class='p-error' *ngIf='!validTauxIsReference'>Reference est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="2">Resultat fiscal min<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="resultatFiscalMin"
+                                                                   placeholder="Resultat fiscal min"  [ngClass]="{'ng-invalid ng-dirty' : !validTauxIsResultatFiscalMin}" 
+                                                            [(ngModel)]="selectedTauxIss.resultatFiscalMin"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validTauxIsResultatFiscalMin'>ResultatFiscalMin est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Resultat fiscal max<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="resultatFiscalMax"
+                                                                   placeholder="Resultat fiscal max"  [ngClass]="{'ng-invalid ng-dirty' : !validTauxIsResultatFiscalMax}" 
+                                                            [(ngModel)]="selectedTauxIss.resultatFiscalMax"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validTauxIsResultatFiscalMax'>ResultatFiscalMax est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="4">Pourcentage<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="pourcentage"
+                                                                   placeholder="Pourcentage"  [ngClass]="{'ng-invalid ng-dirty' : !validTauxIsPourcentage}" 
+                                                            [(ngModel)]="selectedTauxIss.pourcentage"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validTauxIsPourcentage'>Pourcentage est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Penalite<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="penalite"
+                                                                   placeholder="Penalite"  [ngClass]="{'ng-invalid ng-dirty' : !validTauxIsPenalite}" 
+                                                            [(ngModel)]="selectedTauxIss.penalite"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validTauxIsPenalite'>Penalite est obligatoire.</small>
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addTauxIss()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedTauxIsConfig.tauxIssVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Reference</th>
+                                                                <th>Resultat fiscal min</th>
+                                                                <th>Resultat fiscal max</th>
+                                                                <th>Pourcentage</th>
+                                                                <th>Penalite</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.reference}}</td>
+
+                                                                <td>{{p.resultatFiscalMin}}</td>
+
+                                                                <td>{{p.resultatFiscalMax}}</td>
+
+                                                                <td>{{p.pourcentage}}</td>
+
+                                                                <td>{{p.penalite}}</td>
+
+                                                    <td>
+                                                        <button (click)="deleteTauxIss(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+
+
+    </p-dialog>

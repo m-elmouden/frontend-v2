@@ -1,0 +1,188 @@
+        <p-dialog [(visible)]="createCpcDialog" [style]="{width: '70vw'}"
+                header="Cpc" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Cpc">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="1">Reference<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Reference"
+                                                   id="1" [(ngModel)]="selectedCpc.reference"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validCpcReference}"  />
+                                            <small class='p-error' *ngIf='!validCpcReference'>Reference est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="2">Total prod ex<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="2"
+                                                           placeholder="Total prod ex"
+                                                    [(ngModel)]="selectedCpc.totalProdEx" [ngClass]="{'ng-invalid ng-dirty' : !validCpcTotalProdEx}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validCpcTotalProdEx'>TotalProdEx est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="3">Total charg ex<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Total charg ex"
+                                                    [(ngModel)]="selectedCpc.totalChargEx" [ngClass]="{'ng-invalid ng-dirty' : !validCpcTotalChargEx}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validCpcTotalChargEx'>TotalChargEx est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="4">Total prod fin<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                                           placeholder="Total prod fin"
+                                                    [(ngModel)]="selectedCpc.totalProdFin" [ngClass]="{'ng-invalid ng-dirty' : !validCpcTotalProdFin}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validCpcTotalProdFin'>TotalProdFin est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="5">Total charg fin<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                                           placeholder="Total charg fin"
+                                                    [(ngModel)]="selectedCpc.totalChargFin" [ngClass]="{'ng-invalid ng-dirty' : !validCpcTotalChargFin}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validCpcTotalChargFin'>TotalChargFin est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="6">Total prod n cour<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="6"
+                                                           placeholder="Total prod n cour"
+                                                    [(ngModel)]="selectedCpc.totalProdNCour" [ngClass]="{'ng-invalid ng-dirty' : !validCpcTotalProdNCour}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validCpcTotalProdNCour'>TotalProdNCour est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="7">Total charg n cour<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="7"
+                                                           placeholder="Total charg n cour"
+                                                    [(ngModel)]="selectedCpc.totalChargNCour" [ngClass]="{'ng-invalid ng-dirty' : !validCpcTotalChargNCour}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validCpcTotalChargNCour'>TotalChargNCour est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="8">Date min cpc<span style="color: red;">*</span></label>
+                                            <p-calendar id="8"
+                                                        placeholder="Date min cpc"  [(ngModel)]="selectedCpc.dateMinCpc"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validCpcDateMinCpc}"  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validCpcDateMinCpc'>DateMinCpc est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="9">Date max cpc<span style="color: red;">*</span></label>
+                                            <p-calendar id="9"
+                                                        placeholder="Date max cpc"  [(ngModel)]="selectedCpc.dateMaxCpc"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validCpcDateMaxCpc}"  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validCpcDateMaxCpc'>DateMaxCpc est obligatoire.</small>
+                                        </div>
+
+                                    <div class="p-field p-col-12  p-md-3">
+                                        <label>Facture</label>
+                                        <p-multiSelect [options]="cpcFacturesVo" [(ngModel)]="selectedCpc.cpcFacturesVo" defaultLabel="Select un facture" optionLabel="factureVo.libelle"  display="chip"></p-multiSelect>
+                                    </div>
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="11">Archive</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="11"  [(ngModel)]="selectedCpc.archive"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="12">Date archivage</label>
+                                            <p-calendar id="12"
+                                                        placeholder="Date archivage"  [(ngModel)]="selectedCpc.dateArchivage"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="13">Date creation</label>
+                                            <p-calendar id="13"
+                                                        placeholder="Date creation"  [(ngModel)]="selectedCpc.dateCreation"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="14">Admin</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="14"  [(ngModel)]="selectedCpc.admin"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="15">Visible</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="15"  [(ngModel)]="selectedCpc.visible"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="16">Username</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Username"
+                                                   id="16" [(ngModel)]="selectedCpc.username"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+
+                            <app-facture-create-chercheur></app-facture-create-chercheur>
+
+    </p-dialog>

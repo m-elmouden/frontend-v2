@@ -1,0 +1,200 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreatePrelevementSocial('prelevementSocial')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchPrelevementSocial.libelle">
+                                    <label for="1">Libelle</label>
+                                </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPrelevementSocial.pourcentageMin"
+                                                             id="2-1"></p-inputNumber>
+                                              <label for="2-1">Pourcentage Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPrelevementSocial.pourcentageMax"
+                                                             id="2-2"></p-inputNumber>
+                                             <label for="2-2">Pourcentage Max</label>
+                                       </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPrelevementSocial.dateMaxMin"
+                                    id="3-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="3-1">Date max Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPrelevementSocial.dateMaxMax"
+                                    id="3-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="3-2">Date max Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPrelevementSocial.dateMinMin"
+                                    id="4-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="4-1">Date min Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPrelevementSocial.dateMinMax"
+                                    id="4-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="4-2">Date min Max</label>
+                        </span>
+
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="prelevementSocials" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['libelle', 'pourcentage', 'dateMax', 'dateMin']" [(selection)]="selectedPrelevementSocial"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Prelevement socials</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="libelle">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Libelle</span>
+                                        <p-sortIcon field="libelle"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="pourcentage">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Pourcentage</span>
+                                        <p-sortIcon field="pourcentage"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateMax">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date max</span>
+                                        <p-sortIcon field="dateMax"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateMin">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date min</span>
+                                        <p-sortIcon field="dateMin"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-prelevementSocial>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="prelevementSocial"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{prelevementSocial.libelle}}</td>
+                            
+
+                            
+                                 <td>{{prelevementSocial.pourcentage}}</td>
+                            
+
+                            
+                                <td>{{prelevementSocial.dateMax | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                <td>{{prelevementSocial.dateMin | date:'dd-M-yyyy' }}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editPrelevementSocial(prelevementSocial)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewPrelevementSocial(prelevementSocial)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deletePrelevementSocial(prelevementSocial)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicatePrelevementSocial(prelevementSocial)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{prelevementSocials ? prelevementSocials.length == 1 ? 'y a' : 'y a' : 'y a' }} {{prelevementSocials ? prelevementSocials.length : 0 }} {{prelevementSocials ? prelevementSocials.length == 1 ? 'prelevementSocial' : 'prelevementSocials' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-prelevement-social-create-comptable></app-prelevement-social-create-comptable>
+        <app-prelevement-social-edit-comptable></app-prelevement-social-edit-comptable>
+        <app-prelevement-social-view-comptable></app-prelevement-social-view-comptable>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

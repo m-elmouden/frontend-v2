@@ -1,0 +1,373 @@
+
+        <p-dialog [(visible)]="editFactureDialog" [style]="{width: '70vw'}"
+                header="Facture" [modal]="true"
+                styleClass="p-fluid">
+
+            <ng-template pTemplate="content">
+                <p-tabView>
+                    <p-tabPanel header="Facture">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="1">Reference</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Reference"
+                                                   id="1" [(ngModel)]="selectedFacture.reference"
+                                                   />
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="2">Libelle</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Libelle"
+                                                   id="2" [(ngModel)]="selectedFacture.libelle"
+                                                   />
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="3">Montant hors taxe</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Montant hors taxe"  [(ngModel)]="selectedFacture.montantHorsTaxe"
+                                                    [(ngModel)]="selectedFacture.montantHorsTaxe"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="4">Date operation</label>
+                                            <p-calendar id="4"
+                                                        placeholder="Date operation"  [(ngModel)]="selectedFacture.dateOperation"
+                                                    dateFormat="{{dateFormat}}"></p-calendar>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="5">Annee</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                                           placeholder="Annee"  [(ngModel)]="selectedFacture.annee"
+                                                    [(ngModel)]="selectedFacture.annee"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="6">Mois</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="6"
+                                                           placeholder="Mois"  [(ngModel)]="selectedFacture.mois"
+                                                    [(ngModel)]="selectedFacture.mois"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="7">Trimestre</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="7"
+                                                           placeholder="Trimestre"  [(ngModel)]="selectedFacture.trimestre"
+                                                    [(ngModel)]="selectedFacture.trimestre"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="8">Montant ttc</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="8"
+                                                           placeholder="Montant ttc"  [(ngModel)]="selectedFacture.montantTtc"
+                                                    [(ngModel)]="selectedFacture.montantTtc"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="9">Montant tva</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="9"
+                                                           placeholder="Montant tva"  [(ngModel)]="selectedFacture.montantTva"
+                                                    [(ngModel)]="selectedFacture.montantTva"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="10">Credit</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Credit"
+                                                   id="10" [(ngModel)]="selectedFacture.credit"
+                                                   />
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="11">Debit</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Debit"
+                                                   id="11" [(ngModel)]="selectedFacture.debit"
+                                                   />
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="12">Facture piece jointe</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="12"
+                                                           placeholder="Facture piece jointe"  [(ngModel)]="selectedFacture.facturePieceJointe"
+                                                    [(ngModel)]="selectedFacture.facturePieceJointe"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="13">Tva</label>
+                                            <p-dropdown [options]="tvas" [(ngModel)]="selectedFacture.tvaVo"
+                                                    id="13" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Tva">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatetva('tva')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="14">Type operation facture</label>
+                                            <p-dropdown [options]="typeOperationFactures" [(ngModel)]="selectedFacture.typeOperationFactureVo"
+                                                    id="14" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Type operation facture">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatetypeOperationFacture('typeOperationFacture')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="15">Etat facture</label>
+                                            <p-dropdown [options]="etatFactures" [(ngModel)]="selectedFacture.etatFactureVo"
+                                                    id="15" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Etat facture">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateetatFacture('etatFacture')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="16">Etat paiement</label>
+                                            <p-dropdown [options]="etatPaiements" [(ngModel)]="selectedFacture.etatPaiementVo"
+                                                    id="16" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Etat paiement">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateetatPaiement('etatPaiement')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="17">Societe</label>
+                                            <p-dropdown [options]="societes" [(ngModel)]="selectedFacture.societeVo"
+                                                    id="17" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="id"
+                                                    placeholder="Societe">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatesociete('societe')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="18">Compte comptable</label>
+                                            <p-dropdown [options]="compteComptables" [(ngModel)]="selectedFacture.compteComptableVo"
+                                                    id="18" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Compte comptable">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatecompteComptable('compteComptable')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="19">Declaration is</label>
+                                            <p-dropdown [options]="declarationIss" [(ngModel)]="selectedFacture.declarationIsVo"
+                                                    id="19" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Declaration is">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatedeclarationIs('declarationIs')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="20">Declaration tva</label>
+                                            <p-dropdown [options]="declarationTvas" [(ngModel)]="selectedFacture.declarationTvaVo"
+                                                    id="20" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Declaration tva">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatedeclarationTva('declarationTva')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="21">Demande</label>
+                                            <p-dropdown [options]="demandes" [(ngModel)]="selectedFacture.demandeVo"
+                                                    id="21" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Demande">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatedemande('demande')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="22">Classe comptable</label>
+                                            <p-dropdown [options]="classeComptables" [(ngModel)]="selectedFacture.classeComptableVo"
+                                                    id="22" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Classe comptable">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateclasseComptable('classeComptable')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-2">
+                                            <label for="23">Cpc facture</label>
+                                            <p-dropdown [options]="cpcFactures" [(ngModel)]="selectedFacture.cpcFactureVo"
+                                                    id="23" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="id"
+                                                    placeholder="Cpc facture">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatecpcFacture('cpcFacture')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="24">Archive</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="24"  [(ngModel)]="selectedFacture.archive"></p-inputSwitch>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="25">Date archivage</label>
+                                            <p-calendar id="25"
+                                                        placeholder="Date archivage"  [(ngModel)]="selectedFacture.dateArchivage"
+                                                    dateFormat="{{dateFormat}}"></p-calendar>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="26">Date creation</label>
+                                            <p-calendar id="26"
+                                                        placeholder="Date creation"  [(ngModel)]="selectedFacture.dateCreation"
+                                                    dateFormat="{{dateFormat}}"></p-calendar>
+                                        </div>
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="27">Admin</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="27"  [(ngModel)]="selectedFacture.admin"></p-inputSwitch>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="28">Visible</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="28"  [(ngModel)]="selectedFacture.visible"></p-inputSwitch>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="29">Username</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Username"
+                                                   id="29" [(ngModel)]="selectedFacture.username"
+                                                   />
+                                        </div>
+
+
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideEditDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check"  style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-tva-create-admin></app-tva-create-admin>
+                    <app-type-operation-facture-create-admin></app-type-operation-facture-create-admin>
+                    <app-etat-facture-create-admin></app-etat-facture-create-admin>
+                    <app-etat-paiement-create-admin></app-etat-paiement-create-admin>
+                    <app-societe-create-admin></app-societe-create-admin>
+                    <app-compte-comptable-create-admin></app-compte-comptable-create-admin>
+                    <app-declaration-is-create-admin></app-declaration-is-create-admin>
+                    <app-declaration-tva-create-admin></app-declaration-tva-create-admin>
+                    <app-demande-create-admin></app-demande-create-admin>
+                    <app-classe-comptable-create-admin></app-classe-comptable-create-admin>
+                    <app-cpc-facture-create-admin></app-cpc-facture-create-admin>
+
+
+
+    </p-dialog>
+
+
+

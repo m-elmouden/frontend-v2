@@ -1,0 +1,637 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateSociete('societe')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchSociete.ice">
+                                    <label for="1">Ice</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text"  [(ngModel)]="searchSociete.adresse">
+                                    <label for="2">Adresse</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="3"
+                                           type="text"  [(ngModel)]="searchSociete.fax">
+                                    <label for="3">Fax</label>
+                                </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchSociete.telephoneMin"
+                                                             id="4-1"></p-inputNumber>
+                                              <label for="4-1">Telephone Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchSociete.telephoneMax"
+                                                             id="4-2"></p-inputNumber>
+                                             <label for="4-2">Telephone Max</label>
+                                       </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="5"
+                                           type="text"  [(ngModel)]="searchSociete.raisonSociale">
+                                    <label for="5">Raison sociale</label>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchSociete.dateCreationMin"
+                                    id="6-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="6-1">Date creation Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchSociete.dateCreationMax"
+                                    id="6-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="6-2">Date creation Max</label>
+                        </span>
+
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchSociete.anneeExploitationMin"
+                                                             id="7-1"></p-inputNumber>
+                                              <label for="7-1">Annee exploitation Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchSociete.anneeExploitationMax"
+                                                             id="7-2"></p-inputNumber>
+                                             <label for="7-2">Annee exploitation Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchSociete.capitalSocialMin"
+                                                             id="8-1"></p-inputNumber>
+                                              <label for="8-1">Capital social Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchSociete.capitalSocialMax"
+                                                             id="8-2"></p-inputNumber>
+                                             <label for="8-2">Capital social Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchSociete.ageMin"
+                                                             id="10-1"></p-inputNumber>
+                                              <label for="10-1">Age Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchSociete.ageMax"
+                                                             id="10-2"></p-inputNumber>
+                                             <label for="10-2">Age Max</label>
+                                       </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="comptables" [(ngModel)]="searchSociete.comptableVo"
+                                        id="11"
+                                        [filter]="true" [showClear]="true"  placeholder="Comptable"
+                                        optionLabel="code">
+                                </p-dropdown>
+                            </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="presidentSocietes" [(ngModel)]="searchSociete.presidentSocieteVo"
+                                        id="12"
+                                        [filter]="true" [showClear]="true"  placeholder="President societe"
+                                        optionLabel="id">
+                                </p-dropdown>
+                            </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="typeSocietes" [(ngModel)]="searchSociete.typeSocieteVo"
+                                        id="20"
+                                        [filter]="true" [showClear]="true"  placeholder="Type societe"
+                                        optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="22" [options]="yesOrNoCredentialsNonExpired" [(ngModel)]="searchSociete.credentialsNonExpired"
+                                            [filter]="false" [showClear]="true"  placeholder="Credentials non expired"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="23" [options]="yesOrNoEnabled" [(ngModel)]="searchSociete.enabled"
+                                            [filter]="false" [showClear]="true"  placeholder="Enabled"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="24" [options]="yesOrNoAccountNonExpired" [(ngModel)]="searchSociete.accountNonExpired"
+                                            [filter]="false" [showClear]="true"  placeholder="Account non expired"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="25" [options]="yesOrNoAccountNonLocked" [(ngModel)]="searchSociete.accountNonLocked"
+                                            [filter]="false" [showClear]="true"  placeholder="Account non locked"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="26" [options]="yesOrNoPasswordChanged" [(ngModel)]="searchSociete.passwordChanged"
+                                            [filter]="false" [showClear]="true"  placeholder="Password changed"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchSociete.createdAtMin"
+                                    id="27-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="27-1">Created at Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchSociete.createdAtMax"
+                                    id="27-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="27-2">Created at Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchSociete.updatedAtMin"
+                                    id="28-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="28-1">Updated at Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchSociete.updatedAtMax"
+                                    id="28-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="28-2">Updated at Max</label>
+                        </span>
+
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="29"
+                                           type="text"  [(ngModel)]="searchSociete.username">
+                                    <label for="29">Username</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="30"
+                                           type="text"  [(ngModel)]="searchSociete.password">
+                                    <label for="30">Password</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="31"
+                                           type="text"  [(ngModel)]="searchSociete.equivalenceAvecPanelErc">
+                                    <label for="31">Equivalence avec panel erc</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="32"
+                                           type="text"  [(ngModel)]="searchSociete.baseHorizon">
+                                    <label for="32">Base horizon</label>
+                                </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="societes" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['ice', 'adresse', 'fax', 'telephone', 'raisonSociale', 'dateCreation', 'anneeExploitation', 'capitalSocial', 'age', 'code', 'id', 'libelle', 'credentialsNonExpired', 'enabled', 'accountNonExpired', 'accountNonLocked', 'passwordChanged', 'createdAt', 'updatedAt', 'username', 'password', 'equivalenceAvecPanelErc', 'baseHorizon', 'role']" [(selection)]="selectedSociete"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Societes</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="ice">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Ice</span>
+                                        <p-sortIcon field="ice"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="adresse">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Adresse</span>
+                                        <p-sortIcon field="adresse"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="fax">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Fax</span>
+                                        <p-sortIcon field="fax"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="telephone">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Telephone</span>
+                                        <p-sortIcon field="telephone"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="raisonSociale">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Raison sociale</span>
+                                        <p-sortIcon field="raisonSociale"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateCreation">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date creation</span>
+                                        <p-sortIcon field="dateCreation"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="anneeExploitation">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Annee exploitation</span>
+                                        <p-sortIcon field="anneeExploitation"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="capitalSocial">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Capital social</span>
+                                        <p-sortIcon field="capitalSocial"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+
+                                <!-- 
+                                <th pSortableColumn="age">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Age</span>
+                                        <p-sortIcon field="age"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="comptable">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Comptable</span>
+                                        <p-sortIcon field="comptable"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="presidentSociete">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>President societe</span>
+                                        <p-sortIcon field="presidentSociete"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+
+
+
+
+
+
+
+                                <!-- 
+                                <th pSortableColumn="typeSociete">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Type societe</span>
+                                        <p-sortIcon field="typeSociete"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+
+                                <!-- 
+                                <th pSortableColumn="credentialsNonExpired">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Credentials non expired</span>
+                                        <p-sortIcon field="credentialsNonExpired"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="enabled">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Enabled</span>
+                                        <p-sortIcon field="enabled"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="accountNonExpired">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Account non expired</span>
+                                        <p-sortIcon field="accountNonExpired"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="accountNonLocked">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Account non locked</span>
+                                        <p-sortIcon field="accountNonLocked"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="passwordChanged">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Password changed</span>
+                                        <p-sortIcon field="passwordChanged"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="createdAt">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Created at</span>
+                                        <p-sortIcon field="createdAt"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="updatedAt">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Updated at</span>
+                                        <p-sortIcon field="updatedAt"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="username">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Username</span>
+                                        <p-sortIcon field="username"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="password">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Password</span>
+                                        <p-sortIcon field="password"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="equivalenceAvecPanelErc">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Equivalence avec panel erc</span>
+                                        <p-sortIcon field="equivalenceAvecPanelErc"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="baseHorizon">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Base horizon</span>
+                                        <p-sortIcon field="baseHorizon"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="role">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Role</span>
+                                        <p-sortIcon field="role"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-societe>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="societe"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{societe.ice}}</td>
+                            
+
+                            
+                                 <td>{{societe.adresse}}</td>
+                            
+
+                            
+                                 <td>{{societe.fax}}</td>
+                            
+
+                            
+                                 <td>{{societe.telephone}}</td>
+                            
+
+                            
+                                 <td>{{societe.raisonSociale}}</td>
+                            
+
+                            
+                                <td>{{societe.dateCreation | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                 <td>{{societe.anneeExploitation}}</td>
+                            
+
+                            
+                                 <td>{{societe.capitalSocial}}</td>
+                            
+
+                             <!-- 
+                                 <td>{{societe.age}}</td>
+                             --> 
+
+                             <!-- 
+                                <td>{{societe.comptableVo?.code}}</td>
+                             --> 
+
+                             <!-- 
+                                <td>{{societe.presidentSocieteVo?.id}}</td>
+                             --> 
+
+                             <!-- 
+                                <td>{{societe.typeSocieteVo?.libelle}}</td>
+                             --> 
+
+                             <!-- 
+                                <td><i *ngIf="societe.credentialsNonExpired" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!societe.credentialsNonExpired" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td><i *ngIf="societe.enabled" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!societe.enabled" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td><i *ngIf="societe.accountNonExpired" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!societe.accountNonExpired" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td><i *ngIf="societe.accountNonLocked" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!societe.accountNonLocked" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td><i *ngIf="societe.passwordChanged" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!societe.passwordChanged" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td>{{societe.createdAt | date:'dd-M-yyyy' }}</td>
+                             --> 
+
+                             <!-- 
+                                <td>{{societe.updatedAt | date:'dd-M-yyyy' }}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{societe.username}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{societe.password}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{societe.equivalenceAvecPanelErc}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{societe.baseHorizon}}</td>
+                             --> 
+
+                             <!-- 
+                             --> 
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editSociete(societe)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewSociete(societe)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteSociete(societe)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateSociete(societe)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{societes ? societes.length == 1 ? 'y a' : 'y a' : 'y a' }} {{societes ? societes.length : 0 }} {{societes ? societes.length == 1 ? 'societe' : 'societes' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-societe-create-chercheur></app-societe-create-chercheur>
+        <app-societe-edit-chercheur></app-societe-edit-chercheur>
+        <app-societe-view-chercheur></app-societe-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

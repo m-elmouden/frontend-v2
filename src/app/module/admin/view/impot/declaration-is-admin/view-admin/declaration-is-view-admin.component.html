@@ -1,0 +1,206 @@
+
+<p-dialog [(visible)]="viewDeclarationIsDialog" [style]="{width: '70vw'}"
+        header="Declaration is" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Declaration is">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="1">Reference</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Reference"  [(ngModel)]="selectedDeclarationIs.reference"
+                                           id="1" [(ngModel)]="selectedDeclarationIs.reference"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="2">Annee</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="2" [disabled]="true"
+                                                   placeholder="Annee"  [(ngModel)]="selectedDeclarationIs.annee"
+                                            [(ngModel)]="selectedDeclarationIs.annee"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="3">Total ht produit</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Total ht produit"  [(ngModel)]="selectedDeclarationIs.totalHtProduit"
+                                            [(ngModel)]="selectedDeclarationIs.totalHtProduit"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="4">Total ht charge</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                                   placeholder="Total ht charge"  [(ngModel)]="selectedDeclarationIs.totalHtCharge"
+                                            [(ngModel)]="selectedDeclarationIs.totalHtCharge"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="5">Total ht difference</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                                   placeholder="Total ht difference"  [(ngModel)]="selectedDeclarationIs.totalHtDifference"
+                                            [(ngModel)]="selectedDeclarationIs.totalHtDifference"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="6">Montant is calcule</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
+                                                   placeholder="Montant is calcule"  [(ngModel)]="selectedDeclarationIs.montantIsCalcule"
+                                            [(ngModel)]="selectedDeclarationIs.montantIsCalcule"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="7">Montant is a paye</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="7" [disabled]="true"
+                                                   placeholder="Montant is a paye"  [(ngModel)]="selectedDeclarationIs.montantIsAPaye"
+                                            [(ngModel)]="selectedDeclarationIs.montantIsAPaye"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="8">Total a paye</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="8" [disabled]="true"
+                                                   placeholder="Total a paye"  [(ngModel)]="selectedDeclarationIs.totalAPaye"
+                                            [(ngModel)]="selectedDeclarationIs.totalAPaye"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="9">Societe</label>
+                                    <p-dropdown [options]="societes" [(ngModel)]="selectedDeclarationIs.societeVo"
+                                            id="9" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="id"
+                                            placeholder="Societe">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="10">Taux is</label>
+                                    <p-dropdown [options]="tauxIss" [(ngModel)]="selectedDeclarationIs.tauxIsVo"
+                                            id="10" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Taux is">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="11">Taux is config</label>
+                                    <p-dropdown [options]="tauxIsConfigs" [(ngModel)]="selectedDeclarationIs.tauxIsConfigVo"
+                                            id="11" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Taux is config">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="12">Etat declaration is</label>
+                                    <p-dropdown [options]="etatDeclarationIss" [(ngModel)]="selectedDeclarationIs.etatDeclarationIsVo"
+                                            id="12" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Etat declaration is">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="13">Paiement declaration is</label>
+                                    <p-dropdown [options]="paiementDeclarationIss" [(ngModel)]="selectedDeclarationIs.paiementDeclarationIsVo"
+                                            id="13" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Paiement declaration is">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="14">Archive</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="14"  [disabled]="true" [(ngModel)]="selectedDeclarationIs.archive"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="15">Date archivage</label>
+                                    <p-calendar id="15" [disabled]="true"
+                                                placeholder="Date archivage"  [(ngModel)]="selectedDeclarationIs.dateArchivage"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="16">Date creation</label>
+                                    <p-calendar id="16" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedDeclarationIs.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="17">Admin</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="17"  [disabled]="true" [(ngModel)]="selectedDeclarationIs.admin"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="18">Visible</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="18"  [disabled]="true" [(ngModel)]="selectedDeclarationIs.visible"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="19">Username</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Username"  [(ngModel)]="selectedDeclarationIs.username"
+                                           id="19" [(ngModel)]="selectedDeclarationIs.username"
+                                           autofocus>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-societe-create-admin></app-societe-create-admin>
+            <app-taux-is-create-admin></app-taux-is-create-admin>
+            <app-taux-is-config-create-admin></app-taux-is-config-create-admin>
+            <app-etat-declaration-is-create-admin></app-etat-declaration-is-create-admin>
+            <app-paiement-declaration-is-create-admin></app-paiement-declaration-is-create-admin>
+
+
+
+</p-dialog>
+
+
+

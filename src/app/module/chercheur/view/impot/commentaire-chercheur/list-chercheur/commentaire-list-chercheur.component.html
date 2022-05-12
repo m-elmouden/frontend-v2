@@ -1,0 +1,165 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateCommentaire('commentaire')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchCommentaire.dateCommentaireMin"
+                                    id="2-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="2-1">Date commentaire Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchCommentaire.dateCommentaireMax"
+                                    id="2-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="2-2">Date commentaire Max</label>
+                        </span>
+
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="3"
+                                           type="text"  [(ngModel)]="searchCommentaire.auteur">
+                                    <label for="3">Auteur</label>
+                                </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="demandes" [(ngModel)]="searchCommentaire.demandeVo"
+                                        id="4"
+                                        [filter]="true" [showClear]="true"  placeholder="Demande"
+                                        optionLabel="reference">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="commentaires" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['dateCommentaire', 'auteur', 'reference']" [(selection)]="selectedCommentaire"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Commentaires</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+
+                                
+                                <th pSortableColumn="dateCommentaire">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date commentaire</span>
+                                        <p-sortIcon field="dateCommentaire"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="auteur">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Auteur</span>
+                                        <p-sortIcon field="auteur"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="demande">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Demande</span>
+                                        <p-sortIcon field="demande"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-commentaire>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="commentaire"></p-tableCheckbox>
+                        </td>
+                            
+                                <td>{{commentaire.dateCommentaire | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                 <td>{{commentaire.auteur}}</td>
+                            
+
+                            
+                                <td>{{commentaire.demandeVo?.reference}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editCommentaire(commentaire)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewCommentaire(commentaire)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteCommentaire(commentaire)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateCommentaire(commentaire)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{commentaires ? commentaires.length == 1 ? 'y a' : 'y a' : 'y a' }} {{commentaires ? commentaires.length : 0 }} {{commentaires ? commentaires.length == 1 ? 'commentaire' : 'commentaires' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-commentaire-create-chercheur></app-commentaire-create-chercheur>
+        <app-commentaire-edit-chercheur></app-commentaire-edit-chercheur>
+        <app-commentaire-view-chercheur></app-commentaire-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

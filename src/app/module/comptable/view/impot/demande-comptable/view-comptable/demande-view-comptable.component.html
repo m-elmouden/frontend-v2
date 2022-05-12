@@ -1,0 +1,352 @@
+
+<p-dialog [(visible)]="viewDemandeDialog" [style]="{width: '70vw'}"
+        header="Demande" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Demande">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="1">Reference</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Reference"  [(ngModel)]="selectedDemande.reference"
+                                           id="1" [(ngModel)]="selectedDemande.reference"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="2">Operation</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Operation"  [(ngModel)]="selectedDemande.operation"
+                                           id="2" [(ngModel)]="selectedDemande.operation"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="3">Date demande</label>
+                                    <p-calendar id="3" [disabled]="true"
+                                                placeholder="Date demande"  [(ngModel)]="selectedDemande.dateDemande"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="4">Annee</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                                   placeholder="Annee"  [(ngModel)]="selectedDemande.annee"
+                                            [(ngModel)]="selectedDemande.annee"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="5">Mois</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                                   placeholder="Mois"  [(ngModel)]="selectedDemande.mois"
+                                            [(ngModel)]="selectedDemande.mois"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="6">Trimestre</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
+                                                   placeholder="Trimestre"  [(ngModel)]="selectedDemande.trimestre"
+                                            [(ngModel)]="selectedDemande.trimestre"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="7">Societe</label>
+                                    <p-dropdown [options]="societes" [(ngModel)]="selectedDemande.societeVo"
+                                            id="7" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="id"
+                                            placeholder="Societe">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="8">Comptable</label>
+                                    <p-dropdown [options]="comptables" [(ngModel)]="selectedDemande.comptableVo"
+                                            id="8" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="code"
+                                            placeholder="Comptable">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="9">Etat demande</label>
+                                    <p-dropdown [options]="etatDemandes" [(ngModel)]="selectedDemande.etatDemandeVo"
+                                            id="9" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Etat demande">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="11">Demande piece jointes</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="11" [disabled]="true"
+                                                   placeholder="Demande piece jointes"  [(ngModel)]="selectedDemande.demandePieceJointes"
+                                            [(ngModel)]="selectedDemande.demandePieceJointes"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="13">Archive</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="13"  [disabled]="true" [(ngModel)]="selectedDemande.archive"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="14">Date archivage</label>
+                                    <p-calendar id="14" [disabled]="true"
+                                                placeholder="Date archivage"  [(ngModel)]="selectedDemande.dateArchivage"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="15">Date creation</label>
+                                    <p-calendar id="15" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedDemande.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="16">Admin</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="16"  [disabled]="true" [(ngModel)]="selectedDemande.admin"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="17">Visible</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="17"  [disabled]="true" [(ngModel)]="selectedDemande.visible"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="18">Username</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Username"  [(ngModel)]="selectedDemande.username"
+                                           id="18" [(ngModel)]="selectedDemande.username"
+                                           autofocus>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+                    <p-tabPanel header="Factures">
+                        <div class="p-grid">
+
+                            <div class="p-col">
+                                <div class="card">
+                                    <p-table [value]="selectedDemande.facturesVo" [scrollable]="true"
+                                            scrollHeight="200px">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                            <th>Reference</th>
+                                                            <th>Libelle</th>
+                                                            <th>Montant hors taxe</th>
+                                                            <th>Date operation</th>
+                                                            <th>Annee</th>
+                                                            <th>Mois</th>
+                                                            <th>Trimestre</th>
+                                                            <th>Montant ttc</th>
+                                                            <th>Montant tva</th>
+                                                            <th>Credit</th>
+                                                            <th>Debit</th>
+                                                            <th>Facture piece jointe</th>
+                                                            <th>Tva</th>
+                                                            <th>Type operation facture</th>
+                                                            <th>Etat facture</th>
+                                                            <th>Etat paiement</th>
+                                                            <th>Societe</th>
+                                                            <th>Compte comptable</th>
+                                                            <th>Declaration is</th>
+                                                            <th>Declaration tva</th>
+                                                            <th>Classe comptable</th>
+                                                            <th>Cpc facture</th>
+                                                            <th>Archive</th>
+                                                            <th>Date archivage</th>
+                                                            <th>Date creation</th>
+                                                            <th>Admin</th>
+                                                            <th>Visible</th>
+                                                            <th>Username</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-p>
+                                            <tr>
+                                                            <td>{{p.reference}}</td>
+
+                                                            <td>{{p.libelle}}</td>
+
+                                                            <td>{{p.montantHorsTaxe}}</td>
+
+                                                            <td>{{p.dateOperation | date: dateFormatColumn}}</td>
+
+                                                            <td>{{p.annee}}</td>
+
+                                                            <td>{{p.mois}}</td>
+
+                                                            <td>{{p.trimestre}}</td>
+
+                                                            <td>{{p.montantTtc}}</td>
+
+                                                            <td>{{p.montantTva}}</td>
+
+                                                            <td>{{p.credit}}</td>
+
+                                                            <td>{{p.debit}}</td>
+
+                                                            <td>{{p.facturePieceJointe}}</td>
+
+                                                        <td>{{p.tvaVo?.reference}}</td>
+                                                        <td>{{p.typeOperationFactureVo?.libelle}}</td>
+                                                        <td>{{p.etatFactureVo?.libelle}}</td>
+                                                        <td>{{p.etatPaiementVo?.libelle}}</td>
+                                                        <td>{{p.societeVo?.id}}</td>
+                                                        <td>{{p.compteComptableVo?.libelle}}</td>
+                                                        <td>{{p.declarationIsVo?.reference}}</td>
+                                                        <td>{{p.declarationTvaVo?.reference}}</td>
+                                                        <td>{{p.classeComptableVo?.libelle}}</td>
+                                                        <td>{{p.cpcFactureVo?.id}}</td>
+                                                            <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                            </td>
+
+                                                            <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                            <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                            <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                            </td>
+
+                                                            <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                            </td>
+
+                                                            <td>{{p.username}}</td>
+
+
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p-tabPanel>
+
+                    <p-tabPanel header="Demande piece jointes">
+                        <div class="p-grid">
+
+                            <div class="p-col">
+                                <div class="card">
+                                    <p-table [value]="selectedDemande.demandePieceJointesVo" [scrollable]="true"
+                                            scrollHeight="200px">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                            <th>Name</th>
+                                                            <th>Path</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-p>
+                                            <tr>
+                                                            <td>{{p.name}}</td>
+
+                                                            <td>{{p.path}}</td>
+
+
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p-tabPanel>
+
+                    <p-tabPanel header="Commentaires">
+                        <div class="p-grid">
+
+                            <div class="p-col">
+                                <div class="card">
+                                    <p-table [value]="selectedDemande.commentairesVo" [scrollable]="true"
+                                            scrollHeight="200px">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                            <th>Description</th>
+                                                            <th>Date commentaire</th>
+                                                            <th>Auteur</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-p>
+                                            <tr>
+                                                            <td>{{p.description}}</td>
+
+                                                            <td>{{p.dateCommentaire | date: dateFormatColumn}}</td>
+
+                                                            <td>{{p.auteur}}</td>
+
+
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p-tabPanel>
+
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-societe-create-comptable></app-societe-create-comptable>
+            <app-comptable-create-comptable></app-comptable-create-comptable>
+            <app-etat-demande-create-comptable></app-etat-demande-create-comptable>
+
+                    <app-tva-create-comptable></app-tva-create-comptable>
+                    <app-type-operation-facture-create-comptable></app-type-operation-facture-create-comptable>
+                    <app-etat-facture-create-comptable></app-etat-facture-create-comptable>
+                    <app-etat-paiement-create-comptable></app-etat-paiement-create-comptable>
+                    <app-societe-create-comptable></app-societe-create-comptable>
+                    <app-compte-comptable-create-comptable></app-compte-comptable-create-comptable>
+                    <app-declaration-is-create-comptable></app-declaration-is-create-comptable>
+                    <app-declaration-tva-create-comptable></app-declaration-tva-create-comptable>
+                    <app-classe-comptable-create-comptable></app-classe-comptable-create-comptable>
+                    <app-cpc-facture-create-comptable></app-cpc-facture-create-comptable>
+
+
+</p-dialog>
+
+
+

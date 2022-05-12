@@ -1,0 +1,237 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateTauxIs('tauxIs')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchTauxIs.reference">
+                                    <label for="1">Reference</label>
+                                </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchTauxIs.resultatFiscalMinMin"
+                                                             id="2-1"></p-inputNumber>
+                                              <label for="2-1">Resultat fiscal min Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchTauxIs.resultatFiscalMinMax"
+                                                             id="2-2"></p-inputNumber>
+                                             <label for="2-2">Resultat fiscal min Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchTauxIs.resultatFiscalMaxMin"
+                                                             id="3-1"></p-inputNumber>
+                                              <label for="3-1">Resultat fiscal max Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchTauxIs.resultatFiscalMaxMax"
+                                                             id="3-2"></p-inputNumber>
+                                             <label for="3-2">Resultat fiscal max Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchTauxIs.pourcentageMin"
+                                                             id="4-1"></p-inputNumber>
+                                              <label for="4-1">Pourcentage Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchTauxIs.pourcentageMax"
+                                                             id="4-2"></p-inputNumber>
+                                             <label for="4-2">Pourcentage Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchTauxIs.penaliteMin"
+                                                             id="5-1"></p-inputNumber>
+                                              <label for="5-1">Penalite Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchTauxIs.penaliteMax"
+                                                             id="5-2"></p-inputNumber>
+                                             <label for="5-2">Penalite Max</label>
+                                       </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="tauxIsConfigs" [(ngModel)]="searchTauxIs.tauxIsConfigVo"
+                                        id="6"
+                                        [filter]="true" [showClear]="true"  placeholder="Taux is config"
+                                        optionLabel="reference">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="tauxIss" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['reference', 'resultatFiscalMin', 'resultatFiscalMax', 'pourcentage', 'penalite', 'reference']" [(selection)]="selectedTauxIs"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Taux iss</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="reference">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Reference</span>
+                                        <p-sortIcon field="reference"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="resultatFiscalMin">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Resultat fiscal min</span>
+                                        <p-sortIcon field="resultatFiscalMin"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="resultatFiscalMax">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Resultat fiscal max</span>
+                                        <p-sortIcon field="resultatFiscalMax"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="pourcentage">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Pourcentage</span>
+                                        <p-sortIcon field="pourcentage"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="penalite">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Penalite</span>
+                                        <p-sortIcon field="penalite"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="tauxIsConfig">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Taux is config</span>
+                                        <p-sortIcon field="tauxIsConfig"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-tauxIs>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="tauxIs"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{tauxIs.reference}}</td>
+                            
+
+                            
+                                 <td>{{tauxIs.resultatFiscalMin}}</td>
+                            
+
+                            
+                                 <td>{{tauxIs.resultatFiscalMax}}</td>
+                            
+
+                            
+                                 <td>{{tauxIs.pourcentage}}</td>
+                            
+
+                            
+                                 <td>{{tauxIs.penalite}}</td>
+                            
+
+                            
+                                <td>{{tauxIs.tauxIsConfigVo?.reference}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editTauxIs(tauxIs)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewTauxIs(tauxIs)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteTauxIs(tauxIs)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateTauxIs(tauxIs)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{tauxIss ? tauxIss.length == 1 ? 'y a' : 'y a' : 'y a' }} {{tauxIss ? tauxIss.length : 0 }} {{tauxIss ? tauxIss.length == 1 ? 'tauxIs' : 'tauxIss' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-taux-is-create-chercheur></app-taux-is-create-chercheur>
+        <app-taux-is-edit-chercheur></app-taux-is-edit-chercheur>
+        <app-taux-is-view-chercheur></app-taux-is-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

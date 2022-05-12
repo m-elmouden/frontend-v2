@@ -1,0 +1,453 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateComptable('comptable')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchComptable.code">
+                                    <label for="1">Code</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text"  [(ngModel)]="searchComptable.nom">
+                                    <label for="2">Nom</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="3"
+                                           type="text"  [(ngModel)]="searchComptable.telephone">
+                                    <label for="3">Telephone</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="4"
+                                           type="text"  [(ngModel)]="searchComptable.prenom">
+                                    <label for="4">Prenom</label>
+                                </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="typeComptables" [(ngModel)]="searchComptable.typeComptableVo"
+                                        id="5"
+                                        [filter]="true" [showClear]="true"  placeholder="Type comptable"
+                                        optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="8" [options]="yesOrNoCredentialsNonExpired" [(ngModel)]="searchComptable.credentialsNonExpired"
+                                            [filter]="false" [showClear]="true"  placeholder="Credentials non expired"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="9" [options]="yesOrNoEnabled" [(ngModel)]="searchComptable.enabled"
+                                            [filter]="false" [showClear]="true"  placeholder="Enabled"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="10" [options]="yesOrNoAccountNonExpired" [(ngModel)]="searchComptable.accountNonExpired"
+                                            [filter]="false" [showClear]="true"  placeholder="Account non expired"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="11" [options]="yesOrNoAccountNonLocked" [(ngModel)]="searchComptable.accountNonLocked"
+                                            [filter]="false" [showClear]="true"  placeholder="Account non locked"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="12" [options]="yesOrNoPasswordChanged" [(ngModel)]="searchComptable.passwordChanged"
+                                            [filter]="false" [showClear]="true"  placeholder="Password changed"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchComptable.createdAtMin"
+                                    id="13-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="13-1">Created at Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchComptable.createdAtMax"
+                                    id="13-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="13-2">Created at Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchComptable.updatedAtMin"
+                                    id="14-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="14-1">Updated at Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchComptable.updatedAtMax"
+                                    id="14-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="14-2">Updated at Max</label>
+                        </span>
+
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="15"
+                                           type="text"  [(ngModel)]="searchComptable.username">
+                                    <label for="15">Username</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="16"
+                                           type="text"  [(ngModel)]="searchComptable.password">
+                                    <label for="16">Password</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="17"
+                                           type="text"  [(ngModel)]="searchComptable.equivalenceAvecPanelErc">
+                                    <label for="17">Equivalence avec panel erc</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="18"
+                                           type="text"  [(ngModel)]="searchComptable.baseHorizon">
+                                    <label for="18">Base horizon</label>
+                                </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="comptables" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['code', 'nom', 'telephone', 'prenom', 'libelle', 'credentialsNonExpired', 'enabled', 'accountNonExpired', 'accountNonLocked', 'passwordChanged', 'createdAt', 'updatedAt', 'username', 'password', 'equivalenceAvecPanelErc', 'baseHorizon', 'role']" [(selection)]="selectedComptable"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Comptables</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="code">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Code</span>
+                                        <p-sortIcon field="code"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="nom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Nom</span>
+                                        <p-sortIcon field="nom"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="telephone">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Telephone</span>
+                                        <p-sortIcon field="telephone"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="prenom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Prenom</span>
+                                        <p-sortIcon field="prenom"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="typeComptable">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Type comptable</span>
+                                        <p-sortIcon field="typeComptable"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+
+
+                                
+                                <th pSortableColumn="credentialsNonExpired">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Credentials non expired</span>
+                                        <p-sortIcon field="credentialsNonExpired"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="enabled">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Enabled</span>
+                                        <p-sortIcon field="enabled"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="accountNonExpired">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Account non expired</span>
+                                        <p-sortIcon field="accountNonExpired"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                <!-- 
+                                <th pSortableColumn="accountNonLocked">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Account non locked</span>
+                                        <p-sortIcon field="accountNonLocked"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="passwordChanged">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Password changed</span>
+                                        <p-sortIcon field="passwordChanged"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="createdAt">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Created at</span>
+                                        <p-sortIcon field="createdAt"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="updatedAt">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Updated at</span>
+                                        <p-sortIcon field="updatedAt"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="username">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Username</span>
+                                        <p-sortIcon field="username"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="password">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Password</span>
+                                        <p-sortIcon field="password"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="equivalenceAvecPanelErc">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Equivalence avec panel erc</span>
+                                        <p-sortIcon field="equivalenceAvecPanelErc"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="baseHorizon">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Base horizon</span>
+                                        <p-sortIcon field="baseHorizon"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="role">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Role</span>
+                                        <p-sortIcon field="role"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-comptable>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="comptable"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{comptable.code}}</td>
+                            
+
+                            
+                                 <td>{{comptable.nom}}</td>
+                            
+
+                            
+                                 <td>{{comptable.telephone}}</td>
+                            
+
+                            
+                                 <td>{{comptable.prenom}}</td>
+                            
+
+                            
+                                <td>{{comptable.typeComptableVo?.libelle}}</td>
+                            
+
+                            
+                                <td><i *ngIf="comptable.credentialsNonExpired" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!comptable.credentialsNonExpired" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="comptable.enabled" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!comptable.enabled" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="comptable.accountNonExpired" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!comptable.accountNonExpired" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                             <!-- 
+                                <td><i *ngIf="comptable.accountNonLocked" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!comptable.accountNonLocked" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td><i *ngIf="comptable.passwordChanged" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!comptable.passwordChanged" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td>{{comptable.createdAt | date:'dd-M-yyyy' }}</td>
+                             --> 
+
+                             <!-- 
+                                <td>{{comptable.updatedAt | date:'dd-M-yyyy' }}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{comptable.username}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{comptable.password}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{comptable.equivalenceAvecPanelErc}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{comptable.baseHorizon}}</td>
+                             --> 
+
+                             <!-- 
+                             --> 
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editComptable(comptable)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewComptable(comptable)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteComptable(comptable)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateComptable(comptable)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{comptables ? comptables.length == 1 ? 'y a' : 'y a' : 'y a' }} {{comptables ? comptables.length : 0 }} {{comptables ? comptables.length == 1 ? 'comptable' : 'comptables' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-comptable-create-societe></app-comptable-create-societe>
+        <app-comptable-edit-societe></app-comptable-edit-societe>
+        <app-comptable-view-societe></app-comptable-view-societe>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

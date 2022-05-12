@@ -1,0 +1,137 @@
+
+<p-dialog [(visible)]="viewTauxCnssDialog" [style]="{width: '70vw'}"
+        header="Taux cnss" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Taux cnss">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="1">Ref</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Ref"  [(ngModel)]="selectedTauxCnss.ref"
+                                           id="1" [(ngModel)]="selectedTauxCnss.ref"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="2">Type taux cnss</label>
+                                    <p-dropdown [options]="typeTauxCnsss" [(ngModel)]="selectedTauxCnss.typeTauxCnssVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Type taux cnss">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="3">Date application min</label>
+                                    <p-calendar id="3" [disabled]="true"
+                                                placeholder="Date application min"  [(ngModel)]="selectedTauxCnss.dateApplicationMin"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="4">Date application max</label>
+                                    <p-calendar id="4" [disabled]="true"
+                                                placeholder="Date application max"  [(ngModel)]="selectedTauxCnss.dateApplicationMax"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="5">Plafond</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                                   placeholder="Plafond"  [(ngModel)]="selectedTauxCnss.plafond"
+                                            [(ngModel)]="selectedTauxCnss.plafond"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="6">Pourcentage</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
+                                                   placeholder="Pourcentage"  [(ngModel)]="selectedTauxCnss.pourcentage"
+                                            [(ngModel)]="selectedTauxCnss.pourcentage"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="7">Archive</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="7"  [disabled]="true" [(ngModel)]="selectedTauxCnss.archive"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="8">Date archivage</label>
+                                    <p-calendar id="8" [disabled]="true"
+                                                placeholder="Date archivage"  [(ngModel)]="selectedTauxCnss.dateArchivage"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="9">Date creation</label>
+                                    <p-calendar id="9" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedTauxCnss.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="10">Admin</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="10"  [disabled]="true" [(ngModel)]="selectedTauxCnss.admin"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="11">Visible</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="11"  [disabled]="true" [(ngModel)]="selectedTauxCnss.visible"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="12">Username</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Username"  [(ngModel)]="selectedTauxCnss.username"
+                                           id="12" [(ngModel)]="selectedTauxCnss.username"
+                                           autofocus>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-type-taux-cnss-create-societe></app-type-taux-cnss-create-societe>
+
+
+
+</p-dialog>
+
+
+

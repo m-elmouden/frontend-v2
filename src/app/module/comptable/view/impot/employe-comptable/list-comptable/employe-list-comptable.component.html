@@ -1,0 +1,265 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateEmploye('employe')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchEmploye.cin">
+                                    <label for="1">Cin</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text"  [(ngModel)]="searchEmploye.nom">
+                                    <label for="2">Nom</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="3"
+                                           type="text"  [(ngModel)]="searchEmploye.prenom">
+                                    <label for="3">Prenom</label>
+                                </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="typeEmployes" [(ngModel)]="searchEmploye.typeEmployeVo"
+                                        id="4"
+                                        [filter]="true" [showClear]="true"  placeholder="Type employe"
+                                        optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEmploye.totalSalaireNetMin"
+                                                             id="5-1"></p-inputNumber>
+                                              <label for="5-1">Total salaire net Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEmploye.totalSalaireNetMax"
+                                                             id="5-2"></p-inputNumber>
+                                             <label for="5-2">Total salaire net Max</label>
+                                       </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="societes" [(ngModel)]="searchEmploye.societeVo"
+                                        id="6"
+                                        [filter]="true" [showClear]="true"  placeholder="Societe"
+                                        optionLabel="id">
+                                </p-dropdown>
+                            </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEmploye.nombreFamilleMin"
+                                                             id="7-1"></p-inputNumber>
+                                              <label for="7-1">Nombre famille Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEmploye.nombreFamilleMax"
+                                                             id="7-2"></p-inputNumber>
+                                             <label for="7-2">Nombre famille Max</label>
+                                       </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="declarationCnsss" [(ngModel)]="searchEmploye.declarationCnssVo"
+                                        id="8"
+                                        [filter]="true" [showClear]="true"  placeholder="Declaration cnss"
+                                        optionLabel="ref">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="employes" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['cin', 'nom', 'prenom', 'libelle', 'totalSalaireNet', 'id', 'nombreFamille', 'ref']" [(selection)]="selectedEmploye"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Employes</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="cin">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Cin</span>
+                                        <p-sortIcon field="cin"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="nom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Nom</span>
+                                        <p-sortIcon field="nom"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="prenom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Prenom</span>
+                                        <p-sortIcon field="prenom"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="typeEmploye">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Type employe</span>
+                                        <p-sortIcon field="typeEmploye"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="totalSalaireNet">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Total salaire net</span>
+                                        <p-sortIcon field="totalSalaireNet"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="societe">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Societe</span>
+                                        <p-sortIcon field="societe"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="nombreFamille">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Nombre famille</span>
+                                        <p-sortIcon field="nombreFamille"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="declarationCnss">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Declaration cnss</span>
+                                        <p-sortIcon field="declarationCnss"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-employe>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="employe"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{employe.cin}}</td>
+                            
+
+                            
+                                 <td>{{employe.nom}}</td>
+                            
+
+                            
+                                 <td>{{employe.prenom}}</td>
+                            
+
+                            
+                                <td>{{employe.typeEmployeVo?.libelle}}</td>
+                            
+
+                            
+                                 <td>{{employe.totalSalaireNet}}</td>
+                            
+
+                            
+                                <td>{{employe.societeVo?.id}}</td>
+                            
+
+                            
+                                 <td>{{employe.nombreFamille}}</td>
+                            
+
+                            
+                                <td>{{employe.declarationCnssVo?.ref}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editEmploye(employe)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewEmploye(employe)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteEmploye(employe)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateEmploye(employe)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{employes ? employes.length == 1 ? 'y a' : 'y a' : 'y a' }} {{employes ? employes.length : 0 }} {{employes ? employes.length == 1 ? 'employe' : 'employes' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-employe-create-comptable></app-employe-create-comptable>
+        <app-employe-edit-comptable></app-employe-edit-comptable>
+        <app-employe-view-comptable></app-employe-view-comptable>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

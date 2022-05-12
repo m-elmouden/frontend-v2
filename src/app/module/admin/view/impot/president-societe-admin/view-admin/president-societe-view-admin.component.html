@@ -1,0 +1,95 @@
+
+<p-dialog [(visible)]="viewPresidentSocieteDialog" [style]="{width: '70vw'}"
+        header="President societe" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="President societe">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Cin</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Cin"  [(ngModel)]="selectedPresidentSociete.cin"
+                                           id="1" [(ngModel)]="selectedPresidentSociete.cin"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Nom</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Nom"  [(ngModel)]="selectedPresidentSociete.nom"
+                                           id="2" [(ngModel)]="selectedPresidentSociete.nom"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Prenom</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Prenom"  [(ngModel)]="selectedPresidentSociete.prenom"
+                                           id="3" [(ngModel)]="selectedPresidentSociete.prenom"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="4">Email</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Email"  [(ngModel)]="selectedPresidentSociete.email"
+                                           id="4" [(ngModel)]="selectedPresidentSociete.email"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="5">Telephone</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Telephone"  [(ngModel)]="selectedPresidentSociete.telephone"
+                                           id="5" [(ngModel)]="selectedPresidentSociete.telephone"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="6">Societe</label>
+                                    <p-dropdown [options]="societes" [(ngModel)]="selectedPresidentSociete.societeVo"
+                                            id="6" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="id"
+                                            placeholder="Societe">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-societe-create-admin></app-societe-create-admin>
+
+
+
+</p-dialog>
+
+
+

@@ -1,0 +1,91 @@
+
+        <p-dialog [(visible)]="editTauxIsDialog" [style]="{width: '70vw'}"
+                header="Taux is" [modal]="true"
+                styleClass="p-fluid">
+
+            <ng-template pTemplate="content">
+                <p-tabView>
+                    <p-tabPanel header="Taux is">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="1">Reference</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Reference"
+                                                   id="1" [(ngModel)]="selectedTauxIs.reference"
+                                                   />
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Resultat fiscal min</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="2"
+                                                           placeholder="Resultat fiscal min"  [(ngModel)]="selectedTauxIs.resultatFiscalMin"
+                                                    [(ngModel)]="selectedTauxIs.resultatFiscalMin"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="3">Resultat fiscal max</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Resultat fiscal max"  [(ngModel)]="selectedTauxIs.resultatFiscalMax"
+                                                    [(ngModel)]="selectedTauxIs.resultatFiscalMax"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="4">Pourcentage</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                                           placeholder="Pourcentage"  [(ngModel)]="selectedTauxIs.pourcentage"
+                                                    [(ngModel)]="selectedTauxIs.pourcentage"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="5">Penalite</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                                           placeholder="Penalite"  [(ngModel)]="selectedTauxIs.penalite"
+                                                    [(ngModel)]="selectedTauxIs.penalite"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-5">
+                                            <label for="6">Taux is config</label>
+                                            <p-dropdown [options]="tauxIsConfigs" [(ngModel)]="selectedTauxIs.tauxIsConfigVo"
+                                                    id="6" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Taux is config">
+                                            </p-dropdown>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatetauxIsConfig('tauxIsConfig')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideEditDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check"  style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-taux-is-config-create-comptable></app-taux-is-config-create-comptable>
+
+
+
+    </p-dialog>
+
+
+

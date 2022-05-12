@@ -1,0 +1,105 @@
+        <p-dialog [(visible)]="createPaiementDeclarationIrDialog" [style]="{width: '70vw'}"
+                header="Paiement declaration ir" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Paiement declaration ir">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="1">Reference<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Reference"
+                                                   id="1" [(ngModel)]="selectedPaiementDeclarationIr.reference"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validPaiementDeclarationIrReference}"  />
+                                            <small class='p-error' *ngIf='!validPaiementDeclarationIrReference'>Reference est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="2">Date paiement<span style="color: red;">*</span></label>
+                                            <p-calendar id="2"
+                                                        placeholder="Date paiement"  [(ngModel)]="selectedPaiementDeclarationIr.datePaiement"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validPaiementDeclarationIrDatePaiement}"  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validPaiementDeclarationIrDatePaiement'>DatePaiement est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="3">Total<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Total"
+                                                    [(ngModel)]="selectedPaiementDeclarationIr.total" [ngClass]="{'ng-invalid ng-dirty' : !validPaiementDeclarationIrTotal}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validPaiementDeclarationIrTotal'>Total est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="4">Montant cpt traiteur</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                                           placeholder="Montant cpt traiteur"
+                                                    [(ngModel)]="selectedPaiementDeclarationIr.montantCptTraiteur"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="5">Montant cpt validateur</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                                           placeholder="Montant cpt validateur"
+                                                    [(ngModel)]="selectedPaiementDeclarationIr.montantCptValidateur"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="6">Reste</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="6"
+                                                           placeholder="Reste"
+                                                    [(ngModel)]="selectedPaiementDeclarationIr.reste"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="7">Declaration ir<span style="color: red;">*</span></label>
+                                            <p-dropdown [options]="declarationIrs" [(ngModel)]="selectedPaiementDeclarationIr.declarationIrVo"
+                                                    id="7" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="refrerence"
+                                                    placeholder="Declaration ir" [ngClass]="{'ng-invalid ng-dirty' : !validPaiementDeclarationIrDeclarationIr}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validPaiementDeclarationIrDeclarationIr'>DeclarationIr est obligatoire.</small>
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatedeclarationIr('declarationIr')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-declaration-ir-create-societe></app-declaration-ir-create-societe>
+
+
+    </p-dialog>

@@ -1,0 +1,135 @@
+
+<p-dialog [(visible)]="viewDeclarationCnssDetailDialog" [style]="{width: '70vw'}"
+        header="Declaration cnss detail" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Declaration cnss detail">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="1">Ref</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Ref"  [(ngModel)]="selectedDeclarationCnssDetail.ref"
+                                           id="1" [(ngModel)]="selectedDeclarationCnssDetail.ref"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="2">Type taux cnss</label>
+                                    <p-dropdown [options]="typeTauxCnsss" [(ngModel)]="selectedDeclarationCnssDetail.typeTauxCnssVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Type taux cnss">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="3">Montant calcule</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Montant calcule"  [(ngModel)]="selectedDeclarationCnssDetail.montantCalcule"
+                                            [(ngModel)]="selectedDeclarationCnssDetail.montantCalcule"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="4">Montant total</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                                   placeholder="Montant total"  [(ngModel)]="selectedDeclarationCnssDetail.montantTotal"
+                                            [(ngModel)]="selectedDeclarationCnssDetail.montantTotal"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="5">Declaration cnss</label>
+                                    <p-dropdown [options]="declarationCnsss" [(ngModel)]="selectedDeclarationCnssDetail.declarationCnssVo"
+                                            id="5" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="ref"
+                                            placeholder="Declaration cnss">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="6">Archive</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="6"  [disabled]="true" [(ngModel)]="selectedDeclarationCnssDetail.archive"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="7">Date archivage</label>
+                                    <p-calendar id="7" [disabled]="true"
+                                                placeholder="Date archivage"  [(ngModel)]="selectedDeclarationCnssDetail.dateArchivage"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="8">Date creation</label>
+                                    <p-calendar id="8" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedDeclarationCnssDetail.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="9">Admin</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="9"  [disabled]="true" [(ngModel)]="selectedDeclarationCnssDetail.admin"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="10">Visible</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="10"  [disabled]="true" [(ngModel)]="selectedDeclarationCnssDetail.visible"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="11">Username</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Username"  [(ngModel)]="selectedDeclarationCnssDetail.username"
+                                           id="11" [(ngModel)]="selectedDeclarationCnssDetail.username"
+                                           autofocus>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-type-taux-cnss-create-comptable></app-type-taux-cnss-create-comptable>
+            <app-declaration-cnss-create-comptable></app-declaration-cnss-create-comptable>
+
+
+
+</p-dialog>
+
+
+

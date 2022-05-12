@@ -1,0 +1,211 @@
+
+        <p-dialog [(visible)]="editCpcDialog" [style]="{width: '70vw'}"
+                header="Cpc" [modal]="true"
+                styleClass="p-fluid">
+
+            <ng-template pTemplate="content">
+                <p-tabView>
+                    <p-tabPanel header="Cpc">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="1">Reference</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Reference"
+                                                   id="1" [(ngModel)]="selectedCpc.reference"
+                                                   />
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="2">Total prod ex</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="2"
+                                                           placeholder="Total prod ex"  [(ngModel)]="selectedCpc.totalProdEx"
+                                                    [(ngModel)]="selectedCpc.totalProdEx"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="3">Total charg ex</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Total charg ex"  [(ngModel)]="selectedCpc.totalChargEx"
+                                                    [(ngModel)]="selectedCpc.totalChargEx"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="4">Total prod fin</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                                           placeholder="Total prod fin"  [(ngModel)]="selectedCpc.totalProdFin"
+                                                    [(ngModel)]="selectedCpc.totalProdFin"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="5">Total charg fin</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                                           placeholder="Total charg fin"  [(ngModel)]="selectedCpc.totalChargFin"
+                                                    [(ngModel)]="selectedCpc.totalChargFin"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="6">Total prod n cour</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="6"
+                                                           placeholder="Total prod n cour"  [(ngModel)]="selectedCpc.totalProdNCour"
+                                                    [(ngModel)]="selectedCpc.totalProdNCour"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="7">Total charg n cour</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="7"
+                                                           placeholder="Total charg n cour"  [(ngModel)]="selectedCpc.totalChargNCour"
+                                                    [(ngModel)]="selectedCpc.totalChargNCour"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="8">Date min cpc</label>
+                                            <p-calendar id="8"
+                                                        placeholder="Date min cpc"  [(ngModel)]="selectedCpc.dateMinCpc"
+                                                    dateFormat="{{dateFormat}}"></p-calendar>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="9">Date max cpc</label>
+                                            <p-calendar id="9"
+                                                        placeholder="Date max cpc"  [(ngModel)]="selectedCpc.dateMaxCpc"
+                                                    dateFormat="{{dateFormat}}"></p-calendar>
+                                        </div>
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="11">Archive</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="11"  [(ngModel)]="selectedCpc.archive"></p-inputSwitch>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="12">Date archivage</label>
+                                            <p-calendar id="12"
+                                                        placeholder="Date archivage"  [(ngModel)]="selectedCpc.dateArchivage"
+                                                    dateFormat="{{dateFormat}}"></p-calendar>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="13">Date creation</label>
+                                            <p-calendar id="13"
+                                                        placeholder="Date creation"  [(ngModel)]="selectedCpc.dateCreation"
+                                                    dateFormat="{{dateFormat}}"></p-calendar>
+                                        </div>
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="14">Admin</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="14"  [(ngModel)]="selectedCpc.admin"></p-inputSwitch>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="15">Visible</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="15"  [(ngModel)]="selectedCpc.visible"></p-inputSwitch>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="16">Username</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Username"
+                                                   id="16" [(ngModel)]="selectedCpc.username"
+                                                   />
+                                        </div>
+
+
+
+                        </div>
+                    </p-tabPanel>
+                            <p-tabPanel header="Cpc factures">
+                                <div class="p-grid">
+                                    <div class="p-col">
+                                                <div class="p-grid">
+                                                    <div class="p-col-11 p-field">
+                                                        <label>Facture</label>
+                                                        <p-dropdown [options]="factures" [(ngModel)]="selectedCpcFactures.factureVo"
+                                                                id="1"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Facture"
+                                                        >
+                                                        </p-dropdown>
+
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatefacture('facture')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                </div>
+
+                                        <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                label="OK" (click)="addCpcFactures()"
+                                        ></button>
+                                    </div>
+                                    <div class="p-col">
+                                        <div class="card">
+                                            <p-table [value]="selectedCpc.cpcFacturesVo" [scrollable]="true"
+                                                    scrollHeight="200px">
+                                                <ng-template pTemplate="header">
+                                                    <tr>
+                                                                    <th>Facture</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-p>
+                                                    <tr>
+                                                                <td>{{p.factureVo?.libelle}}</td>
+                                                        <td>
+                                                            <button (click)="deleteCpcFactures(p)" pButton type="button"
+                                                                                                                 icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </ng-template>
+                                            </p-table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideEditDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check"  style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+
+                            <app-facture-create-admin></app-facture-create-admin>
+
+
+    </p-dialog>
+
+
+

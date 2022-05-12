@@ -1,0 +1,83 @@
+
+<p-dialog [(visible)]="viewPrelevementSocialEmployeDialog" [style]="{width: '70vw'}"
+        header="Prelevement social employe" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Prelevement social employe">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Prelevement social</label>
+                                    <p-dropdown [options]="prelevementSocials" [(ngModel)]="selectedPrelevementSocialEmploye.prelevementSocialVo"
+                                            id="1" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Prelevement social">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Employe</label>
+                                    <p-dropdown [options]="employes" [(ngModel)]="selectedPrelevementSocialEmploye.employeVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="cin"
+                                            placeholder="Employe">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Salaire brut imposable</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Salaire brut imposable"  [(ngModel)]="selectedPrelevementSocialEmploye.salaireBrutImposable"
+                                            [(ngModel)]="selectedPrelevementSocialEmploye.salaireBrutImposable"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="4">Montant calculer</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                                   placeholder="Montant calculer"  [(ngModel)]="selectedPrelevementSocialEmploye.montantCalculer"
+                                            [(ngModel)]="selectedPrelevementSocialEmploye.montantCalculer"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="5">Declaration ir</label>
+                                    <p-dropdown [options]="declarationIrs" [(ngModel)]="selectedPrelevementSocialEmploye.declarationIrVo"
+                                            id="5" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="refrerence"
+                                            placeholder="Declaration ir">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-prelevement-social-create-admin></app-prelevement-social-create-admin>
+            <app-employe-create-admin></app-employe-create-admin>
+            <app-declaration-ir-create-admin></app-declaration-ir-create-admin>
+
+
+
+</p-dialog>
+
+
+

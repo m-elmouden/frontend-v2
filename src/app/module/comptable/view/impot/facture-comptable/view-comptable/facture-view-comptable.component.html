@@ -1,0 +1,315 @@
+
+<p-dialog [(visible)]="viewFactureDialog" [style]="{width: '70vw'}"
+        header="Facture" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Facture">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="1">Reference</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Reference"  [(ngModel)]="selectedFacture.reference"
+                                           id="1" [(ngModel)]="selectedFacture.reference"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="2">Libelle</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Libelle"  [(ngModel)]="selectedFacture.libelle"
+                                           id="2" [(ngModel)]="selectedFacture.libelle"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="3">Montant hors taxe</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Montant hors taxe"  [(ngModel)]="selectedFacture.montantHorsTaxe"
+                                            [(ngModel)]="selectedFacture.montantHorsTaxe"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="4">Date operation</label>
+                                    <p-calendar id="4" [disabled]="true"
+                                                placeholder="Date operation"  [(ngModel)]="selectedFacture.dateOperation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="5">Annee</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                                   placeholder="Annee"  [(ngModel)]="selectedFacture.annee"
+                                            [(ngModel)]="selectedFacture.annee"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="6">Mois</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
+                                                   placeholder="Mois"  [(ngModel)]="selectedFacture.mois"
+                                            [(ngModel)]="selectedFacture.mois"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="7">Trimestre</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="7" [disabled]="true"
+                                                   placeholder="Trimestre"  [(ngModel)]="selectedFacture.trimestre"
+                                            [(ngModel)]="selectedFacture.trimestre"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="8">Montant ttc</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="8" [disabled]="true"
+                                                   placeholder="Montant ttc"  [(ngModel)]="selectedFacture.montantTtc"
+                                            [(ngModel)]="selectedFacture.montantTtc"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="9">Montant tva</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="9" [disabled]="true"
+                                                   placeholder="Montant tva"  [(ngModel)]="selectedFacture.montantTva"
+                                            [(ngModel)]="selectedFacture.montantTva"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="10">Credit</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Credit"  [(ngModel)]="selectedFacture.credit"
+                                           id="10" [(ngModel)]="selectedFacture.credit"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="11">Debit</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Debit"  [(ngModel)]="selectedFacture.debit"
+                                           id="11" [(ngModel)]="selectedFacture.debit"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="12">Facture piece jointe</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="12" [disabled]="true"
+                                                   placeholder="Facture piece jointe"  [(ngModel)]="selectedFacture.facturePieceJointe"
+                                            [(ngModel)]="selectedFacture.facturePieceJointe"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="13">Tva</label>
+                                    <p-dropdown [options]="tvas" [(ngModel)]="selectedFacture.tvaVo"
+                                            id="13" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Tva">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="14">Type operation facture</label>
+                                    <p-dropdown [options]="typeOperationFactures" [(ngModel)]="selectedFacture.typeOperationFactureVo"
+                                            id="14" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Type operation facture">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="15">Etat facture</label>
+                                    <p-dropdown [options]="etatFactures" [(ngModel)]="selectedFacture.etatFactureVo"
+                                            id="15" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Etat facture">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="16">Etat paiement</label>
+                                    <p-dropdown [options]="etatPaiements" [(ngModel)]="selectedFacture.etatPaiementVo"
+                                            id="16" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Etat paiement">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="17">Societe</label>
+                                    <p-dropdown [options]="societes" [(ngModel)]="selectedFacture.societeVo"
+                                            id="17" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="id"
+                                            placeholder="Societe">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="18">Compte comptable</label>
+                                    <p-dropdown [options]="compteComptables" [(ngModel)]="selectedFacture.compteComptableVo"
+                                            id="18" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Compte comptable">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="19">Declaration is</label>
+                                    <p-dropdown [options]="declarationIss" [(ngModel)]="selectedFacture.declarationIsVo"
+                                            id="19" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Declaration is">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="20">Declaration tva</label>
+                                    <p-dropdown [options]="declarationTvas" [(ngModel)]="selectedFacture.declarationTvaVo"
+                                            id="20" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Declaration tva">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="21">Demande</label>
+                                    <p-dropdown [options]="demandes" [(ngModel)]="selectedFacture.demandeVo"
+                                            id="21" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Demande">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="22">Classe comptable</label>
+                                    <p-dropdown [options]="classeComptables" [(ngModel)]="selectedFacture.classeComptableVo"
+                                            id="22" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Classe comptable">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="23">Cpc facture</label>
+                                    <p-dropdown [options]="cpcFactures" [(ngModel)]="selectedFacture.cpcFactureVo"
+                                            id="23" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="id"
+                                            placeholder="Cpc facture">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="24">Archive</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="24"  [disabled]="true" [(ngModel)]="selectedFacture.archive"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="25">Date archivage</label>
+                                    <p-calendar id="25" [disabled]="true"
+                                                placeholder="Date archivage"  [(ngModel)]="selectedFacture.dateArchivage"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="26">Date creation</label>
+                                    <p-calendar id="26" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedFacture.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="27">Admin</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="27"  [disabled]="true" [(ngModel)]="selectedFacture.admin"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="28">Visible</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="28"  [disabled]="true" [(ngModel)]="selectedFacture.visible"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="29">Username</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Username"  [(ngModel)]="selectedFacture.username"
+                                           id="29" [(ngModel)]="selectedFacture.username"
+                                           autofocus>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-tva-create-comptable></app-tva-create-comptable>
+            <app-type-operation-facture-create-comptable></app-type-operation-facture-create-comptable>
+            <app-etat-facture-create-comptable></app-etat-facture-create-comptable>
+            <app-etat-paiement-create-comptable></app-etat-paiement-create-comptable>
+            <app-societe-create-comptable></app-societe-create-comptable>
+            <app-compte-comptable-create-comptable></app-compte-comptable-create-comptable>
+            <app-declaration-is-create-comptable></app-declaration-is-create-comptable>
+            <app-declaration-tva-create-comptable></app-declaration-tva-create-comptable>
+            <app-demande-create-comptable></app-demande-create-comptable>
+            <app-classe-comptable-create-comptable></app-classe-comptable-create-comptable>
+            <app-cpc-facture-create-comptable></app-cpc-facture-create-comptable>
+
+
+
+</p-dialog>
+
+
+

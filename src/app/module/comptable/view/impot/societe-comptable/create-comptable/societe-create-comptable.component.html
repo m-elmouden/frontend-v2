@@ -1,0 +1,2211 @@
+        <p-dialog [(visible)]="createSocieteDialog" [style]="{width: '70vw'}"
+                header="Societe" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Societe">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="1">Ice<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Ice"
+                                                   id="1" [(ngModel)]="selectedSociete.ice"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validSocieteIce}"  />
+                                            <small class='p-error' *ngIf='!validSocieteIce'>Ice est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="2">Adresse</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Adresse"
+                                                   id="2" [(ngModel)]="selectedSociete.adresse"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="3">Fax</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Fax"
+                                                   id="3" [(ngModel)]="selectedSociete.fax"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="4">Telephone</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                                           placeholder="Telephone"
+                                                    [(ngModel)]="selectedSociete.telephone"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="5">Raison sociale<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Raison sociale"
+                                                   id="5" [(ngModel)]="selectedSociete.raisonSociale"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validSocieteRaisonSociale}"  />
+                                            <small class='p-error' *ngIf='!validSocieteRaisonSociale'>RaisonSociale est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="6">Date creation<span style="color: red;">*</span></label>
+                                            <p-calendar id="6"
+                                                        placeholder="Date creation"  [(ngModel)]="selectedSociete.dateCreation"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validSocieteDateCreation}"  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validSocieteDateCreation'>DateCreation est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="7">Annee exploitation</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="7"
+                                                           placeholder="Annee exploitation"
+                                                    [(ngModel)]="selectedSociete.anneeExploitation"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="8">Capital social</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="8"
+                                                           placeholder="Capital social"
+                                                    [(ngModel)]="selectedSociete.capitalSocial"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="9">Description</label>
+                                            <textarea id="9" pInputTextarea rows="5" cols="30"
+                                                      placeholder="Description"  [(ngModel)]="selectedSociete.description"
+                                             ></textarea>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="10">Age<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="10"
+                                                           placeholder="Age"
+                                                    [(ngModel)]="selectedSociete.age" [ngClass]="{'ng-invalid ng-dirty' : !validSocieteAge}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validSocieteAge'>Age est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-11 p-md-2">
+                                            <label for="11">Comptable</label>
+                                            <p-dropdown [options]="comptables" [(ngModel)]="selectedSociete.comptableVo"
+                                                    id="11" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="code"
+                                                    placeholder="Comptable"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatecomptable('comptable')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-11 p-md-2">
+                                            <label for="12">President societe<span style="color: red;">*</span></label>
+                                            <p-dropdown [options]="presidentSocietes" [(ngModel)]="selectedSociete.presidentSocieteVo"
+                                                    id="12" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="id"
+                                                    placeholder="President societe" [ngClass]="{'ng-invalid ng-dirty' : !validSocietePresidentSociete}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validSocietePresidentSociete'>PresidentSociete est obligatoire.</small>
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatepresidentSociete('presidentSociete')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-11 p-md-2">
+                                            <label for="20">Type societe</label>
+                                            <p-dropdown [options]="typeSocietes" [(ngModel)]="selectedSociete.typeSocieteVo"
+                                                    id="20" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Type societe"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatetypeSociete('typeSociete')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="22">Credentials non expired</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="22"  [(ngModel)]="selectedSociete.credentialsNonExpired"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="23">Enabled</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="23"  [(ngModel)]="selectedSociete.enabled"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="24">Account non expired</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="24"  [(ngModel)]="selectedSociete.accountNonExpired"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="25">Account non locked</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="25"  [(ngModel)]="selectedSociete.accountNonLocked"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="26">Password changed</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="26"  [(ngModel)]="selectedSociete.passwordChanged"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="27">Created at</label>
+                                            <p-calendar id="27"
+                                                        placeholder="Created at"  [(ngModel)]="selectedSociete.createdAt"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="28">Updated at</label>
+                                            <p-calendar id="28"
+                                                        placeholder="Updated at"  [(ngModel)]="selectedSociete.updatedAt"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="29">Username</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Username"
+                                                   id="29" [(ngModel)]="selectedSociete.username"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="30">Password</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Password"
+                                                   id="30" [(ngModel)]="selectedSociete.password"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="31">Equivalence avec panel erc</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Equivalence avec panel erc"
+                                                   id="31" [(ngModel)]="selectedSociete.equivalenceAvecPanelErc"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="32">Base horizon</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Base horizon"
+                                                   id="32" [(ngModel)]="selectedSociete.baseHorizon"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="33">Role</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Role"
+                                                   id="33" [(ngModel)]="selectedSociete.role"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Demandes">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Reference<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Reference"
+                                                           id="1" [(ngModel)]="selectedDemandes.reference"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validDemandeReference}"  >
+                                                    <small class='p-error' *ngIf='!validDemandeReference'>Reference est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="2">Operation<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Operation"
+                                                           id="2" [(ngModel)]="selectedDemandes.operation"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validDemandeOperation}"  >
+                                                    <small class='p-error' *ngIf='!validDemandeOperation'>Operation est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Date demande<span style="color: red;">*</span></label>
+                                                    <p-calendar id="3"
+                                                                placeholder="Date demande"
+                                                            [(ngModel)]="selectedDemandes.dateDemande"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  [ngClass]="{'ng-invalid ng-dirty' : !validDemandeDateDemande}" ></p-calendar>
+                                                    <small class='p-error' *ngIf='!validDemandeDateDemande'>DateDemande est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="4">Annee</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="annee"
+                                                                   placeholder="Annee"  
+                                                            [(ngModel)]="selectedDemandes.annee"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Mois</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="mois"
+                                                                   placeholder="Mois"  
+                                                            [(ngModel)]="selectedDemandes.mois"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="6">Trimestre</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="trimestre"
+                                                                   placeholder="Trimestre"  
+                                                            [(ngModel)]="selectedDemandes.trimestre"></p-inputNumber>
+                                                    
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Comptable<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="comptables" [(ngModel)]="selectedDemandes.comptableVo"
+                                                                id="8"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="code"
+                                                                placeholder="Comptable"  [ngClass]="{'ng-invalid ng-dirty' : !validDemandeComptable}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validDemandeComptable'>Comptable est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatecomptable('comptable')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Etat demande<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="etatDemandes" [(ngModel)]="selectedDemandes.etatDemandeVo"
+                                                                id="9"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Etat demande"  [ngClass]="{'ng-invalid ng-dirty' : !validDemandeEtatDemande}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validDemandeEtatDemande'>EtatDemande est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreateetatDemande('etatDemande')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="11">Demande piece jointes</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="demandePieceJointes"
+                                                                   placeholder="Demande piece jointes"  
+                                                            [(ngModel)]="selectedDemandes.demandePieceJointes"></p-inputNumber>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="13">Archive</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="13"  [(ngModel)]="selectedDemandes.archive"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="14">Date archivage</label>
+                                                    <p-calendar id="14"
+                                                                placeholder="Date archivage"
+                                                            [(ngModel)]="selectedDemandes.dateArchivage"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="15">Date creation</label>
+                                                    <p-calendar id="15"
+                                                                placeholder="Date creation"
+                                                            [(ngModel)]="selectedDemandes.dateCreation"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="16">Admin</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="16"  [(ngModel)]="selectedDemandes.admin"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="17">Visible</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="17"  [(ngModel)]="selectedDemandes.visible"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="18">Username</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Username"
+                                                           id="18" [(ngModel)]="selectedDemandes.username"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addDemandes()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedSociete.demandesVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Reference</th>
+                                                                <th>Operation</th>
+                                                                <th>Date demande</th>
+                                                                <th>Annee</th>
+                                                                <th>Mois</th>
+                                                                <th>Trimestre</th>
+                                                                <th>Comptable</th>
+                                                                <th>Etat demande</th>
+                                                                <th>Demande piece jointes</th>
+                                                                <th>Archive</th>
+                                                                <th>Date archivage</th>
+                                                                <th>Date creation</th>
+                                                                <th>Admin</th>
+                                                                <th>Visible</th>
+                                                                <th>Username</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.reference}}</td>
+
+                                                                <td>{{p.operation}}</td>
+
+                                                                <td>{{p.dateDemande | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.annee}}</td>
+
+                                                                <td>{{p.mois}}</td>
+
+                                                                <td>{{p.trimestre}}</td>
+
+                                                            <td>{{p.comptableVo?.code}}</td>
+                                                            <td>{{p.etatDemandeVo?.libelle}}</td>
+                                                                <td>{{p.demandePieceJointes}}</td>
+
+                                                                <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                                <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.username}}</td>
+
+                                                    <td>
+                                                        <button (click)="deleteDemandes(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+                    <p-tabPanel header="Declaration irs">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Refrerence<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Refrerence"
+                                                           id="1" [(ngModel)]="selectedDeclarationIrs.refrerence"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrRefrerence}"  >
+                                                    <small class='p-error' *ngIf='!validDeclarationIrRefrerence'>Refrerence est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Annee<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="annee"
+                                                                   placeholder="Annee"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrAnnee}" 
+                                                            [(ngModel)]="selectedDeclarationIrs.annee"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validDeclarationIrAnnee'>Annee est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="4">Mois<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="mois"
+                                                                   placeholder="Mois"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrMois}" 
+                                                            [(ngModel)]="selectedDeclarationIrs.mois"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validDeclarationIrMois'>Mois est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Montant ir calcule</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantIrCalcule"
+                                                                   placeholder="Montant ir calcule"  
+                                                            [(ngModel)]="selectedDeclarationIrs.montantIrCalcule"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="6">Montant ir a paye</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantIrAPaye"
+                                                                   placeholder="Montant ir a paye"  
+                                                            [(ngModel)]="selectedDeclarationIrs.montantIrAPaye"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="7">Total a paye</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="totalAPaye"
+                                                                   placeholder="Total a paye"  
+                                                            [(ngModel)]="selectedDeclarationIrs.totalAPaye"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="8">Total salaire net</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="totalSalaireNet"
+                                                                   placeholder="Total salaire net"  
+                                                            [(ngModel)]="selectedDeclarationIrs.totalSalaireNet"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="9">Total salaire brut</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="totalSalaireBrut"
+                                                                   placeholder="Total salaire brut"  
+                                                            [(ngModel)]="selectedDeclarationIrs.totalSalaireBrut"></p-inputNumber>
+                                                    
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Etat declaration ir</label>
+                                                        <p-dropdown [options]="etatDeclarationIrs" [(ngModel)]="selectedDeclarationIrs.etatDeclarationIrVo"
+                                                                id="12"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Etat declaration ir"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreateetatDeclarationIr('etatDeclarationIr')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Paiement declaration ir</label>
+                                                        <p-dropdown [options]="paiementDeclarationIrs" [(ngModel)]="selectedDeclarationIrs.paiementDeclarationIrVo"
+                                                                id="13"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="reference"
+                                                                placeholder="Paiement declaration ir"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatepaiementDeclarationIr('paiementDeclarationIr')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="14">Archive</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="14"  [(ngModel)]="selectedDeclarationIrs.archive"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="15">Date archivage</label>
+                                                    <p-calendar id="15"
+                                                                placeholder="Date archivage"
+                                                            [(ngModel)]="selectedDeclarationIrs.dateArchivage"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="16">Date creation</label>
+                                                    <p-calendar id="16"
+                                                                placeholder="Date creation"
+                                                            [(ngModel)]="selectedDeclarationIrs.dateCreation"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="17">Admin</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="17"  [(ngModel)]="selectedDeclarationIrs.admin"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="18">Visible</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="18"  [(ngModel)]="selectedDeclarationIrs.visible"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="19">Username</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Username"
+                                                           id="19" [(ngModel)]="selectedDeclarationIrs.username"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addDeclarationIrs()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedSociete.declarationIrsVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Refrerence</th>
+                                                                <th>Annee</th>
+                                                                <th>Mois</th>
+                                                                <th>Montant ir calcule</th>
+                                                                <th>Montant ir a paye</th>
+                                                                <th>Total a paye</th>
+                                                                <th>Total salaire net</th>
+                                                                <th>Total salaire brut</th>
+                                                                <th>Etat declaration ir</th>
+                                                                <th>Paiement declaration ir</th>
+                                                                <th>Archive</th>
+                                                                <th>Date archivage</th>
+                                                                <th>Date creation</th>
+                                                                <th>Admin</th>
+                                                                <th>Visible</th>
+                                                                <th>Username</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.refrerence}}</td>
+
+                                                                <td>{{p.annee}}</td>
+
+                                                                <td>{{p.mois}}</td>
+
+                                                                <td>{{p.montantIrCalcule}}</td>
+
+                                                                <td>{{p.montantIrAPaye}}</td>
+
+                                                                <td>{{p.totalAPaye}}</td>
+
+                                                                <td>{{p.totalSalaireNet}}</td>
+
+                                                                <td>{{p.totalSalaireBrut}}</td>
+
+                                                            <td>{{p.etatDeclarationIrVo?.libelle}}</td>
+                                                            <td>{{p.paiementDeclarationIrVo?.reference}}</td>
+                                                                <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                                <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.username}}</td>
+
+                                                    <td>
+                                                        <button (click)="deleteDeclarationIrs(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+                    <p-tabPanel header="Declaration iss">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Reference<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Reference"
+                                                           id="1" [(ngModel)]="selectedDeclarationIss.reference"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIsReference}"  >
+                                                    <small class='p-error' *ngIf='!validDeclarationIsReference'>Reference est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="2">Annee<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="annee"
+                                                                   placeholder="Annee"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIsAnnee}" 
+                                                            [(ngModel)]="selectedDeclarationIss.annee"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validDeclarationIsAnnee'>Annee est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Total ht produit</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="totalHtProduit"
+                                                                   placeholder="Total ht produit"  
+                                                            [(ngModel)]="selectedDeclarationIss.totalHtProduit"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="4">Total ht charge</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="totalHtCharge"
+                                                                   placeholder="Total ht charge"  
+                                                            [(ngModel)]="selectedDeclarationIss.totalHtCharge"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Total ht difference</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="totalHtDifference"
+                                                                   placeholder="Total ht difference"  
+                                                            [(ngModel)]="selectedDeclarationIss.totalHtDifference"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="6">Montant is calcule</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantIsCalcule"
+                                                                   placeholder="Montant is calcule"  
+                                                            [(ngModel)]="selectedDeclarationIss.montantIsCalcule"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="7">Montant is a paye</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantIsAPaye"
+                                                                   placeholder="Montant is a paye"  
+                                                            [(ngModel)]="selectedDeclarationIss.montantIsAPaye"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="8">Total a paye</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="totalAPaye"
+                                                                   placeholder="Total a paye"  
+                                                            [(ngModel)]="selectedDeclarationIss.totalAPaye"></p-inputNumber>
+                                                    
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Taux is<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="tauxIss" [(ngModel)]="selectedDeclarationIss.tauxIsVo"
+                                                                id="10"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="reference"
+                                                                placeholder="Taux is"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIsTauxIs}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validDeclarationIsTauxIs'>TauxIs est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatetauxIs('tauxIs')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Taux is config</label>
+                                                        <p-dropdown [options]="tauxIsConfigs" [(ngModel)]="selectedDeclarationIss.tauxIsConfigVo"
+                                                                id="11"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="reference"
+                                                                placeholder="Taux is config"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatetauxIsConfig('tauxIsConfig')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Etat declaration is<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="etatDeclarationIss" [(ngModel)]="selectedDeclarationIss.etatDeclarationIsVo"
+                                                                id="12"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Etat declaration is"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIsEtatDeclarationIs}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validDeclarationIsEtatDeclarationIs'>EtatDeclarationIs est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreateetatDeclarationIs('etatDeclarationIs')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Paiement declaration is</label>
+                                                        <p-dropdown [options]="paiementDeclarationIss" [(ngModel)]="selectedDeclarationIss.paiementDeclarationIsVo"
+                                                                id="13"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="reference"
+                                                                placeholder="Paiement declaration is"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatepaiementDeclarationIs('paiementDeclarationIs')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="14">Archive</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="14"  [(ngModel)]="selectedDeclarationIss.archive"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="15">Date archivage</label>
+                                                    <p-calendar id="15"
+                                                                placeholder="Date archivage"
+                                                            [(ngModel)]="selectedDeclarationIss.dateArchivage"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="16">Date creation</label>
+                                                    <p-calendar id="16"
+                                                                placeholder="Date creation"
+                                                            [(ngModel)]="selectedDeclarationIss.dateCreation"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="17">Admin</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="17"  [(ngModel)]="selectedDeclarationIss.admin"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="18">Visible</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="18"  [(ngModel)]="selectedDeclarationIss.visible"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="19">Username</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Username"
+                                                           id="19" [(ngModel)]="selectedDeclarationIss.username"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addDeclarationIss()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedSociete.declarationIssVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Reference</th>
+                                                                <th>Annee</th>
+                                                                <th>Total ht produit</th>
+                                                                <th>Total ht charge</th>
+                                                                <th>Total ht difference</th>
+                                                                <th>Montant is calcule</th>
+                                                                <th>Montant is a paye</th>
+                                                                <th>Total a paye</th>
+                                                                <th>Taux is</th>
+                                                                <th>Taux is config</th>
+                                                                <th>Etat declaration is</th>
+                                                                <th>Paiement declaration is</th>
+                                                                <th>Archive</th>
+                                                                <th>Date archivage</th>
+                                                                <th>Date creation</th>
+                                                                <th>Admin</th>
+                                                                <th>Visible</th>
+                                                                <th>Username</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.reference}}</td>
+
+                                                                <td>{{p.annee}}</td>
+
+                                                                <td>{{p.totalHtProduit}}</td>
+
+                                                                <td>{{p.totalHtCharge}}</td>
+
+                                                                <td>{{p.totalHtDifference}}</td>
+
+                                                                <td>{{p.montantIsCalcule}}</td>
+
+                                                                <td>{{p.montantIsAPaye}}</td>
+
+                                                                <td>{{p.totalAPaye}}</td>
+
+                                                            <td>{{p.tauxIsVo?.reference}}</td>
+                                                            <td>{{p.tauxIsConfigVo?.reference}}</td>
+                                                            <td>{{p.etatDeclarationIsVo?.libelle}}</td>
+                                                            <td>{{p.paiementDeclarationIsVo?.reference}}</td>
+                                                                <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                                <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.username}}</td>
+
+                                                    <td>
+                                                        <button (click)="deleteDeclarationIss(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+                    <p-tabPanel header="Declaration tvas">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Reference<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Reference"
+                                                           id="1" [(ngModel)]="selectedDeclarationTvas.reference"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationTvaReference}"  >
+                                                    <small class='p-error' *ngIf='!validDeclarationTvaReference'>Reference est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="2">Tvacollecter</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="tvacollecter"
+                                                                   placeholder="Tvacollecter"  
+                                                            [(ngModel)]="selectedDeclarationTvas.tvacollecter"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Tvaperdue</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="tvaperdue"
+                                                                   placeholder="Tvaperdue"  
+                                                            [(ngModel)]="selectedDeclarationTvas.tvaperdue"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="4">Difference tva</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="differenceTva"
+                                                                   placeholder="Difference tva"  
+                                                            [(ngModel)]="selectedDeclarationTvas.differenceTva"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Montant tva calcule</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantTvaCalcule"
+                                                                   placeholder="Montant tva calcule"  
+                                                            [(ngModel)]="selectedDeclarationTvas.montantTvaCalcule"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="6">Montant tva a paye</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantTvaAPaye"
+                                                                   placeholder="Montant tva a paye"  
+                                                            [(ngModel)]="selectedDeclarationTvas.montantTvaAPaye"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="7">Annee</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="annee"
+                                                                   placeholder="Annee"  
+                                                            [(ngModel)]="selectedDeclarationTvas.annee"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="8">Mois</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="mois"
+                                                                   placeholder="Mois"  
+                                                            [(ngModel)]="selectedDeclarationTvas.mois"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="9">Trimestre</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="trimestre"
+                                                                   placeholder="Trimestre"  
+                                                            [(ngModel)]="selectedDeclarationTvas.trimestre"></p-inputNumber>
+                                                    
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Type declaration tva<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="typeDeclarationTvas" [(ngModel)]="selectedDeclarationTvas.typeDeclarationTvaVo"
+                                                                id="11"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Type declaration tva"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationTvaTypeDeclarationTva}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validDeclarationTvaTypeDeclarationTva'>TypeDeclarationTva est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatetypeDeclarationTva('typeDeclarationTva')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Etat declaration tva<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="etatDeclarationTvas" [(ngModel)]="selectedDeclarationTvas.etatDeclarationTvaVo"
+                                                                id="12"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Etat declaration tva"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationTvaEtatDeclarationTva}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validDeclarationTvaEtatDeclarationTva'>EtatDeclarationTva est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreateetatDeclarationTva('etatDeclarationTva')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Paiement declaration tva</label>
+                                                        <p-dropdown [options]="paiementDeclarationTvas" [(ngModel)]="selectedDeclarationTvas.paiementDeclarationTvaVo"
+                                                                id="13"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="reference"
+                                                                placeholder="Paiement declaration tva"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatepaiementDeclarationTva('paiementDeclarationTva')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="14">Archive</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="14"  [(ngModel)]="selectedDeclarationTvas.archive"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="15">Date archivage</label>
+                                                    <p-calendar id="15"
+                                                                placeholder="Date archivage"
+                                                            [(ngModel)]="selectedDeclarationTvas.dateArchivage"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="16">Date creation</label>
+                                                    <p-calendar id="16"
+                                                                placeholder="Date creation"
+                                                            [(ngModel)]="selectedDeclarationTvas.dateCreation"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="17">Admin</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="17"  [(ngModel)]="selectedDeclarationTvas.admin"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="18">Visible</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="18"  [(ngModel)]="selectedDeclarationTvas.visible"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="19">Username</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Username"
+                                                           id="19" [(ngModel)]="selectedDeclarationTvas.username"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addDeclarationTvas()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedSociete.declarationTvasVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Reference</th>
+                                                                <th>Tvacollecter</th>
+                                                                <th>Tvaperdue</th>
+                                                                <th>Difference tva</th>
+                                                                <th>Montant tva calcule</th>
+                                                                <th>Montant tva a paye</th>
+                                                                <th>Annee</th>
+                                                                <th>Mois</th>
+                                                                <th>Trimestre</th>
+                                                                <th>Type declaration tva</th>
+                                                                <th>Etat declaration tva</th>
+                                                                <th>Paiement declaration tva</th>
+                                                                <th>Archive</th>
+                                                                <th>Date archivage</th>
+                                                                <th>Date creation</th>
+                                                                <th>Admin</th>
+                                                                <th>Visible</th>
+                                                                <th>Username</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.reference}}</td>
+
+                                                                <td>{{p.tvacollecter}}</td>
+
+                                                                <td>{{p.tvaperdue}}</td>
+
+                                                                <td>{{p.differenceTva}}</td>
+
+                                                                <td>{{p.montantTvaCalcule}}</td>
+
+                                                                <td>{{p.montantTvaAPaye}}</td>
+
+                                                                <td>{{p.annee}}</td>
+
+                                                                <td>{{p.mois}}</td>
+
+                                                                <td>{{p.trimestre}}</td>
+
+                                                            <td>{{p.typeDeclarationTvaVo?.libelle}}</td>
+                                                            <td>{{p.etatDeclarationTvaVo?.libelle}}</td>
+                                                            <td>{{p.paiementDeclarationTvaVo?.reference}}</td>
+                                                                <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                                <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.username}}</td>
+
+                                                    <td>
+                                                        <button (click)="deleteDeclarationTvas(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+                    <p-tabPanel header="Declaration cnsss">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Ref<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Ref"
+                                                           id="1" [(ngModel)]="selectedDeclarationCnsss.ref"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationCnssRef}"  >
+                                                    <small class='p-error' *ngIf='!validDeclarationCnssRef'>Ref est obligatoire.</small>
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Employe<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="employes" [(ngModel)]="selectedDeclarationCnsss.employeVo"
+                                                                id="2"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="cin"
+                                                                placeholder="Employe"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationCnssEmploye}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validDeclarationCnssEmploye'>Employe est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreateemploye('employe')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Salaire net<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="salaireNet"
+                                                                   placeholder="Salaire net"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationCnssSalaireNet}" 
+                                                            [(ngModel)]="selectedDeclarationCnsss.salaireNet"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validDeclarationCnssSalaireNet'>SalaireNet est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="4">Salaire brut<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="salaireBrut"
+                                                                   placeholder="Salaire brut"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationCnssSalaireBrut}" 
+                                                            [(ngModel)]="selectedDeclarationCnsss.salaireBrut"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validDeclarationCnssSalaireBrut'>SalaireBrut est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Salaire imposable<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="salaireImposable"
+                                                                   placeholder="Salaire imposable"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationCnssSalaireImposable}" 
+                                                            [(ngModel)]="selectedDeclarationCnsss.salaireImposable"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validDeclarationCnssSalaireImposable'>SalaireImposable est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="6">Montant total<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantTotal"
+                                                                   placeholder="Montant total"  [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationCnssMontantTotal}" 
+                                                            [(ngModel)]="selectedDeclarationCnsss.montantTotal"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validDeclarationCnssMontantTotal'>MontantTotal est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="8">Mois</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="mois"
+                                                                   placeholder="Mois"  
+                                                            [(ngModel)]="selectedDeclarationCnsss.mois"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="9">Annee</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="annee"
+                                                                   placeholder="Annee"  
+                                                            [(ngModel)]="selectedDeclarationCnsss.annee"></p-inputNumber>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="11">Archive</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="11"  [(ngModel)]="selectedDeclarationCnsss.archive"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="12">Date archivage</label>
+                                                    <p-calendar id="12"
+                                                                placeholder="Date archivage"
+                                                            [(ngModel)]="selectedDeclarationCnsss.dateArchivage"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="13">Date creation</label>
+                                                    <p-calendar id="13"
+                                                                placeholder="Date creation"
+                                                            [(ngModel)]="selectedDeclarationCnsss.dateCreation"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="14">Admin</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="14"  [(ngModel)]="selectedDeclarationCnsss.admin"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="15">Visible</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="15"  [(ngModel)]="selectedDeclarationCnsss.visible"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="16">Username</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Username"
+                                                           id="16" [(ngModel)]="selectedDeclarationCnsss.username"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addDeclarationCnsss()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedSociete.declarationCnsssVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Ref</th>
+                                                                <th>Employe</th>
+                                                                <th>Salaire net</th>
+                                                                <th>Salaire brut</th>
+                                                                <th>Salaire imposable</th>
+                                                                <th>Montant total</th>
+                                                                <th>Mois</th>
+                                                                <th>Annee</th>
+                                                                <th>Archive</th>
+                                                                <th>Date archivage</th>
+                                                                <th>Date creation</th>
+                                                                <th>Admin</th>
+                                                                <th>Visible</th>
+                                                                <th>Username</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.ref}}</td>
+
+                                                            <td>{{p.employeVo?.cin}}</td>
+                                                                <td>{{p.salaireNet}}</td>
+
+                                                                <td>{{p.salaireBrut}}</td>
+
+                                                                <td>{{p.salaireImposable}}</td>
+
+                                                                <td>{{p.montantTotal}}</td>
+
+                                                                <td>{{p.mois}}</td>
+
+                                                                <td>{{p.annee}}</td>
+
+                                                                <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                                <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.username}}</td>
+
+                                                    <td>
+                                                        <button (click)="deleteDeclarationCnsss(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+                    <p-tabPanel header="Acomptes">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Numero<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="numero"
+                                                                   placeholder="Numero"  [ngClass]="{'ng-invalid ng-dirty' : !validAcompteNumero}" 
+                                                            [(ngModel)]="selectedAcomptes.numero"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validAcompteNumero'>Numero est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="2">Annee<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="annee"
+                                                                   placeholder="Annee"  [ngClass]="{'ng-invalid ng-dirty' : !validAcompteAnnee}" 
+                                                            [(ngModel)]="selectedAcomptes.annee"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validAcompteAnnee'>Annee est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Montant<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montant"
+                                                                   placeholder="Montant"  [ngClass]="{'ng-invalid ng-dirty' : !validAcompteMontant}" 
+                                                            [(ngModel)]="selectedAcomptes.montant"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validAcompteMontant'>Montant est obligatoire.</small>
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="5">Archive</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="5"  [(ngModel)]="selectedAcomptes.archive"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="6">Date archivage</label>
+                                                    <p-calendar id="6"
+                                                                placeholder="Date archivage"
+                                                            [(ngModel)]="selectedAcomptes.dateArchivage"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="7">Date creation</label>
+                                                    <p-calendar id="7"
+                                                                placeholder="Date creation"
+                                                            [(ngModel)]="selectedAcomptes.dateCreation"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="8">Admin</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="8"  [(ngModel)]="selectedAcomptes.admin"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="9">Visible</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="9"  [(ngModel)]="selectedAcomptes.visible"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="10">Username</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Username"
+                                                           id="10" [(ngModel)]="selectedAcomptes.username"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addAcomptes()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedSociete.acomptesVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Numero</th>
+                                                                <th>Annee</th>
+                                                                <th>Montant</th>
+                                                                <th>Archive</th>
+                                                                <th>Date archivage</th>
+                                                                <th>Date creation</th>
+                                                                <th>Admin</th>
+                                                                <th>Visible</th>
+                                                                <th>Username</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.numero}}</td>
+
+                                                                <td>{{p.annee}}</td>
+
+                                                                <td>{{p.montant}}</td>
+
+                                                                <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                                <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.username}}</td>
+
+                                                    <td>
+                                                        <button (click)="deleteAcomptes(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+                    <p-tabPanel header="Employes">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Cin<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Cin"
+                                                           id="1" [(ngModel)]="selectedEmployes.cin"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validEmployeCin}"  >
+                                                    <small class='p-error' *ngIf='!validEmployeCin'>Cin est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="2">Nom<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Nom"
+                                                           id="2" [(ngModel)]="selectedEmployes.nom"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validEmployeNom}"  >
+                                                    <small class='p-error' *ngIf='!validEmployeNom'>Nom est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Prenom<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Prenom"
+                                                           id="3" [(ngModel)]="selectedEmployes.prenom"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validEmployePrenom}"  >
+                                                    <small class='p-error' *ngIf='!validEmployePrenom'>Prenom est obligatoire.</small>
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Type employe</label>
+                                                        <p-dropdown [options]="typeEmployes" [(ngModel)]="selectedEmployes.typeEmployeVo"
+                                                                id="4"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Type employe"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatetypeEmploye('typeEmploye')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Total salaire net<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="totalSalaireNet"
+                                                                   placeholder="Total salaire net"  [ngClass]="{'ng-invalid ng-dirty' : !validEmployeTotalSalaireNet}" 
+                                                            [(ngModel)]="selectedEmployes.totalSalaireNet"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validEmployeTotalSalaireNet'>TotalSalaireNet est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="7">Nombre famille<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="nombreFamille"
+                                                                   placeholder="Nombre famille"  [ngClass]="{'ng-invalid ng-dirty' : !validEmployeNombreFamille}" 
+                                                            [(ngModel)]="selectedEmployes.nombreFamille"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validEmployeNombreFamille'>NombreFamille est obligatoire.</small>
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Declaration cnss</label>
+                                                        <p-dropdown [options]="declarationCnsss" [(ngModel)]="selectedEmployes.declarationCnssVo"
+                                                                id="8"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="ref"
+                                                                placeholder="Declaration cnss"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatedeclarationCnss('declarationCnss')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addEmployes()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedSociete.employesVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Cin</th>
+                                                                <th>Nom</th>
+                                                                <th>Prenom</th>
+                                                                <th>Type employe</th>
+                                                                <th>Total salaire net</th>
+                                                                <th>Nombre famille</th>
+                                                                <th>Declaration cnss</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.cin}}</td>
+
+                                                                <td>{{p.nom}}</td>
+
+                                                                <td>{{p.prenom}}</td>
+
+                                                            <td>{{p.typeEmployeVo?.libelle}}</td>
+                                                                <td>{{p.totalSalaireNet}}</td>
+
+                                                                <td>{{p.nombreFamille}}</td>
+
+                                                            <td>{{p.declarationCnssVo?.ref}}</td>
+                                                    <td>
+                                                        <button (click)="deleteEmployes(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+                    <p-tabPanel header="Factures">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Reference<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Reference"
+                                                           id="1" [(ngModel)]="selectedFactures.reference"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validFactureReference}"  >
+                                                    <small class='p-error' *ngIf='!validFactureReference'>Reference est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="2">Libelle<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Libelle"
+                                                           id="2" [(ngModel)]="selectedFactures.libelle"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validFactureLibelle}"  >
+                                                    <small class='p-error' *ngIf='!validFactureLibelle'>Libelle est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Montant hors taxe<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantHorsTaxe"
+                                                                   placeholder="Montant hors taxe"  [ngClass]="{'ng-invalid ng-dirty' : !validFactureMontantHorsTaxe}" 
+                                                            [(ngModel)]="selectedFactures.montantHorsTaxe"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validFactureMontantHorsTaxe'>MontantHorsTaxe est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="4">Date operation<span style="color: red;">*</span></label>
+                                                    <p-calendar id="4"
+                                                                placeholder="Date operation"
+                                                            [(ngModel)]="selectedFactures.dateOperation"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  [ngClass]="{'ng-invalid ng-dirty' : !validFactureDateOperation}" ></p-calendar>
+                                                    <small class='p-error' *ngIf='!validFactureDateOperation'>DateOperation est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Annee</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="annee"
+                                                                   placeholder="Annee"  
+                                                            [(ngModel)]="selectedFactures.annee"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="6">Mois</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="mois"
+                                                                   placeholder="Mois"  
+                                                            [(ngModel)]="selectedFactures.mois"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="7">Trimestre</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="trimestre"
+                                                                   placeholder="Trimestre"  
+                                                            [(ngModel)]="selectedFactures.trimestre"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="8">Montant ttc<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantTtc"
+                                                                   placeholder="Montant ttc"  [ngClass]="{'ng-invalid ng-dirty' : !validFactureMontantTtc}" 
+                                                            [(ngModel)]="selectedFactures.montantTtc"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validFactureMontantTtc'>MontantTtc est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="9">Montant tva<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="montantTva"
+                                                                   placeholder="Montant tva"  [ngClass]="{'ng-invalid ng-dirty' : !validFactureMontantTva}" 
+                                                            [(ngModel)]="selectedFactures.montantTva"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validFactureMontantTva'>MontantTva est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="10">Credit</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Credit"
+                                                           id="10" [(ngModel)]="selectedFactures.credit"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="11">Debit</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Debit"
+                                                           id="11" [(ngModel)]="selectedFactures.debit"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="12">Facture piece jointe</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="facturePieceJointe"
+                                                                   placeholder="Facture piece jointe"  
+                                                            [(ngModel)]="selectedFactures.facturePieceJointe"></p-inputNumber>
+                                                    
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Tva</label>
+                                                        <p-dropdown [options]="tvas" [(ngModel)]="selectedFactures.tvaVo"
+                                                                id="13"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="reference"
+                                                                placeholder="Tva"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatetva('tva')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Type operation facture<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="typeOperationFactures" [(ngModel)]="selectedFactures.typeOperationFactureVo"
+                                                                id="14"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Type operation facture"  [ngClass]="{'ng-invalid ng-dirty' : !validFactureTypeOperationFacture}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validFactureTypeOperationFacture'>TypeOperationFacture est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatetypeOperationFacture('typeOperationFacture')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Etat facture</label>
+                                                        <p-dropdown [options]="etatFactures" [(ngModel)]="selectedFactures.etatFactureVo"
+                                                                id="15"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Etat facture"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreateetatFacture('etatFacture')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Etat paiement</label>
+                                                        <p-dropdown [options]="etatPaiements" [(ngModel)]="selectedFactures.etatPaiementVo"
+                                                                id="16"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Etat paiement"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreateetatPaiement('etatPaiement')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Compte comptable<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="compteComptables" [(ngModel)]="selectedFactures.compteComptableVo"
+                                                                id="18"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Compte comptable"  [ngClass]="{'ng-invalid ng-dirty' : !validFactureCompteComptable}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validFactureCompteComptable'>CompteComptable est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatecompteComptable('compteComptable')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Declaration is</label>
+                                                        <p-dropdown [options]="declarationIss" [(ngModel)]="selectedFactures.declarationIsVo"
+                                                                id="19"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="reference"
+                                                                placeholder="Declaration is"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatedeclarationIs('declarationIs')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Declaration tva</label>
+                                                        <p-dropdown [options]="declarationTvas" [(ngModel)]="selectedFactures.declarationTvaVo"
+                                                                id="20"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="reference"
+                                                                placeholder="Declaration tva"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatedeclarationTva('declarationTva')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Demande</label>
+                                                        <p-dropdown [options]="demandes" [(ngModel)]="selectedFactures.demandeVo"
+                                                                id="21"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="reference"
+                                                                placeholder="Demande"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatedemande('demande')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Classe comptable<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="classeComptables" [(ngModel)]="selectedFactures.classeComptableVo"
+                                                                id="22"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Classe comptable"  [ngClass]="{'ng-invalid ng-dirty' : !validFactureClasseComptable}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validFactureClasseComptable'>ClasseComptable est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreateclasseComptable('classeComptable')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Cpc facture</label>
+                                                        <p-dropdown [options]="cpcFactures" [(ngModel)]="selectedFactures.cpcFactureVo"
+                                                                id="23"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="id"
+                                                                placeholder="Cpc facture"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatecpcFacture('cpcFacture')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="24">Archive</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="24"  [(ngModel)]="selectedFactures.archive"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="25">Date archivage</label>
+                                                    <p-calendar id="25"
+                                                                placeholder="Date archivage"
+                                                            [(ngModel)]="selectedFactures.dateArchivage"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="26">Date creation</label>
+                                                    <p-calendar id="26"
+                                                                placeholder="Date creation"
+                                                            [(ngModel)]="selectedFactures.dateCreation"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="27">Admin</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="27"  [(ngModel)]="selectedFactures.admin"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="28">Visible</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="28"  [(ngModel)]="selectedFactures.visible"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="29">Username</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Username"
+                                                           id="29" [(ngModel)]="selectedFactures.username"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addFactures()">
+                                              </button>
+                                          </div>
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedSociete.facturesVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Reference</th>
+                                                                <th>Libelle</th>
+                                                                <th>Montant hors taxe</th>
+                                                                <th>Date operation</th>
+                                                                <th>Annee</th>
+                                                                <th>Mois</th>
+                                                                <th>Trimestre</th>
+                                                                <th>Montant ttc</th>
+                                                                <th>Montant tva</th>
+                                                                <th>Credit</th>
+                                                                <th>Debit</th>
+                                                                <th>Facture piece jointe</th>
+                                                                <th>Tva</th>
+                                                                <th>Type operation facture</th>
+                                                                <th>Etat facture</th>
+                                                                <th>Etat paiement</th>
+                                                                <th>Compte comptable</th>
+                                                                <th>Declaration is</th>
+                                                                <th>Declaration tva</th>
+                                                                <th>Demande</th>
+                                                                <th>Classe comptable</th>
+                                                                <th>Cpc facture</th>
+                                                                <th>Archive</th>
+                                                                <th>Date archivage</th>
+                                                                <th>Date creation</th>
+                                                                <th>Admin</th>
+                                                                <th>Visible</th>
+                                                                <th>Username</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.reference}}</td>
+
+                                                                <td>{{p.libelle}}</td>
+
+                                                                <td>{{p.montantHorsTaxe}}</td>
+
+                                                                <td>{{p.dateOperation | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.annee}}</td>
+
+                                                                <td>{{p.mois}}</td>
+
+                                                                <td>{{p.trimestre}}</td>
+
+                                                                <td>{{p.montantTtc}}</td>
+
+                                                                <td>{{p.montantTva}}</td>
+
+                                                                <td>{{p.credit}}</td>
+
+                                                                <td>{{p.debit}}</td>
+
+                                                                <td>{{p.facturePieceJointe}}</td>
+
+                                                            <td>{{p.tvaVo?.reference}}</td>
+                                                            <td>{{p.typeOperationFactureVo?.libelle}}</td>
+                                                            <td>{{p.etatFactureVo?.libelle}}</td>
+                                                            <td>{{p.etatPaiementVo?.libelle}}</td>
+                                                            <td>{{p.compteComptableVo?.libelle}}</td>
+                                                            <td>{{p.declarationIsVo?.reference}}</td>
+                                                            <td>{{p.declarationTvaVo?.reference}}</td>
+                                                            <td>{{p.demandeVo?.reference}}</td>
+                                                            <td>{{p.classeComptableVo?.libelle}}</td>
+                                                            <td>{{p.cpcFactureVo?.id}}</td>
+                                                                <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                                <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.username}}</td>
+
+                                                    <td>
+                                                        <button (click)="deleteFactures(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-comptable-create-comptable></app-comptable-create-comptable>
+                    <app-president-societe-create-comptable></app-president-societe-create-comptable>
+                    <app-type-societe-create-comptable></app-type-societe-create-comptable>
+
+                            <app-comptable-create-comptable></app-comptable-create-comptable>
+                            <app-etat-demande-create-comptable></app-etat-demande-create-comptable>
+                            <app-etat-declaration-ir-create-comptable></app-etat-declaration-ir-create-comptable>
+                            <app-paiement-declaration-ir-create-comptable></app-paiement-declaration-ir-create-comptable>
+                            <app-taux-is-create-comptable></app-taux-is-create-comptable>
+                            <app-taux-is-config-create-comptable></app-taux-is-config-create-comptable>
+                            <app-etat-declaration-is-create-comptable></app-etat-declaration-is-create-comptable>
+                            <app-paiement-declaration-is-create-comptable></app-paiement-declaration-is-create-comptable>
+                            <app-type-declaration-tva-create-comptable></app-type-declaration-tva-create-comptable>
+                            <app-etat-declaration-tva-create-comptable></app-etat-declaration-tva-create-comptable>
+                            <app-paiement-declaration-tva-create-comptable></app-paiement-declaration-tva-create-comptable>
+                            <app-employe-create-comptable></app-employe-create-comptable>
+                            <app-type-employe-create-comptable></app-type-employe-create-comptable>
+                            <app-declaration-cnss-create-comptable></app-declaration-cnss-create-comptable>
+                            <app-tva-create-comptable></app-tva-create-comptable>
+                            <app-type-operation-facture-create-comptable></app-type-operation-facture-create-comptable>
+                            <app-etat-facture-create-comptable></app-etat-facture-create-comptable>
+                            <app-etat-paiement-create-comptable></app-etat-paiement-create-comptable>
+                            <app-compte-comptable-create-comptable></app-compte-comptable-create-comptable>
+                            <app-declaration-is-create-comptable></app-declaration-is-create-comptable>
+                            <app-declaration-tva-create-comptable></app-declaration-tva-create-comptable>
+                            <app-demande-create-comptable></app-demande-create-comptable>
+                            <app-classe-comptable-create-comptable></app-classe-comptable-create-comptable>
+                            <app-cpc-facture-create-comptable></app-cpc-facture-create-comptable>
+
+    </p-dialog>

@@ -1,0 +1,123 @@
+        <p-dialog [(visible)]="createSousClasseComptableDialog" [style]="{width: '70vw'}"
+                header="Sous classe comptable" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Sous classe comptable">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="1">Numero<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="1"
+                                                           placeholder="Numero"
+                                                    [(ngModel)]="selectedSousClasseComptable.numero" [ngClass]="{'ng-invalid ng-dirty' : !validSousClasseComptableNumero}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validSousClasseComptableNumero'>Numero est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Libelle<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Libelle"
+                                                   id="2" [(ngModel)]="selectedSousClasseComptable.libelle"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validSousClasseComptableLibelle}"  />
+                                            <small class='p-error' *ngIf='!validSousClasseComptableLibelle'>Libelle est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="3">Classe comptable<span style="color: red;">*</span></label>
+                                            <p-dropdown [options]="classeComptables" [(ngModel)]="selectedSousClasseComptable.classeComptableVo"
+                                                    id="3" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Classe comptable" [ngClass]="{'ng-invalid ng-dirty' : !validSousClasseComptableClasseComptable}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validSousClasseComptableClasseComptable'>ClasseComptable est obligatoire.</small>
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateclasseComptable('classeComptable')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Compte comptables">
+                                <div class="p-grid">
+                                      <div class="p-col">
+                                                 <div class="p-field p-col-12 p-md-6">
+                                                    <label for="1">Libelle<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Libelle"
+                                                           id="1" [(ngModel)]="selectedCompteComptables.libelle"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validCompteComptableLibelle}"  >
+                                                    <small class='p-error' *ngIf='!validCompteComptableLibelle'>Libelle est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-6">
+                                                    <label for="2">Numero<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="numero"
+                                                                   placeholder="Numero"  [ngClass]="{'ng-invalid ng-dirty' : !validCompteComptableNumero}" 
+                                                            [(ngModel)]="selectedCompteComptables.numero"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validCompteComptableNumero'>Numero est obligatoire.</small>
+                                                </div>
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addCompteComptables()">
+                                              </button>
+                                          </div>
+                                        </div>
+                                </div>
+                                  <div class="p-col">
+                                    <div class="card">
+                                        <p-table [value]="selectedSousClasseComptable.compteComptablesVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Libelle</th>
+                                                                <th>Numero</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.libelle}}</td>
+
+                                                                <td>{{p.numero}}</td>
+
+                                                    <td>
+                                                        <button (click)="deleteCompteComptables(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                 </div>
+                            </p-tabPanel>
+
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-classe-comptable-create-societe></app-classe-comptable-create-societe>
+
+
+    </p-dialog>

@@ -1,0 +1,208 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreatePrelevementSocialEmploye('prelevementSocialEmploye')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="prelevementSocials" [(ngModel)]="searchPrelevementSocialEmploye.prelevementSocialVo"
+                                        id="1"
+                                        [filter]="true" [showClear]="true"  placeholder="Prelevement social"
+                                        optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="employes" [(ngModel)]="searchPrelevementSocialEmploye.employeVo"
+                                        id="2"
+                                        [filter]="true" [showClear]="true"  placeholder="Employe"
+                                        optionLabel="cin">
+                                </p-dropdown>
+                            </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPrelevementSocialEmploye.salaireBrutImposableMin"
+                                                             id="3-1"></p-inputNumber>
+                                              <label for="3-1">Salaire brut imposable Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPrelevementSocialEmploye.salaireBrutImposableMax"
+                                                             id="3-2"></p-inputNumber>
+                                             <label for="3-2">Salaire brut imposable Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPrelevementSocialEmploye.montantCalculerMin"
+                                                             id="4-1"></p-inputNumber>
+                                              <label for="4-1">Montant calculer Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPrelevementSocialEmploye.montantCalculerMax"
+                                                             id="4-2"></p-inputNumber>
+                                             <label for="4-2">Montant calculer Max</label>
+                                       </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="declarationIrs" [(ngModel)]="searchPrelevementSocialEmploye.declarationIrVo"
+                                        id="5"
+                                        [filter]="true" [showClear]="true"  placeholder="Declaration ir"
+                                        optionLabel="refrerence">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="prelevementSocialEmployes" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['libelle', 'cin', 'salaireBrutImposable', 'montantCalculer', 'refrerence']" [(selection)]="selectedPrelevementSocialEmploye"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Prelevement social employes</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="prelevementSocial">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Prelevement social</span>
+                                        <p-sortIcon field="prelevementSocial"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="employe">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Employe</span>
+                                        <p-sortIcon field="employe"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="salaireBrutImposable">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Salaire brut imposable</span>
+                                        <p-sortIcon field="salaireBrutImposable"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="montantCalculer">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Montant calculer</span>
+                                        <p-sortIcon field="montantCalculer"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="declarationIr">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Declaration ir</span>
+                                        <p-sortIcon field="declarationIr"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-prelevementSocialEmploye>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="prelevementSocialEmploye"></p-tableCheckbox>
+                        </td>
+                            
+                                <td>{{prelevementSocialEmploye.prelevementSocialVo?.libelle}}</td>
+                            
+
+                            
+                                <td>{{prelevementSocialEmploye.employeVo?.cin}}</td>
+                            
+
+                            
+                                 <td>{{prelevementSocialEmploye.salaireBrutImposable}}</td>
+                            
+
+                            
+                                 <td>{{prelevementSocialEmploye.montantCalculer}}</td>
+                            
+
+                            
+                                <td>{{prelevementSocialEmploye.declarationIrVo?.refrerence}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editPrelevementSocialEmploye(prelevementSocialEmploye)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewPrelevementSocialEmploye(prelevementSocialEmploye)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deletePrelevementSocialEmploye(prelevementSocialEmploye)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicatePrelevementSocialEmploye(prelevementSocialEmploye)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{prelevementSocialEmployes ? prelevementSocialEmployes.length == 1 ? 'y a' : 'y a' : 'y a' }} {{prelevementSocialEmployes ? prelevementSocialEmployes.length : 0 }} {{prelevementSocialEmployes ? prelevementSocialEmployes.length == 1 ? 'prelevementSocialEmploye' : 'prelevementSocialEmployes' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-prelevement-social-employe-create-comptable></app-prelevement-social-employe-create-comptable>
+        <app-prelevement-social-employe-edit-comptable></app-prelevement-social-employe-edit-comptable>
+        <app-prelevement-social-employe-view-comptable></app-prelevement-social-employe-view-comptable>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
