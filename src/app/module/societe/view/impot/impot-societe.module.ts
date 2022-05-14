@@ -247,6 +247,7 @@ import {TabViewModule} from 'primeng/tabview';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { MessageModule } from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
+import {RippleModule} from 'primeng/ripple';
 
 
 @NgModule({
@@ -497,7 +498,8 @@ import {MessagesModule} from 'primeng/messages';
         MessagesModule,
         InputNumberModule,
         BadgeModule,
-        MultiSelectModule
+        MultiSelectModule,
+        RippleModule
     ],
     exports: [
         TauxIsConfigCreateSocieteComponent,
