@@ -145,7 +145,7 @@ set prelevementSocials(value: Array<PrelevementSocialVo>) {
         this.prelevementSocialService.prelevementSocials = value;
        }
 
- get selectedPrelevementSocial():PrelevementSocialVo {
+ get selectedPrelevementSocial(): PrelevementSocialVo {
            return this.prelevementSocialService.selectedPrelevementSocial;
        }
     set selectedPrelevementSocial(value: PrelevementSocialVo) {

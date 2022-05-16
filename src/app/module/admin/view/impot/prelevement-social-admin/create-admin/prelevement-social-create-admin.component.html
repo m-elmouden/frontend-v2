@@ -21,8 +21,8 @@
 
                                         <div class="p-field p-col-12 p-md-6">
                                             <label for="2">Pourcentage<span style="color: red;">*</span></label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="2"
-                                                           placeholder="Pourcentage"
+                                            <p-inputNumber  class="p-mb-2 p-mr-2" id="2"
+                                                           placeholder="Pourcentage" mode="decimal" [minFractionDigits]="2"
                                                     [(ngModel)]="selectedPrelevementSocial.pourcentage" [ngClass]="{'ng-invalid ng-dirty' : !validPrelevementSocialPourcentage}"  >
                                             </p-inputNumber>
                                             <small class='p-error' *ngIf='!validPrelevementSocialPourcentage'>Pourcentage est obligatoire.</small>

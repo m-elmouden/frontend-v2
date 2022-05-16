@@ -10,12 +10,10 @@
 
                                         <div class="p-field p-col-11 p-md-5">
                                             <label for="1">Prelevement social</label>
-                                            <p-dropdown [options]="prelevementSocials" [(ngModel)]="selectedPrelevementSocialEmploye.prelevementSocialVo"
-                                                    id="1" [filter]="true" filterMatchMode="contains"
-                                                    [showClear]="true"
-                                                    optionLabel="libelle"
+                                            <p-multiSelect [options]="prelevementSocials" [(ngModel)]="selectedPrelevementSocialEmploye.prelevementSocialVo"
+                                                    id="1" [filter]="true" filterMatchMode="contains"  optionLabel="libelle"
                                                     placeholder="Prelevement social"  >
-                                            </p-dropdown>
+                                            </p-multiSelect>
                                             
                                         </div>
                                         <div class="p-col-1">
@@ -93,9 +91,9 @@
                 </div>
             </ng-template>
 
-                    <app-prelevement-social-create-admin></app-prelevement-social-create-admin>
+                   <!-- <app-prelevement-social-create-admin></app-prelevement-social-create-admin>
                     <app-employe-create-admin></app-employe-create-admin>
-                    <app-declaration-ir-create-admin></app-declaration-ir-create-admin>
+                    <app-declaration-ir-create-admin></app-declaration-ir-create-admin>-->
 
 
     </p-dialog>
