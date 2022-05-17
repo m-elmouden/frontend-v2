@@ -18,6 +18,7 @@ export class DeclarationIrEmployeVo {
     public cotisation: number;
     public heuresSupplementaires: number;
     public avantage: number;
+    public indemniteJustifie: number;
 
     public salaireNetMax: string;
     public salaireNetMin: string;
@@ -41,6 +42,8 @@ export class DeclarationIrEmployeVo {
     public heuresSupplementairesMin: string;
     public avantageMax: string;
     public avantageMin: string;
+    public indemniteJustifieMin: string;
+    public indemniteJustifieMax: string;
     public declarationIrVo: DeclarationIrVo;
     public employeVo: EmployeVo;
     public tauxIrVo: TauxIrVo;
