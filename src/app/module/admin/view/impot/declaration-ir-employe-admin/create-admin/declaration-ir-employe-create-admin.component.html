@@ -21,7 +21,8 @@
                     </div>
                     <div class="p-col-1">
                         <label></label>
-                        <button (click)="openCreatedeclarationIr('declarationIr')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                        <button (click)="openCreatedeclarationIr('declarationIr')"
+                                class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                 pButton pRipple
                                 type="button"></button>
                     </div>
@@ -37,13 +38,15 @@
                     </div>
                     <div class="p-col-1">
                         <label></label>
-                        <button (click)="openCreateemploye('employe')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                        <button (click)="openCreateemploye('employe')"
+                                class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                 pButton pRipple
                                 type="button"></button>
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="3">Salaire net</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireNet" [disabled]="true" class="p-mb-2 p-mr-2"
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireNet" [disabled]="true"
+                                       class="p-mb-2 p-mr-2"
                                        id="3"
                                        placeholder="Salaire net">
                         </p-inputNumber>
@@ -52,7 +55,8 @@
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="4">Salaire brut</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBrut" [disabled]="true" class="p-mb-2 p-mr-2"
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBrut" [disabled]="true"
+                                       class="p-mb-2 p-mr-2"
                                        id="4"
                                        placeholder="Salaire brut">
                         </p-inputNumber>
@@ -61,7 +65,8 @@
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="5">Salaire net imposable</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireNetImposable" [disabled]="true" class="p-mb-2 p-mr-2"
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireNetImposable" [disabled]="true"
+                                       class="p-mb-2 p-mr-2"
                                        id="5"
                                        placeholder="Salaire net imposable">
                         </p-inputNumber>
@@ -70,7 +75,8 @@
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="6">Salaire brut imposable</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBrutImposable" [disabled]="true" class="p-mb-2 p-mr-2"
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBrutImposable" [disabled]="true"
+                                       class="p-mb-2 p-mr-2"
                                        id="6"
                                        placeholder="Salaire brut imposable">
                         </p-inputNumber>
@@ -79,7 +85,8 @@
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="7">Salaire base<span style="color: red;">*</span></label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBase" [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrEmployeSalaireBase}"
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBase"
+                                       [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrEmployeSalaireBase}"
                                        class="p-mb-2 p-mr-2"
                                        id="7"
                                        placeholder="Salaire base">
@@ -108,7 +115,8 @@
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="10">Pourcentage anciennete</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.pourcentageAnciennete" class="p-mb-2 p-mr-2"
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.pourcentageAnciennete"
+                                       class="p-mb-2 p-mr-2"
                                        id="10"
                                        placeholder="Pourcentage anciennete">
                         </p-inputNumber>
@@ -127,14 +135,16 @@
                     </div>
                     <div class="p-col-1">
                         <label></label>
-                        <button (click)="openCreatetauxIr('tauxIr')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                        <button (click)="openCreatetauxIr('tauxIr')"
+                                class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                 pButton pRipple
                                 type="button"></button>
                     </div>
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="12">Heures Supplementaires</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.heuresSupplementaires" class="p-mb-2 p-mr-2"
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.heuresSupplementaires"
+                                       class="p-mb-2 p-mr-2"
                                        id="12"
                                        placeholder="Heures Supplementaires">
                         </p-inputNumber>
@@ -151,7 +161,8 @@
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="14">Indemnite Justifie</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.indemniteJustifie" class="p-mb-2 p-mr-2"
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.indemniteJustifie"
+                                       class="p-mb-2 p-mr-2"
                                        id="14"
                                        placeholder="Indemnite Justifie">
                         </p-inputNumber>
