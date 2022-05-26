@@ -19,9 +19,9 @@ export class PrelevementSocialEditAdminComponent implements OnInit {
 
 
 constructor(private datePipe: DatePipe, private prelevementSocialService: PrelevementSocialService
- ,       private roleService:RoleService
- ,       private messageService: MessageService
- ,       private router: Router
+ ,          private roleService: RoleService
+ ,          private messageService: MessageService
+ ,          private router: Router
 ) {
 }
 
@@ -35,7 +35,7 @@ this.editWithShowOption(false);
 public editWithShowOption(showList: boolean){
             this.selectedPrelevementSocial.dateMax = DateUtils.toDate(this.selectedPrelevementSocial.dateMax);
             this.selectedPrelevementSocial.dateMin = DateUtils.toDate(this.selectedPrelevementSocial.dateMin);
-    this.prelevementSocialService.edit().subscribe(prelevementSocial=>{
+            this.prelevementSocialService.edit().subscribe(prelevementSocial => {
     const myIndex = this.prelevementSocials.findIndex(e => e.id === this.selectedPrelevementSocial.id);
     this.prelevementSocials[myIndex] = this.selectedPrelevementSocial;
     this.editPrelevementSocialDialog = false;

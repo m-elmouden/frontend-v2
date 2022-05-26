@@ -8,11 +8,21 @@
                     <p-tabPanel header="Prelevement social">
                         <div class="p-grid">
 
+
+                            <div class="p-field p-col-12 p-md-6">
+                                <label for="1">Reference<span style="color: red;">*</span></label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Reference"
+                                       id="1" [(ngModel)]="selectedPrelevementSocial.reference"
+                                       [ngClass]="{'ng-invalid ng-dirty' : !validPrelevementSocialReference}"  />
+                                <small class='p-error' *ngIf='!validPrelevementSocialReference'>Reference est obligatoire.</small>
+                            </div>
+
                                         <div class="p-field p-col-12 p-md-6">
-                                            <label for="1">Libelle<span style="color: red;">*</span></label>
+                                            <label for="2">Libelle<span style="color: red;">*</span></label>
                                             <input class="p-mb-2 p-mr-2" type="text" pInputText
                                                    placeholder="Libelle"
-                                                   id="1" [(ngModel)]="selectedPrelevementSocial.libelle"
+                                                   id="2" [(ngModel)]="selectedPrelevementSocial.libelle"
                                                     [ngClass]="{'ng-invalid ng-dirty' : !validPrelevementSocialLibelle}"  />
                                             <small class='p-error' *ngIf='!validPrelevementSocialLibelle'>Libelle est obligatoire.</small>
                                         </div>
@@ -20,8 +30,8 @@
 
 
                                         <div class="p-field p-col-12 p-md-6">
-                                            <label for="2">Pourcentage<span style="color: red;">*</span></label>
-                                            <p-inputNumber  class="p-mb-2 p-mr-2" id="2"
+                                            <label for="3">Pourcentage<span style="color: red;">*</span></label>
+                                            <p-inputNumber  class="p-mb-2 p-mr-2" id="3"
                                                            placeholder="Pourcentage" mode="decimal" [minFractionDigits]="2"
                                                     [(ngModel)]="selectedPrelevementSocial.pourcentage" [ngClass]="{'ng-invalid ng-dirty' : !validPrelevementSocialPourcentage}"  >
                                             </p-inputNumber>
@@ -29,8 +39,8 @@
                                         </div>
 
                                         <div class="p-field p-col-12 p-md-6">
-                                            <label for="3">Date max<span style="color: red;">*</span></label>
-                                            <p-calendar id="3"
+                                            <label for="4">Date max<span style="color: red;">*</span></label>
+                                            <p-calendar id="4"
                                                         placeholder="Date max"  [(ngModel)]="selectedPrelevementSocial.dateMax"
                                                     dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validPrelevementSocialDateMax}"  >
                                             </p-calendar>
@@ -38,8 +48,8 @@
                                         </div>
 
                                         <div class="p-field p-col-12 p-md-6">
-                                            <label for="4">Date min<span style="color: red;">*</span></label>
-                                            <p-calendar id="4"
+                                            <label for="5">Date min<span style="color: red;">*</span></label>
+                                            <p-calendar id="5"
                                                         placeholder="Date min"  [(ngModel)]="selectedPrelevementSocial.dateMin"
                                                     dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validPrelevementSocialDateMin}"  >
                                             </p-calendar>

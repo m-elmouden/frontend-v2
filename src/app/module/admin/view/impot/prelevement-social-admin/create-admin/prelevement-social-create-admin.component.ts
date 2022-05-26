@@ -24,13 +24,13 @@ export class PrelevementSocialCreateAdminComponent implements OnInit {
    _validPrelevementSocialPourcentage = true;
    _validPrelevementSocialDateMax = true;
    _validPrelevementSocialDateMin = true;
-
+    _validPrelevementSocialReference=true;
 
 
 
 constructor(private datePipe: DatePipe, private prelevementSocialService: PrelevementSocialService
  ,       private stringUtilService: StringUtilService
- ,       private roleService:RoleService
+ ,       private roleService: RoleService
  ,       private messageService: MessageService
  ,       private router: Router
  
@@ -88,6 +88,16 @@ this.validatePrelevementSocialDateMin();
 
     }
 
+    private validatePrelevementSocialReference(){
+        if (this.stringUtilService.isEmpty(this.selectedPrelevementSocial.reference)) {
+            this.errorMessages.push('reference non valide');
+            this.validPrelevementSocialReference = false;
+        } else {
+            this.validPrelevementSocialReference = true;
+        }
+    }
+    
+    
 private validatePrelevementSocialLibelle(){
         if (this.stringUtilService.isEmpty(this.selectedPrelevementSocial.libelle)) {
             this.errorMessages.push('Libelle non valide');
@@ -186,6 +196,13 @@ set prelevementSocials(value: Array<PrelevementSocialVo>) {
 
     set errorMessages(value: string[]) {
     this._errorMessages = value;
+    }
+
+    get validPrelevementSocialReference(): boolean {
+        return this._validPrelevementSocialReference;
+    }
+    set validPrelevementSocialReference(value: boolean) {
+        this._validPrelevementSocialReference = value;
     }
 
     get validPrelevementSocialLibelle(): boolean {

@@ -23,55 +23,63 @@
             <p-toolbar *ngIf="findByCriteriaShow">
 
                 <div class="align-form-search">
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+
+                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                     <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchPrelevementSocial.reference">
+                                    <label for="1">Reference</label>
+                                </span>
+
+
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
                                            type="text"  [(ngModel)]="searchPrelevementSocial.libelle">
-                                    <label for="1">Libelle</label>
+                                    <label for="2">Libelle</label>
                                 </span>
                                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchPrelevementSocial.pourcentageMin"
-                                                             id="2-1"></p-inputNumber>
-                                              <label for="2-1">Pourcentage Min</label>
+                                                             id="3-1"></p-inputNumber>
+                                              <label for="3-1">Pourcentage Min</label>
                                        </span>
                                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchPrelevementSocial.pourcentageMax"
-                                                             id="2-2"></p-inputNumber>
-                                             <label for="2-2">Pourcentage Max</label>
+                                                             id="3-2"></p-inputNumber>
+                                             <label for="3-2">Pourcentage Max</label>
                                        </span>
 
                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchPrelevementSocial.dateMaxMin"
-                                    id="3-1"
+                                    id="4-1"
                                     dateFormat="dd-MM-yy"></p-calendar>
-                            <label for="3-1">Date max Min</label>
+                            <label for="4-1">Date max Min</label>
                         </span>
 
                          <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchPrelevementSocial.dateMaxMax"
-                                    id="3-2"
+                                    id="4-2"
                                     dateFormat="dd-MM-yy"></p-calendar>
-                            <label for="3-2">Date max Max</label>
+                            <label for="4-2">Date max Max</label>
                         </span>
 
 
                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchPrelevementSocial.dateMinMin"
-                                    id="4-1"
+                                    id="5-1"
                                     dateFormat="dd-MM-yy"></p-calendar>
-                            <label for="4-1">Date min Min</label>
+                            <label for="5-1">Date min Min</label>
                         </span>
 
                          <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchPrelevementSocial.dateMinMax"
-                                    id="4-2"
+                                    id="5-2"
                                     dateFormat="dd-MM-yy"></p-calendar>
-                            <label for="4-2">Date min Max</label>
+                            <label for="5-2">Date min Max</label>
                         </span>
 
                 </div>

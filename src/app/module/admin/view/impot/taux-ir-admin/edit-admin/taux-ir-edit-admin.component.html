@@ -24,28 +24,28 @@
 
                                         <div class="p-field p-col-12 p-md-6">
                                             <label for="3">Salaire impo min</label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                            <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="3"
                                                            placeholder="Salaire impo min"  [(ngModel)]="selectedTauxIr.salaireImpoMin"
                                                     [(ngModel)]="selectedTauxIr.salaireImpoMin"></p-inputNumber>
                                         </div>
 
                                         <div class="p-field p-col-12 p-md-6">
                                             <label for="4">Salaire impo max</label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                            <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="4"
                                                            placeholder="Salaire impo max"  [(ngModel)]="selectedTauxIr.salaireImpoMax"
                                                     [(ngModel)]="selectedTauxIr.salaireImpoMax"></p-inputNumber>
                                         </div>
 
                                         <div class="p-field p-col-12 p-md-6">
                                             <label for="5">Forfait deduit</label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                            <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="5"
                                                            placeholder="Forfait deduit"  [(ngModel)]="selectedTauxIr.forfaitDeduit"
                                                     [(ngModel)]="selectedTauxIr.forfaitDeduit"></p-inputNumber>
                                         </div>
 
                                         <div class="p-field p-col-12 p-md-6">
                                             <label for="6">Pourcentage</label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="6"
+                                            <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="6"
                                                            placeholder="Pourcentage"  [(ngModel)]="selectedTauxIr.pourcentage"
                                                     [(ngModel)]="selectedTauxIr.pourcentage"></p-inputNumber>
                                         </div>

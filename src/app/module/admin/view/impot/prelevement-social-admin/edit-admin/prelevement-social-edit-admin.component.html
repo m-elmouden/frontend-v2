@@ -8,33 +8,43 @@
                     <p-tabPanel header="Prelevement social">
                         <div class="p-grid">
 
-                                        <div class="p-field p-col-12 p-md-6">
-                                            <label for="1">Libelle</label>
+
+                            <div class="p-field p-col-12 p-md-6">
+                                <label for="1">Reference</label>
+                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                       placeholder="Reference"
+                                       id="1" [(ngModel)]="selectedPrelevementSocial.reference"
+                                />
+                            </div>
+
+
+                            <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Libelle</label>
                                             <input class="p-mb-2 p-mr-2" type="text" pInputText
                                                    placeholder="Libelle"
-                                                   id="1" [(ngModel)]="selectedPrelevementSocial.libelle"
+                                                   id="2" [(ngModel)]="selectedPrelevementSocial.libelle"
                                                    />
                                         </div>
 
 
 
                                         <div class="p-field p-col-12 p-md-6">
-                                            <label for="2">Pourcentage</label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="2"
+                                            <label for="3">Pourcentage</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
                                                            placeholder="Pourcentage"  [(ngModel)]="selectedPrelevementSocial.pourcentage"
-                                                    [(ngModel)]="selectedPrelevementSocial.pourcentage"></p-inputNumber>
+                                                   ></p-inputNumber>
                                         </div>
 
                                         <div class="p-field p-col-12 p-md-6">
-                                            <label for="3">Date max</label>
-                                            <p-calendar id="3"
+                                            <label for="4">Date max</label>
+                                            <p-calendar id="4"
                                                         placeholder="Date max"  [(ngModel)]="selectedPrelevementSocial.dateMax"
                                                     dateFormat="{{dateFormat}}"></p-calendar>
                                         </div>
 
                                         <div class="p-field p-col-12 p-md-6">
-                                            <label for="4">Date min</label>
-                                            <p-calendar id="4"
+                                            <label for="5">Date min</label>
+                                            <p-calendar id="5"
                                                         placeholder="Date min"  [(ngModel)]="selectedPrelevementSocial.dateMin"
                                                     dateFormat="{{dateFormat}}"></p-calendar>
                                         </div>
