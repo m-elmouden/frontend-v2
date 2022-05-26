@@ -1,12 +1,11 @@
-
 // const root = environment.rootAppUrl;
 
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AuthGuard } from 'src/app/controller/guards/auth.guard';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {AuthGuard} from 'src/app/controller/guards/auth.guard';
 
-import { LoginAdminComponent } from './login-admin/login-admin.component';
-import { RegisterAdminComponent } from './register-admin/register-admin.component';
+import {LoginAdminComponent} from './login-admin/login-admin.component';
+import {RegisterAdminComponent} from './register-admin/register-admin.component';
 
 @NgModule({
     imports: [
@@ -20,20 +19,20 @@ import { RegisterAdminComponent } from './register-admin/register-admin.componen
                             children: [
                                 {
                                     path: '',
-                                    component: LoginAdminComponent ,
+                                    component: LoginAdminComponent,
                                     canActivate: [AuthGuard]
                                 }
-                              ]
+                            ]
                         },
                         {
                             path: 'register',
                             children: [
                                 {
                                     path: '',
-                                    component: RegisterAdminComponent ,
+                                    component: RegisterAdminComponent,
                                     canActivate: [AuthGuard]
                                 }
-                              ]
+                            ]
                         },
                         {
 
@@ -48,4 +47,5 @@ import { RegisterAdminComponent } from './register-admin/register-admin.componen
     ],
     exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+}
