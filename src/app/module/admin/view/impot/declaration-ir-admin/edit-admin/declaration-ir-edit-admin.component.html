@@ -36,16 +36,18 @@
 
                                         <div class="p-field p-col-12 p-md-3">
                                             <label for="3">Annee</label>
-                                            <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="3"
-                                                           placeholder="Annee"  [(ngModel)]="selectedDeclarationIr.annee"
-                                                    [(ngModel)]="selectedDeclarationIr.annee"></p-inputNumber>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Annee"
+                                                   id="3" [(ngModel)]="selectedDeclarationIr.annee"
+                                            />
                                         </div>
 
                                         <div class="p-field p-col-12 p-md-3">
                                             <label for="4">Mois</label>
-                                            <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="4"
-                                                           placeholder="Mois"  [(ngModel)]="selectedDeclarationIr.mois"
-                                                    [(ngModel)]="selectedDeclarationIr.mois"></p-inputNumber>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Mois"
+                                                   id="4" [(ngModel)]="selectedDeclarationIr.mois"
+                                            />
                                         </div>
 
                                         <div class="p-field p-col-12 p-md-3">

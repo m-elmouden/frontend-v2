@@ -23,6 +23,11 @@
             <p-toolbar *ngIf="findByCriteriaShow">
 
                 <div class="align-form-search">
+                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text" [(ngModel)]="selectedTauxIr.intervalle">
+                                    <label for="1">Intervalle</label>
+                                </span>
 
                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
