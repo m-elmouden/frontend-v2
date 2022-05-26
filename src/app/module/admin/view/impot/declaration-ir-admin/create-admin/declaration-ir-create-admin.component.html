@@ -36,21 +36,19 @@
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="3">Annee<span style="color: red;">*</span></label>
-                        <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="3"
-                                       placeholder="Annee"
-                                       [(ngModel)]="selectedDeclarationIr.annee"
-                                       [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrAnnee}">
-                        </p-inputNumber>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Annee"
+                               id="3" [(ngModel)]="selectedDeclarationIr.annee"
+                               [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrAnnee}"/>
                         <small class='p-error' *ngIf='!validDeclarationIrAnnee'>Annee est obligatoire.</small>
                     </div>
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="4">Mois<span style="color: red;">*</span></label>
-                        <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="4"
-                                       placeholder="Mois"
-                                       [(ngModel)]="selectedDeclarationIr.mois"
-                                       [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrMois}">
-                        </p-inputNumber>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Mois"
+                               id="4" [(ngModel)]="selectedDeclarationIr.mois"
+                               [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrAnnee}"/>
                         <small class='p-error' *ngIf='!validDeclarationIrMois'>Mois est obligatoire.</small>
                     </div>
 
@@ -226,35 +224,44 @@
 
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="3">Salaire net</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="salaireNet"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="salaireNet"
                                                placeholder="Salaire net"
-                                               [(ngModel)]="selectedDeclarationIrEmployes.salaireNet" [disabled]="true"></p-inputNumber>
+                                               [(ngModel)]="selectedDeclarationIrEmployes.salaireNet"
+                                               [disabled]="true"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="4">Salaire brut</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="salaireBrut"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="salaireBrut"
                                                placeholder="Salaire brut"
-                                               [(ngModel)]="selectedDeclarationIrEmployes.salaireBrut" [disabled]="true"></p-inputNumber>
+                                               [(ngModel)]="selectedDeclarationIrEmployes.salaireBrut"
+                                               [disabled]="true"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="5">Salaire net imposable</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="salaireNetImposable"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="salaireNetImposable"
                                                placeholder="Salaire net imposable"
-                                               [(ngModel)]="selectedDeclarationIrEmployes.salaireNetImposable" [disabled]="true"></p-inputNumber>
+                                               [(ngModel)]="selectedDeclarationIrEmployes.salaireNetImposable"
+                                               [disabled]="true"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="6">Salaire brut imposable</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="salaireBrutImposable"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="salaireBrutImposable"
                                                placeholder="Salaire brut imposable"
-                                               [(ngModel)]="selectedDeclarationIrEmployes.salaireBrutImposable" [disabled]="true"></p-inputNumber>
+                                               [(ngModel)]="selectedDeclarationIrEmployes.salaireBrutImposable"
+                                               [disabled]="true"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="7">Salaire base<span style="color: red;">*</span></label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="salaireBase"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="salaireBase"
                                                placeholder="Salaire de base"
                                                [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrEmployeSalaireBase}"
                                                [(ngModel)]="selectedDeclarationIrEmployes.salaireBase"></p-inputNumber>
@@ -263,28 +270,32 @@
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="8">Indemnite</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="indemnite"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="indemnite"
                                                placeholder="Indemnite"
                                                [(ngModel)]="selectedDeclarationIrEmployes.indemnite"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="9">Indemnite Justifie</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="indemniteJustifie"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="indemniteJustifie"
                                                placeholder="Indemnite Justifie"
                                                [(ngModel)]="selectedDeclarationIrEmployes.indemniteJustifie"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="10">Avantage</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="avantage"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="avantage"
                                                placeholder="Avantage"
                                                [(ngModel)]="selectedDeclarationIrEmployes.avantage"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="11">Horaire Supplementaire</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="horaireSupplimentaire"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="horaireSupplimentaire"
                                                placeholder="Horaire Supplementaire"
                                                [(ngModel)]="selectedDeclarationIrEmployes.heuresSupplementaires"></p-inputNumber>
 
@@ -298,7 +309,8 @@
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="13">Pourcentage anciennete</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="pourcentageAnciennete"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="pourcentageAnciennete"
                                                placeholder="Pourcentage anciennete"
                                                [(ngModel)]="selectedDeclarationIrEmployes.pourcentageAnciennete"></p-inputNumber>
 
@@ -323,9 +335,11 @@
 
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="14">Cotisation</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="cotisation"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="cotisation"
                                                placeholder="Cotisation"
-                                               [(ngModel)]="selectedDeclarationIrEmployes.cotisation" [disabled]="true"></p-inputNumber>
+                                               [(ngModel)]="selectedDeclarationIrEmployes.cotisation"
+                                               [disabled]="true"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-1">
@@ -435,14 +449,16 @@
 
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="3">Salaire brut imposable</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="salaireBrutImposable"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="salaireBrutImposable"
                                                placeholder="Salaire brut imposable"
                                                [(ngModel)]="selectedPrelevementSocialEmployes.salaireBrutImposable"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="4">Montant calculer</label>
-                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="montantCalculer"
+                                <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                               id="montantCalculer"
                                                placeholder="Montant calculer"
                                                [(ngModel)]="selectedPrelevementSocialEmployes.montantCalculer"></p-inputNumber>
 
