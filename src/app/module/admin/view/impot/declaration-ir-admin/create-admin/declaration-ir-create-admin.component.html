@@ -10,7 +10,8 @@
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="1">Refrerence<span style="color: red;">*</span></label>
-                        <input [(ngModel)]="selectedDeclarationIr.refrerence" [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrRefrerence}" class="p-mb-2 p-mr-2"
+                        <input [(ngModel)]="selectedDeclarationIr.refrerence"
+                               [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrRefrerence}" class="p-mb-2 p-mr-2"
                                id="1"
                                pInputText placeholder="Refrerence"
                                type="text"/>
@@ -30,27 +31,28 @@
                     </div>
                     <div class="p-col-1">
                         <label></label>
-                        <button (click)="openCreatesociete('societe')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                        <button (click)="openCreatesociete('societe')"
+                                class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                 pButton pRipple
                                 type="button"></button>
                     </div>
                     <div class="p-field p-col-12 p-md-3">
                         <label for="3">Annee<span style="color: red;">*</span></label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIr.annee" [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrAnnee}"
-                                       class="p-mb-2 p-mr-2"
-                                       id="3"
-                                       placeholder="Annee">
-                        </p-inputNumber>
+                        <input [(ngModel)]="selectedDeclarationIr.annee"
+                               [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrRefrerence}" class="p-mb-2 p-mr-2"
+                               id="3"
+                               pInputText placeholder="Annee"
+                               type="text"/>
                         <small *ngIf='!validDeclarationIrAnnee' class='p-error'>Annee est obligatoire.</small>
                     </div>
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="4">Mois<span style="color: red;">*</span></label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIr.mois" [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrMois}"
-                                       class="p-mb-2 p-mr-2"
-                                       id="4"
-                                       placeholder="Mois">
-                        </p-inputNumber>
+                        <input [(ngModel)]="selectedDeclarationIr.mois"
+                               [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrRefrerence}" class="p-mb-2 p-mr-2"
+                               id="4"
+                               pInputText placeholder="Mois"
+                               type="text"/>
                         <small *ngIf='!validDeclarationIrMois' class='p-error'>Mois est obligatoire.</small>
                     </div>
 
@@ -112,7 +114,8 @@
                     </div>
                     <div class="p-col-1">
                         <label></label>
-                        <button (click)="openCreateetatDeclarationIr('etatDeclarationIr')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                        <button (click)="openCreateetatDeclarationIr('etatDeclarationIr')"
+                                class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                 pButton pRipple
                                 type="button"></button>
                     </div>
@@ -129,7 +132,8 @@
                     </div>
                     <div class="p-col-1">
                         <label></label>
-                        <button (click)="openCreatepaiementDeclarationIr('paiementDeclarationIr')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                        <button (click)="openCreatepaiementDeclarationIr('paiementDeclarationIr')"
+                                class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                 pButton pRipple
                                 type="button"></button>
                     </div>
@@ -219,42 +223,48 @@
                             </div>
                             <div class="p-col-1">
                                 <label></label>
-                                <button (click)="openCreateemploye('employe')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                                <button (click)="openCreateemploye('employe')"
+                                        class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                         pButton pRipple
                                         type="button"></button>
                             </div>
 
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="3">Salaire net</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireNet" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireNet"
+                                               class="p-mb-2 p-mr-2"
                                                id="salaireNet"
                                                placeholder="Salaire net"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="4">Salaire brut</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireBrut" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireBrut"
+                                               class="p-mb-2 p-mr-2"
                                                id="salaireBrut"
                                                placeholder="Salaire brut"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="5">Salaire net imposable</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireNetImposable" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireNetImposable"
+                                               class="p-mb-2 p-mr-2"
                                                id="salaireNetImposable"
                                                placeholder="Salaire net imposable"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="6">Salaire brut imposable</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireBrutImposable" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireBrutImposable"
+                                               class="p-mb-2 p-mr-2"
                                                id="salaireBrutImposable"
                                                placeholder="Salaire brut imposable"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="7">Salaire base<span style="color: red;">*</span></label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireBase" [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrEmployeSalaireBase}"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.salaireBase"
+                                               [ngClass]="{'ng-invalid ng-dirty' : !validDeclarationIrEmployeSalaireBase}"
                                                class="p-mb-2 p-mr-2"
                                                id="salaireBase"
                                                placeholder="Salaire de base"></p-inputNumber>
@@ -263,28 +273,32 @@
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="8">Indemnite</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.indemnite" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.indemnite"
+                                               class="p-mb-2 p-mr-2"
                                                id="indemnite"
                                                placeholder="Indemnite"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="9">Indemnite Justifie</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.indemniteJustifie" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.indemniteJustifie"
+                                               class="p-mb-2 p-mr-2"
                                                id="indemniteJustifie"
                                                placeholder="Indemnite Justifie"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="10">Avantage</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.avantage" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.avantage"
+                                               class="p-mb-2 p-mr-2"
                                                id="avantage"
                                                placeholder="Avantage"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="11">Horaire Supplementaire</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.heuresSupplementaires" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.heuresSupplementaires"
+                                               class="p-mb-2 p-mr-2"
                                                id="horaireSupplimentaire"
                                                placeholder="Horaire Supplementaire"></p-inputNumber>
 
@@ -298,7 +312,8 @@
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="13">Pourcentage anciennete</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.pourcentageAnciennete" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.pourcentageAnciennete"
+                                               class="p-mb-2 p-mr-2"
                                                id="pourcentageAnciennete"
                                                placeholder="Pourcentage anciennete"></p-inputNumber>
 
@@ -316,20 +331,23 @@
                             </div>
                             <div class="p-col-1">
                                 <label></label>
-                                <button (click)="openCreatetauxIr('tauxIr')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                                <button (click)="openCreatetauxIr('tauxIr')"
+                                        class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                         pButton pRipple
                                         type="button"></button>
                             </div>
 
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="14">Cotisation</label>
-                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.cotisation" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedDeclarationIrEmployes.cotisation"
+                                               class="p-mb-2 p-mr-2"
                                                id="cotisation"
                                                placeholder="Cotisation"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-1">
-                                <button (click)="addDeclarationIrEmployes()" class="p-mt-4" icon="pi pi-plus" label="OK" pButton
+                                <button (click)="addDeclarationIrEmployes()" class="p-mt-4" icon="pi pi-plus" label="OK"
+                                        pButton
                                         pRipple type="button">
                                 </button>
                             </div>
@@ -378,7 +396,8 @@
                                         <td>{{p.cotisation}}</td>
 
                                         <td>
-                                            <button (click)="deleteDeclarationIrEmployes(p)" class="p-button-rounded p-button-danger" icon="pi pi-times"
+                                            <button (click)="deleteDeclarationIrEmployes(p)"
+                                                    class="p-button-rounded p-button-danger" icon="pi pi-times"
                                                     pButton type="button">
                                             </button>
                                         </td>
@@ -409,7 +428,8 @@
                             </div>
                             <div class="p-col-1">
                                 <label></label>
-                                <button (click)="openCreateprelevementSocial('prelevementSocial')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                                <button (click)="openCreateprelevementSocial('prelevementSocial')"
+                                        class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                         pButton pRipple
                                         type="button"></button>
                             </div>
@@ -428,27 +448,31 @@
                             </div>
                             <div class="p-col-1">
                                 <label></label>
-                                <button (click)="openCreateemploye('employe')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
+                                <button (click)="openCreateemploye('employe')"
+                                        class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
                                         pButton pRipple
                                         type="button"></button>
                             </div>
 
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="3">Salaire brut imposable</label>
-                                <p-inputNumber [(ngModel)]="selectedPrelevementSocialEmployes.salaireBrutImposable" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedPrelevementSocialEmployes.salaireBrutImposable"
+                                               class="p-mb-2 p-mr-2"
                                                id="salaireBrutImposable"
                                                placeholder="Salaire brut imposable"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-4">
                                 <label for="4">Montant calculer</label>
-                                <p-inputNumber [(ngModel)]="selectedPrelevementSocialEmployes.montantCalculer" class="p-mb-2 p-mr-2"
+                                <p-inputNumber [(ngModel)]="selectedPrelevementSocialEmployes.montantCalculer"
+                                               class="p-mb-2 p-mr-2"
                                                id="montantCalculer"
                                                placeholder="Montant calculer"></p-inputNumber>
 
                             </div>
                             <div class="p-field p-col-12 p-md-1">
-                                <button (click)="addPrelevementSocialEmployes()" class="p-mt-4" icon="pi pi-plus" label="OK" pButton
+                                <button (click)="addPrelevementSocialEmployes()" class="p-mt-4" icon="pi pi-plus"
+                                        label="OK" pButton
                                         pRipple type="button">
                                 </button>
                             </div>
@@ -476,7 +500,8 @@
                                         <td>{{p.montantCalculer}}</td>
 
                                         <td>
-                                            <button (click)="deletePrelevementSocialEmployes(p)" class="p-button-rounded p-button-danger" icon="pi pi-times"
+                                            <button (click)="deletePrelevementSocialEmployes(p)"
+                                                    class="p-button-rounded p-button-danger" icon="pi pi-times"
                                                     pButton type="button">
                                             </button>
                                         </td>
@@ -509,11 +534,12 @@
 
     <app-societe-create-admin></app-societe-create-admin>
     <app-etat-declaration-ir-create-admin></app-etat-declaration-ir-create-admin>
-   <app-paiement-declaration-ir-create-admin *ngIf="router.url.includes('/declaration-ir-admin/create-admin')"></app-paiement-declaration-ir-create-admin>
- <!--
-        -         <app-employe-create-admin></app-employe-create-admin>
-                  <app-taux-ir-create-admin></app-taux-ir-create-admin>
-                  <app-prelevement-social-create-admin></app-prelevement-social-create-admin>
-                  <app-employe-create-admin></app-employe-create-admin>-->
+    <app-paiement-declaration-ir-create-admin
+            *ngIf="router.url.includes('/declaration-ir-admin/create-admin')"></app-paiement-declaration-ir-create-admin>
+    <!--
+           -         <app-employe-create-admin></app-employe-create-admin>
+                     <app-taux-ir-create-admin></app-taux-ir-create-admin>
+                     <app-prelevement-social-create-admin></app-prelevement-social-create-admin>
+                     <app-employe-create-admin></app-employe-create-admin>-->
 
 </p-dialog>

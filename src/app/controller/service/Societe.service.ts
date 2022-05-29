@@ -149,4 +149,9 @@ return this._societes;
     set switchChercheurDialog(value: boolean) {
     this._switchChercheurDialog = value;
     }
+
+    public importExcel(formData: FormData){
+        console.log(formData);
+        return this.http.post('http://localhost:8036/api/upload/societe', formData);
+    }
 }
