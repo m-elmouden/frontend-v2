@@ -140,5 +140,9 @@ return this._declarationIrs;
     set searchDeclarationIr(value: DeclarationIrVo) {
         this._searchDeclarationIr = value;
        }
+    public importExcel(formData: FormData){
+        console.log(formData);
+        return this.http.post('http://localhost:8036/api/upload/declarationIr', formData);
+    }
 
 }

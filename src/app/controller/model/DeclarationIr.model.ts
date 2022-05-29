@@ -10,8 +10,8 @@ export class DeclarationIrVo {
     public id: number;
 
     public refrerence: string;
-    public annee: number;
-    public mois: number;
+    public annee: string;
+    public mois: string;
     public montantIrCalcule: number;
     public montantIrAPaye: number;
     public totalAPaye: number;

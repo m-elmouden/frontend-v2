@@ -14,6 +14,7 @@
                             (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
                 </ng-template>
                 <ng-template pTemplate="right">
+                    <p-fileUpload styleClass="p-mr-2" #fubauto mode="basic" name="file" label="Import" [customUpload]="true" (uploadHandler)="uploadExcelFile($event)" [auto]="true"></p-fileUpload>
                     <div class="flex">
                         <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
                     </div>

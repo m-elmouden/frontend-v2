@@ -248,6 +248,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { MessageModule } from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
 import {RippleModule} from 'primeng/ripple';
+import {FileUploadModule} from 'primeng/fileupload';
 
 
 @NgModule({
@@ -499,7 +500,8 @@ import {RippleModule} from 'primeng/ripple';
         InputNumberModule,
         BadgeModule,
         MultiSelectModule,
-        RippleModule
+        RippleModule,
+        FileUploadModule
     ],
     exports: [
         TauxIsConfigCreateAdminComponent,

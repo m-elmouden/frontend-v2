@@ -133,4 +133,8 @@ return this._employes;
         this._searchEmploye = value;
        }
 
+    public importExcel(formData: FormData){
+        console.log(formData);
+        return this.http.post('http://localhost:8036/api/upload/employe', formData);
+    }
 }

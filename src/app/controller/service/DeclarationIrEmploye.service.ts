@@ -133,4 +133,9 @@ return this._declarationIrEmployes;
         this._searchDeclarationIrEmploye = value;
        }
 
+    importExcel(formData: FormData) {
+        console.log(formData);
+        return this.http.post('http://localhost:8036/api/upload/declarationIrEmploye', formData);
+
+    }
 }
