@@ -69,7 +69,7 @@ ngOnInit(): void {
                 this.prelevementSocialService.findAll().subscribe((data) => this.prelevementSocials = data);
                 this.selectedPrelevementSocialEmployes.employeVo = new EmployeVo();
                 this.employeService.findAll().subscribe((data) => this.employes = data);
-    this.selectedSociete = new SocieteVo();
+                this.selectedSociete = new SocieteVo();
     this.societeService.findAll().subscribe((data) => this.societes = data);
     this.selectedEtatDeclarationIr = new EtatDeclarationIrVo();
     this.etatDeclarationIrService.findAll().subscribe((data) => this.etatDeclarationIrs = data);
@@ -90,7 +90,7 @@ set declarationIrs(value: Array<DeclarationIrVo>) {
         this.declarationIrService.declarationIrs = value;
        }
 
- get selectedDeclarationIr():DeclarationIrVo {
+ get selectedDeclarationIr(): DeclarationIrVo {
            return this.declarationIrService.selectedDeclarationIr;
        }
     set selectedDeclarationIr(value: DeclarationIrVo) {

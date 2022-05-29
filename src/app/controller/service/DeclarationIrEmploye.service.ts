@@ -31,7 +31,7 @@ export class DeclarationIrEmployeService {
      private _viewDeclarationIrEmployeDialog: boolean;
      public editDeclarationIrEmploye$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchDeclarationIrEmploye:DeclarationIrEmployeVo ;
+     private _searchDeclarationIrEmploye: DeclarationIrEmployeVo ;
 
     // methods
 
@@ -53,7 +53,7 @@ export class DeclarationIrEmployeService {
     }
 
 
-     public findByCriteria(declarationIrEmploye:DeclarationIrEmployeVo):Observable<Array<DeclarationIrEmployeVo>>{
+     public findByCriteria(declarationIrEmploye: DeclarationIrEmployeVo):Observable<Array<DeclarationIrEmployeVo>>{
            return this.http.post<Array<DeclarationIrEmployeVo>>(this.API +'search', declarationIrEmploye);
     }
 
