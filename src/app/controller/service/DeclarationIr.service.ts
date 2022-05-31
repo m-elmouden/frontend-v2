@@ -142,7 +142,7 @@ return this._declarationIrs;
        }
     public importExcel(formData: FormData){
         console.log(formData);
-        return this.http.post('http://localhost:8036/api/upload/declarationIr', formData);
+        return this.http.post('http://localhost:8036/api/excel/upload-declaration-ir', formData);
     }
 
 }
