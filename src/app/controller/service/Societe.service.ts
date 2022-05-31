@@ -152,6 +152,6 @@ return this._societes;
 
     public importExcel(formData: FormData){
         console.log(formData);
-        return this.http.post('http://localhost:8036/api/upload/societe', formData);
+        return this.http.post('http://localhost:8036/api/excel/upload-societe', formData);
     }
 }
