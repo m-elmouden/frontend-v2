@@ -5,6 +5,7 @@ import { User } from './controller/model/User.model';
 import { AuthService } from './controller/service/Auth.service';
 import {ChercheurVo} from './controller/model/Chercheur.model';
 import {ChercheurService} from './controller/service/Chercheur.service';
+import {MessageComponent} from './message/message.component';
 @Component({
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html'
@@ -12,8 +13,9 @@ import {ChercheurService} from './controller/service/Chercheur.service';
 export class AppTopBarComponent {
 
     roleAdmin = false;
+    private msgs: any[];
 
-    constructor(public app: AppComponent, public appMain: AppMainComponent, private authService: AuthService, private chercheurService: ChercheurService) {}
+    constructor(public app: AppComponent, public appMain: AppMainComponent, private authService: AuthService, private chercheurService: ChercheurService, public appMessage: MessageComponent) {}
 
     ngOnInit(): void {
         this.authService.loadInfos();
@@ -26,6 +28,10 @@ export class AppTopBarComponent {
         this.switchChercheurDialog = true;
     }
 
+    openMessageComponent(event){
+        this.appMessage.showComponent();
+        event.preventDefault();
+    }
     switchAdmin(): void{
         this.authService.unregisterConnectedChercheur();
         window.location.reload();

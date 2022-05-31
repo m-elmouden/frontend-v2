@@ -94,7 +94,7 @@ this.errorMessages = new Array<string>();
 this.validatePresidentSocieteCin();
 this.validatePresidentSocieteNom();
 this.validatePresidentSocietePrenom();
-this.validatePresidentSocieteSociete();
+//this.validatePresidentSocieteSociete();
 
     }
 

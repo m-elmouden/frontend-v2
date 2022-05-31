@@ -102,7 +102,7 @@ export class DeclarationIrListAdminComponent implements OnInit {
         ];
     }
     
-    public async editDeclarationIr(declarationIr:DeclarationIrVo){
+    public async editDeclarationIr(declarationIr : DeclarationIrVo){
         const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'edit');
          if(isPermistted){
           this.declarationIrService.findByIdWithAssociatedList(declarationIr).subscribe(res => {
@@ -142,7 +142,7 @@ export class DeclarationIrListAdminComponent implements OnInit {
         const isPermistted = await this.roleService.isPermitted(pojo, 'add');
         if(isPermistted){
          this.selectedDeclarationIr = new DeclarationIrVo();
-            this.createDeclarationIrDialog = true;
+         this.createDeclarationIrDialog = true;
         }else{
              this.messageService.add({
                 severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'

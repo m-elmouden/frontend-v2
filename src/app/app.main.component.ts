@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { PrimeNGConfig } from "primeng/api";
-import { MenuService } from "./app.menu.service";
-import { AppComponent } from "./app.component";
+import { Component, OnInit } from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
+import { MenuService } from './app.menu.service';
+import { AppComponent } from './app.component';
 
 @Component({
-  selector: "app-main",
-  templateUrl: "./app.main.component.html",
+  selector: 'app-main',
+  templateUrl: './app.main.component.html',
 })
 export class AppMainComponent {
   overlayMenuActive: boolean;
@@ -128,6 +128,7 @@ export class AppMainComponent {
     event.preventDefault();
   }
 
+
   onTopbarNotificationMenuButtonClick(event) {
     this.notificationMenuClick = true;
     this.topbarNotificationMenuActive = !this.topbarNotificationMenuActive;
@@ -165,19 +166,19 @@ export class AppMainComponent {
   }
 
   isHorizontal() {
-    return this.app.layoutMode === "horizontal";
+    return this.app.layoutMode === 'horizontal';
   }
 
   isSlim() {
-    return this.app.layoutMode === "slim";
+    return this.app.layoutMode === 'slim';
   }
 
   isOverlay() {
-    return this.app.layoutMode === "overlay";
+    return this.app.layoutMode === 'overlay';
   }
 
   isStatic() {
-    return this.app.layoutMode === "static";
+    return this.app.layoutMode === 'static';
   }
 
   isMobile() {
@@ -200,22 +201,22 @@ export class AppMainComponent {
 
   blockBodyScroll(): void {
     if (document.body.classList) {
-      document.body.classList.add("blocked-scroll");
+      document.body.classList.add('blocked-scroll');
     } else {
-      document.body.className += " blocked-scroll";
+      document.body.className += ' blocked-scroll';
     }
   }
 
   unblockBodyScroll(): void {
     if (document.body.classList) {
-      document.body.classList.remove("blocked-scroll");
+      document.body.classList.remove('blocked-scroll');
     } else {
       document.body.className = document.body.className.replace(
         new RegExp(
-          "(^|\\b)" + "blocked-scroll".split(" ").join("|") + "(\\b|$)",
-          "gi"
+          '(^|\\b)' + 'blocked-scroll'.split(' ').join('|') + '(\\b|$)',
+          'gi'
         ),
-        " "
+        ' '
       );
     }
   }

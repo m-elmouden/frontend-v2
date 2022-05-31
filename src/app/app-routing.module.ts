@@ -12,6 +12,7 @@ import {LoginComptableComponent} from './module/comptable/login-comptable/login-
 import {RegisterComptableComponent} from './module/comptable/register-comptable/register-comptable.component';
 import {LoginSocieteComponent} from './module/societe/login-societe/login-societe.component';
 import {RegisterSocieteComponent} from './module/societe/register-societe/register-societe.component';
+import {MessageComponent} from './message/message.component';
 @NgModule({
   imports: [
     RouterModule.forRoot(
@@ -25,6 +26,7 @@ import {RegisterSocieteComponent} from './module/societe/register-societe/regist
         {path: 'comptable/register', component: RegisterComptableComponent },
         {path: 'societe/login', component: LoginSocieteComponent },
         {path: 'societe/register', component: RegisterSocieteComponent },
+          {path: 'admin/message', component: MessageComponent},
          {
           path: 'app', // '\'' + root + '\'',
           component: AppMainComponent,

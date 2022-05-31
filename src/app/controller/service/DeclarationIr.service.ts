@@ -48,7 +48,8 @@ export class DeclarationIrService {
     }
 
     public save(): Observable<DeclarationIrVo> {
-           return this.http.post<DeclarationIrVo>(this.API, {...this.selectedDeclarationIr,dateCreation: moment(this.selectedDeclarationIr.dateCreation).format("YYYY-MM-DD")});
+
+           return this.http.post<DeclarationIrVo>(this.API, {...this.selectedDeclarationIr, dateCreation: moment(this.selectedDeclarationIr.dateCreation).format('YYYY-MM-DD')});
     }
 
     delete(declarationIr: DeclarationIrVo) {
@@ -62,7 +63,7 @@ export class DeclarationIrService {
 
 
      public findByCriteria(declarationIr:DeclarationIrVo):Observable<Array<DeclarationIrVo>>{
-           return this.http.post<Array<DeclarationIrVo>>(this.API +'search', declarationIr);
+           return this.http.post<Array<DeclarationIrVo>>(this.API + 'search', declarationIr);
     }
 
    public findByIdWithAssociatedList(declarationIr:DeclarationIrVo):Observable<DeclarationIrVo>{
