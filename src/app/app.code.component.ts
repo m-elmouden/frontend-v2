@@ -1,6 +1,5 @@
 import { Component, ElementRef, AfterViewInit, Input, NgModule, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 @Component({
     selector: 'app-code',
     template: `

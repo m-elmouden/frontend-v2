@@ -1,14 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {PrimeNGConfig} from 'primeng/api';
-//import { TranslateService } from '@ngx-translate/core';
+// import { TranslateService } from '@ngx-translate/core';
 import {Observable} from 'rxjs';
 import {RoleService} from './controller/service/role.service';
+
+declare var particlesJS: any;
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
     layoutMode = 'static';
     lightMenu = true;
     topbarColor = 'layout-topbar-blue';
@@ -29,14 +31,19 @@ export class AppComponent implements OnInit{
     }
 
     ngOnInit() {
+        // tslint:disable-next-line:only-arrow-functions
+        particlesJS.load('particles-js', 'assets/demo/data/particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
         this.primengConfig.ripple = true;
         this.role$ = this.roleService.role$;
         this.role$.subscribe(role => {
-            if(role.toLowerCase()==='admin') {
-                this.topbarColor='layout-topbar-green';
-            }else{
-                this.topbarColor='layout-topbar-blue';
+            if (role.toLowerCase() === 'admin') {
+                this.topbarColor = 'layout-topbar-green';
+            } else {
+                this.topbarColor = 'layout-topbar-blue';
             }
+
 
         });
     }

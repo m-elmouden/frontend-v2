@@ -135,7 +135,7 @@ return this._declarationIrEmployes;
 
     importExcel(formData: FormData) {
         console.log(formData);
-        return this.http.post('http://localhost:8036/api/excel/upload-declaration-ir-employe', formData);
+        return this.http.post('http://localhost:8036/api/excel/upload-declaration-ir-emloyes', formData);
 
     }
 }
