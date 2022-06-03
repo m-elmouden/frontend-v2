@@ -13,12 +13,12 @@ import {PrelevementSocialVo} from '../model/PrelevementSocial.model';
   providedIn: 'root'
 })
 export class PrelevementSocialService {
-    private API = ''
+    private API = '';
      constructor(private http: HttpClient, private roleService: RoleService) {
         this.role$ = this.roleService.role$;
         this.role$.subscribe(role => {
             this.API = environment.apiUrl  + role.toLowerCase() + '/prelevementSocial/';
-        })
+        });
     }
      private _prelevementSocials: Array<PrelevementSocialVo> ;
      private _selectedPrelevementSocial: PrelevementSocialVo;
@@ -28,7 +28,7 @@ export class PrelevementSocialService {
      private _viewPrelevementSocialDialog: boolean;
      public editPrelevementSocial$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchPrelevementSocial:PrelevementSocialVo ;
+     private _searchPrelevementSocial: PrelevementSocialVo ;
 
     // methods
 
@@ -62,8 +62,8 @@ export class PrelevementSocialService {
 
 
     get prelevementSocials(): Array<PrelevementSocialVo> {
-    if(this._prelevementSocials==null){
-    this._prelevementSocials=new Array<PrelevementSocialVo>();
+    if(this._prelevementSocials == null){
+    this._prelevementSocials = new Array<PrelevementSocialVo>();
     }
 return this._prelevementSocials;
        }
@@ -73,8 +73,8 @@ return this._prelevementSocials;
        }
 
     get selectedPrelevementSocial(): PrelevementSocialVo {
-    if(this._selectedPrelevementSocial==null){
-    this._selectedPrelevementSocial=new PrelevementSocialVo();
+    if(this._selectedPrelevementSocial == null){
+    this._selectedPrelevementSocial = new PrelevementSocialVo();
     }
            return this._selectedPrelevementSocial;
        }

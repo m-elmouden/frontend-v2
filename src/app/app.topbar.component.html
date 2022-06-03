@@ -9,11 +9,17 @@
     </a>
 
     <a href="#" class="layout-topbar-logo">
-        <span style="font-size: 2rem;color: white;font-weight: 900;">ECOMPTA</span>
+        <span style="font-size: 2rem;color: whitesmoke;font-weight: 900;">ECOMPTA</span>
     </a>
 
 
+
     <ul class="topbar-menu">
+<li>
+        <a href="#" routerLink="admin/message"  >
+            <span ><i class="fa-regular fa-bell fa-2x " style="color: white"></i></span>
+        </a>
+</li>
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
                 <img src="assets/layout/images/avatar.png" alt="roma-layout" />
@@ -23,7 +29,9 @@
                     <span *ngIf="authenticatedUserByAdmin" class="layout-profile-name">Connecté(e) en tant que {{authenticatedUserByAdmin?.prenom}} {{authenticatedUserByAdmin?.nom}}</span>
 
                 </div>
+
             </a>
+
             <ul class="fadeInDown">
 
                 <li *ngIf="authenticatedUserByAdmin">
@@ -52,3 +60,4 @@
     </ul>
 </div>
 <app-switch-chercheur-admin></app-switch-chercheur-admin>
+<app-message></app-message>

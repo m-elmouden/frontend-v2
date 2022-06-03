@@ -28,22 +28,23 @@ import { ExportService } from '../../../../../../controller/service/Export.servi
 })
 export class EmployeListAdminComponent implements OnInit {
    // declarations
-    findByCriteriaShow:boolean=false;
+    findByCriteriaShow = false;
     cols: any[] = [];
     excelPdfButons: MenuItem[];
     exportData: any[] = [];
     criteriaData: any[] = [];
     fileName = 'Employe';
-    typeEmployes :Array<TypeEmployeVo>;
-    societes :Array<SocieteVo>;
-    declarationCnsss :Array<DeclarationCnssVo>;
+    typeEmployes: Array<TypeEmployeVo>;
+    societes: Array<SocieteVo>;
+    declarationCnsss: Array<DeclarationCnssVo>;
 
 
-    constructor(private datePipe: DatePipe, private employeService: EmployeService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
+    // tslint:disable-next-line:max-line-length
+    constructor(private datePipe: DatePipe, private employeService: EmployeService, private messageService: MessageService, private confirmationService: ConfirmationService, private roleService: RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
 
-        , private typeEmployeService: TypeEmployeService
-        , private societeService: SocieteService
-        , private declarationCnssService: DeclarationCnssService
+        ,       private typeEmployeService: TypeEmployeService
+        ,       private societeService: SocieteService
+        ,       private declarationCnssService: DeclarationCnssService
 ) { }
 
     ngOnInit(): void {
@@ -54,22 +55,22 @@ export class EmployeListAdminComponent implements OnInit {
       this.loadSociete();
       this.loadDeclarationCnss();
     }
-    
+
     // methods
       public async loadEmployes(){
         await this.roleService.findAll();
         const isPermistted = await this.roleService.isPermitted('Employe', 'list');
-        isPermistted ? this.employeService.findAll().subscribe(employes => this.employes = employes,error=>console.log(error))
+        isPermistted ? this.employeService.findAll().subscribe(employes => this.employes = employes, error => console.log(error))
         : this.messageService.add({severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'});
     }
 
 
   public searchRequest(){
-        this.employeService.findByCriteria(this.searchEmploye).subscribe(employes=>{
-            
+        this.employeService.findByCriteria(this.searchEmploye).subscribe(employes => {
+
             this.employes = employes;
            // this.searchEmploye = new EmployeVo();
-        },error=>console.log(error));
+        }, error => console.log(error));
     }
 
     private initCol() {
@@ -84,66 +85,66 @@ export class EmployeListAdminComponent implements OnInit {
                         {field: 'declarationCnss?.ref', header: 'Declaration cnss'},
         ];
     }
-    
-    public async editEmploye(employe:EmployeVo){
+
+    public async editEmploye(employe: EmployeVo){
         const isPermistted = await this.roleService.isPermitted('Employe', 'edit');
-         if(isPermistted){
+        if (isPermistted){
           this.employeService.findByIdWithAssociatedList(employe).subscribe(res => {
            this.selectedEmploye = res;
-            this.editEmployeDialog = true;
+           this.editEmployeDialog = true;
           });
         }else{
             this.messageService.add({
                 severity: 'error', summary: 'Erreur', detail: 'Probléme de permission'
             });
          }
-       
+
     }
-    
 
 
-   public async viewEmploye(employe:EmployeVo){
+
+   public async viewEmploye(employe: EmployeVo){
         const isPermistted = await this.roleService.isPermitted('Employe', 'view');
-        if(isPermistted){
+        if (isPermistted){
            this.employeService.findByIdWithAssociatedList(employe).subscribe(res => {
            this.selectedEmploye = res;
-            this.viewEmployeDialog = true;
+           this.viewEmployeDialog = true;
           });
         }else{
              this.messageService.add({
                 severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'
             });
         }
-        
+
     }
-    
+
     public async openCreateEmploye(pojo: string) {
         const isPermistted = await this.roleService.isPermitted(pojo, 'add');
-        if(isPermistted){
+        if (isPermistted){
          this.selectedEmploye = new EmployeVo();
-            this.createEmployeDialog = true;
+         this.createEmployeDialog = true;
         }else{
              this.messageService.add({
                 severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'
             });
         }
-       
+
     }
 
 
-    public async deleteEmploye(employe:EmployeVo){
+    public async deleteEmploye(employe: EmployeVo){
        const isPermistted = await this.roleService.isPermitted('Employe', 'delete');
-        if(isPermistted){
+       if (isPermistted){
                       this.confirmationService.confirm({
                       message: 'Voulez-vous supprimer cet élément (Employe) ?',
                       header: 'Confirmation',
                       icon: 'pi pi-exclamation-triangle',
                       accept: () => {
-                          this.employeService.delete(employe).subscribe(status=>{
-                          if(status > 0){
+                          this.employeService.delete(employe).subscribe(status => {
+                          if (status > 0){
                           const position = this.employes.indexOf(employe);
                           position > -1 ? this.employes.splice(position, 1) : false;
-                       this.messageService.add({
+                          this.messageService.add({
                         severity: 'success',
                         summary: 'Succès',
                         detail: 'Employe Supprimé',
@@ -151,7 +152,7 @@ export class EmployeListAdminComponent implements OnInit {
                     });
                                      }
 
-                    },error=>console.log(error))
+                    }, error => console.log(error));
                              }
                      });
               }else{
@@ -164,21 +165,21 @@ export class EmployeListAdminComponent implements OnInit {
 public async loadTypeEmploye(){
     await this.roleService.findAll();
     const isPermistted = await this.roleService.isPermitted('Employe', 'list');
-    isPermistted ? this.typeEmployeService.findAll().subscribe(typeEmployes => this.typeEmployes = typeEmployes,error=>console.log(error))
+    isPermistted ? this.typeEmployeService.findAll().subscribe(typeEmployes => this.typeEmployes = typeEmployes, error => console.log(error))
     : this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Problème de permission'});
 
 }
 public async loadSociete(){
     await this.roleService.findAll();
     const isPermistted = await this.roleService.isPermitted('Employe', 'list');
-    isPermistted ? this.societeService.findAll().subscribe(societes => this.societes = societes,error=>console.log(error))
+    isPermistted ? this.societeService.findAll().subscribe(societes => this.societes = societes, error => console.log(error))
     : this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Problème de permission'});
 
 }
 public async loadDeclarationCnss(){
     await this.roleService.findAll();
     const isPermistted = await this.roleService.isPermitted('Employe', 'list');
-    isPermistted ? this.declarationCnssService.findAll().subscribe(declarationCnsss => this.declarationCnsss = declarationCnsss,error=>console.log(error))
+    isPermistted ? this.declarationCnssService.findAll().subscribe(declarationCnsss => this.declarationCnsss = declarationCnsss, error => console.log(error))
     : this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Problème de permission'});
 
 }
@@ -190,7 +191,7 @@ public async duplicateEmploye(employe: EmployeVo) {
 	       this.initDuplicateEmploye(res);
 	       this.selectedEmploye = res;
 	       this.selectedEmploye.id = null;
-            this.createEmployeDialog = true;
+        this.createEmployeDialog = true;
 
 });
 
@@ -203,9 +204,9 @@ public async duplicateEmploye(employe: EmployeVo) {
 
   initExport(): void {
     this.excelPdfButons = [
-      {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport();this.exportService.exportCSV(this.criteriaData,this.exportData,this.fileName);}},
-      {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport();this.exportService.exportExcel(this.criteriaData,this.exportData,this.fileName);}},
-      {label: 'PDF', icon: 'pi pi-file-pdf', command: () => {this.prepareColumnExport();this.exportService.exportPdf(this.criteriaData,this.exportData,this.fileName);}}
+      {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport(); this.exportService.exportCSV(this.criteriaData, this.exportData, this.fileName); }},
+      {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport(); this.exportService.exportExcel(this.criteriaData, this.exportData, this.fileName); }},
+      {label: 'PDF', icon: 'pi pi-file-pdf', command: () => {this.prepareColumnExport(); this.exportService.exportPdf(this.criteriaData, this.exportData, this.fileName); }}
    ];
   }
 
@@ -213,25 +214,25 @@ public async duplicateEmploye(employe: EmployeVo) {
     prepareColumnExport(): void {
     this.exportData = this.employes.map(e => {
     return {
-                    'Cin': e.cin ,
-                    'Nom': e.nom ,
-                    'Prenom': e.prenom ,
+                    Cin: e.cin ,
+                    Nom: e.nom ,
+                    Prenom: e.prenom ,
             'Type employe': e.typeEmployeVo?.libelle ,
                     'Total salaire net': e.totalSalaireNet ,
-            'Societe': e.societeVo?.id ,
+            Societe: e.societeVo?.id ,
                     'Nombre famille': e.nombreFamille ,
             'Declaration cnss': e.declarationCnssVo?.ref ,
-     }
+     };
       });
 
-      this.criteriaData = [{
-            'Cin': this.searchEmploye.cin ? this.searchEmploye.cin : environment.emptyForExport ,
-            'Nom': this.searchEmploye.nom ? this.searchEmploye.nom : environment.emptyForExport ,
-            'Prenom': this.searchEmploye.prenom ? this.searchEmploye.prenom : environment.emptyForExport ,
+    this.criteriaData = [{
+            Cin: this.searchEmploye.cin ? this.searchEmploye.cin : environment.emptyForExport ,
+            Nom: this.searchEmploye.nom ? this.searchEmploye.nom : environment.emptyForExport ,
+            Prenom: this.searchEmploye.prenom ? this.searchEmploye.prenom : environment.emptyForExport ,
         'Type employe': this.searchEmploye.typeEmployeVo?.libelle ? this.searchEmploye.typeEmployeVo?.libelle : environment.emptyForExport ,
             'Total salaire net Min': this.searchEmploye.totalSalaireNetMin ? this.searchEmploye.totalSalaireNetMin : environment.emptyForExport ,
             'Total salaire net Max': this.searchEmploye.totalSalaireNetMax ? this.searchEmploye.totalSalaireNetMax : environment.emptyForExport ,
-        'Societe': this.searchEmploye.societeVo?.id ? this.searchEmploye.societeVo?.id : environment.emptyForExport ,
+        Societe: this.searchEmploye.societeVo?.id ? this.searchEmploye.societeVo?.id : environment.emptyForExport ,
             'Nombre famille Min': this.searchEmploye.nombreFamilleMin ? this.searchEmploye.nombreFamilleMin : environment.emptyForExport ,
             'Nombre famille Max': this.searchEmploye.nombreFamilleMax ? this.searchEmploye.nombreFamilleMax : environment.emptyForExport ,
         'Declaration cnss': this.searchEmploye.declarationCnssVo?.ref ? this.searchEmploye.declarationCnssVo?.ref : environment.emptyForExport ,
@@ -254,37 +255,37 @@ public async duplicateEmploye(employe: EmployeVo) {
     set employeSelections(value: Array<EmployeVo>) {
         this.employeService.employeSelections = value;
        }
-   
-     
 
 
-    get selectedEmploye():EmployeVo {
+
+
+    get selectedEmploye(): EmployeVo {
            return this.employeService.selectedEmploye;
        }
     set selectedEmploye(value: EmployeVo) {
         this.employeService.selectedEmploye = value;
        }
-    
-    get createEmployeDialog():boolean {
+
+    get createEmployeDialog(): boolean {
            return this.employeService.createEmployeDialog;
        }
     set createEmployeDialog(value: boolean) {
-        this.employeService.createEmployeDialog= value;
+        this.employeService.createEmployeDialog = value;
        }
-    
-    get editEmployeDialog():boolean {
+
+    get editEmployeDialog(): boolean {
            return this.employeService.editEmployeDialog;
        }
     set editEmployeDialog(value: boolean) {
-        this.employeService.editEmployeDialog= value;
+        this.employeService.editEmployeDialog = value;
        }
-    get viewEmployeDialog():boolean {
+    get viewEmployeDialog(): boolean {
            return this.employeService.viewEmployeDialog;
        }
     set viewEmployeDialog(value: boolean) {
         this.employeService.viewEmployeDialog = value;
        }
-       
+
      get searchEmploye(): EmployeVo {
         return this.employeService.searchEmploye;
        }

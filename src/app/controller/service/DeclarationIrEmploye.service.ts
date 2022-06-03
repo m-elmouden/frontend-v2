@@ -16,12 +16,12 @@ import {EmployeVo} from '../model/Employe.model';
   providedIn: 'root'
 })
 export class DeclarationIrEmployeService {
-    private API = ''
+    private API = '';
      constructor(private http: HttpClient, private roleService: RoleService) {
         this.role$ = this.roleService.role$;
         this.role$.subscribe(role => {
-            this.API = environment.apiUrl  + role.toLowerCase() + '/declarationIrEmploye/';
-        })
+            this.API = environment.apiUrl  + /*role.toLowerCase()*/'admin' + '/declarationIrEmploye/';
+        });
     }
      private _declarationIrEmployes: Array<DeclarationIrEmployeVo> ;
      private _selectedDeclarationIrEmploye: DeclarationIrEmployeVo;
@@ -31,7 +31,7 @@ export class DeclarationIrEmployeService {
      private _viewDeclarationIrEmployeDialog: boolean;
      public editDeclarationIrEmploye$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchDeclarationIrEmploye:DeclarationIrEmployeVo ;
+     private _searchDeclarationIrEmploye: DeclarationIrEmployeVo ;
 
     // methods
 
@@ -53,12 +53,12 @@ export class DeclarationIrEmployeService {
     }
 
 
-     public findByCriteria(declarationIrEmploye:DeclarationIrEmployeVo):Observable<Array<DeclarationIrEmployeVo>>{
-           return this.http.post<Array<DeclarationIrEmployeVo>>(this.API +'search', declarationIrEmploye);
+     public findByCriteria(declarationIrEmploye: DeclarationIrEmployeVo):Observable<Array<DeclarationIrEmployeVo>>{
+           return this.http.post<Array<DeclarationIrEmployeVo>>(this.API + 'search', declarationIrEmploye);
     }
 
    public findByIdWithAssociatedList(declarationIrEmploye:DeclarationIrEmployeVo):Observable<DeclarationIrEmployeVo>{
-         return this.http.get<DeclarationIrEmployeVo>(this.API + 'detail/id/' +declarationIrEmploye.id);
+         return this.http.get<DeclarationIrEmployeVo>(this.API + 'detail/id/' + declarationIrEmploye.id);
     }
 
     // getters and setters

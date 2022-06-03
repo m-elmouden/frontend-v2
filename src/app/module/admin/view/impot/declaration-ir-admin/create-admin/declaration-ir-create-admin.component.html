@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="createDeclarationIrDialog" [draggable]="false"
+<p-dialog [(visible)]="createDeclarationIrDialog" [draggable]="true"
           [maximizable]="true" [modal]="true"
           [resizable]="false" [style]="{width: '70vw'}" header="Declaration ir" styleClass="p-fluid">
 
@@ -534,10 +534,9 @@
 
     <app-societe-create-admin></app-societe-create-admin>
     <app-etat-declaration-ir-create-admin></app-etat-declaration-ir-create-admin>
-    <app-paiement-declaration-ir-create-admin
-            *ngIf="router.url.includes('/declaration-ir-admin/create-admin')"></app-paiement-declaration-ir-create-admin>
+    <app-paiement-declaration-ir-create-admin *ngIf="router.url.includes('/declaration-ir-admin/create-admin')"></app-paiement-declaration-ir-create-admin>
     <!--
-           -         <app-employe-create-admin></app-employe-create-admin>
+                   <app-employe-create-admin></app-employe-create-admin>
                      <app-taux-ir-create-admin></app-taux-ir-create-admin>
                      <app-prelevement-social-create-admin></app-prelevement-social-create-admin>
                      <app-employe-create-admin></app-employe-create-admin>-->

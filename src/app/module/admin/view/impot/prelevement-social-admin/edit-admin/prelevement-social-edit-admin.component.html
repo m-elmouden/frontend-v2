@@ -31,6 +31,7 @@
                                         <div class="p-field p-col-12 p-md-6">
                                             <label for="3">Pourcentage</label>
                                             <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           mode="decimal" [minFractionDigits]="2"
                                                            placeholder="Pourcentage"  [(ngModel)]="selectedPrelevementSocial.pourcentage"
                                                    ></p-inputNumber>
                                         </div>

@@ -10,7 +10,7 @@
                     <div class="p-field p-col-12 p-md-3">
                         <label for="1">Refrerence</label>
                         <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
-                               placeholder="Refrerence" [(ngModel)]="selectedDeclarationIr.refrerence"
+                               placeholder="Refrerence"
                                id="1" [(ngModel)]="selectedDeclarationIr.refrerence"
                                autofocus>
                     </div>
@@ -48,7 +48,6 @@
                         <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="5"
                                        [disabled]="true"
                                        placeholder="Montant ir calcule"
-                                       [(ngModel)]="selectedDeclarationIr.montantIrCalcule"
                                        [(ngModel)]="selectedDeclarationIr.montantIrCalcule"></p-inputNumber>
                     </div>
 
@@ -57,7 +56,6 @@
                         <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="6"
                                        [disabled]="true"
                                        placeholder="Montant ir a paye"
-                                       [(ngModel)]="selectedDeclarationIr.montantIrAPaye"
                                        [(ngModel)]="selectedDeclarationIr.montantIrAPaye"></p-inputNumber>
                     </div>
 
@@ -65,7 +63,7 @@
                         <label for="7">Total a paye</label>
                         <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="7"
                                        [disabled]="true"
-                                       placeholder="Total a paye" [(ngModel)]="selectedDeclarationIr.totalAPaye"
+                                       placeholder="Total a paye"
                                        [(ngModel)]="selectedDeclarationIr.totalAPaye"></p-inputNumber>
                     </div>
 
@@ -74,7 +72,6 @@
                         <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="8"
                                        [disabled]="true"
                                        placeholder="Total salaire net"
-                                       [(ngModel)]="selectedDeclarationIr.totalSalaireNet"
                                        [(ngModel)]="selectedDeclarationIr.totalSalaireNet"></p-inputNumber>
                     </div>
 
@@ -83,7 +80,6 @@
                         <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="9"
                                        [disabled]="true"
                                        placeholder="Total salaire brut"
-                                       [(ngModel)]="selectedDeclarationIr.totalSalaireBrut"
                                        [(ngModel)]="selectedDeclarationIr.totalSalaireBrut"></p-inputNumber>
                     </div>
 
@@ -161,7 +157,7 @@
                     <div class="p-field p-col-12 p-md-3">
                         <label for="19">Username</label>
                         <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
-                               placeholder="Username" [(ngModel)]="selectedDeclarationIr.username"
+                               placeholder="Username"
                                id="19" [(ngModel)]="selectedDeclarationIr.username"
                                autofocus>
                     </div>
@@ -243,7 +239,6 @@
                                         <td>{{p.prelevementSocialVo?.libelle}}</td>
                                         <td>{{p.employeVo?.cin}}</td>
                                         <td>{{p.salaireBrutImposable}}</td>
-
                                         <td>{{p.montantCalculer}}</td>
 
 
