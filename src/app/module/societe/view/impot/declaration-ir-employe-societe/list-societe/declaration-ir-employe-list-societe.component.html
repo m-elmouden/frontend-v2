@@ -4,8 +4,8 @@
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
-                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
-                                (click)="openCreateDeclarationIrEmploye('declarationIrEmploye')"></button>
+                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                            (click)="openCreateDeclarationIrEmploye('declarationIrEmploye')"></button>
 
 
                     <button pButton pRipple label="Recherche"
@@ -14,6 +14,7 @@
                             (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
                 </ng-template>
                 <ng-template pTemplate="right">
+                    <p-fileUpload styleClass="p-mr-2" #fubauto mode="basic" name="file" label="Import" [customUpload]="true" (uploadHandler)="uploadExcelFile($event)" [auto]="true"></p-fileUpload>
                     <div class="flex">
                         <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
                     </div>
@@ -25,132 +26,176 @@
                 <div class="align-form-search">
                             <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                 <p-dropdown [options]="declarationIrs" [(ngModel)]="searchDeclarationIrEmploye.declarationIrVo"
-                                        id="1"
-                                        [filter]="true" [showClear]="true"  placeholder="Declaration ir"
-                                        optionLabel="refrerence">
+                                            id="1"
+                                            [filter]="true" [showClear]="true"  placeholder="Declaration ir"
+                                            optionLabel="refrerence">
                                 </p-dropdown>
                             </span>
-                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                 <p-dropdown [options]="employes" [(ngModel)]="searchDeclarationIrEmploye.employeVo"
-                                        id="2"
-                                        [filter]="true" [showClear]="true"  placeholder="Employe"
-                                        optionLabel="cin">
+                                            id="2"
+                                            [filter]="true" [showClear]="true"  placeholder="Employe"
+                                            optionLabel="cin">
                                 </p-dropdown>
                             </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireNetMin"
                                                              id="3-1"></p-inputNumber>
                                               <label for="3-1">Salaire net Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireNetMax"
                                                              id="3-2"></p-inputNumber>
                                              <label for="3-2">Salaire net Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireBrutMin"
                                                              id="4-1"></p-inputNumber>
-                                              <label for="4-1">Salaire brut Min</label>
+                                              <label for="4-1">Salaire brut Globale Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireBrutMax"
                                                              id="4-2"></p-inputNumber>
-                                             <label for="4-2">Salaire brut Max</label>
+                                             <label for="4-2">Salaire brut Globale Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireNetImposableMin"
                                                              id="5-1"></p-inputNumber>
                                               <label for="5-1">Salaire net imposable Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireNetImposableMax"
                                                              id="5-2"></p-inputNumber>
                                              <label for="5-2">Salaire net imposable Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireBrutImposableMin"
                                                              id="6-1"></p-inputNumber>
                                               <label for="6-1">Salaire brut imposable Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireBrutImposableMax"
                                                              id="6-2"></p-inputNumber>
                                              <label for="6-2">Salaire brut imposable Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireBaseMin"
                                                              id="7-1"></p-inputNumber>
                                               <label for="7-1">Salaire base Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.salaireBaseMax"
                                                              id="7-2"></p-inputNumber>
                                              <label for="7-2">Salaire base Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.indemniteMin"
                                                              id="8-1"></p-inputNumber>
                                               <label for="8-1">Indemnite Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.indemniteMax"
                                                              id="8-2"></p-inputNumber>
                                              <label for="8-2">Indemnite Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.primesMin"
                                                              id="9-1"></p-inputNumber>
                                               <label for="9-1">Primes Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.primesMax"
                                                              id="9-2"></p-inputNumber>
                                              <label for="9-2">Primes Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+
+
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.pourcentageAncienneteMin"
                                                              id="10-1"></p-inputNumber>
                                               <label for="10-1">Pourcentage anciennete Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.pourcentageAncienneteMax"
                                                              id="10-2"></p-inputNumber>
                                              <label for="10-2">Pourcentage anciennete Max</label>
                                        </span>
-                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+
+
+
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                 <p-dropdown [options]="tauxIrs" [(ngModel)]="searchDeclarationIrEmploye.tauxIrVo"
-                                        id="11"
-                                        [filter]="true" [showClear]="true"  placeholder="Taux ir"
-                                        optionLabel="id">
+                                            id="11"
+                                            [filter]="true" [showClear]="true"  placeholder="Taux ir"
+                                            optionLabel="id">
                                 </p-dropdown>
                             </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
-                                                             mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.cotisationMin"
-                                                             id="12-1"></p-inputNumber>
-                                              <label for="12-1">Cotisation Min</label>
+
+
+
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.heuresSupplementairesMin"
+                                                             id="11-1"></p-inputNumber>
+                                              <label for="11-1">Pourcentage anciennete Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
-                                                             mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.cotisationMax"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.pourcentageAncienneteMax"
+                                                             id="11-2"></p-inputNumber>
+                                             <label for="11-2">Pourcentage anciennete Max</label>
+                                       </span>
+
+
+
+
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.avantageMin"
+                                                             id="12-1"></p-inputNumber>
+                                              <label for="12-1">Pourcentage anciennete Min</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.avantageMax"
                                                              id="12-2"></p-inputNumber>
-                                             <label for="12-2">Cotisation Max</label>
+                                             <label for="12-2">Pourcentage anciennete Max</label>
+                                       </span>
+
+
+
+
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.cotisationMin"
+                                                             id="13-1"></p-inputNumber>
+                                              <label for="13-1">Cotisation Min</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal" [minFractionDigits]="2" class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDeclarationIrEmploye.cotisationMax"
+                                                             id="13-2"></p-inputNumber>
+                                             <label for="13-2">Cotisation Max</label>
                                        </span>
                 </div>
 
@@ -162,10 +207,10 @@
 
 
             <p-table #dt [value]="declarationIrEmployes" [columns]="cols" [rows]="4" [paginator]="true"
-                    [globalFilterFields]="['refrerence', 'cin', 'salaireNet', 'salaireBrut', 'salaireNetImposable', 'salaireBrutImposable', 'salaireBase', 'indemnite', 'primes', 'pourcentageAnciennete', 'id', 'cotisation']" [(selection)]="selectedDeclarationIrEmploye"
-                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
-                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                    [showCurrentPageReport]="true">
+                     [globalFilterFields]="['refrerence', 'cin', 'salaireNet', 'salaireBrut', 'salaireNetImposable', 'salaireBrutImposable', 'salaireBase', 'indemnite', 'primes', 'pourcentageAnciennete', 'id', 'cotisation']" [(selection)]="selectedDeclarationIrEmploye"
+                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Liste des Declaration ir employes</h5>
@@ -181,124 +226,124 @@
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
 
-                                
-                                <th pSortableColumn="declarationIr">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Declaration ir</span>
-                                        <p-sortIcon field="declarationIr"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+
+                        <th pSortableColumn="declarationIr">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Declaration ir</span>
+                                <p-sortIcon field="declarationIr"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="employe">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Employe</span>
-                                        <p-sortIcon field="employe"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
 
 
-                                
-                                <th pSortableColumn="salaireNet">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Salaire net</span>
-                                        <p-sortIcon field="salaireNet"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+                        <th pSortableColumn="employe">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Employe</span>
+                                <p-sortIcon field="employe"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="salaireBrut">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Salaire brut</span>
-                                        <p-sortIcon field="salaireBrut"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
 
 
-                                
-                                <th pSortableColumn="salaireNetImposable">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Salaire net imposable</span>
-                                        <p-sortIcon field="salaireNetImposable"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+                        <th pSortableColumn="salaireNet">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Salaire net</span>
+                                <p-sortIcon field="salaireNet"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="salaireBrutImposable">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Salaire brut imposable</span>
-                                        <p-sortIcon field="salaireBrutImposable"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
 
 
-                                
-                                <th pSortableColumn="salaireBase">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Salaire base</span>
-                                        <p-sortIcon field="salaireBase"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+                        <th pSortableColumn="salaireBrut">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Salaire brut Globale</span>
+                                <p-sortIcon field="salaireBrut"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="indemnite">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Indemnite</span>
-                                        <p-sortIcon field="indemnite"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
 
 
-                                <!-- 
-                                <th pSortableColumn="primes">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Primes</span>
-                                        <p-sortIcon field="primes"></p-sortIcon>
-                                    </div>
-                                </th>
-                                --> 
+                        <th pSortableColumn="salaireNetImposable">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Salaire net imposable</span>
+                                <p-sortIcon field="salaireNetImposable"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                <!-- 
-                                <th pSortableColumn="pourcentageAnciennete">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Pourcentage anciennete</span>
-                                        <p-sortIcon field="pourcentageAnciennete"></p-sortIcon>
-                                    </div>
-                                </th>
-                                --> 
 
 
-                                <!-- 
-                                <th pSortableColumn="tauxIr">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Taux ir</span>
-                                        <p-sortIcon field="tauxIr"></p-sortIcon>
-                                    </div>
-                                </th>
-                                --> 
+                        <th pSortableColumn="salaireBrutImposable">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Salaire brut imposable</span>
+                                <p-sortIcon field="salaireBrutImposable"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                <!-- 
-                                <th pSortableColumn="cotisation">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Cotisation</span>
-                                        <p-sortIcon field="cotisation"></p-sortIcon>
-                                    </div>
-                                </th>
-                                --> 
+
+
+                        <th pSortableColumn="salaireBase">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Salaire base</span>
+                                <p-sortIcon field="salaireBase"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+
+                        <th pSortableColumn="indemnite">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Indemnite</span>
+                                <p-sortIcon field="indemnite"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+                        <!--
+                        <th pSortableColumn="primes">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Primes</span>
+                                <p-sortIcon field="primes"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <!--
+                        <th pSortableColumn="pourcentageAnciennete">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Pourcentage anciennete</span>
+                                <p-sortIcon field="pourcentageAnciennete"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <!--
+                        <th pSortableColumn="tauxIr">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Taux ir</span>
+                                <p-sortIcon field="tauxIr"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
+
+
+                        <!--
+                        <th pSortableColumn="cotisation">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Cotisation</span>
+                                <p-sortIcon field="cotisation"></p-sortIcon>
+                            </div>
+                        </th>
+                        -->
 
 
                         <th>Actions</th>
@@ -309,53 +354,53 @@
                         <td>
                             <p-tableCheckbox [value]="declarationIrEmploye"></p-tableCheckbox>
                         </td>
-                            
-                                <td>{{declarationIrEmploye.declarationIrVo?.refrerence}}</td>
-                            
 
-                            
-                                <td>{{declarationIrEmploye.employeVo?.cin}}</td>
-                            
+                        <td>{{declarationIrEmploye.declarationIrVo?.refrerence}}</td>
 
-                            
-                                 <td>{{declarationIrEmploye.salaireNet}}</td>
-                            
 
-                            
-                                 <td>{{declarationIrEmploye.salaireBrut}}</td>
-                            
 
-                            
-                                 <td>{{declarationIrEmploye.salaireNetImposable}}</td>
-                            
+                        <td>{{declarationIrEmploye.employeVo?.cin}}</td>
 
-                            
-                                 <td>{{declarationIrEmploye.salaireBrutImposable}}</td>
-                            
 
-                            
-                                 <td>{{declarationIrEmploye.salaireBase}}</td>
-                            
 
-                            
-                                 <td>{{declarationIrEmploye.indemnite}}</td>
-                            
+                        <td>{{declarationIrEmploye.salaireNet}}</td>
 
-                             <!-- 
-                                 <td>{{declarationIrEmploye.primes}}</td>
-                             --> 
 
-                             <!-- 
-                                 <td>{{declarationIrEmploye.pourcentageAnciennete}}</td>
-                             --> 
 
-                             <!-- 
-                                <td>{{declarationIrEmploye.tauxIrVo?.id}}</td>
-                             --> 
+                        <td>{{declarationIrEmploye.salaireBrut}}</td>
 
-                             <!-- 
-                                 <td>{{declarationIrEmploye.cotisation}}</td>
-                             --> 
+
+
+                        <td>{{declarationIrEmploye.salaireNetImposable}}</td>
+
+
+
+                        <td>{{declarationIrEmploye.salaireBrutImposable}}</td>
+
+
+
+                        <td>{{declarationIrEmploye.salaireBase}}</td>
+
+
+
+                        <td>{{declarationIrEmploye.indemnite}}</td>
+
+
+                        <!--
+                            <td>{{declarationIrEmploye.primes}}</td>
+                        -->
+
+                        <!--
+                            <td>{{declarationIrEmploye.pourcentageAnciennete}}</td>
+                        -->
+
+                        <!--
+                           <td>{{declarationIrEmploye.tauxIrVo?.id}}</td>
+                        -->
+
+                        <!--
+                            <td>{{declarationIrEmploye.cotisation}}</td>
+                        -->
 
 
                         <td>

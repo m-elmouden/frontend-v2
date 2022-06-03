@@ -1,254 +1,267 @@
-
 <p-dialog [(visible)]="viewDeclarationIrDialog" [style]="{width: '70vw'}"
-        header="Declaration ir" [modal]="true"
-        styleClass="p-fluid">
+          header="Declaration ir" [modal]="true"
+          styleClass="p-fluid">
 
     <ng-template pTemplate="content">
         <p-tabView>
             <p-tabPanel header="Declaration ir">
                 <div class="p-grid">
 
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="1">Refrerence</label>
-                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
-                                           placeholder="Refrerence"  [(ngModel)]="selectedDeclarationIr.refrerence"
-                                           id="1" [(ngModel)]="selectedDeclarationIr.refrerence"
-                                           autofocus>
-                                </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="1">Refrerence</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Refrerence" [(ngModel)]="selectedDeclarationIr.refrerence"
+                               id="1" [(ngModel)]="selectedDeclarationIr.refrerence"
+                               autofocus>
+                    </div>
 
 
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="2">Societe</label>
-                                    <p-dropdown [options]="societes" [(ngModel)]="selectedDeclarationIr.societeVo"
-                                            id="2" [filter]="true" filterMatchMode="contains"
-                                            [showClear]="true" [disabled]="true"
-                                            optionLabel="id"
-                                            placeholder="Societe">
-                                    </p-dropdown>
-                                </div>
-
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="3">Annee</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
-                                                   placeholder="Annee"  [(ngModel)]="selectedDeclarationIr.annee"
-                                            [(ngModel)]="selectedDeclarationIr.annee"></p-inputNumber>
-                                </div>
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="4">Mois</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
-                                                   placeholder="Mois"  [(ngModel)]="selectedDeclarationIr.mois"
-                                            [(ngModel)]="selectedDeclarationIr.mois"></p-inputNumber>
-                                </div>
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="5">Montant ir calcule</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
-                                                   placeholder="Montant ir calcule"  [(ngModel)]="selectedDeclarationIr.montantIrCalcule"
-                                            [(ngModel)]="selectedDeclarationIr.montantIrCalcule"></p-inputNumber>
-                                </div>
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="6">Montant ir a paye</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
-                                                   placeholder="Montant ir a paye"  [(ngModel)]="selectedDeclarationIr.montantIrAPaye"
-                                            [(ngModel)]="selectedDeclarationIr.montantIrAPaye"></p-inputNumber>
-                                </div>
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="7">Total a paye</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="7" [disabled]="true"
-                                                   placeholder="Total a paye"  [(ngModel)]="selectedDeclarationIr.totalAPaye"
-                                            [(ngModel)]="selectedDeclarationIr.totalAPaye"></p-inputNumber>
-                                </div>
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="8">Total salaire net</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="8" [disabled]="true"
-                                                   placeholder="Total salaire net"  [(ngModel)]="selectedDeclarationIr.totalSalaireNet"
-                                            [(ngModel)]="selectedDeclarationIr.totalSalaireNet"></p-inputNumber>
-                                </div>
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="9">Total salaire brut</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="9" [disabled]="true"
-                                                   placeholder="Total salaire brut"  [(ngModel)]="selectedDeclarationIr.totalSalaireBrut"
-                                            [(ngModel)]="selectedDeclarationIr.totalSalaireBrut"></p-inputNumber>
-                                </div>
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="12">Etat declaration ir</label>
-                                    <p-dropdown [options]="etatDeclarationIrs" [(ngModel)]="selectedDeclarationIr.etatDeclarationIrVo"
-                                            id="12" [filter]="true" filterMatchMode="contains"
-                                            [showClear]="true" [disabled]="true"
-                                            optionLabel="libelle"
-                                            placeholder="Etat declaration ir">
-                                    </p-dropdown>
-                                </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="2">Societe</label>
+                        <p-dropdown [options]="societes" [(ngModel)]="selectedDeclarationIr.societeVo"
+                                    id="2" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="id"
+                                    placeholder="Societe">
+                        </p-dropdown>
+                    </div>
 
 
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="13">Paiement declaration ir</label>
-                                    <p-dropdown [options]="paiementDeclarationIrs" [(ngModel)]="selectedDeclarationIr.paiementDeclarationIrVo"
-                                            id="13" [filter]="true" filterMatchMode="contains"
-                                            [showClear]="true" [disabled]="true"
-                                            optionLabel="reference"
-                                            placeholder="Paiement declaration ir">
-                                    </p-dropdown>
-                                </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="3">Annee</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Annee" [(ngModel)]="selectedDeclarationIr.annee"
+                               id="3" [(ngModel)]="selectedDeclarationIr.annee"
+                               autofocus>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="4">Mois</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Mois" [(ngModel)]="selectedDeclarationIr.mois"
+                               id="4" [(ngModel)]="selectedDeclarationIr.mois"
+                               autofocus>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="5">Montant ir calcule</label>
+                        <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="5"
+                                       [disabled]="true"
+                                       placeholder="Montant ir calcule"
+                                       [(ngModel)]="selectedDeclarationIr.montantIrCalcule"
+                                       [(ngModel)]="selectedDeclarationIr.montantIrCalcule"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="6">Montant ir a paye</label>
+                        <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="6"
+                                       [disabled]="true"
+                                       placeholder="Montant ir a paye"
+                                       [(ngModel)]="selectedDeclarationIr.montantIrAPaye"
+                                       [(ngModel)]="selectedDeclarationIr.montantIrAPaye"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="7">Total a paye</label>
+                        <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="7"
+                                       [disabled]="true"
+                                       placeholder="Total a paye" [(ngModel)]="selectedDeclarationIr.totalAPaye"
+                                       [(ngModel)]="selectedDeclarationIr.totalAPaye"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="8">Total salaire net</label>
+                        <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="8"
+                                       [disabled]="true"
+                                       placeholder="Total salaire net"
+                                       [(ngModel)]="selectedDeclarationIr.totalSalaireNet"
+                                       [(ngModel)]="selectedDeclarationIr.totalSalaireNet"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="9">Total salaire brut</label>
+                        <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mb-2 p-mr-2" id="9"
+                                       [disabled]="true"
+                                       placeholder="Total salaire brut"
+                                       [(ngModel)]="selectedDeclarationIr.totalSalaireBrut"
+                                       [(ngModel)]="selectedDeclarationIr.totalSalaireBrut"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="12">Etat declaration ir</label>
+                        <p-dropdown [options]="etatDeclarationIrs"
+                                    [(ngModel)]="selectedDeclarationIr.etatDeclarationIrVo"
+                                    id="12" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="libelle"
+                                    placeholder="Etat declaration ir">
+                        </p-dropdown>
+                    </div>
 
 
-                                <div class="p-field align-inputswitch p-col-12  p-md-3">
-                                    <div  class="label-inputswitch">
-                                        <label for="14">Archive</label>
-                                    </div>
-                                    <div class="input-switch">
-                                        <p-inputSwitch id="14"  [disabled]="true" [(ngModel)]="selectedDeclarationIr.archive"></p-inputSwitch>
-                                    </div>
-                                </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="13">Paiement declaration ir</label>
+                        <p-dropdown [options]="paiementDeclarationIrs"
+                                    [(ngModel)]="selectedDeclarationIr.paiementDeclarationIrVo"
+                                    id="13" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="reference"
+                                    placeholder="Paiement declaration ir">
+                        </p-dropdown>
+                    </div>
 
 
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="15">Date archivage</label>
-                                    <p-calendar id="15" [disabled]="true"
-                                                placeholder="Date archivage"  [(ngModel)]="selectedDeclarationIr.dateArchivage"
-                                            dateFormat="{{dateFormat}}"></p-calendar>
-                                </div>
-
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="16">Date creation</label>
-                                    <p-calendar id="16" [disabled]="true"
-                                                placeholder="Date creation"  [(ngModel)]="selectedDeclarationIr.dateCreation"
-                                            dateFormat="{{dateFormat}}"></p-calendar>
-                                </div>
-
-                                <div class="p-field align-inputswitch p-col-12  p-md-3">
-                                    <div  class="label-inputswitch">
-                                        <label for="17">Admin</label>
-                                    </div>
-                                    <div class="input-switch">
-                                        <p-inputSwitch id="17"  [disabled]="true" [(ngModel)]="selectedDeclarationIr.admin"></p-inputSwitch>
-                                    </div>
-                                </div>
+                    <div class="p-field align-inputswitch p-col-12  p-md-3">
+                        <div class="label-inputswitch">
+                            <label for="14">Archive</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="14" [disabled]="true"
+                                           [(ngModel)]="selectedDeclarationIr.archive"></p-inputSwitch>
+                        </div>
+                    </div>
 
 
-                                <div class="p-field align-inputswitch p-col-12  p-md-3">
-                                    <div  class="label-inputswitch">
-                                        <label for="18">Visible</label>
-                                    </div>
-                                    <div class="input-switch">
-                                        <p-inputSwitch id="18"  [disabled]="true" [(ngModel)]="selectedDeclarationIr.visible"></p-inputSwitch>
-                                    </div>
-                                </div>
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="15">Date archivage</label>
+                        <p-calendar id="15" [disabled]="true"
+                                    placeholder="Date archivage" [(ngModel)]="selectedDeclarationIr.dateArchivage"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="16">Date creation</label>
+                        <p-calendar id="16" [disabled]="true"
+                                    placeholder="Date creation" [(ngModel)]="selectedDeclarationIr.dateCreation"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+
+                    <div class="p-field align-inputswitch p-col-12  p-md-3">
+                        <div class="label-inputswitch">
+                            <label for="17">Admin</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="17" [disabled]="true"
+                                           [(ngModel)]="selectedDeclarationIr.admin"></p-inputSwitch>
+                        </div>
+                    </div>
 
 
-                                <div class="p-field p-col-12 p-md-3">
-                                    <label for="19">Username</label>
-                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
-                                           placeholder="Username"  [(ngModel)]="selectedDeclarationIr.username"
-                                           id="19" [(ngModel)]="selectedDeclarationIr.username"
-                                           autofocus>
-                                </div>
+                    <div class="p-field align-inputswitch p-col-12  p-md-3">
+                        <div class="label-inputswitch">
+                            <label for="18">Visible</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="18" [disabled]="true"
+                                           [(ngModel)]="selectedDeclarationIr.visible"></p-inputSwitch>
+                        </div>
+                    </div>
 
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="19">Username</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Username" [(ngModel)]="selectedDeclarationIr.username"
+                               id="19" [(ngModel)]="selectedDeclarationIr.username"
+                               autofocus>
+                    </div>
 
 
                 </div>
             </p-tabPanel>
-                    <p-tabPanel header="Declaration ir employes">
-                        <div class="p-grid">
+            <p-tabPanel header="Declaration ir employes">
+                <div class="p-grid">
 
-                            <div class="p-col">
-                                <div class="card">
-                                    <p-table [value]="selectedDeclarationIr.declarationIrEmployesVo" [scrollable]="true"
-                                            scrollHeight="200px">
-                                        <ng-template pTemplate="header">
-                                            <tr>
-                                                            <th>Employe</th>
-                                                            <th>Salaire net</th>
-                                                            <th>Salaire brut</th>
-                                                            <th>Salaire net imposable</th>
-                                                            <th>Salaire brut imposable</th>
-                                                            <th>Salaire base</th>
-                                                            <th>Indemnite</th>
-                                                            <th>Primes</th>
-                                                            <th>Pourcentage anciennete</th>
-                                                            <th>Taux ir</th>
-                                                            <th>Cotisation</th>
-                                            </tr>
-                                        </ng-template>
-                                        <ng-template pTemplate="body" let-p>
-                                            <tr>
-                                                        <td>{{p.employeVo?.cin}}</td>
-                                                            <td>{{p.salaireNet}}</td>
+                    <div class="p-col">
+                        <div class="card">
+                            <p-table [value]="selectedDeclarationIr.declarationIrEmployesVo" [scrollable]="true"
+                                     scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Employe</th>
+                                        <th>Salaire net</th>
+                                        <th>Salaire brut</th>
+                                        <th>Salaire net imposable</th>
+                                        <th>Salaire brut imposable</th>
+                                        <th>Salaire base</th>
+                                        <th>Indemnite</th>
+                                        <th>Primes</th>
+                                        <th>Pourcentage anciennete</th>
+                                        <th>Taux ir</th>
+                                        <th>Cotisation</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.employeVo?.cin}}</td>
+                                        <td>{{p.salaireNet}}</td>
 
-                                                            <td>{{p.salaireBrut}}</td>
+                                        <td>{{p.salaireBrut}}</td>
 
-                                                            <td>{{p.salaireNetImposable}}</td>
+                                        <td>{{p.salaireNetImposable}}</td>
 
-                                                            <td>{{p.salaireBrutImposable}}</td>
+                                        <td>{{p.salaireBrutImposable}}</td>
 
-                                                            <td>{{p.salaireBase}}</td>
+                                        <td>{{p.salaireBase}}</td>
 
-                                                            <td>{{p.indemnite}}</td>
+                                        <td>{{p.indemnite}}</td>
 
-                                                            <td>{{p.primes}}</td>
+                                        <td>{{p.primes}}</td>
 
-                                                            <td>{{p.pourcentageAnciennete}}</td>
+                                        <td>{{p.pourcentageAnciennete}}</td>
 
-                                                        <td>{{p.tauxIrVo?.id}}</td>
-                                                            <td>{{p.cotisation}}</td>
+                                        <td>{{p.tauxIrVo?.id}}</td>
+                                        <td>{{p.cotisation}}</td>
 
 
-                                            </tr>
-                                        </ng-template>
-                                    </p-table>
-                                </div>
-                            </div>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
                         </div>
+                    </div>
+                </div>
 
-                    </p-tabPanel>
+            </p-tabPanel>
 
-                    <p-tabPanel header="Prelevement social employes">
-                        <div class="p-grid">
+            <p-tabPanel header="Prelevement social employes">
+                <div class="p-grid">
 
-                            <div class="p-col">
-                                <div class="card">
-                                    <p-table [value]="selectedDeclarationIr.prelevementSocialEmployesVo" [scrollable]="true"
-                                            scrollHeight="200px">
-                                        <ng-template pTemplate="header">
-                                            <tr>
-                                                            <th>Prelevement social</th>
-                                                            <th>Employe</th>
-                                                            <th>Salaire brut imposable</th>
-                                                            <th>Montant calculer</th>
-                                            </tr>
-                                        </ng-template>
-                                        <ng-template pTemplate="body" let-p>
-                                            <tr>
-                                                        <td>{{p.prelevementSocialVo?.libelle}}</td>
-                                                        <td>{{p.employeVo?.cin}}</td>
-                                                            <td>{{p.salaireBrutImposable}}</td>
+                    <div class="p-col">
+                        <div class="card">
+                            <p-table [value]="selectedDeclarationIr.prelevementSocialEmployesVo" [scrollable]="true"
+                                     scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Prelevement social</th>
+                                        <th>Employe</th>
+                                        <th>Salaire brut imposable</th>
+                                        <th>Montant calculer</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.prelevementSocialVo?.libelle}}</td>
+                                        <td>{{p.employeVo?.cin}}</td>
+                                        <td>{{p.salaireBrutImposable}}</td>
 
-                                                            <td>{{p.montantCalculer}}</td>
+                                        <td>{{p.montantCalculer}}</td>
 
 
-                                            </tr>
-                                        </ng-template>
-                                    </p-table>
-                                </div>
-                            </div>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
                         </div>
+                    </div>
+                </div>
 
-                    </p-tabPanel>
+            </p-tabPanel>
 
 
         </p-tabView>
 
     </ng-template>
 
-    <ng-template pTemplate="footer" >
+    <ng-template pTemplate="footer">
         <div class="p-grid">
             <div>
                 <button pButton pRipple label="Annuler" icon="pi pi-times"
@@ -257,14 +270,14 @@
         </div>
     </ng-template>
 
-            <!-- <app-societe-create-societe></app-societe-create-societe>
-            <app-etat-declaration-ir-create-societe></app-etat-declaration-ir-create-societe>
-            <app-paiement-declaration-ir-create-societe></app-paiement-declaration-ir-create-societe>
+    <!--<app-societe-create-admin></app-societe-create-admin>
+    <app-etat-declaration-ir-create-admin></app-etat-declaration-ir-create-admin>
+    <app-paiement-declaration-ir-create-admin></app-paiement-declaration-ir-create-admin>
 
-                    <app-employe-create-societe></app-employe-create-societe>
-                    <app-taux-ir-create-societe></app-taux-ir-create-societe>
-                    <app-prelevement-social-create-societe></app-prelevement-social-create-societe>
-                    <app-employe-create-societe></app-employe-create-societe> -->
+            <app-employe-create-admin></app-employe-create-admin>
+            <app-taux-ir-create-admin></app-taux-ir-create-admin>
+            <app-prelevement-social-create-admin></app-prelevement-social-create-admin>
+            <app-employe-create-admin></app-employe-create-admin>-->
 
 
 </p-dialog>

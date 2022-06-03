@@ -1,86 +1,93 @@
-        <p-dialog [(visible)]="createTauxIrDialog" [style]="{width: '70vw'}"
-                header="Taux ir" [modal]="true"
-                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+<p-dialog [(visible)]="createTauxIrDialog" [style]="{width: '70vw'}"
+          header="Taux ir" [modal]="true"
+          styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
 
 
-            <ng-template pTemplate="content" >
-                <p-tabView>
-                    <p-tabPanel header="Taux ir">
-                        <div class="p-grid">
-
-                                        <div class="p-field p-col-12 p-md-6">
-                                            <label for="1">Date min</label>
-                                            <p-calendar id="1"
-                                                        placeholder="Date min"  [(ngModel)]="selectedTauxIr.dateMin"
-                                                    dateFormat="{{dateFormat}}"  >
-                                            </p-calendar>
-                                            
-                                        </div>
-
-                                        <div class="p-field p-col-12 p-md-6">
-                                            <label for="2">Date max</label>
-                                            <p-calendar id="2"
-                                                        placeholder="Date max"  [(ngModel)]="selectedTauxIr.dateMax"
-                                                    dateFormat="{{dateFormat}}"  >
-                                            </p-calendar>
-                                            
-                                        </div>
-
-                                        <div class="p-field p-col-12 p-md-6">
-                                            <label for="3">Salaire impo min</label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
-                                                           placeholder="Salaire impo min"
-                                                    [(ngModel)]="selectedTauxIr.salaireImpoMin"  >
-                                            </p-inputNumber>
-                                            
-                                        </div>
-
-                                        <div class="p-field p-col-12 p-md-6">
-                                            <label for="4">Salaire impo max</label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="4"
-                                                           placeholder="Salaire impo max"
-                                                    [(ngModel)]="selectedTauxIr.salaireImpoMax"  >
-                                            </p-inputNumber>
-                                            
-                                        </div>
-
-                                        <div class="p-field p-col-12 p-md-6">
-                                            <label for="5">Forfait deduit</label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
-                                                           placeholder="Forfait deduit"
-                                                    [(ngModel)]="selectedTauxIr.forfaitDeduit"  >
-                                            </p-inputNumber>
-                                            
-                                        </div>
-
-                                        <div class="p-field p-col-12 p-md-6">
-                                            <label for="6">Pourcentage</label>
-                                            <p-inputNumber class="p-mb-2 p-mr-2" id="6"
-                                                           placeholder="Pourcentage"
-                                                    [(ngModel)]="selectedTauxIr.pourcentage"  >
-                                            </p-inputNumber>
-                                            
-                                        </div>
-
-                        </div>
-                    </p-tabPanel>
-
-                </p-tabView>
-
-            </ng-template>
-
-            <ng-template pTemplate="footer" >
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Taux ir">
                 <div class="p-grid">
-                        <div>
-                            <button pButton pRipple label="Annuler" icon="pi pi-times"
-                                    class="p-button-text" (click)="hideCreateDialog()"></button>
-                        </div>
-                    <div>
-                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="1">Intervalle<span style="color: red;">*</span></label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText
+                               placeholder="Intervalle"
+                               id="1" [(ngModel)]="selectedTauxIr.intervalle"/>
                     </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="2">Date min</label>
+                        <p-calendar id="2"
+                                    placeholder="Date min" [(ngModel)]="selectedTauxIr.dateMin"
+                                    dateFormat="{{dateFormat}}">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="3">Date max</label>
+                        <p-calendar id="3"
+                                    placeholder="Date max" [(ngModel)]="selectedTauxIr.dateMax"
+                                    dateFormat="{{dateFormat}}">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="4">Salaire impo min</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                       placeholder="Salaire impo min"
+                                       [(ngModel)]="selectedTauxIr.salaireImpoMin">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="5">Salaire impo max</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                       placeholder="Salaire impo max"
+                                       [(ngModel)]="selectedTauxIr.salaireImpoMax">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="6">Forfait deduit</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="6"
+                                       placeholder="Forfait deduit"
+                                       [(ngModel)]="selectedTauxIr.forfaitDeduit">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="7">Pourcentage</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="7"
+                                       placeholder="Pourcentage"
+                                       [(ngModel)]="selectedTauxIr.pourcentage">
+                        </p-inputNumber>
+
+                    </div>
+
                 </div>
-            </ng-template>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideCreateDialog()"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px"
+                        (click)="save()"></button>
+            </div>
+        </div>
+    </ng-template>
 
 
-
-    </p-dialog>
+</p-dialog>

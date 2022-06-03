@@ -162,7 +162,7 @@ import { CompteComptableEditComptableComponent } from './compte-comptable-compta
 import { CompteComptableViewComptableComponent } from './compte-comptable-comptable/view-comptable/compte-comptable-view-comptable.component';
 import { CompteComptableListComptableComponent } from './compte-comptable-comptable/list-comptable/compte-comptable-list-comptable.component';
 import { CompteComptableComptableComponent } from './compte-comptable-comptable/compte-comptable-comptable.component';
-import { PrelevementSocialCreateComptableComponent } from './prelevement-social-comptable/create-comptable/prelevement-social-create-comptable.component';
+import {PrelevementSocialCreateComptableComponent } from './prelevement-social-comptable/create-comptable/prelevement-social-create-comptable.component';
 import { PrelevementSocialEditComptableComponent } from './prelevement-social-comptable/edit-comptable/prelevement-social-edit-comptable.component';
 import { PrelevementSocialViewComptableComponent } from './prelevement-social-comptable/view-comptable/prelevement-social-view-comptable.component';
 import { PrelevementSocialListComptableComponent } from './prelevement-social-comptable/list-comptable/prelevement-social-list-comptable.component';

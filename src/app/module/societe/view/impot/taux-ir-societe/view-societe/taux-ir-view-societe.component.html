@@ -1,54 +1,61 @@
-
 <p-dialog [(visible)]="viewTauxIrDialog" [style]="{width: '70vw'}"
-        header="Taux ir" [modal]="true"
-        styleClass="p-fluid">
+          header="Taux ir" [modal]="true"
+          styleClass="p-fluid">
 
     <ng-template pTemplate="content">
         <p-tabView>
             <p-tabPanel header="Taux ir">
                 <div class="p-grid">
 
-                                <div class="p-field p-col-12 p-md-6">
-                                    <label for="1">Date min</label>
-                                    <p-calendar id="1" [disabled]="true"
-                                                placeholder="Date min"  [(ngModel)]="selectedTauxIr.dateMin"
-                                            dateFormat="{{dateFormat}}"></p-calendar>
-                                </div>
 
-                                <div class="p-field p-col-12 p-md-6">
-                                    <label for="2">Date max</label>
-                                    <p-calendar id="2" [disabled]="true"
-                                                placeholder="Date max"  [(ngModel)]="selectedTauxIr.dateMax"
-                                            dateFormat="{{dateFormat}}"></p-calendar>
-                                </div>
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="1">Intervalle</label>
+                        <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                               placeholder="Intervalle" [(ngModel)]="selectedTauxIr.intervalle"
+                               id="1" [(ngModel)]="selectedTauxIr.intervalle"
+                               autofocus>
+                    </div>
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="2">Date min</label>
+                        <p-calendar id="2" [disabled]="true"
+                                    placeholder="Date min" [(ngModel)]="selectedTauxIr.dateMin"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
 
-                                <div class="p-field p-col-12 p-md-6">
-                                    <label for="3">Salaire impo min</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
-                                                   placeholder="Salaire impo min"  [(ngModel)]="selectedTauxIr.salaireImpoMin"
-                                            [(ngModel)]="selectedTauxIr.salaireImpoMin"></p-inputNumber>
-                                </div>
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="3">Date max</label>
+                        <p-calendar id="3" [disabled]="true"
+                                    placeholder="Date max" [(ngModel)]="selectedTauxIr.dateMax"
+                                    dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
 
-                                <div class="p-field p-col-12 p-md-6">
-                                    <label for="4">Salaire impo max</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
-                                                   placeholder="Salaire impo max"  [(ngModel)]="selectedTauxIr.salaireImpoMax"
-                                            [(ngModel)]="selectedTauxIr.salaireImpoMax"></p-inputNumber>
-                                </div>
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="4">Salaire impo min</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                       placeholder="Salaire impo min" [(ngModel)]="selectedTauxIr.salaireImpoMin"
+                                       [(ngModel)]="selectedTauxIr.salaireImpoMin"></p-inputNumber>
+                    </div>
 
-                                <div class="p-field p-col-12 p-md-6">
-                                    <label for="5">Forfait deduit</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
-                                                   placeholder="Forfait deduit"  [(ngModel)]="selectedTauxIr.forfaitDeduit"
-                                            [(ngModel)]="selectedTauxIr.forfaitDeduit"></p-inputNumber>
-                                </div>
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="5">Salaire impo max</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                       placeholder="Salaire impo max" [(ngModel)]="selectedTauxIr.salaireImpoMax"
+                                       [(ngModel)]="selectedTauxIr.salaireImpoMax"></p-inputNumber>
+                    </div>
 
-                                <div class="p-field p-col-12 p-md-6">
-                                    <label for="6">Pourcentage</label>
-                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
-                                                   placeholder="Pourcentage"  [(ngModel)]="selectedTauxIr.pourcentage"
-                                            [(ngModel)]="selectedTauxIr.pourcentage"></p-inputNumber>
-                                </div>
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="6">Forfait deduit</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
+                                       placeholder="Forfait deduit" [(ngModel)]="selectedTauxIr.forfaitDeduit"
+                                       [(ngModel)]="selectedTauxIr.forfaitDeduit"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-6">
+                        <label for="7">Pourcentage</label>
+                        <p-inputNumber class="p-mb-2 p-mr-2" id="7" [disabled]="true"
+                                       placeholder="Pourcentage" [(ngModel)]="selectedTauxIr.pourcentage"
+                                       [(ngModel)]="selectedTauxIr.pourcentage"></p-inputNumber>
+                    </div>
 
                 </div>
             </p-tabPanel>
@@ -57,7 +64,7 @@
 
     </ng-template>
 
-    <ng-template pTemplate="footer" >
+    <ng-template pTemplate="footer">
         <div class="p-grid">
             <div>
                 <button pButton pRipple label="Annuler" icon="pi pi-times"
@@ -65,8 +72,6 @@
             </div>
         </div>
     </ng-template>
-
-
 
 
 </p-dialog>

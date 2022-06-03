@@ -4,8 +4,8 @@
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
-                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
-                                (click)="openCreateTauxIr('tauxIr')"></button>
+                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                            (click)="openCreateTauxIr('tauxIr')"></button>
 
 
                     <button pButton pRipple label="Recherche"
@@ -23,8 +23,13 @@
             <p-toolbar *ngIf="findByCriteriaShow">
 
                 <div class="align-form-search">
+                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text" [(ngModel)]="selectedTauxIr.intervalle">
+                                    <label for="1">Intervalle</label>
+                                </span>
 
-                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchTauxIr.dateMinMin"
                                     id="1-1"
@@ -32,7 +37,7 @@
                             <label for="1-1">Date min Min</label>
                         </span>
 
-                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchTauxIr.dateMinMax"
                                     id="1-2"
@@ -41,7 +46,7 @@
                         </span>
 
 
-                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchTauxIr.dateMaxMin"
                                     id="2-1"
@@ -49,7 +54,7 @@
                             <label for="2-1">Date max Min</label>
                         </span>
 
-                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                             <p-calendar
                                     class="p-mr-2" [(ngModel)]="searchTauxIr.dateMaxMax"
                                     id="2-2"
@@ -57,50 +62,50 @@
                             <label for="2-2">Date max Max</label>
                         </span>
 
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchTauxIr.salaireImpoMinMin"
                                                              id="3-1"></p-inputNumber>
                                               <label for="3-1">Salaire impo min Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchTauxIr.salaireImpoMinMax"
                                                              id="3-2"></p-inputNumber>
                                              <label for="3-2">Salaire impo min Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchTauxIr.salaireImpoMaxMin"
                                                              id="4-1"></p-inputNumber>
                                               <label for="4-1">Salaire impo max Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchTauxIr.salaireImpoMaxMax"
                                                              id="4-2"></p-inputNumber>
                                              <label for="4-2">Salaire impo max Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchTauxIr.forfaitDeduitMin"
                                                              id="5-1"></p-inputNumber>
                                               <label for="5-1">Forfait deduit Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchTauxIr.forfaitDeduitMax"
                                                              id="5-2"></p-inputNumber>
                                              <label for="5-2">Forfait deduit Max</label>
                                        </span>
-                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchTauxIr.pourcentageMin"
                                                              id="6-1"></p-inputNumber>
                                               <label for="6-1">Pourcentage Min</label>
                                        </span>
-                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber class="p-mr-2"
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchTauxIr.pourcentageMax"
                                                              id="6-2"></p-inputNumber>
                                              <label for="6-2">Pourcentage Max</label>
@@ -115,10 +120,10 @@
 
 
             <p-table #dt [value]="tauxIrs" [columns]="cols" [rows]="4" [paginator]="true"
-                    [globalFilterFields]="['dateMin', 'dateMax', 'salaireImpoMin', 'salaireImpoMax', 'forfaitDeduit', 'pourcentage']" [(selection)]="selectedTauxIr"
-                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
-                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                    [showCurrentPageReport]="true">
+                     [globalFilterFields]="['dateMin', 'dateMax', 'salaireImpoMin', 'salaireImpoMax', 'forfaitDeduit', 'pourcentage']" [(selection)]="selectedTauxIr"
+                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Liste des Taux irs</h5>
@@ -134,64 +139,64 @@
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
 
-                                
-                                <th pSortableColumn="dateMin">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Date min</span>
-                                        <p-sortIcon field="dateMin"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+
+                        <th pSortableColumn="dateMin">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Date min</span>
+                                <p-sortIcon field="dateMin"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="dateMax">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Date max</span>
-                                        <p-sortIcon field="dateMax"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
 
 
-                                
-                                <th pSortableColumn="salaireImpoMin">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Salaire impo min</span>
-                                        <p-sortIcon field="salaireImpoMin"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+                        <th pSortableColumn="dateMax">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Date max</span>
+                                <p-sortIcon field="dateMax"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="salaireImpoMax">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Salaire impo max</span>
-                                        <p-sortIcon field="salaireImpoMax"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
 
 
-                                
-                                <th pSortableColumn="forfaitDeduit">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Forfait deduit</span>
-                                        <p-sortIcon field="forfaitDeduit"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+                        <th pSortableColumn="salaireImpoMin">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Salaire impo min</span>
+                                <p-sortIcon field="salaireImpoMin"></p-sortIcon>
+                            </div>
+                        </th>
 
 
-                                
-                                <th pSortableColumn="pourcentage">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Pourcentage</span>
-                                        <p-sortIcon field="pourcentage"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
+
+
+                        <th pSortableColumn="salaireImpoMax">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Salaire impo max</span>
+                                <p-sortIcon field="salaireImpoMax"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+
+                        <th pSortableColumn="forfaitDeduit">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Forfait deduit</span>
+                                <p-sortIcon field="forfaitDeduit"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+
+                        <th pSortableColumn="pourcentage">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Pourcentage</span>
+                                <p-sortIcon field="pourcentage"></p-sortIcon>
+                            </div>
+                        </th>
+
 
 
                         <th>Actions</th>
@@ -202,29 +207,29 @@
                         <td>
                             <p-tableCheckbox [value]="tauxIr"></p-tableCheckbox>
                         </td>
-                            
-                                <td>{{tauxIr.dateMin | date:'dd-M-yyyy' }}</td>
-                            
 
-                            
-                                <td>{{tauxIr.dateMax | date:'dd-M-yyyy' }}</td>
-                            
+                        <td>{{tauxIr.dateMin | date:'dd-M-yyyy' }}</td>
 
-                            
-                                 <td>{{tauxIr.salaireImpoMin}}</td>
-                            
 
-                            
-                                 <td>{{tauxIr.salaireImpoMax}}</td>
-                            
 
-                            
-                                 <td>{{tauxIr.forfaitDeduit}}</td>
-                            
+                        <td>{{tauxIr.dateMax | date:'dd-M-yyyy' }}</td>
 
-                            
-                                 <td>{{tauxIr.pourcentage}}</td>
-                            
+
+
+                        <td>{{tauxIr.salaireImpoMin}}</td>
+
+
+
+                        <td>{{tauxIr.salaireImpoMax}}</td>
+
+
+
+                        <td>{{tauxIr.forfaitDeduit}}</td>
+
+
+
+                        <td>{{tauxIr.pourcentage}}</td>
+
 
 
                         <td>
