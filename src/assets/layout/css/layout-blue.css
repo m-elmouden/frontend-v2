@@ -2922,8 +2922,9 @@ a {
   margin: 0 auto;
   position: relative;
   height: 100vh;
-  background: url("../../layout/images/pages/login-bg.jpg") no-repeat;
+  background: rgba(0, 0, 0, 0.38) url("../images/pages/ecompta_background.jpg") no-repeat;
   background-size: cover;
+  background-blend-mode: darken;
 }
 .login-body .login-panel {
   padding: 0 70px 20px 70px;

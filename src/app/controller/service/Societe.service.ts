@@ -24,7 +24,7 @@ import {ComptableVo} from '../model/Comptable.model';
   providedIn: 'root'
 })
 export class SocieteService {
-    private API = ''
+    private API = '';
      constructor(private http: HttpClient, private roleService: RoleService) {
         this.role$ = this.roleService.role$;
         this.role$.subscribe(role => {
@@ -152,6 +152,6 @@ return this._societes;
 
     public importExcel(formData: FormData){
         console.log(formData);
-        return this.http.post('http://localhost:8036/api/excel/upload-societe', formData);
+        return this.http.post('http://localhost:8036/api/excel/upload-societes', formData);
     }
 }
