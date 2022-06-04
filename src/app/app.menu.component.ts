@@ -1158,12 +1158,7 @@ export class AppMenuComponent implements OnInit {
                       label: 'Liste Type employe',
                       icon: 'pi pi-fw pi-plus-circle',
                       routerLink: ['/app/societe/impot/type-employe/list']
-                    },
-                    {
-                      label: 'Liste Etat declaration ir',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/societe/impot/etat-declaration-ir/list']
-                    },
+                    }
                 ]
               },
               {

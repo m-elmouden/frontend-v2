@@ -40,41 +40,11 @@
                                 type="button"></button>
                     </div>
 
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="3">Salaire net</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireNet" [(ngModel)]="selectedDeclarationIrEmploye.salaireNet" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
-                                       id="3" mode="decimal"
-                                       placeholder="Salaire net"></p-inputNumber>
-                    </div>
-
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="4">Salaire brut Globale</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBrut" [(ngModel)]="selectedDeclarationIrEmploye.salaireBrut" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
-                                       id="4"
-                                       mode="decimal"
-                                       placeholder="Salaire brut Globale"></p-inputNumber>
-                    </div>
-
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="5">Salaire net imposable</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireNetImposable" [(ngModel)]="selectedDeclarationIrEmploye.salaireNetImposable" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
-                                       id="5"
-                                       mode="decimal"
-                                       placeholder="Salaire net imposable"></p-inputNumber>
-                    </div>
-
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="6">Salaire brut imposable</label>
-                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBrutImposable" [(ngModel)]="selectedDeclarationIrEmploye.salaireBrutImposable" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
-                                       id="6"
-                                       mode="decimal"
-                                       placeholder="Salaire brut imposable"></p-inputNumber>
-                    </div>
 
                     <div class="p-field p-col-12 p-md-3">
                         <label for="7">Salaire base</label>
                         <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBase" [(ngModel)]="selectedDeclarationIrEmploye.salaireBase" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
-                                       id="7" mode="decimal"
+                                       id="7" mode="decimal" [disabled]="true"
                                        placeholder="Salaire base"></p-inputNumber>
                     </div>
 
@@ -104,16 +74,10 @@
                         <label for="11">Taux ir</label>
                         <p-dropdown [(ngModel)]="selectedDeclarationIrEmploye.tauxIrVo" [filter]="true"
                                     [options]="tauxIrs" [showClear]="true" filterMatchMode="contains"
-                                    id="11"
+                                    id="11" [disabled]="true"
                                     optionLabel="intervalle"
                                     placeholder="Taux ir">
                         </p-dropdown>
-                    </div>
-                    <div class="p-field p-col-12 p-md-1">
-                        <label></label>
-                        <button (click)="openCreatetauxIr('tauxIr')" class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
-                                pButton pRipple
-                                type="button"></button>
                     </div>
 
                     <div class="p-field p-col-12 p-md-3">
@@ -139,9 +103,39 @@
                     </div>
 
                     <div class="p-field p-col-12 p-md-3">
+                        <label for="3">Salaire net</label>
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireNet" [(ngModel)]="selectedDeclarationIrEmploye.salaireNet" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                       id="3" mode="decimal" [disabled]="true"
+                                       placeholder="Salaire net"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="4">Salaire brut Globale</label>
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBrut" [(ngModel)]="selectedDeclarationIrEmploye.salaireBrut" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                       id="4" [disabled]="true"
+                                       mode="decimal"
+                                       placeholder="Salaire brut Globale"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="5">Salaire net imposable</label>
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireNetImposable" [(ngModel)]="selectedDeclarationIrEmploye.salaireNetImposable" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                       id="5" [disabled]="true"
+                                       mode="decimal"
+                                       placeholder="Salaire net imposable"></p-inputNumber>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="6">Salaire brut imposable</label>
+                        <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.salaireBrutImposable" [(ngModel)]="selectedDeclarationIrEmploye.salaireBrutImposable" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
+                                       id="6" [disabled]="true"
+                                       mode="decimal"
+                                       placeholder="Salaire brut imposable"></p-inputNumber>
+                    </div>
+                    <div class="p-field p-col-12 p-md-3">
                         <label for="15">Cotisation</label>
                         <p-inputNumber [(ngModel)]="selectedDeclarationIrEmploye.cotisation" [(ngModel)]="selectedDeclarationIrEmploye.cotisation" [minFractionDigits]="2" class="p-mb-2 p-mr-2"
-                                       id="15" mode="decimal"
+                                       id="15" mode="decimal"   [disabled]="true"
                                        placeholder="Cotisation"></p-inputNumber>
                     </div>
 

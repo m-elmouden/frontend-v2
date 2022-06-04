@@ -49,6 +49,7 @@ export class DeclarationIrListSocieteComponent implements OnInit {
         , private societeService: SocieteService
         , private etatDeclarationIrService: EtatDeclarationIrService
         , private paiementDeclarationIrService: PaiementDeclarationIrService
+
 ) { }
 
     ngOnInit(): void {
@@ -401,5 +402,17 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
             return environment.dateFormatList;
     }
 
-
+    checkMessage(declarationIr: DeclarationIrVo ): string {
+        if (declarationIr.etatDeclarationIrVo.reference === 'E1') {
+            return 'error';
+        } else if (declarationIr.etatDeclarationIrVo.reference === 'E2') {
+            return 'info';
+        } else if (declarationIr.etatDeclarationIrVo.reference === 'E3') {
+            return 'warn';
+        } else if (declarationIr.etatDeclarationIrVo.reference === 'E4') {
+            return 'success';
+        } else {
+            return 'warn';
+        }
+    }
 }

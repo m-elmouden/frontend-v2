@@ -23,6 +23,7 @@ export class DeclarationIrVo {
     public admin: null | boolean;
     public visible: null | boolean;
     public username: string;
+    public commentaire: string;
     public anneeMax: string;
     public anneeMin: string;
     public moisMax: string;

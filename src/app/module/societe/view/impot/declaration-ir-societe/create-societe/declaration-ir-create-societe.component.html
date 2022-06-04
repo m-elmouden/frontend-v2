@@ -101,28 +101,10 @@
 
                     </div>
 
-                    <div class="p-field p-col-11 p-md-2">
-                        <label for="12">Etat declaration ir</label>
-                        <p-dropdown [(ngModel)]="selectedDeclarationIr.etatDeclarationIrVo"
-                                    [filter]="true"
-                                    [options]="etatDeclarationIrs" [showClear]="true" filterMatchMode="contains"
-                                    id="12"
-                                    optionLabel="libelle"
-                                    placeholder="Etat declaration ir">
-                        </p-dropdown>
-
-                    </div>
-                    <div class="p-col-1">
-                        <label></label>
-                        <button (click)="openCreateetatDeclarationIr('etatDeclarationIr')"
-                                class="p-button-success one-colonne-btn-success-align" icon="pi pi-plus"
-                                pButton pRipple
-                                type="button"></button>
-                    </div>
-                    <div class="p-field p-col-11 p-md-2">
+                    <div class="p-field p-col-11 p-md-3">
                         <label for="13">Paiement declaration ir</label>
                         <p-dropdown [(ngModel)]="selectedDeclarationIr.paiementDeclarationIrVo"
-                                    [filter]="true"
+                                    [filter]="true" class="p-mb-2 p-mr-2"
                                     [options]="paiementDeclarationIrs" [showClear]="true" filterMatchMode="contains"
                                     id="13"
                                     optionLabel="reference"
@@ -137,7 +119,7 @@
                                 pButton pRipple
                                 type="button"></button>
                     </div>
-                    <div class="p-field align-inputswitch p-col-12  p-md-3">
+                   <!-- <div class="p-field align-inputswitch p-col-12  p-md-3">
                         <div class="label-inputswitch">
                             <label for="14">Archive</label>
                         </div>
@@ -146,19 +128,7 @@
                             >
                             </p-inputSwitch>
 
-                        </div>
-                    </div>
-
-
-                    <div class="p-field p-col-12 p-md-3">
-                        <label for="15">Date archivage</label>
-                        <p-calendar [(ngModel)]="selectedDeclarationIr.dateArchivage"
-                                    dateFormat="{{dateFormat}}" id="15"
-                                    placeholder="Date archivage">
-                        </p-calendar>
-
-                    </div>
-
+                        </div>-->
                     <div class="p-field p-col-12 p-md-3">
                         <label for="16">Date creation</label>
                         <p-calendar [(ngModel)]="selectedDeclarationIr.dateCreation"
@@ -168,32 +138,6 @@
 
                     </div>
 
-                    <div class="p-field align-inputswitch p-col-12  p-md-3">
-                        <div class="label-inputswitch">
-                            <label for="17">Admin</label>
-                        </div>
-                        <div class="input-switch">
-                            <p-inputSwitch [(ngModel)]="selectedDeclarationIr.admin" id="17"
-                            >
-                            </p-inputSwitch>
-
-                        </div>
-                    </div>
-
-
-                    <div class="p-field align-inputswitch p-col-12  p-md-3">
-                        <div class="label-inputswitch">
-                            <label for="18">Visible</label>
-                        </div>
-                        <div class="input-switch">
-                            <p-inputSwitch [(ngModel)]="selectedDeclarationIr.visible" id="18"
-                            >
-                            </p-inputSwitch>
-
-                        </div>
-                    </div>
-
-
                     <div class="p-field p-col-12 p-md-3">
                         <label for="19">Username</label>
                         <input [(ngModel)]="selectedDeclarationIr.username" class="p-mb-2 p-mr-2" id="19"
@@ -202,9 +146,43 @@
                         />
 
                     </div>
+                    </div>
 
 
-                </div>
+
+
+
+                <!--                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                               <div class="label-inputswitch">
+                                      <label for="17">Admin</label>
+                                  </div>
+                                  <div class="input-switch">
+                                      <p-inputSwitch [(ngModel)]="selectedDeclarationIr.admin" id="17"
+                                      >
+                                      </p-inputSwitch>
+
+                                  </div>
+                              </div>
+                              <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                  <div class="label-inputswitch">
+                                      <label for="18">Visible</label>
+                                  </div>
+
+                                  <div class="input-switch">
+                                      <p-inputSwitch [(ngModel)]="selectedDeclarationIr.visible" id="18"
+                                      >
+                                      </p-inputSwitch>
+
+                                  </div>
+
+
+                              </div>-->
+
+
+
+
+
+
             </p-tabPanel>
             <p-tabPanel header="Declaration ir employes">
                 <p-tabView>
@@ -345,12 +323,7 @@
                                                placeholder="Cotisation"></p-inputNumber>
 
                             </div>
-                            <div class="p-field p-col-12 p-md-1">
-                                <button (click)="addDeclarationIrEmployes()" class="p-mt-4" icon="pi pi-plus" label="OK"
-                                        pButton
-                                        pRipple type="button">
-                                </button>
-                            </div>
+
                         </div>
                     </p-tabPanel>
                     <p-tabPanel header="Liste">

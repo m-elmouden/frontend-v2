@@ -202,7 +202,13 @@
                         />
 
                     </div>
+                    <div class="p-field p-col-12 p-md-3">
 
+                        <span class="p-float-label">
+                        <textarea id="float-input" rows="5" cols="30" pInputTextarea [(ngModel)]="selectedDeclarationIr.commentaire" disabled></textarea>
+                        <label for="float-input">Commentaire</label></span>
+
+                    </div>
 
                 </div>
             </p-tabPanel>
@@ -476,6 +482,7 @@
                                         pRipple type="button">
                                 </button>
                             </div>
+
                         </div>
                     </p-tabPanel>
                     <p-tabPanel header="Liste">
@@ -534,7 +541,8 @@
 
     <app-societe-create-admin></app-societe-create-admin>
     <app-etat-declaration-ir-create-admin></app-etat-declaration-ir-create-admin>
-    <app-paiement-declaration-ir-create-admin *ngIf="router.url.includes('/declaration-ir-admin/create-admin')"></app-paiement-declaration-ir-create-admin>
+    <app-paiement-declaration-ir-create-admin
+            *ngIf="router.url.includes('/declaration-ir-admin/create-admin')"></app-paiement-declaration-ir-create-admin>
     <!--
                    <app-employe-create-admin></app-employe-create-admin>
                      <app-taux-ir-create-admin></app-taux-ir-create-admin>

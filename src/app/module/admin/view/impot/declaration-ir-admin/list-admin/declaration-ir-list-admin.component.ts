@@ -30,25 +30,25 @@ import { ExportService } from '../../../../../../controller/service/Export.servi
 })
 export class DeclarationIrListAdminComponent implements OnInit {
    // declarations
-    findByCriteriaShow:boolean=false;
+    findByCriteriaShow = false;
     cols: any[] = [];
     excelPdfButons: MenuItem[];
     exportData: any[] = [];
     criteriaData: any[] = [];
     fileName = 'DeclarationIr';
-     yesOrNoArchive :any[] =[];
-     yesOrNoAdmin :any[] =[];
-     yesOrNoVisible :any[] =[];
-    societes :Array<SocieteVo>;
-    etatDeclarationIrs :Array<EtatDeclarationIrVo>;
-    paiementDeclarationIrs :Array<PaiementDeclarationIrVo>;
+     yesOrNoArchive: any[] = [];
+     yesOrNoAdmin: any[] = [];
+     yesOrNoVisible: any[] = [];
+    societes: Array<SocieteVo>;
+    etatDeclarationIrs: Array<EtatDeclarationIrVo>;
+    paiementDeclarationIrs: Array<PaiementDeclarationIrVo>;
 
 
-    constructor(private datePipe: DatePipe, private declarationIrService: DeclarationIrService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
+    constructor(private datePipe: DatePipe, private declarationIrService: DeclarationIrService, private messageService: MessageService, private confirmationService: ConfirmationService, private roleService: RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
 
-        , private societeService: SocieteService
-        , private etatDeclarationIrService: EtatDeclarationIrService
-        , private paiementDeclarationIrService: PaiementDeclarationIrService
+        ,       private societeService: SocieteService
+        ,       private etatDeclarationIrService: EtatDeclarationIrService
+        ,       private paiementDeclarationIrService: PaiementDeclarationIrService
 ) { }
 
     ngOnInit(): void {
@@ -58,26 +58,26 @@ export class DeclarationIrListAdminComponent implements OnInit {
       this.loadSociete();
       this.loadEtatDeclarationIr();
       this.loadPaiementDeclarationIr();
-    this.yesOrNoArchive =  [{label: 'Archive', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoAdmin =  [{label: 'Admin', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoVisible =  [{label: 'Visible', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
+      this.yesOrNoArchive =  [{label: 'Archive', value: null}, {label: 'Oui', value: 1}, {label: 'Non', value: 0}];
+      this.yesOrNoAdmin =  [{label: 'Admin', value: null}, {label: 'Oui', value: 1}, {label: 'Non', value: 0}];
+      this.yesOrNoVisible =  [{label: 'Visible', value: null}, {label: 'Oui', value: 1}, {label: 'Non', value: 0}];
     }
-    
+
     // methods
       public async loadDeclarationIrs(){
         await this.roleService.findAll();
         const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'list');
-        isPermistted ? this.declarationIrService.findAll().subscribe(declarationIrs => this.declarationIrs = declarationIrs,error=>console.log(error))
+        isPermistted ? this.declarationIrService.findAll().subscribe(declarationIrs => this.declarationIrs = declarationIrs, error => console.log(error))
         : this.messageService.add({severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'});
     }
 
 
   public searchRequest(){
-        this.declarationIrService.findByCriteria(this.searchDeclarationIr).subscribe(declarationIrs=>{
-            
+        this.declarationIrService.findByCriteria(this.searchDeclarationIr).subscribe(declarationIrs => {
+
             this.declarationIrs = declarationIrs;
            // this.searchDeclarationIr = new DeclarationIrVo();
-        },error=>console.log(error));
+        }, error => console.log(error));
     }
 
     private initCol() {
@@ -101,46 +101,46 @@ export class DeclarationIrListAdminComponent implements OnInit {
                             {field: 'username', header: 'Username'},
         ];
     }
-    
-    public async editDeclarationIr(declarationIr : DeclarationIrVo){
+
+    public async editDeclarationIr(declarationIr: DeclarationIrVo){
         const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'edit');
-         if(isPermistted){
+        if (isPermistted){
           this.declarationIrService.findByIdWithAssociatedList(declarationIr).subscribe(res => {
            this.selectedDeclarationIr = res;
-            this.selectedDeclarationIr.dateArchivage = new Date(declarationIr.dateArchivage);
-            this.selectedDeclarationIr.dateCreation = new Date(declarationIr.dateCreation);
-            this.editDeclarationIrDialog = true;
+           this.selectedDeclarationIr.dateArchivage = new Date(declarationIr.dateArchivage);
+           this.selectedDeclarationIr.dateCreation = new Date(declarationIr.dateCreation);
+           this.editDeclarationIrDialog = true;
           });
         }else{
             this.messageService.add({
                 severity: 'error', summary: 'Erreur', detail: 'Probléme de permission'
             });
          }
-       
+
     }
-    
 
 
-   public async viewDeclarationIr(declarationIr:DeclarationIrVo){
+
+   public async viewDeclarationIr(declarationIr: DeclarationIrVo){
         const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'view');
-        if(isPermistted){
+        if (isPermistted){
            this.declarationIrService.findByIdWithAssociatedList(declarationIr).subscribe(res => {
            this.selectedDeclarationIr = res;
-            this.selectedDeclarationIr.dateArchivage = new Date(declarationIr.dateArchivage);
-            this.selectedDeclarationIr.dateCreation = new Date(declarationIr.dateCreation);
-            this.viewDeclarationIrDialog = true;
+           this.selectedDeclarationIr.dateArchivage = new Date(declarationIr.dateArchivage);
+           this.selectedDeclarationIr.dateCreation = new Date(declarationIr.dateCreation);
+           this.viewDeclarationIrDialog = true;
           });
         }else{
              this.messageService.add({
                 severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'
             });
         }
-        
+
     }
-    
+
     public async openCreateDeclarationIr(pojo: string) {
         const isPermistted = await this.roleService.isPermitted(pojo, 'add');
-        if(isPermistted){
+        if (isPermistted){
          this.selectedDeclarationIr = new DeclarationIrVo();
          this.createDeclarationIrDialog = true;
         }else{
@@ -148,17 +148,17 @@ export class DeclarationIrListAdminComponent implements OnInit {
                 severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'
             });
         }
-       
+
     }
-public async archiverDeclarationIr(declarationIr:DeclarationIrVo){
+public async archiverDeclarationIr(declarationIr: DeclarationIrVo){
 const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'delete');
-if(isPermistted){
+if (isPermistted){
 this.confirmationService.confirm({
 message: 'Voulez-vous archiver cet élément (Declaration ir) ?',
 header: 'Confirmation',
 icon: 'pi pi-exclamation-triangle',
 accept: () => {
-this.declarationIrService.archiver(declarationIr).subscribe(status=>{
+this.declarationIrService.archiver(declarationIr).subscribe(status => {
 const myIndex = this.declarationIrs.indexOf(declarationIr);
 this.declarationIrs[myIndex] = status;
 this.messageService.add({
@@ -167,7 +167,7 @@ summary: 'Succès',
 detail: 'Declaration ir archivé',
 life: 3000
 });
-},error=>console.log(error))
+}, error => console.log(error));
  }
 });
 }else{
@@ -177,15 +177,15 @@ severity: 'error', summary: 'erreur', detail: 'Problème de permission'
 }
 }
 
-public async desarchiverDeclarationIr(declarationIr:DeclarationIrVo){
+public async desarchiverDeclarationIr(declarationIr: DeclarationIrVo){
 const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'delete');
-if(isPermistted){
+if (isPermistted){
 this.confirmationService.confirm({
 message: 'Voulez-vous désarchiver cet élément (Declaration ir) ?',
 header: 'Confirmation',
 icon: 'pi pi-exclamation-triangle',
 accept: () => {
-this.declarationIrService.desarchiver(declarationIr).subscribe(status=>{
+this.declarationIrService.desarchiver(declarationIr).subscribe(status => {
 const myIndex = this.declarationIrs.indexOf(declarationIr);
 this.declarationIrs[myIndex] = status;
 this.messageService.add({
@@ -194,7 +194,7 @@ summary: 'Succès',
 detail: 'Declaration ir désarchivé',
 life: 3000
 });
-},error=>console.log(error))
+}, error => console.log(error));
  }
 });
 }else{
@@ -205,19 +205,19 @@ severity: 'error', summary: 'erreur', detail: 'Problème de permission'
 }
 
 
-    public async deleteDeclarationIr(declarationIr:DeclarationIrVo){
+    public async deleteDeclarationIr(declarationIr: DeclarationIrVo){
        const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'delete');
-        if(isPermistted){
+       if (isPermistted){
                       this.confirmationService.confirm({
                       message: 'Voulez-vous supprimer cet élément (Declaration ir) ?',
                       header: 'Confirmation',
                       icon: 'pi pi-exclamation-triangle',
                       accept: () => {
-                          this.declarationIrService.delete(declarationIr).subscribe(status=>{
-                          if(status > 0){
+                          this.declarationIrService.delete(declarationIr).subscribe(status => {
+                          if (status > 0){
                           const position = this.declarationIrs.indexOf(declarationIr);
                           position > -1 ? this.declarationIrs.splice(position, 1) : false;
-                       this.messageService.add({
+                          this.messageService.add({
                         severity: 'success',
                         summary: 'Succès',
                         detail: 'Declaration ir Supprimé',
@@ -225,7 +225,7 @@ severity: 'error', summary: 'erreur', detail: 'Problème de permission'
                     });
                                      }
 
-                    },error=>console.log(error))
+                    }, error => console.log(error));
                              }
                      });
               }else{
@@ -238,21 +238,21 @@ severity: 'error', summary: 'erreur', detail: 'Problème de permission'
 public async loadSociete(){
     await this.roleService.findAll();
     const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'list');
-    isPermistted ? this.societeService.findAll().subscribe(societes => this.societes = societes,error=>console.log(error))
+    isPermistted ? this.societeService.findAll().subscribe(societes => this.societes = societes, error => console.log(error))
     : this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Problème de permission'});
 
 }
 public async loadEtatDeclarationIr(){
     await this.roleService.findAll();
     const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'list');
-    isPermistted ? this.etatDeclarationIrService.findAll().subscribe(etatDeclarationIrs => this.etatDeclarationIrs = etatDeclarationIrs,error=>console.log(error))
+    isPermistted ? this.etatDeclarationIrService.findAll().subscribe(etatDeclarationIrs => this.etatDeclarationIrs = etatDeclarationIrs, error => console.log(error))
     : this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Problème de permission'});
 
 }
 public async loadPaiementDeclarationIr(){
     await this.roleService.findAll();
     const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'list');
-    isPermistted ? this.paiementDeclarationIrService.findAll().subscribe(paiementDeclarationIrs => this.paiementDeclarationIrs = paiementDeclarationIrs,error=>console.log(error))
+    isPermistted ? this.paiementDeclarationIrService.findAll().subscribe(paiementDeclarationIrs => this.paiementDeclarationIrs = paiementDeclarationIrs, error => console.log(error))
     : this.messageService.add({severity: 'error', summary: 'Erreur', detail: 'Problème de permission'});
 
 }
@@ -264,7 +264,7 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
 	       this.initDuplicateDeclarationIr(res);
 	       this.selectedDeclarationIr = res;
 	       this.selectedDeclarationIr.id = null;
-            this.createDeclarationIrDialog = true;
+        this.createDeclarationIrDialog = true;
 
 });
 
@@ -283,9 +283,9 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
 
   initExport(): void {
     this.excelPdfButons = [
-      {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport();this.exportService.exportCSV(this.criteriaData,this.exportData,this.fileName);}},
-      {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport();this.exportService.exportExcel(this.criteriaData,this.exportData,this.fileName);}},
-      {label: 'PDF', icon: 'pi pi-file-pdf', command: () => {this.prepareColumnExport();this.exportService.exportPdf(this.criteriaData,this.exportData,this.fileName);}}
+      {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport(); this.exportService.exportCSV(this.criteriaData, this.exportData, this.fileName); }},
+      {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport(); this.exportService.exportExcel(this.criteriaData, this.exportData, this.fileName); }},
+      {label: 'PDF', icon: 'pi pi-file-pdf', command: () => {this.prepareColumnExport(); this.exportService.exportPdf(this.criteriaData, this.exportData, this.fileName); }}
    ];
   }
 
@@ -293,10 +293,10 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
     prepareColumnExport(): void {
     this.exportData = this.declarationIrs.map(e => {
     return {
-                    'Refrerence': e.refrerence ,
-            'Societe': e.societeVo?.id ,
-                    'Annee': e.annee ,
-                    'Mois': e.mois ,
+                    Refrerence: e.refrerence ,
+            Societe: e.societeVo?.id ,
+                    Annee: e.annee ,
+                    Mois: e.mois ,
                     'Montant ir calcule': e.montantIrCalcule ,
                     'Montant ir a paye': e.montantIrAPaye ,
                     'Total a paye': e.totalAPaye ,
@@ -304,18 +304,18 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
                     'Total salaire brut': e.totalSalaireBrut ,
             'Etat declaration ir': e.etatDeclarationIrVo?.libelle ,
             'Paiement declaration ir': e.paiementDeclarationIrVo?.reference ,
-                    'Archive': e.archive? 'Vrai' : 'Faux' ,
+                    Archive: e.archive ? 'Vrai' : 'Faux' ,
                     'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
                     'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
-                    'Admin': e.admin? 'Vrai' : 'Faux' ,
-                    'Visible': e.visible? 'Vrai' : 'Faux' ,
-                    'Username': e.username ,
-     }
+                    Admin: e.admin ? 'Vrai' : 'Faux' ,
+                    Visible: e.visible ? 'Vrai' : 'Faux' ,
+                    Username: e.username ,
+     };
       });
 
-      this.criteriaData = [{
-            'Refrerence': this.searchDeclarationIr.refrerence ? this.searchDeclarationIr.refrerence : environment.emptyForExport ,
-        'Societe': this.searchDeclarationIr.societeVo?.id ? this.searchDeclarationIr.societeVo?.id : environment.emptyForExport ,
+    this.criteriaData = [{
+            Refrerence: this.searchDeclarationIr.refrerence ? this.searchDeclarationIr.refrerence : environment.emptyForExport ,
+        Societe: this.searchDeclarationIr.societeVo?.id ? this.searchDeclarationIr.societeVo?.id : environment.emptyForExport ,
             'Annee Min': this.searchDeclarationIr.anneeMin ? this.searchDeclarationIr.anneeMin : environment.emptyForExport ,
             'Annee Max': this.searchDeclarationIr.anneeMax ? this.searchDeclarationIr.anneeMax : environment.emptyForExport ,
             'Mois Min': this.searchDeclarationIr.moisMin ? this.searchDeclarationIr.moisMin : environment.emptyForExport ,
@@ -332,14 +332,14 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
             'Total salaire brut Max': this.searchDeclarationIr.totalSalaireBrutMax ? this.searchDeclarationIr.totalSalaireBrutMax : environment.emptyForExport ,
         'Etat declaration ir': this.searchDeclarationIr.etatDeclarationIrVo?.libelle ? this.searchDeclarationIr.etatDeclarationIrVo?.libelle : environment.emptyForExport ,
         'Paiement declaration ir': this.searchDeclarationIr.paiementDeclarationIrVo?.reference ? this.searchDeclarationIr.paiementDeclarationIrVo?.reference : environment.emptyForExport ,
-            'Archive': this.searchDeclarationIr.archive ? (this.searchDeclarationIr.archive ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
+            Archive: this.searchDeclarationIr.archive ? (this.searchDeclarationIr.archive ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
             'Date archivage Min': this.searchDeclarationIr.dateArchivageMin ? this.datePipe.transform(this.searchDeclarationIr.dateArchivageMin , this.dateFormat) : environment.emptyForExport ,
             'Date archivage Max': this.searchDeclarationIr.dateArchivageMax ? this.datePipe.transform(this.searchDeclarationIr.dateArchivageMax , this.dateFormat) : environment.emptyForExport ,
             'Date creation Min': this.searchDeclarationIr.dateCreationMin ? this.datePipe.transform(this.searchDeclarationIr.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
             'Date creation Max': this.searchDeclarationIr.dateCreationMax ? this.datePipe.transform(this.searchDeclarationIr.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
-            'Admin': this.searchDeclarationIr.admin ? (this.searchDeclarationIr.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Visible': this.searchDeclarationIr.visible ? (this.searchDeclarationIr.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Username': this.searchDeclarationIr.username ? this.searchDeclarationIr.username : environment.emptyForExport ,
+            Admin: this.searchDeclarationIr.admin ? (this.searchDeclarationIr.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
+            Visible: this.searchDeclarationIr.visible ? (this.searchDeclarationIr.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
+            Username: this.searchDeclarationIr.username ? this.searchDeclarationIr.username : environment.emptyForExport ,
      }];
 
       }
@@ -359,37 +359,37 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
     set declarationIrSelections(value: Array<DeclarationIrVo>) {
         this.declarationIrService.declarationIrSelections = value;
        }
-   
-     
 
 
-    get selectedDeclarationIr():DeclarationIrVo {
+
+
+    get selectedDeclarationIr(): DeclarationIrVo {
            return this.declarationIrService.selectedDeclarationIr;
        }
     set selectedDeclarationIr(value: DeclarationIrVo) {
         this.declarationIrService.selectedDeclarationIr = value;
        }
-    
-    get createDeclarationIrDialog():boolean {
+
+    get createDeclarationIrDialog(): boolean {
            return this.declarationIrService.createDeclarationIrDialog;
        }
     set createDeclarationIrDialog(value: boolean) {
-        this.declarationIrService.createDeclarationIrDialog= value;
+        this.declarationIrService.createDeclarationIrDialog = value;
        }
-    
-    get editDeclarationIrDialog():boolean {
+
+    get editDeclarationIrDialog(): boolean {
            return this.declarationIrService.editDeclarationIrDialog;
        }
     set editDeclarationIrDialog(value: boolean) {
-        this.declarationIrService.editDeclarationIrDialog= value;
+        this.declarationIrService.editDeclarationIrDialog = value;
        }
-    get viewDeclarationIrDialog():boolean {
+    get viewDeclarationIrDialog(): boolean {
            return this.declarationIrService.viewDeclarationIrDialog;
        }
     set viewDeclarationIrDialog(value: boolean) {
         this.declarationIrService.viewDeclarationIrDialog = value;
        }
-       
+
      get searchDeclarationIr(): DeclarationIrVo {
         return this.declarationIrService.searchDeclarationIr;
        }
@@ -417,4 +417,21 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
     }
 
 
-}
+    checkMessage(declarationIr: DeclarationIrVo ): string {
+        if (declarationIr.etatDeclarationIrVo.reference === 'E1') {
+            return 'error';
+        }
+        else if (declarationIr.etatDeclarationIrVo.reference === 'E2') {
+            return 'info';
+        }
+        else if (declarationIr.etatDeclarationIrVo.reference === 'E3') {
+            return 'warn';
+        }
+        else if (declarationIr.etatDeclarationIrVo.reference === 'E4') {
+            return 'success';
+        }
+else {
+    return 'warn';
+ }
+
+}}
