@@ -18,7 +18,16 @@
                         <small *ngIf='!validDeclarationIrRefrerence' class='p-error'>Refrerence est obligatoire.</small>
                     </div>
 
+                    <div class="p-field p-col-11 p-md-2">
+                        <label for="demande">demande</label>
+                        <p-dropdown [(ngModel)]="selectedDeclarationIr.demande" [filter]="true"
+                                    [options]="demandes" [showClear]="true" filterMatchMode="contains"
+                                    id="demande"
+                                    optionLabel="id"
+                                    placeholder="demande">
+                        </p-dropdown>
 
+                    </div>
 
                     <div class="p-field p-col-11 p-md-2">
                         <label for="2">Societe</label>

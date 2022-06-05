@@ -27,6 +27,8 @@ import {PrelevementSocialVo} from '../../../../../../controller/model/Prelevemen
 import {PrelevementSocialService} from '../../../../../../controller/service/PrelevementSocial.service';
 import {ComptableVo} from '../../../../../../controller/model/Comptable.model';
 import {ComptableService} from '../../../../../../controller/service/Comptable.service';
+import {DemandeService} from '../../../../../../controller/service/Demande.service';
+import {DemandeVo} from '../../../../../../controller/model/Demande.model';
 
 @Component({
     selector: 'app-declaration-ir-create-admin',
@@ -70,8 +72,9 @@ export class DeclarationIrCreateAdminComponent implements OnInit {
         , private etatDeclarationIrService: EtatDeclarationIrService
         , private declarationIrEmployeService: DeclarationIrEmployeService
         , private prelevementSocialService: PrelevementSocialService
-        , private paiementDeclarationIrService: PaiementDeclarationIrService,
-                private comptableService: ComptableService,
+        , private paiementDeclarationIrService: PaiementDeclarationIrService
+        , private comptableService: ComptableService
+         ,private demandeService: DemandeService
     ) {
 
     }
@@ -431,9 +434,10 @@ export class DeclarationIrCreateAdminComponent implements OnInit {
         return this.paiementDeclarationIrService.paiementDeclarationIrs;
     }
 
-    get comptables(): Array<ComptableVo>{
+    get comptables(): Array<ComptableVo> {
         return this.comptableService.comptables;
     }
+
     set paiementDeclarationIrs(value: Array<PaiementDeclarationIrVo>) {
         this.paiementDeclarationIrService.paiementDeclarationIrs = value;
     }
@@ -638,6 +642,9 @@ export class DeclarationIrCreateAdminComponent implements OnInit {
 
     set validPaiementDeclarationIrDeclarationIr(value: boolean) {
         this._validPaiementDeclarationIrDeclarationIr = value;
+    }
+    get demandes(): Array<DemandeVo>{
+        return this.demandeService.demandes;
     }
 
 }

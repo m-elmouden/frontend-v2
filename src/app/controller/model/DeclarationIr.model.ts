@@ -4,6 +4,7 @@ import {EtatDeclarationIrVo} from './EtatDeclarationIr.model';
 import {DeclarationIrEmployeVo} from './DeclarationIrEmploye.model';
 import {PrelevementSocialEmployeVo} from './PrelevementSocialEmploye.model';
 import {ComptableVo} from './Comptable.model';
+import {DemandeVo} from './Demande.model';
 
 
 export class DeclarationIrVo {
@@ -50,5 +51,5 @@ export class DeclarationIrVo {
     public prelevementSocialEmployesVo: Array<PrelevementSocialEmployeVo>;
     public comptableVoTraiteur: ComptableVo;
     public comptableVoValidateur: ComptableVo;
-
+    public demande: DemandeVo;
 }

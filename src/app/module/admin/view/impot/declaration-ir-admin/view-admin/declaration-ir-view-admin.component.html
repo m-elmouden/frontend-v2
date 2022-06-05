@@ -173,6 +173,18 @@
                         </p-dropdown>
                     </div>
 
+
+                    <div class="p-field p-col-11 p-md-2">
+                        <label for="demande">Demande</label>
+                        <p-dropdown [(ngModel)]="selectedDeclarationIr.demande" [filter]="true"
+                                  [showClear]="true" filterMatchMode="contains"
+                                    id="demande"
+                                    optionLabel="reference"
+                                    placeholder="demande">
+                        </p-dropdown>
+
+                    </div>
+
                     <div class="p-field p-col-12 p-md-3">
                         <label for="21">Username</label>
                         <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
