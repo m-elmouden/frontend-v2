@@ -25,6 +25,8 @@ import {EtatDeclarationIrVo} from '../../../../../../controller/model/EtatDeclar
 import {EtatDeclarationIrService} from '../../../../../../controller/service/EtatDeclarationIr.service';
 import {PrelevementSocialVo} from '../../../../../../controller/model/PrelevementSocial.model';
 import {PrelevementSocialService} from '../../../../../../controller/service/PrelevementSocial.service';
+import {ComptableVo} from '../../../../../../controller/model/Comptable.model';
+import {ComptableService} from '../../../../../../controller/service/Comptable.service';
 
 @Component({
     selector: 'app-declaration-ir-create-admin',
@@ -68,7 +70,8 @@ export class DeclarationIrCreateAdminComponent implements OnInit {
         , private etatDeclarationIrService: EtatDeclarationIrService
         , private declarationIrEmployeService: DeclarationIrEmployeService
         , private prelevementSocialService: PrelevementSocialService
-        , private paiementDeclarationIrService: PaiementDeclarationIrService
+        , private paiementDeclarationIrService: PaiementDeclarationIrService,
+                private comptableService: ComptableService,
     ) {
 
     }
@@ -428,9 +431,13 @@ export class DeclarationIrCreateAdminComponent implements OnInit {
         return this.paiementDeclarationIrService.paiementDeclarationIrs;
     }
 
+    get comptables(): Array<ComptableVo>{
+        return this.comptableService.comptables;
+    }
     set paiementDeclarationIrs(value: Array<PaiementDeclarationIrVo>) {
         this.paiementDeclarationIrService.paiementDeclarationIrs = value;
     }
+
 
     get createPaiementDeclarationIrDialog(): boolean {
         return this.paiementDeclarationIrService.createPaiementDeclarationIrDialog;

@@ -153,12 +153,31 @@
                         </div>
                     </div>
 
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="19">Comptable Traiteur</label>
+                        <p-dropdown  [(ngModel)]="selectedDeclarationIr.comptableVoTraiteur"
+                                    id="19" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="id"
+                                    placeholder="Societe">
+                        </p-dropdown>
+                    </div>
 
                     <div class="p-field p-col-12 p-md-3">
-                        <label for="19">Username</label>
+                        <label for="20">Comptable Validateur</label>
+                        <p-dropdown [(ngModel)]="selectedDeclarationIr.comptableVoValidateur"
+                                    id="20" [filter]="true" filterMatchMode="contains"
+                                    [showClear]="true" [disabled]="true"
+                                    optionLabel="id"
+                                    placeholder="Societe">
+                        </p-dropdown>
+                    </div>
+
+                    <div class="p-field p-col-12 p-md-3">
+                        <label for="21">Username</label>
                         <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
                                placeholder="Username"
-                               id="19" [(ngModel)]="selectedDeclarationIr.username"
+                               id="21" [(ngModel)]="selectedDeclarationIr.username"
                                autofocus>
                     </div>
 

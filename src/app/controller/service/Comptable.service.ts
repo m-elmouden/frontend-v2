@@ -16,7 +16,7 @@ import {TypeComptableVo} from '../model/TypeComptable.model';
   providedIn: 'root'
 })
 export class ComptableService {
-    private API = ''
+    private API = '';
      constructor(private http: HttpClient, private roleService: RoleService) {
         this.role$ = this.roleService.role$;
         this.role$.subscribe(role => {
@@ -66,7 +66,7 @@ export class ComptableService {
 
 
     get comptables(): Array<ComptableVo> {
-    if(this._comptables==null){
+    if(this._comptables == null){
     this._comptables=new Array<ComptableVo>();
     }
 return this._comptables;
