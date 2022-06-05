@@ -294,23 +294,23 @@ public async duplicateEmploye(employe: EmployeVo) {
        }
 
     get dateFormat(){
-            return environment.dateFormatList;
-    }
-    public uploadExcelFile(event) {
-        const file = event.files[0];
-        console.log(file);
-        const formData: FormData = new FormData();
-        formData.append('file', file);
-        console.log(formData);
-        this.employeService.importExcel(formData).subscribe(data => {
-                console.log(data);
-            }
-        ),
-            error => {
-                alert('Problème de téléchargement');
+            return environment.dateFormatList;}
 
-            };
-    }
+    public uploadExcelFile(event){
+            const file = event.files[0];
+            console.log(file);
+            const formData: FormData = new FormData();
+            formData.append('file', file);
+            console.log(formData);
+            this.employeService.importExcel(formData).subscribe(data => {
+                    console.log(data);
+                }
+            ),
+                error => {
+                    alert('Problème de téléchargement');
+
+                };
+        }
 
 
 }

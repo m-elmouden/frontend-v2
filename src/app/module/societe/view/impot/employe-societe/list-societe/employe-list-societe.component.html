@@ -19,6 +19,13 @@
                     </div>
                 </ng-template>
 
+                <ng-template pTemplate="right">
+                    <p-fileUpload chooseLabel="Importer votre excel" chooseIcon="pi pi-file-excel" class="p-mr-2 p-mb-2" styleClass="p-button-success" #fubauto mode="basic" name="file"[customUpload]="true" (uploadHandler)="uploadExcelFile($event)" [auto]="true"></p-fileUpload>
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" class="p-mr-2 p-mb-2" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
             </p-toolbar>
             <p-toolbar *ngIf="findByCriteriaShow">
 
@@ -112,84 +119,84 @@
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
 
-                                
+
                                 <th pSortableColumn="cin">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         <span>Cin</span>
                                         <p-sortIcon field="cin"></p-sortIcon>
                                     </div>
                                 </th>
-                                
 
 
-                                
+
+
                                 <th pSortableColumn="nom">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         <span>Nom</span>
                                         <p-sortIcon field="nom"></p-sortIcon>
                                     </div>
                                 </th>
-                                
 
 
-                                
+
+
                                 <th pSortableColumn="prenom">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         <span>Prenom</span>
                                         <p-sortIcon field="prenom"></p-sortIcon>
                                     </div>
                                 </th>
-                                
 
 
-                                
+
+
                                 <th pSortableColumn="typeEmploye">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         <span>Type employe</span>
                                         <p-sortIcon field="typeEmploye"></p-sortIcon>
                                     </div>
                                 </th>
-                                
 
 
-                                
+
+
                                 <th pSortableColumn="totalSalaireNet">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         <span>Total salaire net</span>
                                         <p-sortIcon field="totalSalaireNet"></p-sortIcon>
                                     </div>
                                 </th>
-                                
 
 
-                                
+
+
                                 <th pSortableColumn="societe">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         <span>Societe</span>
                                         <p-sortIcon field="societe"></p-sortIcon>
                                     </div>
                                 </th>
-                                
 
 
-                                
+
+
                                 <th pSortableColumn="nombreFamille">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         <span>Nombre famille</span>
                                         <p-sortIcon field="nombreFamille"></p-sortIcon>
                                     </div>
                                 </th>
-                                
 
 
-                                
+
+
                                 <th pSortableColumn="declarationCnss">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         <span>Declaration cnss</span>
                                         <p-sortIcon field="declarationCnss"></p-sortIcon>
                                     </div>
                                 </th>
-                                
+
 
 
                         <th>Actions</th>
@@ -200,37 +207,37 @@
                         <td>
                             <p-tableCheckbox [value]="employe"></p-tableCheckbox>
                         </td>
-                            
+
                                  <td>{{employe.cin}}</td>
-                            
 
-                            
+
+
                                  <td>{{employe.nom}}</td>
-                            
 
-                            
+
+
                                  <td>{{employe.prenom}}</td>
-                            
 
-                            
+
+
                                 <td>{{employe.typeEmployeVo?.libelle}}</td>
-                            
 
-                            
+
+
                                  <td>{{employe.totalSalaireNet}}</td>
-                            
 
-                            
+
+
                                 <td>{{employe.societeVo?.id}}</td>
-                            
 
-                            
+
+
                                  <td>{{employe.nombreFamille}}</td>
-                            
 
-                            
+
+
                                 <td>{{employe.declarationCnssVo?.ref}}</td>
-                            
+
 
 
                         <td>

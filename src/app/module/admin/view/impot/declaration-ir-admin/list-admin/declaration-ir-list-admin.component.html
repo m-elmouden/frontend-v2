@@ -7,7 +7,6 @@
                     <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
                             (click)="openCreateDeclarationIr('declarationIr')"></button>
 
-
                     <button pButton pRipple label="Recherche"
                             icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
                             class="p-button-success p-mr-2 p-mb-2"
@@ -21,9 +20,12 @@
                 </ng-template>
 
                 <ng-template pTemplate="right">
-                    <p-fileUpload styleClass="p-mr-2" #fubauto mode="basic" name="file" label="Import" [customUpload]="true" (uploadHandler)="uploadExcelFile($event)" [auto]="true"></p-fileUpload>
+                    <p-fileUpload styleClass="p-mr-2" #fubauto mode="basic" name="file" label="Import"
+                                  [customUpload]="true" (uploadHandler)="uploadExcelFile($event)"
+                                  [auto]="true"></p-fileUpload>
                     <div class="flex">
-                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help"
+                                       [model]="excelPdfButons"></p-splitButton>
                     </div>
                 </ng-template>
 
@@ -45,7 +47,7 @@
                             </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2"
-                                                            class="p-mr-2"
+                                                             class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIr.anneeMin"
                                                              id="3-1">
                         </p-inputNumber>
@@ -284,7 +286,7 @@
 
                         <th pSortableColumn="montantIrCalcule">
                             <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Montant ir calcule</span>
+                                <span>Montant calcule</span>
                                 <p-sortIcon field="montantIrCalcule"></p-sortIcon>
                             </div>
                         </th>
@@ -292,7 +294,7 @@
 
                         <th pSortableColumn="montantIrAPaye">
                             <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Montant ir a paye</span>
+                                <span>Montant paye</span>
                                 <p-sortIcon field="montantIrAPaye"></p-sortIcon>
                             </div>
                         </th>
@@ -300,7 +302,7 @@
 
                         <th pSortableColumn="totalAPaye">
                             <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Total a paye</span>
+                                <span>Total paye</span>
                                 <p-sortIcon field="totalAPaye"></p-sortIcon>
                             </div>
                         </th>
@@ -324,14 +326,12 @@
                         -->
 
 
-
                         <th pSortableColumn="etatDeclarationIr">
                             <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Etat declaration ir</span>
+                                <span>Etat declaration</span>
                                 <p-sortIcon field="etatDeclarationIr"></p-sortIcon>
                             </div>
                         </th>
-
 
 
                         <!--
@@ -437,7 +437,10 @@
                         <td>{{declarationIr.totalSalaireNet}}</td>
 
 
-                        <td><p-message [severity]="checkMessage(declarationIr)" text="{{declarationIr.etatDeclarationIrVo?.libelle}} par Admin" ></p-message></td>
+                        <td>
+                            <p-message [severity]="checkMessage(declarationIr)"
+                                       text="{{declarationIr.etatDeclarationIrVo?.libelle}} par Admin"></p-message>
+                        </td>
 
 
                         <!--

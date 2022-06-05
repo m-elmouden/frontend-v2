@@ -399,5 +399,20 @@ public async duplicateSociete(societe: SocieteVo) {
             return environment.dateFormatList;
     }
 
+    public uploadExcelFile(event) {
+        const file = event.files[0];
+        console.log(file);
+        const formData: FormData = new FormData();
+        formData.append('file', file);
+        console.log(formData);
+        this.societeService.importExcel(formData).subscribe(data => {
+                console.log(data);
+            }
+        ),
+            error => {
+                alert('Problème de téléchargement');
+
+            };
+    }
 
 }
