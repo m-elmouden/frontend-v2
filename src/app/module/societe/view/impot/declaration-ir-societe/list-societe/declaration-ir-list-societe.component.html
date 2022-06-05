@@ -21,18 +21,12 @@
                 </ng-template>
 
                 <ng-template pTemplate="right">
-                    <p-fileUpload styleClass="p-mr-2" #fubauto mode="basic" name="file" label="Import" [customUpload]="true" (uploadHandler)="uploadExcelFile($event)" [auto]="true"></p-fileUpload>
-                    <div class="flex">
-                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
-                    </div>
-                </ng-template>
-
-                <ng-template pTemplate="right">
                     <p-fileUpload chooseLabel="Importer votre excel" chooseIcon="pi pi-file-excel" class="p-mr-2 p-mb-2" styleClass="p-button-success" #fubauto mode="basic" name="file"[customUpload]="true" (uploadHandler)="uploadExcelFile($event)" [auto]="true"></p-fileUpload>
                     <div class="flex">
                         <p-splitButton label="Exporter" icon="pi pi-download" class="p-mr-2 p-mb-2" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
                     </div>
                 </ng-template>
+
 
 
             </p-toolbar>
@@ -339,7 +333,7 @@
 
                         <th pSortableColumn="montantIrCalcule">
                             <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Montant ir calcule</span>
+                                <span>Montant calcule</span>
                                 <p-sortIcon field="montantIrCalcule"></p-sortIcon>
                             </div>
                         </th>
@@ -347,7 +341,7 @@
 
                         <th pSortableColumn="montantIrAPaye">
                             <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Montant ir a paye</span>
+                                <span>Montant paye</span>
                                 <p-sortIcon field="montantIrAPaye"></p-sortIcon>
                             </div>
                         </th>
@@ -355,7 +349,7 @@
 
                         <th pSortableColumn="totalAPaye">
                             <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Total a paye</span>
+                                <span>Total paye</span>
                                 <p-sortIcon field="totalAPaye"></p-sortIcon>
                             </div>
                         </th>
@@ -379,13 +373,13 @@
                         -->
 
 
-
                         <th pSortableColumn="etatDeclarationIr">
                             <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Etat declaration ir</span>
+                                <span>Etat declaration</span>
                                 <p-sortIcon field="etatDeclarationIr"></p-sortIcon>
                             </div>
                         </th>
+
 
 
 
