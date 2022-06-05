@@ -46,7 +46,7 @@
         </div>
         <br><br><br><br>
         <app-footer></app-footer>-->
-        <div class="p-grid p-mx-lg-6 p-mx-auto p-ai-center  p-jc-center " style="position:relative; left:20px;">
+        <div class="p-grid p-mx-lg-6 p-mx-auto p-ai-center  p-jc-center " style="position:relative; left:50px;top:50px">
             <div class="p-field p-col-12 p-md-3">
                 <a (click)="redirectAdmin()" class="card education">
                     <div class="overlay"></div>
@@ -121,7 +121,7 @@
                 </a>
             </div>
             <div class="p-field p-col-12 p-md-3" (click)="redirectAdmin()">
-                <a href="#" class="card credentialing">
+                <a (click)="redirectAdmin()" class="card credentialing">
                     <div class="overlay"></div>
                     <div class="circle">
 
@@ -168,13 +168,13 @@
                         </svg>
 
                     </div>
-                    <p>Admin</p>
+                    <p>Chercheur</p>
                 </a>
             </div>
             <div class="p-field p-col-12 p-md-3">
 
 
-                <a href="#" class="card wallet">
+                <a (click)="redirectAdmin()" class="card wallet">
                     <div class="overlay"></div>
                     <div class="circle">
 
@@ -206,7 +206,7 @@
                         </svg>
 
                     </div>
-                    <p>Wallet</p>
+                    <p>Societe</p>
                 </a>
 
             </div>

@@ -27,6 +27,14 @@
                     </div>
                 </ng-template>
 
+                <ng-template pTemplate="right">
+                    <p-fileUpload chooseLabel="Importer votre excel" chooseIcon="pi pi-file-excel" class="p-mr-2 p-mb-2" styleClass="p-button-success" #fubauto mode="basic" name="file"[customUpload]="true" (uploadHandler)="uploadExcelFile($event)" [auto]="true"></p-fileUpload>
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" class="p-mr-2 p-mb-2" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+
             </p-toolbar>
             <p-toolbar *ngIf="findByCriteriaShow">
 
