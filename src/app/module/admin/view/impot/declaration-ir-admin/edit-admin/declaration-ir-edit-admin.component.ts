@@ -25,6 +25,8 @@ import {PrelevementSocialVo} from '../../../../../../controller/model/Prelevemen
 import {PrelevementSocialService} from '../../../../../../controller/service/PrelevementSocial.service';
 import {PrelevementSocialEmployeVo} from '../../../../../../controller/model/PrelevementSocialEmploye.model';
 import {PrelevementSocialEmployeService} from '../../../../../../controller/service/PrelevementSocialEmploye.service';
+import {ComptableVo} from '../../../../../../controller/model/Comptable.model';
+import {ComptableService} from '../../../../../../controller/service/Comptable.service';
 
 @Component({
   selector: 'app-declaration-ir-edit-admin',
@@ -56,7 +58,8 @@ constructor(private datePipe: DatePipe, private declarationIrService: Declaratio
  ,       private declarationIrEmployeService: DeclarationIrEmployeService
  ,       private tauxIrService: TauxIrService
  ,       private prelevementSocialService: PrelevementSocialService
- ,       private prelevementSocialEmployeService: PrelevementSocialEmployeService
+ ,       private prelevementSocialEmployeService: PrelevementSocialEmployeService,
+            private comptableService: ComptableService,
 ) {
 }
 
@@ -327,6 +330,9 @@ set declarationIrs(value: Array<DeclarationIrVo>) {
       set createPrelevementSocialDialog(value: boolean) {
         this.prelevementSocialService.createPrelevementSocialDialog= value;
        }
+    get comptables(): Array<ComptableVo>{
+        return this.comptableService.comptables;
+    }
 
     get dateFormat(){
             return environment.dateFormatEdit;
