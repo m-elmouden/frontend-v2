@@ -267,6 +267,13 @@
                             </div>
                         </th>
 
+                        <th pSortableColumn="dateCreation">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Date creation</span>
+                                <p-sortIcon field="dateCreation"></p-sortIcon>
+                            </div>
+                        </th>
+
 
                         <!--<th pSortableColumn="annee">
                             <div class="p-d-flex p-jc-between p-ai-center">
@@ -418,6 +425,8 @@
 
                         <td>{{declarationIr.societeVo?.id}}</td>
 
+                        <td>{{declarationIr.dateCreation | date:'dd-M-yyyy' }}</td>
+
 
                         <!--<td>{{declarationIr.annee}}</td>
 
@@ -466,7 +475,7 @@
                         -->
 
                         <!--
-                           <td>{{declarationIr.dateCreation | date:'dd-M-yyyy' }}</td>
+
                         -->
 
                         <!--
