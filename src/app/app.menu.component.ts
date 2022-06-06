@@ -365,9 +365,14 @@ export class AppMenuComponent implements OnInit {
                     },
                 ]
               },
-    ]
+    ];
     this.modeladmin =
       [
+          {
+              label: 'Dashboard',
+              icon: 'pi pi-home',
+              routerLink: ['/app/admin/']
+          },
               {
                 label: 'MenuDeclarationCnss',
                 icon: 'pi pi-wallet',

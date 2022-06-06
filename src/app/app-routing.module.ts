@@ -13,6 +13,7 @@ import {RegisterComptableComponent} from './module/comptable/register-comptable/
 import {LoginSocieteComponent} from './module/societe/login-societe/login-societe.component';
 import {RegisterSocieteComponent} from './module/societe/register-societe/register-societe.component';
 import {MessageComponent} from './message/message.component';
+import {DashboardAdminComponent} from './module/admin/view/impot/dashboard-admin/dashboard-admin.component';
 @NgModule({
   imports: [
     RouterModule.forRoot(

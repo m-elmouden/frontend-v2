@@ -249,10 +249,12 @@ import { MessageModule } from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
 import {RippleModule} from 'primeng/ripple';
 import {FileUploadModule} from 'primeng/fileupload';
+import {DashboardAdminComponent} from './dashboard-admin/dashboard-admin.component';
 
 
 @NgModule({
     declarations: [
+        DashboardAdminComponent,
         TauxIsConfigCreateAdminComponent,
         TauxIsConfigListAdminComponent,
         TauxIsConfigViewAdminComponent,

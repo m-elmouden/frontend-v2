@@ -37,8 +37,13 @@ export class DemandeService {
      private _searchDemande:DemandeVo ;
 
     // methods
+    public findByEtatDemandeRef(ref: string){
+        return this.http.get<Array<DemandeVo>>(this.API + 'etatDemande/reference/' + ref , {responseType : 'json'});
+    }
+    
+    
     public archiver(demande: DemandeVo): Observable<DemandeVo> {
-        return this.http.put<DemandeVo>(this.API + 'archiver/' ,demande);
+        return this.http.put<DemandeVo>(this.API + 'archiver/' , demande);
     }
     public desarchiver(demande: DemandeVo): Observable<DemandeVo> {
     return this.http.put<DemandeVo>(this.API + 'desarchiver/' ,demande);

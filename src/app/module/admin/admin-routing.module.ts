@@ -6,6 +6,7 @@ import {AuthGuard} from 'src/app/controller/guards/auth.guard';
 
 import {LoginAdminComponent} from './login-admin/login-admin.component';
 import {RegisterAdminComponent} from './register-admin/register-admin.component';
+import {DashboardAdminComponent} from './view/impot/dashboard-admin/dashboard-admin.component';
 
 @NgModule({
     imports: [
@@ -34,6 +35,13 @@ import {RegisterAdminComponent} from './register-admin/register-admin.component'
                                 }
                             ]
                         },
+
+                        {
+                            path: '',
+                            component: DashboardAdminComponent ,
+                            canActivate: [AuthGuard]
+                        },
+
                         {
 
                             path: 'impot',

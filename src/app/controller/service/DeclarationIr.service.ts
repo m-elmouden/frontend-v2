@@ -12,13 +12,14 @@ import {PaiementDeclarationIrVo} from '../model/PaiementDeclarationIr.model';
 import {EtatDeclarationIrVo} from '../model/EtatDeclarationIr.model';
 import {DeclarationIrEmployeVo} from '../model/DeclarationIrEmploye.model';
 import {PrelevementSocialEmployeVo} from '../model/PrelevementSocialEmploye.model';
+import {DeclarationirStatVo} from '../model/DeclarationirStatVo.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeclarationIrService {
-    private API = ''
+    private API = '';
      constructor(private http: HttpClient, private roleService: RoleService) {
         this.role$ = this.roleService.role$;
         this.role$.subscribe(role => {
@@ -33,20 +34,29 @@ export class DeclarationIrService {
      private _viewDeclarationIrDialog: boolean;
      public editDeclarationIr$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchDeclarationIr:DeclarationIrVo ;
+     private _searchDeclarationIr: DeclarationIrVo ;
 
     // methods
     public archiver(declarationIr: DeclarationIrVo): Observable<DeclarationIrVo> {
-        return this.http.put<DeclarationIrVo>(this.API + 'archiver/' ,declarationIr);
+        return this.http.put<DeclarationIrVo>(this.API + 'archiver/' , declarationIr);
     }
     public desarchiver(declarationIr: DeclarationIrVo): Observable<DeclarationIrVo> {
-    return this.http.put<DeclarationIrVo>(this.API + 'desarchiver/' ,declarationIr);
+    return this.http.put<DeclarationIrVo>(this.API + 'desarchiver/' , declarationIr);
     }
 
     public findAll(){
      return this.http.get<Array<DeclarationIrVo>>(this.API);
     }
 
+    public findStatByDateDeclarationAndDemande(declarationIr: DeclarationIrVo){
+        // tslint:disable-next-line:max-line-length
+        // @ts-ignore
+        return this.http.get<Array<number>>(this.API + 'demande/date/' + declarationIr.dateCreationMin + '/date/' + declarationIr.dateCreationMax + '/' , declarationIr.demande);
+    }
+
+    public findStatByDateDeclarationAndEtatDeclaration(declarationIr: DeclarationIrVo){
+        return this.http.get<Array<DeclarationirStatVo>>(this.API + 'date/' + declarationIr.dateCreationMin + '/date/' + declarationIr.dateCreationMax );
+    }
     public save(): Observable<DeclarationIrVo> {
 
            return this.http.post<DeclarationIrVo>(this.API, {...this.selectedDeclarationIr, dateCreation: moment(this.selectedDeclarationIr.dateCreation).format('YYYY-MM-DD')});
@@ -67,7 +77,7 @@ export class DeclarationIrService {
     }
 
    public findByIdWithAssociatedList(declarationIr:DeclarationIrVo):Observable<DeclarationIrVo>{
-         return this.http.get<DeclarationIrVo>(this.API + 'detail/id/' +declarationIr.id);
+         return this.http.get<DeclarationIrVo>(this.API + 'detail/id/' + declarationIr.id);
     }
 
     // getters and setters
