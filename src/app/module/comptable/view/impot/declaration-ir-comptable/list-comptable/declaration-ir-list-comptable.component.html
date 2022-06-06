@@ -7,7 +7,6 @@
                     <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
                             (click)="openCreateDeclarationIr('declarationIr')"></button>
 
-
                     <button pButton pRipple label="Recherche"
                             icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
                             class="p-button-success p-mr-2 p-mb-2"
@@ -21,9 +20,12 @@
                 </ng-template>
 
                 <ng-template pTemplate="right">
-                    <p-fileUpload styleClass="p-mr-2" #fubauto mode="basic" name="file" label="Import" [customUpload]="true" (uploadHandler)="uploadExcelFile($event)" [auto]="true"></p-fileUpload>
+                    <p-fileUpload styleClass="p-mr-2" #fubauto mode="basic" name="file" label="Import"
+                                  [customUpload]="true" (uploadHandler)="uploadExcelFile($event)"
+                                  [auto]="true"></p-fileUpload>
                     <div class="flex">
-                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help"
+                                       [model]="excelPdfButons"></p-splitButton>
                     </div>
                 </ng-template>
 
@@ -44,73 +46,45 @@
                                 </p-dropdown>
                             </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                              <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
+                                              <p-inputNumber mode="decimal" [minFractionDigits]="2"
+                                                             class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIr.anneeMin"
-                                                             id="3-1"></p-inputNumber>
+                                                             id="3-1">
+                        </p-inputNumber>
                                               <label for="3-1">Annee Min</label>
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal" [(ngModel)]="searchDeclarationIr.anneeMax"
                                                              id="3-2"></p-inputNumber>
                                              <label for="3-2">Annee Max</label>
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
-                                                             mode="decimal" [(ngModel)]="searchDeclarationIr.moisMin"
+                                                             [(ngModel)]="searchDeclarationIr.moisMin"
                                                              id="4-1"></p-inputNumber>
                                               <label for="4-1">Mois Min</label>
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
-                                                             mode="decimal" [(ngModel)]="searchDeclarationIr.moisMax"
+                                                             [(ngModel)]="searchDeclarationIr.moisMax"
                                                              id="4-2"></p-inputNumber>
                                              <label for="4-2">Mois Max</label>
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
-                                                             mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.montantIrCalculeMin"
                                                              id="5-1"></p-inputNumber>
                                               <label for="5-1">Montant ir calcule Min</label>
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
-                                                             mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.montantIrCalculeMax"
                                                              id="5-2"></p-inputNumber>
                                              <label for="5-2">Montant ir calcule Max</label>
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.montantIrAPayeMin"
                                                              id="6-1"></p-inputNumber>
@@ -118,10 +92,6 @@
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
                                                              mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.montantIrAPayeMax"
                                                              id="6-2"></p-inputNumber>
@@ -129,10 +99,7 @@
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
+
                                                              mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.totalAPayeMin"
                                                              id="7-1"></p-inputNumber>
@@ -140,10 +107,7 @@
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
+
                                                              mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.totalAPayeMax"
                                                              id="7-2"></p-inputNumber>
@@ -151,10 +115,7 @@
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
+
                                                              mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.totalSalaireNetMin"
                                                              id="8-1"></p-inputNumber>
@@ -162,10 +123,7 @@
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
+
                                                              mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.totalSalaireNetMax"
                                                              id="8-2"></p-inputNumber>
@@ -173,10 +131,7 @@
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
+
                                                              mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.totalSalaireBrutMin"
                                                              id="9-1"></p-inputNumber>
@@ -184,10 +139,7 @@
                                        </span>
                     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
                                               <p-inputNumber mode="decimal" [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" mode="decimal"
-                                                             [minFractionDigits]="2" class="p-mr-2"
+
                                                              mode="decimal"
                                                              [(ngModel)]="searchDeclarationIr.totalSalaireBrutMax"
                                                              id="9-2"></p-inputNumber>
@@ -299,6 +251,7 @@
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
 
+
                         <th pSortableColumn="refrerence">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>Refrerence</span>
@@ -315,7 +268,7 @@
                         </th>
 
 
-                        <th pSortableColumn="annee">
+                        <!--<th pSortableColumn="annee">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>Annee</span>
                                 <p-sortIcon field="annee"></p-sortIcon>
@@ -328,7 +281,7 @@
                                 <span>Mois</span>
                                 <p-sortIcon field="mois"></p-sortIcon>
                             </div>
-                        </th>
+                        </th>-->
 
 
                         <th pSortableColumn="montantIrCalcule">
@@ -379,26 +332,6 @@
                                 <p-sortIcon field="etatDeclarationIr"></p-sortIcon>
                             </div>
                         </th>
-
-
-                        <!--
-                        <th pSortableColumn="totalSalaireBrut">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Total salaire brut</span>
-                                <p-sortIcon field="totalSalaireBrut"></p-sortIcon>
-                            </div>
-                        </th>
-                        -->
-
-
-                        <!--
-                        <th pSortableColumn="etatDeclarationIr">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>Etat declaration ir</span>
-                                <p-sortIcon field="etatDeclarationIr"></p-sortIcon>
-                            </div>
-                        </th>
-                        -->
 
 
                         <!--
@@ -486,10 +419,10 @@
                         <td>{{declarationIr.societeVo?.id}}</td>
 
 
-                        <td>{{declarationIr.annee}}</td>
+                        <!--<td>{{declarationIr.annee}}</td>
 
 
-                        <td>{{declarationIr.mois}}</td>
+                        <td>{{declarationIr.mois}}</td>-->
 
 
                         <td>{{declarationIr.montantIrCalcule}}</td>
@@ -502,6 +435,12 @@
 
 
                         <td>{{declarationIr.totalSalaireNet}}</td>
+
+
+                        <td>
+                            <p-message [severity]="checkMessage(declarationIr)"
+                                       text="{{declarationIr.etatDeclarationIrVo?.libelle}} par Admin"></p-message>
+                        </td>
 
 
                         <!--
