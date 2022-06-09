@@ -20,6 +20,12 @@ export class HomeComponent implements OnInit {
   redirectChercheur(){
     this.router.navigate(['/chercheur/login']);
   }
+  redirectComptable(){
+    this.router.navigate(['/comptable/login']);
+  }
+  redirectSociete(){
+    this.router.navigate(['/societe/login']);
+  }
   redirectRoot(){
     this.router.navigate(['/root/login']);
   }
