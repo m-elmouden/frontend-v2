@@ -42,6 +42,8 @@ export class DeclarationIrListSocieteComponent implements OnInit {
     societes :Array<SocieteVo>;
     etatDeclarationIrs :Array<EtatDeclarationIrVo>;
     paiementDeclarationIrs :Array<PaiementDeclarationIrVo>;
+    file: Blob;
+
 
 
     constructor(private datePipe: DatePipe, private declarationIrService: DeclarationIrService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
@@ -63,7 +65,7 @@ export class DeclarationIrListSocieteComponent implements OnInit {
     this.yesOrNoAdmin =  [{label: 'Admin', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
     this.yesOrNoVisible =  [{label: 'Visible', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
     }
-    
+
     // methods
       public async loadDeclarationIrs(){
         await this.roleService.findAll();
@@ -75,7 +77,7 @@ export class DeclarationIrListSocieteComponent implements OnInit {
 
   public searchRequest(){
         this.declarationIrService.findByCriteria(this.searchDeclarationIr).subscribe(declarationIrs=>{
-            
+
             this.declarationIrs = declarationIrs;
            // this.searchDeclarationIr = new DeclarationIrVo();
         },error=>console.log(error));
@@ -102,7 +104,7 @@ export class DeclarationIrListSocieteComponent implements OnInit {
                             {field: 'username', header: 'Username'},
         ];
     }
-    
+
     public async editDeclarationIr(declarationIr:DeclarationIrVo){
         const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'edit');
          if(isPermistted){
@@ -117,9 +119,9 @@ export class DeclarationIrListSocieteComponent implements OnInit {
                 severity: 'error', summary: 'Erreur', detail: 'Probléme de permission'
             });
          }
-       
+
     }
-    
+
 
 
    public async viewDeclarationIr(declarationIr:DeclarationIrVo){
@@ -136,9 +138,9 @@ export class DeclarationIrListSocieteComponent implements OnInit {
                 severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'
             });
         }
-        
+
     }
-    
+
     public async openCreateDeclarationIr(pojo: string) {
         const isPermistted = await this.roleService.isPermitted(pojo, 'add');
         if(isPermistted){
@@ -149,7 +151,7 @@ export class DeclarationIrListSocieteComponent implements OnInit {
                 severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'
             });
         }
-       
+
     }
 public async archiverDeclarationIr(declarationIr:DeclarationIrVo){
 const isPermistted = await this.roleService.isPermitted('DeclarationIr', 'delete');
@@ -360,8 +362,8 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
     set declarationIrSelections(value: Array<DeclarationIrVo>) {
         this.declarationIrService.declarationIrSelections = value;
        }
-   
-     
+
+
 
 
     get selectedDeclarationIr():DeclarationIrVo {
@@ -370,14 +372,14 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
     set selectedDeclarationIr(value: DeclarationIrVo) {
         this.declarationIrService.selectedDeclarationIr = value;
        }
-    
+
     get createDeclarationIrDialog():boolean {
            return this.declarationIrService.createDeclarationIrDialog;
        }
     set createDeclarationIrDialog(value: boolean) {
         this.declarationIrService.createDeclarationIrDialog= value;
        }
-    
+
     get editDeclarationIrDialog():boolean {
            return this.declarationIrService.editDeclarationIrDialog;
        }
@@ -390,7 +392,7 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
     set viewDeclarationIrDialog(value: boolean) {
         this.declarationIrService.viewDeclarationIrDialog = value;
        }
-       
+
      get searchDeclarationIr(): DeclarationIrVo {
         return this.declarationIrService.searchDeclarationIr;
        }
@@ -416,6 +418,39 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
                 alert('Problème de téléchargement');
 
             };
+    }
+    public downloadXmlFile(declarationIr: DeclarationIrVo) {
+        console.log('xmlxml');
+        this.messageService.add({
+            severity: 'success',
+            summary: 'Successful',
+            detail: 'File xml generated',
+            life: 3000
+        });
+        return this.declarationIrService.downloadXmlFile(declarationIr).subscribe(data => {
+            if (data == 1) {
+                this.file = data;
+                const fileName = 'fileXml1';
+                const fileType = '.xml';
+
+                const blob = new Blob([this.file], {type: fileType});
+                console.log(blob);
+
+                const a = document.createElement('a');
+                console.log(a);
+                a.download = fileName;
+                a.href = URL.createObjectURL(blob);
+                a.dataset.downloadurl = [fileType, a.download, a.href].join(':');
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(function() {
+                    URL.revokeObjectURL(a.href);
+                }, 1500);
+            }
+        });
+
     }
 
     checkMessage(declarationIr: DeclarationIrVo ): string {

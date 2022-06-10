@@ -42,6 +42,7 @@ export class DeclarationIrListComptableComponent implements OnInit {
     societes: Array<SocieteVo>;
     etatDeclarationIrs: Array<EtatDeclarationIrVo>;
     paiementDeclarationIrs: Array<PaiementDeclarationIrVo>;
+    file: Blob;
 
 
     constructor(private datePipe: DatePipe, private declarationIrService: DeclarationIrService, private messageService: MessageService, private confirmationService: ConfirmationService, private roleService: RoleService, private router: Router, private authService: AuthService, private exportService: ExportService
@@ -444,6 +445,39 @@ export class DeclarationIrListComptableComponent implements OnInit {
                 alert('Problème de téléchargement');
 
             };
+    }
+    public downloadXmlFile(declarationIr: DeclarationIrVo) {
+        console.log('xmlxml');
+        this.messageService.add({
+            severity: 'success',
+            summary: 'Successful',
+            detail: 'File xml generated',
+            life: 3000
+        });
+        return this.declarationIrService.downloadXmlFile(declarationIr).subscribe(data => {
+            if (data == 1) {
+                this.file = data;
+                const fileName = 'fileXml1';
+                const fileType = '.xml';
+
+                const blob = new Blob([this.file], {type: fileType});
+                console.log(blob);
+
+                const a = document.createElement('a');
+                console.log(a);
+                a.download = fileName;
+                a.href = URL.createObjectURL(blob);
+                a.dataset.downloadurl = [fileType, a.download, a.href].join(':');
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(function() {
+                    URL.revokeObjectURL(a.href);
+                }, 1500);
+            }
+        });
+
     }
     checkMessage(declarationIr: DeclarationIrVo): string {
         if (declarationIr.etatDeclarationIrVo.reference === 'E1') {

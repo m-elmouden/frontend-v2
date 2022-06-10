@@ -172,5 +172,8 @@ return this._declarationIrs;
         console.log(formData);
         return this.http.post('http://localhost:8036/api/excel/upload/', formData);
     }
+    public downloadXmlFile(declarationIR: DeclarationIrVo): Observable<any>{
+        return this.http.post<number>(this.API + 'toXML/', declarationIR);
+    }
 
 }

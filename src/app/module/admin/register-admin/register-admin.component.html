@@ -59,15 +59,14 @@
                     <!-- </h:panelGroup> -->
                 </div>
 
+                <button label="Register" pButton type="submit" name="submit" class="btn-md submit" value="submit"
+                        (click)="submit()" style="background-color: rgba(8,7,16,0.83); color: white"></button>
 
-                <div class="p-col-12 p-sm-6 p-md-6">
+                <!--   <
+                       <div class="p-col-12 p-sm-6 p-md-6">
+                           <button pButton type="button" icon="pi pi-check" label="Register" [disabled]="registerForm.invalid"
+                                   (click)="submit()"></button>-->
 
-                    <button label="Register" pButton type="submit" name="submit" class="btn-md submit" value="submit"
-                            (click)="submit()" [disabled]="registerForm.invalid"
-                            style="background-color: rgba(8,7,16,0.83); color: white"></button>
-
-
-                </div>
             </div>
         </div>
     </div>
