@@ -24,6 +24,7 @@ import {AuthService} from '../../../../../../controller/service/Auth.service';
 import {ExportService} from '../../../../../../controller/service/Export.service';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {DeclarationirStatVo} from '../../../../../../controller/model/DeclarationirStatVo.model';
 
 @Component({
     selector: 'app-declaration-ir-list-admin',
@@ -81,6 +82,7 @@ export class DeclarationIrListAdminComponent implements OnInit {
             // this.searchDeclarationIr = new DeclarationIrVo();
         }, error => console.log(error));
     }
+
 
     private initCol() {
         this.cols = [
@@ -371,6 +373,8 @@ export class DeclarationIrListAdminComponent implements OnInit {
 
     // getters and setters
 
+
+
     get declarationIrs(): Array<DeclarationIrVo> {
         return this.declarationIrService.declarationIrs;
     }
@@ -431,6 +435,7 @@ export class DeclarationIrListAdminComponent implements OnInit {
     get dateFormat() {
         return environment.dateFormatList;
     }
+
 
     public uploadExcelFile(event) {
         const file = event.files[0];

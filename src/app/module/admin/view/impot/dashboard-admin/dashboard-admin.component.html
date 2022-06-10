@@ -1,32 +1,99 @@
 <div class="p-grid layout-dashboard">
     <div class="p-col-12 p-md-6 p-lg-3">
-        <div class="overview-box card" routerLink="/app/admin/impot/demande/list">
-            <div class="overview-box-value">{{this.demandestotal.length}}</div>
-            <div class="overview-box-title">Total des Demandes</div>
-        </div>
+    <p-card  [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'white','font-size':'20px','font-weight':'bold'}" header="{{this.v1}}">
+        <p> Total des Declarations</p>
+    </p-card>
     </div>
     <div class="p-col-12 p-md-6 p-lg-3">
-        <div class="overview-box card">
-            <div class="overview-box-value">{{this.demandestrait.length}}</div>
-            <div class="overview-box-title">Demandes en cours de Traitement</div>
-        </div>
+        <p-card header="{{this.v2}}" [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'orange','color':'white','font-size':'20px','font-weight':'bold'}">
+            <p>Depose par Societe</p>
+        </p-card>
+    </div>
+<div class="p-col-12 p-md-6 p-lg-3">
+<p-card header="{{this.v3}}" [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'blue','color':'white','font-size':'20px','font-weight':'bold'}">
+    <p> en cours de traitements</p>
+</p-card>
+
     </div>
     <div class="p-col-12 p-md-6 p-lg-3">
-        <div class="overview-box card">
-            <div class="overview-box-value">{{this.demandesval.length}}</div>
-            <div class="overview-box-title">Demandes en cours de Validation</div>
-            </div>
+
+        <p-card header="{{this.v4}}" [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'green','color':'white','font-size':'20px','font-weight':'bold'}">
+            <ng-template pTemplate="header">
+            </ng-template>
+            <p>Validé</p>
+        </p-card>
+
     </div>
-    <div class="p-col-12 p-md-6 p-lg-3">
-        <div class="overview-box card">
-            <div class="overview-box-value">{{this.demandesvalidees.length}}</div>
-            <div class="overview-box-title">Demandes Validees</div>
+
+    <div  class="p-grid ">
+
+        <div  class="p-col-12 p-md-3">
+        <label for="datemin" >Date Min</label>
+        <p-calendar id="datemin"
+                class="p-mr-2" [(ngModel)]="date1"
+                dateFormat="{{dateFormat}}"
+                    placeholder="Date Min">
+        </p-calendar>
         </div>
-    </div>
+
+        <div  class="p-col-12 p-md-3">
+            <label for="datemax" >Date Max</label>
+            <p-calendar id="datemax"
+                        class="p-mr-2" [(ngModel)]="date2"
+                        dateFormat="{{dateFormat}}"
+            placeholder="Date Max">
+            </p-calendar>
+        </div>
+
+        <div class="p-col-12 p-mr-2">
+            <p-button (click)="myFunction()" >Rechercher </p-button>
+        </div>
+
+        </div>
+        <div  class="p-grid ">
+
+        <p-table [value]="statiqueDeclarationIr" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>somme</th>
+                    <th>Etat</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-statistique>
+                <tr>
+                    <td>{{statistique.somme}}</td>
+                    <td>{{statistique.etatDeclarationIr?.libelle}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+</div>
+
+<div>
+   <!-- <div class="contentis">
+        <div class="p-shadow-14">
+    <table class="w3-table">
+        <tr class="table-header">
+            <th colspan="2" style="font-size: 20px;">Statistique de {{testStat.dateCreationMin}}-{{testStat.dateCreationMax}}</th></tr>
+        <tr>
+
+            <th style="font-size: 20px;">somme</th>
+            <th style="font-size: 20px;">Etat </th>
+        </tr>
+
+        <tr *ngFor="let statistique of statiqueDeclarationIr">
+            <td style="font-size: 18px;">{{statistique.somme}}</td>
+            <td style="font-size: 18px;">{{statistique.etatDeclarationIrVo?.libelle}}</td>
+
+        </tr>
+
+    </table>
+        </div>
+        </div>
+</div>
+
     <div class="crd">
         <div class="crd1">
             <div class="card">
-
                 <p-table #dt [value]="itemsSte" [rows]="9" [paginator]="true" [globalFilterFields]="['ice','raisonsocial','adresse','dateCreation']"
                          [rowHover]="true" dataKey="id"
                          [showCurrentPageReport]="true">
@@ -88,40 +155,47 @@
                 </ng-template>
             </p-dialog>
 
-        </div>
+        </div>-->
 
-        <div class="textir" style="margin-top: 5%;">
-            <div class="tauxIsDiv">
-                <h3>Taux de l'impôt sur les sociétés</h3>
-                <h4>Barème normal - Année {{date | date: 'yyyy'}}</h4>
-                <p>La loi de finances {{date | date: 'yyyy'}} a introduit une nouvelle grille de l’IS progressif présenté dans la tableau.</p>
-            </div>
-        </div>
-        <div class="contentis">
-            <div class="p-shadow-14">
-                <table class="w3-table">
-                    <tr class="table-header">
-                        <th colspan="2" style="font-size: 20px;">Bénéfice net fiscal en MAD</th></tr>
-                    <tr>
-                        <th style="font-size: 20px;">Taux IS </th>
-                        <th style="font-size: 20px;">Resultat Fiscal Min</th>
-                        <th style="font-size: 20px;">Resultat Fiscal Max</th>
-                        <th style="font-size: 20px;">Pourcentage </th>
-                    </tr>
-                    <tr *ngFor="let tauxIs of itemsTauxIs">
-                        <td style="font-size: 18px;">{{tauxIs.reference}}</td>
-                        <td style="font-size: 18px;">{{tauxIs.resultatFiscalMin}}</td>
-                        <td *ngIf="tauxIs.resultatFiscalMax != null" style="font-size: 18px;">{{tauxIs.resultatFiscalMax}}</td>
-                        <td *ngIf="tauxIs.resultatFiscalMax == null" style="font-size: 18px;">+&infin;</td>
-                        <td class="pourc" style="font-size: 18px;"><b>{{tauxIs.pourcentage}}% </b></td>
-<!--                        <td style="font-size: 18px;">{{tauxIs.tauxIsConfigVo.dateMin | date: 'dd-MM-yyyy'}}</td>-->
-<!--                        <td style="font-size: 18px;">{{tauxIs.tauxIsConfigVo.dateMax | date: 'dd-MM-yyyy'}}</td>-->
-                    </tr>
+        <!--   <div class="textir" style="margin-top: 5%;">
+               <div class="tauxIsDiv">
+                   <h3>Taux de l'impôt sur les sociétés</h3>
+                   <h4>Barème normal - Année {{date | date: 'yyyy'}}</h4>
+                   <p>La loi de finances {{date | date: 'yyyy'}} a introduit une nouvelle grille de l’IS progressif présenté dans la tableau.</p>
+               </div>
+       </div>
+          <div class="contentis">
+               <div class="p-shadow-14">
+                   <table class="w3-table">
+                       <tr class="table-header">
+                           <th colspan="2" style="font-size: 20px;">Bénéfice net fiscal en MAD</th></tr>
+                       <tr>
+                           <th style="font-size: 20px;">Taux IS </th>
+                           <th style="font-size: 20px;">Resultat Fiscal Min</th>
+                           <th style="font-size: 20px;">Resultat Fiscal Max</th>
+                           <th style="font-size: 20px;">Pourcentage </th>
+                       </tr>
+                       <tr *ngFor="let tauxIs of itemsTauxIs">
+                           <td style="font-size: 18px;">{{tauxIs.reference}}</td>
+                           <td style="font-size: 18px;">{{tauxIs.resultatFiscalMin}}</td>
+                           <td *ngIf="tauxIs.resultatFiscalMax != null" style="font-size: 18px;">{{tauxIs.resultatFiscalMax}}</td>
+                           <td *ngIf="tauxIs.resultatFiscalMax == null" style="font-size: 18px;">+&infin;</td>
+                           <td class="pourc" style="font-size: 18px;"><b>{{tauxIs.pourcentage}}% </b></td>
+                          <td style="font-size: 18px;">{{tauxIs.tauxIsConfigVo.dateMin | date: 'dd-MM-yyyy'}}</td>
+                          <td style="font-size: 18px;">{{tauxIs.tauxIsConfigVo.dateMax | date: 'dd-MM-yyyy'}}</td>
+                       </tr>
 
-                </table>
-            </div>
-        </div>
+                   </table>
+               </div>
+           </div>-->
     </div>
+
+
+
+
+
+
+
 <!--    <div class="p-col-12 p-md-8 p-lg-8">-->
 <!--        <div class="card card-w-title">-->
 <!--            <h5>Statistics</h5>-->

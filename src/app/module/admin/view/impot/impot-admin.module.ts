@@ -250,6 +250,7 @@ import {MessagesModule} from 'primeng/messages';
 import {RippleModule} from 'primeng/ripple';
 import {FileUploadModule} from 'primeng/fileupload';
 import {DashboardAdminComponent} from './dashboard-admin/dashboard-admin.component';
+import {CardModule} from 'primeng/card';
 
 
 @NgModule({
@@ -503,7 +504,8 @@ import {DashboardAdminComponent} from './dashboard-admin/dashboard-admin.compone
         BadgeModule,
         MultiSelectModule,
         RippleModule,
-        FileUploadModule
+        FileUploadModule,
+        CardModule
     ],
     exports: [
         TauxIsConfigCreateAdminComponent,

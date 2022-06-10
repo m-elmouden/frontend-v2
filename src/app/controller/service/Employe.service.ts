@@ -137,7 +137,7 @@ export class EmployeService {
 
     public importExcel(formData: FormData) {
         console.log(formData);
-        return this.http.post('http://localhost:8036/api/excel/upload', formData);
+        return this.http.post('http://localhost:8036/api/excel/upload/', formData);
     }
 
 

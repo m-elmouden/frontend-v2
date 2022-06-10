@@ -19,12 +19,12 @@ import {ComptableVo} from '../model/Comptable.model';
   providedIn: 'root'
 })
 export class DemandeService {
-    private API = ''
+    private API = '';
      constructor(private http: HttpClient, private roleService: RoleService) {
         this.role$ = this.roleService.role$;
         this.role$.subscribe(role => {
             this.API = environment.apiUrl  + role.toLowerCase() + '/demande/';
-        })
+        });
     }
      private _demandes: Array<DemandeVo> ;
      private _selectedDemande: DemandeVo;
@@ -34,19 +34,14 @@ export class DemandeService {
      private _viewDemandeDialog: boolean;
      public editDemande$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchDemande:DemandeVo ;
+     private _searchDemande: DemandeVo ;
 
     // methods
-    public findByEtatDemandeRef(ref: string){
-        return this.http.get<Array<DemandeVo>>(this.API + 'etatDemande/reference/' + ref , {responseType : 'json'});
-    }
-    
-    
     public archiver(demande: DemandeVo): Observable<DemandeVo> {
         return this.http.put<DemandeVo>(this.API + 'archiver/' , demande);
     }
     public desarchiver(demande: DemandeVo): Observable<DemandeVo> {
-    return this.http.put<DemandeVo>(this.API + 'desarchiver/' ,demande);
+    return this.http.put<DemandeVo>(this.API + 'desarchiver/' , demande);
     }
 
     public findAll(){
@@ -54,7 +49,7 @@ export class DemandeService {
     }
 
     public save(): Observable<DemandeVo> {
-           return this.http.post<DemandeVo>(this.API, {...this.selectedDemande,dateCreation: moment(this.selectedDemande.dateCreation).format("YYYY-MM-DD")});
+           return this.http.post<DemandeVo>(this.API, {...this.selectedDemande, dateCreation: moment(this.selectedDemande.dateCreation).format('yyyy-MM-dd')});
     }
 
     delete(demande: DemandeVo) {
@@ -67,22 +62,22 @@ export class DemandeService {
     }
 
 
-     public findByCriteria(demande:DemandeVo):Observable<Array<DemandeVo>>{
-           return this.http.post<Array<DemandeVo>>(this.API +'search', demande);
+     public findByCriteria(demande: DemandeVo): Observable<Array<DemandeVo>>{
+           return this.http.post<Array<DemandeVo>>(this.API + 'search', demande);
     }
 
-   public findByIdWithAssociatedList(demande:DemandeVo):Observable<DemandeVo>{
-         return this.http.get<DemandeVo>(this.API + 'detail/id/' +demande.id);
+   public findByIdWithAssociatedList(demande: DemandeVo): Observable<DemandeVo>{
+         return this.http.get<DemandeVo>(this.API + 'detail/id/' + demande.id);
     }
 
     // getters and setters
 
 
     get demandes(): Array<DemandeVo> {
-    if(this._demandes==null){
-    this._demandes=new Array<DemandeVo>();
+    if (this._demandes == null){
+    this._demandes = new Array<DemandeVo>();
     }
-return this._demandes;
+    return this._demandes;
        }
 
     set demandes(value: Array<DemandeVo>) {
@@ -90,10 +85,10 @@ return this._demandes;
        }
 
     get selectedDemande(): DemandeVo {
-    if(this._selectedDemande==null){
-    this._selectedDemande=new DemandeVo();
+    if (this._selectedDemande == null){
+    this._selectedDemande = new DemandeVo();
     }
-           return this._selectedDemande;
+    return this._selectedDemande;
        }
 
     set selectedDemande(value: DemandeVo) {
@@ -101,10 +96,10 @@ return this._demandes;
        }
 
     get demandeSelections(): Array<DemandeVo> {
-    if(this._demandeSelections==null){
-    this._demandeSelections=new Array<DemandeVo>();
+    if (this._demandeSelections == null){
+    this._demandeSelections = new Array<DemandeVo>();
     }
-        return this._demandeSelections;
+    return this._demandeSelections;
        }
 
 
@@ -137,10 +132,10 @@ return this._demandes;
        }
 
      get searchDemande(): DemandeVo {
-     if(this._searchDemande==null){
-    this._searchDemande=new DemandeVo();
+     if (this._searchDemande == null){
+    this._searchDemande = new DemandeVo();
     }
-        return this._searchDemande;
+     return this._searchDemande;
     }
 
     set searchDemande(value: DemandeVo) {

@@ -21,8 +21,8 @@ import {DeclarationirStatVo} from '../model/DeclarationirStatVo.model';
 export class DeclarationIrService {
     private API = '';
      constructor(private http: HttpClient, private roleService: RoleService) {
-        this.role$ = this.roleService.role$;
-        this.role$.subscribe(role => {
+        this._role$ = this.roleService.role$;
+        this._role$.subscribe(role => {
             this.API = environment.apiUrl  + role.toLowerCase() + '/declarationIr/';
         })
     }
@@ -33,10 +33,21 @@ export class DeclarationIrService {
      private _editDeclarationIrDialog: boolean;
      private _viewDeclarationIrDialog: boolean;
      public editDeclarationIr$ = new BehaviorSubject<boolean>(false);
-     private role$: Observable<string>;
+     private _role$: Observable<string>;
      private _searchDeclarationIr: DeclarationIrVo ;
 
-    // methods
+
+    get role$(): Observable<string> {
+        return this._role$;
+    }
+
+    set role$(value: Observable<string>) {
+        this._role$ = value;
+    }
+
+    
+
+// methods
     public archiver(declarationIr: DeclarationIrVo): Observable<DeclarationIrVo> {
         return this.http.put<DeclarationIrVo>(this.API + 'archiver/' , declarationIr);
     }
@@ -54,7 +65,7 @@ export class DeclarationIrService {
         return this.http.get<Array<number>>(this.API + 'demande/date/' + declarationIr.dateCreationMin + '/date/' + declarationIr.dateCreationMax + '/' , declarationIr.demande);
     }
 
-    public findStatByDateDeclarationAndEtatDeclaration(declarationIr: DeclarationIrVo){
+    public findStatByDateDeclarationAndEtatDeclaration(declarationIr: DeclarationIrVo): Observable<Array<DeclarationirStatVo>>{
         return this.http.get<Array<DeclarationirStatVo>>(this.API + 'date/' + declarationIr.dateCreationMin + '/date/' + declarationIr.dateCreationMax );
     }
     public save(): Observable<DeclarationIrVo> {
@@ -72,14 +83,17 @@ export class DeclarationIrService {
     }
 
 
-     public findByCriteria(declarationIr:DeclarationIrVo):Observable<Array<DeclarationIrVo>>{
+     public findByCriteria(declarationIr: DeclarationIrVo): Observable<Array<DeclarationIrVo>>{
            return this.http.post<Array<DeclarationIrVo>>(this.API + 'search', declarationIr);
     }
 
-   public findByIdWithAssociatedList(declarationIr:DeclarationIrVo):Observable<DeclarationIrVo>{
+   public findByIdWithAssociatedList(declarationIr: DeclarationIrVo): Observable<DeclarationIrVo>{
          return this.http.get<DeclarationIrVo>(this.API + 'detail/id/' + declarationIr.id);
     }
 
+    public findByEtatDEclarationIrReference(reference): Observable<Array<DeclarationIrVo>>{
+        return this.http.get<Array<DeclarationIrVo>>(this.API + 'etatDeclarationIr/reference/' + reference);
+}
     // getters and setters
 
 
@@ -151,9 +165,12 @@ return this._declarationIrs;
     set searchDeclarationIr(value: DeclarationIrVo) {
         this._searchDeclarationIr = value;
        }
+
+
+
     public importExcel(formData: FormData){
         console.log(formData);
-        return this.http.post('http://localhost:8036/api/excel/upload-declaration-irs', formData);
+        return this.http.post('http://localhost:8036/api/excel/upload/', formData);
     }
 
 }

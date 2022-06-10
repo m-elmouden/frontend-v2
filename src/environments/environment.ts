@@ -3,19 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  dateFormatCreate: 'dd/mm/yy',
-  dateFormatEdit: 'dd/mm/yy',
-  dateFormatView: 'dd/mm/yy',
-  dateFormatList: 'dd/MM/yyyy',
-  trueValue: 'Vrai',
-  falseValue: 'Faux',
-  emptyForExport: '-----',
-
-  baseUrl: 'http://localhost:8036/api/',
-  apiUrl: 'http://localhost:8036/api/',
-  loginUrl: 'http://localhost:8036/',
-  rootAppUrl:'app',
+    production: false,
+    dateFormatCreate: 'yyyy-MM-dd',
+    dateFormatEdit: 'dd/mm/yy',
+    dateFormatView: 'dd/mm/yy',
+    dateFormatList: 'dd/MM/yyyy',
+    dateFormatStatistique: 'yyyy-MM-dd',
+    trueValue: 'Vrai',
+    falseValue: 'Faux',
+    emptyForExport: '-----',
+    baseUrl: 'http://localhost:8036/api/',
+    apiUrl: 'http://localhost:8036/api/',
+    loginUrl: 'http://localhost:8036/',
+    rootAppUrl: 'app',
 };
 
 /*
