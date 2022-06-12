@@ -1,0 +1,98 @@
+<div class="p-grid layout-dashboard">
+    <div class="p-col-12 p-md-6 p-lg-3">
+    <p-card  [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'white','font-size':'20px','font-weight':'bold'}" header="{{this.v1}}">
+        <p> Total des Declarations</p>
+    </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <p-card header="{{this.v2}}" [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'orange','color':'white','font-size':'20px','font-weight':'bold'}">
+            <p>Depose par Societe</p>
+        </p-card>
+    </div>
+<div class="p-col-12 p-md-6 p-lg-3">
+<p-card header="{{this.v3}}" [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'blue','color':'white','font-size':'20px','font-weight':'bold'}">
+    <p> en cours de traitements</p>
+</p-card>
+
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+
+        <p-card header="{{this.v4}}" [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'green','color':'white','font-size':'20px','font-weight':'bold'}">
+            <ng-template pTemplate="header">
+            </ng-template>
+            <p>Validé</p>
+        </p-card>
+
+    </div>
+</div>
+    <div  class="p-grid layout-dashboard" *ngIf="user ==='comptableTraiteur'">
+        <p-table [value]="declarationInitialSoc" >
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                   <h3>Listes des Déclarations a Traiter</h3>
+                    <p-button icon="pi pi-refresh"  (click)="headerCards()" ></p-button>
+                </div>
+
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Reference</th>
+                    <th>Societe</th>
+                    <th>Date Création</th>
+                    <th>Etat</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-declarationIr>
+                <tr>
+                    <td>{{declarationIr.refrerence}}</td>
+                    <td>{{declarationIr.societeVo?.id}}</td>
+                    <td>{{declarationIr.dateCreation | date:'dd-MM-yyyy' }}</td>
+                    <td>{{declarationIr.etatDeclarationIrVo?.libelle}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    En total Il y a {{this.declarationInitialSoc ? this.declarationInitialSoc.length : 0 }} Declarations.
+                </div>
+            </ng-template>
+        </p-table>
+
+</div>
+
+<div  class="p-grid layout-dashboard" *ngIf="user === 'comptableValidateur'">
+    <p-table [value]="declarationValidation" >
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h3> Listes des Déclarations a Valider</h3>
+                <p-button icon="pi pi-refresh"  (click)="headerCards()" ></p-button>
+                </div>
+
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Reference</th>
+                <th>Societe</th>
+                <th>Date Création</th>
+                <th>Etat</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-declarationIr>
+            <tr>
+                <td>{{declarationIr.refrerence}}</td>
+                <td>{{declarationIr.societeVo?.id}}</td>
+                <td>{{declarationIr.dateCreation | date:'dd-MM-yyyy' }}</td>
+                <td>{{declarationIr.etatDeclarationIrVo?.libelle}}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                En total Il y a {{this.declarationInitialSoc ? this.declarationInitialSoc.length : 0 }} Declarations.
+            </div>
+        </ng-template>
+    </p-table>
+
+</div>
+
+
+
+
