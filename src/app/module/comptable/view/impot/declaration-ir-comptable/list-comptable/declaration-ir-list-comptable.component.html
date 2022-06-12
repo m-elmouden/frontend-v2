@@ -448,7 +448,7 @@
 
                         <td>
                             <p-message [severity]="checkMessage(declarationIr)"
-                                       text="{{declarationIr.etatDeclarationIrVo?.libelle}} par Admin"></p-message>
+                                       text="{{declarationIr.etatDeclarationIrVo?.libelle}} "></p-message>
                         </td>
 
 
@@ -526,9 +526,9 @@
             </p-table>
         </div>
 
-        <app-declaration-ir-create-comptable></app-declaration-ir-create-comptable>
-        <app-declaration-ir-edit-comptable></app-declaration-ir-edit-comptable>
-        <app-declaration-ir-view-comptable></app-declaration-ir-view-comptable>
-        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+       <app-declaration-ir-create-comptable></app-declaration-ir-create-comptable>
+         <app-declaration-ir-edit-comptable></app-declaration-ir-edit-comptable>
+        <!--<app-declaration-ir-view-comptable></app-declaration-ir-view-comptable>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>-->
     </div>
 </div>

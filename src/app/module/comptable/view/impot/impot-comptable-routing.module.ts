@@ -7,179 +7,180 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { TauxIsConfigComptableComponent } from './taux-is-config-comptable/taux-is-config-comptable.component';
+import { TauxIsConfigComptableComponent } from './taux-is-config-comptable/taux-is-config-comptable.component';
 
 
 
-    import { EtatPaiementComptableComponent } from './etat-paiement-comptable/etat-paiement-comptable.component';
+import { EtatPaiementComptableComponent } from './etat-paiement-comptable/etat-paiement-comptable.component';
 
 
 
-    import { TypeOperationFactureComptableComponent } from './type-operation-facture-comptable/type-operation-facture-comptable.component';
+import { TypeOperationFactureComptableComponent } from './type-operation-facture-comptable/type-operation-facture-comptable.component';
 
 
 
-    import { CpcFactureComptableComponent } from './cpc-facture-comptable/cpc-facture-comptable.component';
+import { CpcFactureComptableComponent } from './cpc-facture-comptable/cpc-facture-comptable.component';
 
 
 
-    import { DeclarationIsComptableComponent } from './declaration-is-comptable/declaration-is-comptable.component';
+import { DeclarationIsComptableComponent } from './declaration-is-comptable/declaration-is-comptable.component';
 
 
 
-    import { DeclarationIrEmployeComptableComponent } from './declaration-ir-employe-comptable/declaration-ir-employe-comptable.component';
+import { DeclarationIrEmployeComptableComponent } from './declaration-ir-employe-comptable/declaration-ir-employe-comptable.component';
 
 
 
-    import { PresidentSocieteComptableComponent } from './president-societe-comptable/president-societe-comptable.component';
+import { PresidentSocieteComptableComponent } from './president-societe-comptable/president-societe-comptable.component';
 
 
 
-    import { DeclarationTvaComptableComponent } from './declaration-tva-comptable/declaration-tva-comptable.component';
+import { DeclarationTvaComptableComponent } from './declaration-tva-comptable/declaration-tva-comptable.component';
 
 
 
-    import { CpcComptableComponent } from './cpc-comptable/cpc-comptable.component';
+import { CpcComptableComponent } from './cpc-comptable/cpc-comptable.component';
 
 
 
-    import { TypeSocieteComptableComponent } from './type-societe-comptable/type-societe-comptable.component';
+import { TypeSocieteComptableComponent } from './type-societe-comptable/type-societe-comptable.component';
 
 
 
-    import { CommentaireComptableComponent } from './commentaire-comptable/commentaire-comptable.component';
+import { CommentaireComptableComponent } from './commentaire-comptable/commentaire-comptable.component';
 
 
 
-    import { DeclarationCnssDetailComptableComponent } from './declaration-cnss-detail-comptable/declaration-cnss-detail-comptable.component';
+import { DeclarationCnssDetailComptableComponent } from './declaration-cnss-detail-comptable/declaration-cnss-detail-comptable.component';
 
 
 
-    import { TypeComptableComptableComponent } from './type-comptable-comptable/type-comptable-comptable.component';
+import { TypeComptableComptableComponent } from './type-comptable-comptable/type-comptable-comptable.component';
 
 
 
-    import { PaiementDeclarationIsComptableComponent } from './paiement-declaration-is-comptable/paiement-declaration-is-comptable.component';
+import { PaiementDeclarationIsComptableComponent } from './paiement-declaration-is-comptable/paiement-declaration-is-comptable.component';
 
 
 
-    import { TypeDeclarationTvaComptableComponent } from './type-declaration-tva-comptable/type-declaration-tva-comptable.component';
+import { TypeDeclarationTvaComptableComponent } from './type-declaration-tva-comptable/type-declaration-tva-comptable.component';
 
 
 
-    import { TvaComptableComponent } from './tva-comptable/tva-comptable.component';
+import { TvaComptableComponent } from './tva-comptable/tva-comptable.component';
 
 
 
-    import { PaiementDeclarationIrComptableComponent } from './paiement-declaration-ir-comptable/paiement-declaration-ir-comptable.component';
+import { PaiementDeclarationIrComptableComponent } from './paiement-declaration-ir-comptable/paiement-declaration-ir-comptable.component';
 
 
 
-    import { DemandePieceJointeComptableComponent } from './demande-piece-jointe-comptable/demande-piece-jointe-comptable.component';
+import { DemandePieceJointeComptableComponent } from './demande-piece-jointe-comptable/demande-piece-jointe-comptable.component';
 
 
 
-    import { TypeTauxCnssComptableComponent } from './type-taux-cnss-comptable/type-taux-cnss-comptable.component';
+import { TypeTauxCnssComptableComponent } from './type-taux-cnss-comptable/type-taux-cnss-comptable.component';
 
 
 
-    import { DeclarationIrComptableComponent } from './declaration-ir-comptable/declaration-ir-comptable.component';
+import { DeclarationIrComptableComponent } from './declaration-ir-comptable/declaration-ir-comptable.component';
 
 
 
-    import { EmployeComptableComponent } from './employe-comptable/employe-comptable.component';
+import { EmployeComptableComponent } from './employe-comptable/employe-comptable.component';
 
 
 
-    import { DeclarationCnssComptableComponent } from './declaration-cnss-comptable/declaration-cnss-comptable.component';
+import { DeclarationCnssComptableComponent } from './declaration-cnss-comptable/declaration-cnss-comptable.component';
 
 
 
-    import { EtatDeclarationTvaComptableComponent } from './etat-declaration-tva-comptable/etat-declaration-tva-comptable.component';
+import { EtatDeclarationTvaComptableComponent } from './etat-declaration-tva-comptable/etat-declaration-tva-comptable.component';
 
 
 
-    import { PaiementDeclarationTvaComptableComponent } from './paiement-declaration-tva-comptable/paiement-declaration-tva-comptable.component';
+import { PaiementDeclarationTvaComptableComponent } from './paiement-declaration-tva-comptable/paiement-declaration-tva-comptable.component';
 
 
 
-    import { PrelevementSocialEmployeComptableComponent } from './prelevement-social-employe-comptable/prelevement-social-employe-comptable.component';
+import { PrelevementSocialEmployeComptableComponent } from './prelevement-social-employe-comptable/prelevement-social-employe-comptable.component';
 
 
 
-    import { FactureComptableComponent } from './facture-comptable/facture-comptable.component';
+import { FactureComptableComponent } from './facture-comptable/facture-comptable.component';
 
 
 
-    import { EtatFactureComptableComponent } from './etat-facture-comptable/etat-facture-comptable.component';
+import { EtatFactureComptableComponent } from './etat-facture-comptable/etat-facture-comptable.component';
 
 
 
-    import { EtatDeclarationIsComptableComponent } from './etat-declaration-is-comptable/etat-declaration-is-comptable.component';
+import { EtatDeclarationIsComptableComponent } from './etat-declaration-is-comptable/etat-declaration-is-comptable.component';
 
 
 
-    import { CompteComptableComptableComponent } from './compte-comptable-comptable/compte-comptable-comptable.component';
+import { CompteComptableComptableComponent } from './compte-comptable-comptable/compte-comptable-comptable.component';
 
 
 
-    import { PrelevementSocialComptableComponent } from './prelevement-social-comptable/prelevement-social-comptable.component';
+import { PrelevementSocialComptableComponent } from './prelevement-social-comptable/prelevement-social-comptable.component';
 
 
 
-    import { ChercheurComptableComponent } from './chercheur-comptable/chercheur-comptable.component';
+import { ChercheurComptableComponent } from './chercheur-comptable/chercheur-comptable.component';
 
 
 
-    import { SousClasseComptableComptableComponent } from './sous-classe-comptable-comptable/sous-classe-comptable-comptable.component';
+import { SousClasseComptableComptableComponent } from './sous-classe-comptable-comptable/sous-classe-comptable-comptable.component';
 
 
 
-    import { SocieteComptableComponent } from './societe-comptable/societe-comptable.component';
+import { SocieteComptableComponent } from './societe-comptable/societe-comptable.component';
 
 
 
-    import { ComptableComptableComponent } from './comptable-comptable/comptable-comptable.component';
+import { ComptableComptableComponent } from './comptable-comptable/comptable-comptable.component';
 
 
 
-    import { TauxIrComptableComponent } from './taux-ir-comptable/taux-ir-comptable.component';
+import { TauxIrComptableComponent } from './taux-ir-comptable/taux-ir-comptable.component';
 
 
 
-    import { FacturePieceJointeComptableComponent } from './facture-piece-jointe-comptable/facture-piece-jointe-comptable.component';
+import { FacturePieceJointeComptableComponent } from './facture-piece-jointe-comptable/facture-piece-jointe-comptable.component';
 
 
 
-    import { EtatDemandeComptableComponent } from './etat-demande-comptable/etat-demande-comptable.component';
+import { EtatDemandeComptableComponent } from './etat-demande-comptable/etat-demande-comptable.component';
 
 
 
-    import { TypeEmployeComptableComponent } from './type-employe-comptable/type-employe-comptable.component';
+import { TypeEmployeComptableComponent } from './type-employe-comptable/type-employe-comptable.component';
 
 
 
-    import { TauxIsComptableComponent } from './taux-is-comptable/taux-is-comptable.component';
+import { TauxIsComptableComponent } from './taux-is-comptable/taux-is-comptable.component';
 
 
 
-    import { ClasseComptableComptableComponent } from './classe-comptable-comptable/classe-comptable-comptable.component';
+import { ClasseComptableComptableComponent } from './classe-comptable-comptable/classe-comptable-comptable.component';
 
 
 
-    import { AcompteComptableComponent } from './acompte-comptable/acompte-comptable.component';
+import { AcompteComptableComponent } from './acompte-comptable/acompte-comptable.component';
 
 
 
-    import { DemandeComptableComponent } from './demande-comptable/demande-comptable.component';
+import { DemandeComptableComponent } from './demande-comptable/demande-comptable.component';
 
 
 
-    import { EtatDeclarationIrComptableComponent } from './etat-declaration-ir-comptable/etat-declaration-ir-comptable.component';
+import { EtatDeclarationIrComptableComponent } from './etat-declaration-ir-comptable/etat-declaration-ir-comptable.component';
 
 
 
-    import { TauxCnssComptableComponent } from './taux-cnss-comptable/taux-cnss-comptable.component';
+import { TauxCnssComptableComponent } from './taux-cnss-comptable/taux-cnss-comptable.component';
+import {DashboardComptable1Component} from './dashboard-comptable/dashboard-comptable1.component';
 
 
 @NgModule({
@@ -189,7 +190,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
                 {
                     path: '',
                     children: [
-
+                        {
+                            path: 'dashbord',
+                            component: DashboardComptable1Component ,
+                            canActivate: [AuthGuard]
+                        },
 
                         {
 

@@ -49,7 +49,7 @@ export class DeclarationIrVo {
     public paiementDeclarationIrVo: PaiementDeclarationIrVo;
     public declarationIrEmployesVo: Array<DeclarationIrEmployeVo>;
     public prelevementSocialEmployesVo: Array<PrelevementSocialEmployeVo>;
-    public comptableVoTraiteur: ComptableVo;
-    public comptableVoValidateur: ComptableVo;
+    public comptableTraiteurVo: ComptableVo;
+    public comptableValidateurVo: ComptableVo;
     public demande: DemandeVo;
 }

@@ -1,4 +1,4 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, Injectable, Input, OnInit} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -14,6 +14,8 @@ import {DeclarationirStatVo} from '../../../../../controller/model/Declarationir
 import {DeclarationIrVo} from '../../../../../controller/model/DeclarationIr.model';
 import {environment} from '../../../../../../environments/environment';
 import {DatePipe} from '@angular/common';
+import {LoginComptableComponent} from '../../../../comptable/login-comptable/login-comptable.component';
+
 
 
 @Injectable({
@@ -24,6 +26,7 @@ import {DatePipe} from '@angular/common';
     templateUrl: './dashboard-admin.component.html',
     styleUrls: ['./dashboard-admin.scss']
 })
+
 export class DashboardAdminComponent implements OnInit {
 
     products: any[];
@@ -42,7 +45,7 @@ export class DashboardAdminComponent implements OnInit {
 
 
     fullcalendarOptions: any;
-    declarationstotal: any[] = [];
+    declarationstotal: number;
     societeDialog: boolean;
     submitted: boolean;
     societe: SocieteVo;
@@ -51,26 +54,21 @@ export class DashboardAdminComponent implements OnInit {
     private _date1 = new Date();
     private _date2 = new Date();
     private _testStat: DeclarationIrVo = new DeclarationIrVo();
-    private declarationBrouillion: DeclarationIrVo[] = [];
-    declarationInitialSoc: DeclarationIrVo[] = [];
-    declarationtraitCompt: DeclarationIrVo[] = [];
-    declarationValide: DeclarationIrVo[] = [];
+    private declarationBrouillion: number;
+    declarationInitialSoc: number;
+    declarationtraitCompt: number;
+    declarationValide: number;
 
     constructor(private demandeService: DemandeService, private societeService: SocieteService, private tauxIsService: TauxIsService, private declarationIrService: DeclarationIrService, public datepipe: DatePipe) {
     }
 
-    ngOnInit() {
+    async ngOnInit() {
         // this.productService.getProducts().then(data => this.products = data);
-        this.declarationIrService.findAll().subscribe(declaration => this.declarationstotal = declaration);
-        this.declarationIrService.findByEtatDEclarationIrReference('E1').subscribe(declaration => this.declarationBrouillion = declaration);
-        this.declarationIrService.findByEtatDEclarationIrReference('E2').subscribe(declaration => this.declarationInitialSoc = declaration);
-        this.declarationIrService.findByEtatDEclarationIrReference('E3').subscribe(declaration => this.declarationtraitCompt = declaration);
-        this.declarationIrService.findByEtatDEclarationIrReference('E4').subscribe(declaration => this.declarationValide = declaration);
-        this.v1 = this.declarationstotal.length;
-        this.v2 = this.declarationInitialSoc.length;
-        this.v3 = this.declarationtraitCompt.length;
-        this.v4 = this.declarationValide.length;
-        this.myFunction();
+        await this.declarationIrService.findAll().subscribe(declaration => this.declarationstotal = declaration.length);
+        await  this.declarationIrService.findByEtatDeclarationIrReference('E1').subscribe(data => this.declarationBrouillion = data.length);
+        await this.declarationIrService.findByEtatDeclarationIrReference('E2').subscribe(data => this.declarationInitialSoc = data.length);
+        await this.declarationIrService.findByEtatDeclarationIrReference('E3').subscribe(data => this.declarationtraitCompt = data.length);
+        await this.declarationIrService.findByEtatDeclarationIrReference('E4').subscribe(data => this.declarationValide = data.length);
         this.items = [
             {label: 'Save', icon: 'pi pi-check'},
             {label: 'Update', icon: 'pi pi-refresh'},
@@ -204,7 +202,7 @@ export class DashboardAdminComponent implements OnInit {
 
 
     get dateFormat() {
-        return environment.dateFormatCreate;
+        return environment.dateFormatEdit;
     }
 
     get date1(): Date {

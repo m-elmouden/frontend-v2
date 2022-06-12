@@ -296,8 +296,8 @@ ngOnInit(): void {
     validateDeclarationIrs(){
     this.errorMessages = new Array();
     this.validateDeclarationIrRefrerence();
-    this.validateDeclarationIrAnnee();
-    this.validateDeclarationIrMois();
+   /* this.validateDeclarationIrAnnee();
+    this.validateDeclarationIrMois();*/
     }
     validateDeclarationIss(){
     this.errorMessages = new Array();

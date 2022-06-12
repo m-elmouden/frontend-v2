@@ -9,19 +9,21 @@ import {Router} from '@angular/router';
   styleUrls: ['./login-comptable.component.scss']
 })
 export class LoginComptableComponent implements OnInit {
+  public  usernameComptable: any = '';
   loginForm = new FormGroup({
-    username:new FormControl('',Validators.required),
-    password:new FormControl('',Validators.required)
-  })
-  constructor(private authService:AuthService,private router: Router) { }
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+  });
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
   submit(){
     const formValues = this.loginForm.value;
     const username = formValues.username;
+    this.usernameComptable = username;
     const passowrd = formValues.password;
-    this.authService.loginComptable(username,passowrd);
+    this.authService.loginComptable(username, passowrd);
 
   }
     register(){

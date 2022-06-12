@@ -31,6 +31,7 @@ import {TabViewModule} from 'primeng/tabview';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { MessageModule } from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
+import {DashboardComptable1Component} from './view/impot/dashboard-comptable/dashboard-comptable1.component';
 
 @NgModule({
     declarations: [

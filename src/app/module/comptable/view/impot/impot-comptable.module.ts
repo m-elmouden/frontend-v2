@@ -247,10 +247,14 @@ import {TabViewModule} from 'primeng/tabview';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { MessageModule } from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
+import {DashboardComptable1Component} from './dashboard-comptable/dashboard-comptable1.component';
+import {CardModule} from 'primeng/card';
+import {RatingModule} from 'primeng/rating';
 
 
 @NgModule({
     declarations: [
+        DashboardComptable1Component,
         TauxIsConfigCreateComptableComponent,
         TauxIsConfigListComptableComponent,
         TauxIsConfigViewComptableComponent,
@@ -497,7 +501,9 @@ import {MessagesModule} from 'primeng/messages';
         MessagesModule,
         InputNumberModule,
         BadgeModule,
-        MultiSelectModule
+        MultiSelectModule,
+        CardModule,
+        RatingModule
     ],
     exports: [
         TauxIsConfigCreateComptableComponent,

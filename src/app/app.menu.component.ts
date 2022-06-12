@@ -668,10 +668,15 @@ export class AppMenuComponent implements OnInit {
     ]
     this.modelcomptable =
       [
+          {
+              label: 'Dashboard',
+              icon: 'pi pi-home',
+              routerLink: ['/app/comptable/']
+          },
               {
                 label: 'MenuDeclarationCnss',
                 icon: 'pi pi-wallet',
-                items:[
+                items: [
                     {
                       label: 'Liste Declaration cnss detail',
                       icon: 'pi pi-fw pi-plus-circle',

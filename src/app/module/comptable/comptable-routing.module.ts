@@ -7,6 +7,8 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 import { LoginComptableComponent } from './login-comptable/login-comptable.component';
 import { RegisterComptableComponent } from './register-comptable/register-comptable.component';
+import {DashboardAdminComponent} from '../admin/view/impot/dashboard-admin/dashboard-admin.component';
+import {DashboardComptable1Component} from './view/impot/dashboard-comptable/dashboard-comptable1.component';
 
 @NgModule({
     imports: [
@@ -25,6 +27,8 @@ import { RegisterComptableComponent } from './register-comptable/register-compta
                                 }
                               ]
                         },
+
+
                         {
                             path: 'register',
                             children: [
@@ -35,6 +39,14 @@ import { RegisterComptableComponent } from './register-comptable/register-compta
                                 }
                               ]
                         },
+
+                        {
+                            path: '',
+                            component: DashboardComptable1Component,
+                            canActivate: [AuthGuard]
+                        },
+
+
                         {
 
                             path: 'impot',

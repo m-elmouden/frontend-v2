@@ -138,6 +138,7 @@ import {ComptableRoutingModule} from './module/comptable/comptable-routing.modul
 import {SocieteModule} from './module/societe/societe.module';
 import {SocieteRoutingModule} from './module/societe/societe-routing.module';
 import {MessageComponent} from './message/message.component';
+import {LoginComptableComponent} from './module/comptable/login-comptable/login-comptable.component';
 
 @NgModule({
     imports: [
@@ -173,6 +174,7 @@ import {MessageComponent} from './message/message.component';
         InputNumberModule,
         MessagesModule,
         DialogModule,
+        ProgressBarModule,
     ],
     declarations: [
         AppComponent,
@@ -219,7 +221,8 @@ import {MessageComponent} from './message/message.component';
         MessageService,
         ConfirmationService,
         DatePipe,
-        MessageComponent
+        MessageComponent,
+        LoginComptableComponent
     ],
     bootstrap: [AppComponent],
 })

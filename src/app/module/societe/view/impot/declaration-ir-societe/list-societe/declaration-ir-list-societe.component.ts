@@ -455,9 +455,9 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
 
     checkMessage(declarationIr: DeclarationIrVo ): string {
         if (declarationIr.etatDeclarationIrVo.reference === 'E1') {
-            return 'error';
-        } else if (declarationIr.etatDeclarationIrVo.reference === 'E2') {
             return 'info';
+        } else if (declarationIr.etatDeclarationIrVo.reference === 'E2') {
+            return 'error';
         } else if (declarationIr.etatDeclarationIrVo.reference === 'E3') {
             return 'warn';
         } else if (declarationIr.etatDeclarationIrVo.reference === 'E4') {
@@ -465,5 +465,6 @@ public async duplicateDeclarationIr(declarationIr: DeclarationIrVo) {
         } else {
             return 'warn';
         }
+
     }
 }
