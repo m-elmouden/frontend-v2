@@ -34,9 +34,9 @@ export class AppComponent implements OnInit {
         this.role$ = this.roleService.role$;
         this.role$.subscribe(role => {
             if (role.toLowerCase() === 'admin') {
-                this.topbarColor = 'layout-topbar-green';
+                this.topbarColor = 'layout-topbar-dark';
             } else {
-                this.topbarColor = 'layout-topbar-blue';
+                this.topbarColor = 'layout-topbar-dark';
             }
 
 

@@ -175,6 +175,8 @@ import {LoginComptableComponent} from './module/comptable/login-comptable/login-
         MessagesModule,
         DialogModule,
         ProgressBarModule,
+        MenuModule,
+        RippleModule,
     ],
     declarations: [
         AppComponent,

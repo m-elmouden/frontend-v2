@@ -45,9 +45,12 @@
             <ng-template pTemplate="body" let-declarationIr>
                 <tr>
                     <td>{{declarationIr.refrerence}}</td>
-                    <td>{{declarationIr.societeVo?.id}}</td>
+                    <td>
+                        <p-message [severity]="checkMessage(declarationIr)"
+                                   text="{{declarationIr.etatDeclarationIrVo?.libelle}}"></p-message>
+                    </td>
                     <td>{{declarationIr.dateCreation | date:'dd-MM-yyyy' }}</td>
-                    <td>{{declarationIr.etatDeclarationIrVo?.libelle}}</td>
+                    <td>{{declarationIr.societeVo?.id}}</td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">
@@ -71,17 +74,20 @@
         <ng-template pTemplate="header">
             <tr>
                 <th>Reference</th>
-                <th>Societe</th>
-                <th>Date Création</th>
                 <th>Etat</th>
+                <th>Date Création</th>
+                <th>Societe</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-declarationIr>
             <tr>
                 <td>{{declarationIr.refrerence}}</td>
-                <td>{{declarationIr.societeVo?.id}}</td>
+                <td>
+                    <p-message [severity]="checkMessage(declarationIr)"
+                               text="{{declarationIr.etatDeclarationIrVo?.libelle}}"></p-message>
+                </td>
                 <td>{{declarationIr.dateCreation | date:'dd-MM-yyyy' }}</td>
-                <td>{{declarationIr.etatDeclarationIrVo?.libelle}}</td>
+                <td>{{declarationIr.societeVo?.ice}}</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">
