@@ -265,5 +265,20 @@ export class DashboardComptable1Component implements OnInit {
         this._v4 = value;
     }
 
+    checkMessage(declarationIr: DeclarationIrVo): string {
+        if (declarationIr.etatDeclarationIrVo.reference === 'E1') {
+            return 'info';
+        } else if (declarationIr.etatDeclarationIrVo.reference === 'E2') {
+            return 'error';
+        } else if (declarationIr.etatDeclarationIrVo.reference === 'E3') {
+            return 'warn';
+        } else if (declarationIr.etatDeclarationIrVo.reference === 'E4') {
+            return 'success';
+        } else {
+            return 'warn';
+        }
+
+
+    }
 
 }

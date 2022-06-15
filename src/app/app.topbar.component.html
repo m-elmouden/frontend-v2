@@ -8,18 +8,13 @@
         <i class="pi pi-bars"></i>
     </a>
 
-    <a href="#" class="layout-topbar-logo">
-        <span style="font-size: 2rem;color: whitesmoke;font-weight: 900;">ECOMPTA</span>
+    <a href="#" class="layout-topbar-logo ">
+        <span style="font-size: 2rem;color: #FBC02D;font-weight: 900;"><span style="color:#ffffff" >E</span><b>-compta</b></span>
     </a>
 
 
 
     <ul class="topbar-menu">
-<li>
-        <a href="#" routerLink="admin/message"  >
-            <span ><i class="fa-regular fa-bell fa-2x " style="color: white"></i></span>
-        </a>
-</li>
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
                 <img src="assets/layout/images/avatar.png" alt="roma-layout" />
