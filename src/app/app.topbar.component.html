@@ -15,7 +15,9 @@
 
 
     <ul class="topbar-menu">
+
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
+
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
                 <img src="assets/layout/images/admin.png" alt="roma-layout" />
                 <div class="layout-profile-userinfo">
@@ -51,8 +53,11 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a> <i class="pi pi-home" style="font-size: 2rem;color:white;text-align: center" routerLink="/app/comptable/" *ngIf=""></i></a>
 
+        </li>
     </ul>
 </div>
 <app-switch-chercheur-admin></app-switch-chercheur-admin>
-<app-message></app-message>
+
