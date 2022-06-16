@@ -2,10 +2,25 @@
     <div class="menu-scroll-content"  style="color:green">
         <div class="layout-profile" *ngIf="app.inlineUser && !appMain.isHorizontal()">
             <a class="layout-profile-button" (click)="appMain.onProfileClick($event)">
-                <img src="assets/layout/images/avatar.png" alt="roma-layout">
-                <div class="layout-profile-userinfo">
-                    <span class="layout-profile-name">Arlene Welch</span>
-                    <span class="layout-profile-role">Design Ops</span>
+                <img *ngIf="user==='admin'" src="assets/layout/images/admin.png" alt="roma-layout">
+                <div *ngIf="user==='admin'" class="layout-profile-userinfo">
+                    <span class="layout-profile-name">Admin</span>
+                    <span class="layout-profile-role"></span>
+                </div>
+                <img *ngIf="user==='societe'" src="assets/layout/images/societe.png" alt="roma-layout">
+                <div *ngIf="user==='societe'" class="layout-profile-userinfo">
+                    <span class="layout-profile-name">Societe</span>
+                    <span class="layout-profile-role"></span>
+                </div>
+                <img *ngIf="user==='comptableValidateur'" src="assets/layout/images/comptbale.png" alt="roma-layout">
+                <div *ngIf="user==='comptableValidateur'" class="layout-profile-userinfo">
+                    <span class="layout-profile-name">Comptable Validateur</span>
+                    <span class="layout-profile-role"></span>
+                </div>
+                <img *ngIf="user==='comptableTraiteur'" src="assets/layout/images/comptbale.png" alt="roma-layout">
+                <div *ngIf="user==='comptableTraiteur'" class="layout-profile-userinfo">
+                    <span class="layout-profile-name">Comptable Traiteur</span>
+                    <span class="layout-profile-role"></span>
                 </div>
             </a>
             <ul [@inline]="!appMain.isSlim() ? appMain.inlineUserMenuActive ? 'visibleAnimated' : 'hiddenAnimated' : appMain.inlineUserMenuActive ? 'visible' : 'hidden'"

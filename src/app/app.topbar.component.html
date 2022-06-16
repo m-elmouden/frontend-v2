@@ -8,7 +8,7 @@
         <i class="pi pi-bars"></i>
     </a>
 
-    <a href="#" class="layout-topbar-logo ">
+    <a href="#" class="layout-topbar-logo " style=" position: absolute; left: 650px; margin-top: 5px">
         <span style="font-size: 2rem;color: #FBC02D;font-weight: 900;"><span style="color:#ffffff" >E</span><b>-compta</b></span>
     </a>
 
@@ -17,7 +17,7 @@
     <ul class="topbar-menu">
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
-                <img src="assets/layout/images/avatar.png" alt="roma-layout" />
+                <img src="assets/layout/images/admin.png" alt="roma-layout" />
                 <div class="layout-profile-userinfo">
                     <span class="layout-profile-name">{{authenticatedUser.email}}</span>
                     <span class="layout-profile-name">{{authenticatedUser.prenom}}</span>
