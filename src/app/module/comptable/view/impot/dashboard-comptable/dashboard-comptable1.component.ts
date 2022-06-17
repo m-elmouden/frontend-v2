@@ -15,6 +15,7 @@ import {DeclarationIrVo} from '../../../../../controller/model/DeclarationIr.mod
 import {environment} from '../../../../../../environments/environment';
 import {DatePipe} from '@angular/common';
 import {TokenService} from '../../../../../controller/service/Token.service';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Injectable({
@@ -57,10 +58,14 @@ export class DashboardComptable1Component implements OnInit {
     declarationtraitCompt: DeclarationIrVo[] = [];
     declarationValide: DeclarationIrVo[] = [];
 
-    constructor(private demandeService: DemandeService, private societeService: SocieteService, private tauxIsService: TauxIsService, private declarationIrService: DeclarationIrService, public datepipe: DatePipe, public tokenService: TokenService) {
+    // tslint:disable-next-line:max-line-length
+    constructor(private demandeService: DemandeService, private societeService: SocieteService, private tauxIsService: TauxIsService, private declarationIrService: DeclarationIrService, public datepipe: DatePipe, public tokenService: TokenService,public activatedRoute:ActivatedRoute) {
     }
 
     ngOnInit() {
+        this.activatedRoute.params.subscribe(params => {
+            console.log(params);
+        });
         this.loadInfos();
         this.headerCards();
 
