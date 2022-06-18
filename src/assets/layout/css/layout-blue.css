@@ -2045,9 +2045,9 @@ a {
 
 .layout-footer {
   padding: 1.5em 1.5em 0.5em 1.5em;
-  background-color: #ffffff;
-  border-top: 1px solid #ebebef;
-  border-bottom: 1px solid #ebebef;
+  background-color: #f3f3f3;
+  border-top: 1px solid #bbbbbb;
+  border-bottom: 1px solid #bbbbbb;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2062,7 +2062,7 @@ a {
   text-align: right;
 }
 .layout-footer .footer-icons button {
-  color: #65656a;
+  color: #000000;
   font-size: 24px;
   margin-right: 16px;
   transition: color 0.2s, box-shadow 0.2s;
@@ -2071,10 +2071,10 @@ a {
   font-size: 20px;
 }
 .layout-footer .footer-icons button:hover {
-  color: #252529;
+  color: #ffbf00;
 }
 .layout-footer .footer-icons button:focus {
-  box-shadow: 0 0 0 0.2em #2ed7e4;
+  box-shadow: 0 0 0 0.2em #ffbf00;
   outline: 0 none;
 }
 

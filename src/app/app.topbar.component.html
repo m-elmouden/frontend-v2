@@ -1,17 +1,17 @@
 <div class="layout-topbar">
 
-    <a class="layout-right-panel-button layout-topbar-icon" (click)="appMain.onRightMenuClick($event)" href="#">
-        <i class="pi pi-ellipsis-v"></i>
-    </a>
+    <!-- <a class="layout-right-panel-button layout-topbar-icon" (click)="appMain.onRightMenuClick($event)" href="#">
+         <i class="pi pi-ellipsis-v"></i>
+     </a>-->
 
     <a href="#" class="layout-menu-button layout-topbar-icon" (click)="appMain.onMenuButtonClick($event)">
         <i class="pi pi-bars"></i>
     </a>
 
     <a href="#" class="layout-topbar-logo " style=" position: absolute; left: 650px; margin-top: 5px">
-        <span style="font-size: 2rem;color: #FBC02D;font-weight: 900;"><span style="color:#ffffff" >E</span><b>-compta</b></span>
+        <span style="font-size: 2rem;color: #FBC02D;font-weight: 900;"><span
+                style="color:#ffffff">E</span><b>-compta</b></span>
     </a>
-
 
 
     <ul class="topbar-menu">
@@ -19,11 +19,12 @@
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
 
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
-                <img src="assets/layout/images/admin.png" alt="roma-layout" />
+                <img src="assets/layout/images/admin.png" alt="roma-layout"/>
                 <div class="layout-profile-userinfo">
                     <span class="layout-profile-name">{{authenticatedUser.email}}</span>
                     <span class="layout-profile-name">{{authenticatedUser.prenom}}</span>
-                    <span *ngIf="authenticatedUserByAdmin" class="layout-profile-name">Connecté(e) en tant que {{authenticatedUserByAdmin?.prenom}} {{authenticatedUserByAdmin?.nom}}</span>
+                    <span *ngIf="authenticatedUserByAdmin"
+                          class="layout-profile-name">Connecté(e) en tant que {{authenticatedUserByAdmin?.prenom}} {{authenticatedUserByAdmin?.nom}}</span>
 
                 </div>
 
@@ -54,8 +55,8 @@
             </ul>
         </li>
         <li>
-            <a > <i class="pi pi-home" style="font-size: 2rem;color:#FBC02D;margin-top:4px"  routerLink="/app/comptable/" ></i></a>
-
+            <a href=""> <i class="pi pi-home" style="font-size: 2rem;color:#FBC02D;margin-top:10px"
+                            routerLink="/app/comptable/"></i></a>
         </li>
     </ul>
 </div>

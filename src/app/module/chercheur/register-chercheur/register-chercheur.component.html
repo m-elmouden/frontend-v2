@@ -1,63 +1,73 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+<body style="height: 750px">
 <div class="login-body">
-    <div class="card login-panel p-fluid">
-        <div class="p-mt-4">
-            <div class="p-grid" [formGroup]="registerForm">
-                <div class="p-col-12 p-sm-6 p-md-6 logo-container">
-                    <span class="guest-sign-in" style="font-weight: 600;font-size: 2rem;">Inscription</span>
+    <div class="background" style="background-color: rgba(255,255,255,0.82)">
+    </div>
+    <form [formGroup]="registerForm">
+        <h3>Inscription</h3>
+        <div class="p-grid">
+            <div class="p-col-5 username-container" style="margin-right: 40px;">
+                <!-- <h:panelGroup> -->
+                <label class="login" style="color:black; font-weight: bold ">Nom</label>
+                <div class="login-input">
+                    <input formControlName="nom" style="background-color:#adadad;font-weight: bold"
+                           placeholder="Nom" type="text" name="nom" pInputText id="1" required>
                 </div>
-
-                <div class="p-col-12 username-container">
-                    <!-- <h:panelGroup> -->
-                    <label>prenom</label>
-                    <div class="login-input">
-                        <input formControlName="prenom" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required
-                            autofocus />
-                    </div>
-                    <!-- </h:panelGroup> -->
+                <!-- </h:panelGroup> -->
+            </div>
+            <div class="p-col-6 username-container">
+                <!-- <h:panelGroup> -->
+                <label class="login" style="color:black; font-weight: bold ">Prenom</label>
+                <div class="login-input">
+                    <input formControlName="prenom" style="background-color:#adadad;font-weight: bold"
+                           placeholder="Prenom" type="text" name="prenom" pInputText id="1" required>
                 </div>
-                <div class="p-col-12 username-container">
-                    <!-- <h:panelGroup> -->
-                    <label>nom</label>
-                    <div class="login-input">
-                        <input formControlName="nom" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required
-                            autofocus />
-                    </div>
-                    <!-- </h:panelGroup> -->
-                </div>
-                <div class="p-col-12 username-container">
-                    <!-- <h:panelGroup> -->
-                    <label>Username</label>
-                    <div class="login-input">
-                        <input formControlName="userName" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required
-                            autofocus />
-                    </div>
-                    <!-- </h:panelGroup> -->
-                </div>
-                <div class="p-col-12 username-container">
-                    <!-- <h:panelGroup> -->
-                    <label>Email</label>
-                    <div class="login-input">
-                        <input formControlName="email" class="p-mb-2 p-mr-2" type="email" pInputText id="1" required
-                            autofocus />
-                    </div>
-                    <!-- </h:panelGroup> -->
-                </div>
-
-                <div class="p-col-12 password-container">
-                    <!-- <h:panelGroup> -->
-                    <label>Password</label>
-                    <div class="login-input">
-                        <input formControlName="password" pPassword type="password" />
-                    </div>
-                    <!-- </h:panelGroup> -->
-                </div>
-
-
-                <div class="p-col-12 p-sm-6 p-md-6">
-                    <button pButton type="button" icon="pi pi-check" label="Register" [disabled]="registerForm.invalid"
-                        (click)="submit()"></button>
-                </div>
+                <!-- </h:panelGroup> -->
             </div>
         </div>
-    </div>
+
+        <div class="p-grid">
+            <div class="p-col-12 username-container">
+                <!-- <h:panelGroup> -->
+                <label class="login" style="color:black; font-weight: bold ">Username</label>
+                <div class="login-input">
+                    <input style="background-color:#adadad;font-weight: bold" placeholder="Username"
+                           type="text" name="username" pInputText formControlName="userName" id="1" required>
+                </div>
+                <!-- </h:panelGroup> -->
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-col-12 username-container">
+                <!-- <h:panelGroup> -->
+                <label class="login" style="color:black; font-weight: bold ">Email ou Téléphone</label>
+                <div class="login-input">
+                    <input style="background-color:#adadad;font-weight: bold" placeholder="email"
+                           type="email" name="email" pInputText formControlName="email" id="1" required>
+                </div>
+                <!-- </h:panelGroup> -->
+            </div>
+        </div>
+
+        <div class="p-grid">
+            <div class="p-col-12 password-container">
+                <!-- <h:panelGroup> -->
+                <label class="login" style="color:black; font-weight: bold ">Password</label>
+                <div class="login-input">
+                    <input style="background-color:#adadad;font-weight: bold" placeholder="Password"
+                           pPassword type="password" formControlName="password" id="password">
+                </div>
+                <!-- </h:panelGroup> -->
+            </div>
+        </div>
+        <div class="p-grid ">
+            <div class="p-col-12 ">
+                <button label="Register" pButton type="submit" name="submit" class="btn-md submit" value="submit"
+                        (click)="submit()" style="background-color: rgba(8,7,16,0.83); color: white"></button>
+            </div>
+        </div>
+    </form>
 </div>
+</body>
