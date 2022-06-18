@@ -13,19 +13,13 @@
                             (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
                 </ng-template>
                 <ng-template pTemplate="right">
-                    <div class="flex">
-                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help"
-                                       [model]="excelPdfButons"></p-splitButton>
-                    </div>
-                </ng-template>
-
-                <ng-template pTemplate="right">
                     <p-fileUpload styleClass="p-mr-2" #fubauto mode="basic" name="file" label="Import"
                                   [customUpload]="true" (uploadHandler)="uploadExcelFile($event)"
                                   [auto]="true"></p-fileUpload>
+                </ng-template>
+                <ng-template pTemplate="right">
                     <div class="flex">
-                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help"
-                                       [model]="excelPdfButons"></p-splitButton>
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
                     </div>
                 </ng-template>
 
@@ -512,7 +506,10 @@
                             <button pButton pRipple icon="pi pi-copy"
                                     class="p-button-rounded p-button-raised p-button-warning"
                                     (click)="duplicateDeclarationIr(declarationIr)"></button>
-                            <button pButton pRipple icon="pi pi-download" class="p-button-rounded p-button-help p-button-info" (click)="downloadXmlFile(declarationIr)"></button>
+
+                            <button pButton pRipple icon="pi pi-download"
+                                    class="p-button-rounded p-button-help p-button-info"
+                                    (click)="downloadXmlFile(declarationIr)"></button>
 
                         </td>
                     </tr>
