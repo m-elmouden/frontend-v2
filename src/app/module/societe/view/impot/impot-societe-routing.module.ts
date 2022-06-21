@@ -180,6 +180,8 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
     import { TauxCnssSocieteComponent } from './taux-cnss-societe/taux-cnss-societe.component';
+import {DashboardAdminComponent} from '../../../admin/view/impot/dashboard-admin/dashboard-admin.component';
+import {DashboardSocieteComponent} from './dashboard-Societe/dashboard-societe.component';
 
 
 @NgModule({
@@ -189,9 +191,15 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
                 {
                     path: '',
                     children: [
+                        {
+                            path: 'dashbord',
+                            component: DashboardSocieteComponent ,
+                            canActivate: [AuthGuard]
+                        },
 
 
                         {
+
 
                             path: 'taux-is-config',
                             children: [

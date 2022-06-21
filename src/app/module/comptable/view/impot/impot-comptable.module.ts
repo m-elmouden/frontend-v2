@@ -250,6 +250,7 @@ import {MessagesModule} from 'primeng/messages';
 import {DashboardComptable1Component} from './dashboard-comptable/dashboard-comptable1.component';
 import {CardModule} from 'primeng/card';
 import {RatingModule} from 'primeng/rating';
+import {FileUploadModule} from 'primeng/fileupload';
 
 
 @NgModule({
@@ -503,7 +504,8 @@ import {RatingModule} from 'primeng/rating';
         BadgeModule,
         MultiSelectModule,
         CardModule,
-        RatingModule
+        RatingModule,
+        FileUploadModule
     ],
     exports: [
         TauxIsConfigCreateComptableComponent,

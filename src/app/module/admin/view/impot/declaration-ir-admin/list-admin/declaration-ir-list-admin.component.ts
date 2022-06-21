@@ -499,7 +499,9 @@ export class DeclarationIrListAdminComponent implements OnInit {
         } else if (declarationIr.etatDeclarationIrVo.reference === 'E4') {
             return 'success';
         } else {
-            return 'warn';
+            declarationIr.etatDeclarationIrVo.reference ='E2';
+            return 'error';
+
         }
 
 

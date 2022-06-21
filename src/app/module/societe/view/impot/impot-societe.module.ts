@@ -249,10 +249,14 @@ import { MessageModule } from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
 import {RippleModule} from 'primeng/ripple';
 import {FileUploadModule} from 'primeng/fileupload';
+import {DashboardSocieteComponent} from './dashboard-Societe/dashboard-societe.component';
+import {ChartModule} from 'primeng/chart';
+import {MenuModule} from 'primeng/menu';
 
 
 @NgModule({
     declarations: [
+        DashboardSocieteComponent,
         TauxIsConfigCreateSocieteComponent,
         TauxIsConfigListSocieteComponent,
         TauxIsConfigViewSocieteComponent,
@@ -501,7 +505,9 @@ import {FileUploadModule} from 'primeng/fileupload';
         BadgeModule,
         MultiSelectModule,
         RippleModule,
-        FileUploadModule
+        FileUploadModule,
+        ChartModule,
+        MenuModule
     ],
     exports: [
         TauxIsConfigCreateSocieteComponent,

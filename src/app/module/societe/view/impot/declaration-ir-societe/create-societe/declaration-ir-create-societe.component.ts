@@ -190,8 +190,8 @@ public saveWithShowOption(showList: boolean){
 private validateForm(): void{
 this.errorMessages = new Array<string>();
 this.validateDeclarationIrRefrerence();
-this.validateDeclarationIrAnnee();
-this.validateDeclarationIrMois();
+this.validateDeclarationIrEtat();
+//this.validateDeclarationIrMois();
 
     }
 
@@ -203,12 +203,9 @@ private validateDeclarationIrRefrerence(){
             this.validDeclarationIrRefrerence = true;
         }
     }
-private validateDeclarationIrAnnee(){
-        if (this.stringUtilService.isEmpty(this.selectedDeclarationIr.annee)) {
-            this.errorMessages.push('Annee non valide');
-            this.validDeclarationIrAnnee = false;
-        } else {
-            this.validDeclarationIrAnnee = true;
+    private validateDeclarationIrEtat() {
+        if (this.selectedDeclarationIr.etatDeclarationIrVo == null) {
+            this.selectedDeclarationIr.etatDeclarationIrVo=new EtatDeclarationIrVo();
         }
     }
 private validateDeclarationIrMois(){

@@ -26,10 +26,6 @@ export class HomeComponent implements OnInit {
   redirectSociete(){
     this.router.navigate(['/societe/login']);
   }
-  redirectRoot(){
-    this.router.navigate(['/root/login']);
-  }
-  redirectPilote(){
-    this.router.navigate(['/pilote/login']);
-  }
+
+
 }

@@ -2,14 +2,14 @@
 	"data": [
 		{
 			"id": "1000",
-			"code": "f230fh0g3",
+			"code": "R6-2022",
 			"name": "Bamboo Watch",
 			"description": "Product Description",
 			"image": "bamboo-watch.jpg",
-			"price": 65,
+			"price": 2000 ,
 			"category": "Accessories",
 			"quantity": 24,
-			"inventoryStatus": "INSTOCK",
+			"inventoryStatus": "Validé définitivement",
             "rating": 5,
             "orders": [
                 {
@@ -50,48 +50,17 @@
                 }
             ]
 		},
-		{
-			"id": "1001",
-			"code": "nvklal433",
-			"name": "Black Watch",
-			"description": "Product Description",
-			"image": "black-watch.jpg",
-			"price": 72,
-			"category": "Accessories",
-			"quantity": 61,
-			"inventoryStatus": "INSTOCK",
-            "rating": 4,
-            "orders": [
-                {
-                    "id": "2000",
-                    "productCode": "nvklal433",
-                    "date": "2020-05-14",
-                    "amount": 72,
-                    "quantity": 1,
-                    "customer": "Maisha Jefferson",
-                    "status": "DELIVERED"
-                },
-                {
-                    "id": "2001",
-                    "productCode": "nvklal433",
-                    "date": "2020-02-28",
-                    "amount": 144,
-                    "quantity": 2,
-                    "customer": "Octavia Murillo",
-                    "status": "PENDING"
-                }
-            ]
-		},
+
 		{
 			"id": "1002",
-			"code": "zz21cz3c1",
+			"code": "R5-2020",
 			"name": "Blue Band",
 			"description": "Product Description",
 			"image": "blue-band.jpg",
-			"price": 79,
+			"price": 3000,
 			"category": "Fitness",
 			"quantity": 2,
-			"inventoryStatus": "LOWSTOCK",
+			"inventoryStatus": "en cours de traitement",
             "rating": 3,
             "orders": [
                 {
@@ -116,27 +85,27 @@
 		},
 		{
 			"id": "1003",
-			"code": "244wgerg2",
+			"code": "R4-2022",
 			"name": "Blue T-Shirt",
 			"description": "Product Description",
 			"image": "blue-t-shirt.jpg",
-			"price": 29,
+			"price": 1000,
 			"category": "Clothing",
 			"quantity": 25,
-			"inventoryStatus": "INSTOCK",
+			"inventoryStatus": "Validé définitivement",
             "rating": 5,
             "orders": []
 		},
 		{
 			"id": "1004",
-			"code": "h456wer53",
+			"code": "R3-2022",
 			"name": "Bracelet",
 			"description": "Product Description",
 			"image": "bracelet.jpg",
-			"price": 15,
+			"price": 1500,
 			"category": "Accessories",
 			"quantity": 73,
-			"inventoryStatus": "INSTOCK",
+			"inventoryStatus": "En cours de validation",
             "rating": 4,
             "orders": [
                 {
@@ -161,14 +130,14 @@
 		},
 		{
 			"id": "1005",
-			"code": "av2231fwg",
+			"code": "R2-2022",
 			"name": "Brown Purse",
 			"description": "Product Description",
 			"image": "brown-purse.jpg",
-			"price": 120,
+			"price": 5000,
 			"category": "Accessories",
 			"quantity": 0,
-			"inventoryStatus": "OUTOFSTOCK",
+			"inventoryStatus": "Validé définitivement",
             "rating": 4,
             "orders": [
                 {
@@ -202,14 +171,14 @@
 		},
 		{
 			"id": "1006",
-			"code": "bib36pfvm",
+			"code": "R1-2022",
 			"name": "Chakra Bracelet",
 			"description": "Product Description",
 			"image": "chakra-bracelet.jpg",
-			"price": 32,
+			"price": 3500,
 			"category": "Accessories",
 			"quantity": 5,
-			"inventoryStatus": "LOWSTOCK",
+			"inventoryStatus": "En cours de validation",
             "rating": 3,
             "orders": [
                 {
@@ -231,111 +200,8 @@
                     "status": "PENDING"
                 }
             ]
-		},
-		{
-			"id": "1007",
-			"code": "mbvjkgip5",
-			"name": "Galaxy Earrings",
-			"description": "Product Description",
-			"image": "galaxy-earrings.jpg",
-			"price": 34,
-			"category": "Accessories",
-			"quantity": 23,
-			"inventoryStatus": "INSTOCK",
-            "rating": 5,
-            "orders": [
-                {
-                    "id": "8000",
-                    "productCode": "mbvjkgip5",
-                    "date": "2020-06-19",
-                    "amount": 34,
-                    "quantity": 1,
-                    "customer": "Jennifer Smith",
-                    "status": "DELIVERED"
-                }
-            ]
-		},
-		{
-			"id": "1008",
-			"code": "vbb124btr",
-			"name": "Game Controller",
-			"description": "Product Description",
-			"image": "game-controller.jpg",
-			"price": 99,
-			"category": "Electronics",
-			"quantity": 2,
-			"inventoryStatus": "LOWSTOCK",
-            "rating": 4,
-            "orders": [
-                {
-                    "id": "9000",
-                    "productCode": "vbb124btr",
-                    "date": "2020-01-05",
-                    "amount": 99,
-                    "quantity": 1,
-                    "customer": "Jeanfrancois David",
-                    "status": "DELIVERED"
-                },
-                {
-                    "id": "9001",
-                    "productCode": "vbb124btr",
-                    "date": "2020-01-19",
-                    "amount": 198,
-                    "quantity": 2,
-                    "customer": "Ivar Greenwood",
-                    "status": "RETURNED"
-                }
-            ]
-		},
-		{
-			"id": "1009",
-			"code": "cm230f032",
-			"name": "Gaming Set",
-			"description": "Product Description",
-			"image": "gaming-set.jpg",
-			"price": 299,
-			"category": "Electronics",
-			"quantity": 63,
-			"inventoryStatus": "INSTOCK",
-            "rating": 3,
-            "orders": [
-                {
-                    "id": "10000",
-                    "productCode": "cm230f032",
-                    "date": "2020-06-24",
-                    "amount": 299,
-                    "quantity": 1,
-                    "customer": "Kadeem Mujtaba",
-                    "status": "PENDING"
-                },
-                {
-                    "id": "10001",
-                    "productCode": "cm230f032",
-                    "date": "2020-05-11",
-                    "amount": 299,
-                    "quantity": 1,
-                    "customer": "Ashley Wickens",
-                    "status": "DELIVERED"
-                },
-                {
-                    "id": "10002",
-                    "productCode": "cm230f032",
-                    "date": "2019-02-07",
-                    "amount": 299,
-                    "quantity": 1,
-                    "customer": "Julie Johnson",
-                    "status": "DELIVERED"
-                },
-                {
-                    "id": "10003",
-                    "productCode": "cm230f032",
-                    "date": "2020-04-26",
-                    "amount": 299,
-                    "quantity": 1,
-                    "customer": "Tony Costa",
-                    "status": "CANCELLED"
-                }
+		}
+
             ]
 		}
-	]
-}
+

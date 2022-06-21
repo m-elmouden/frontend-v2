@@ -31,6 +31,7 @@ import {TabViewModule} from 'primeng/tabview';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { MessageModule } from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
+import {DashboardSocieteComponent} from './view/impot/dashboard-Societe/dashboard-societe.component';
 
 @NgModule({
     declarations: [

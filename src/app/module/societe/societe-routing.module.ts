@@ -7,6 +7,8 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 import { LoginSocieteComponent } from './login-societe/login-societe.component';
 import { RegisterSocieteComponent } from './register-societe/register-societe.component';
+import {DashboardAdminComponent} from '../admin/view/impot/dashboard-admin/dashboard-admin.component';
+import {DashboardSocieteComponent} from './view/impot/dashboard-Societe/dashboard-societe.component';
 
 @NgModule({
     imports: [
@@ -35,6 +37,14 @@ import { RegisterSocieteComponent } from './register-societe/register-societe.co
                                 }
                               ]
                         },
+
+                        {
+                            path:'',
+                            component: DashboardSocieteComponent ,
+                            canActivate: [AuthGuard]
+                        },
+
+
                         {
 
                             path: 'impot',

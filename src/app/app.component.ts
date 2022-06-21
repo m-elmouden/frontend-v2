@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
     layoutMode = 'static';
     lightMenu = true;
     topbarColor = 'layout-topbar-blue';
-    inlineUser = false;
+    inlineUser = true;
     isRTL = false;
     inputStyle = 'outlined';
     ripple = true;

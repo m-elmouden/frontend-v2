@@ -975,6 +975,11 @@ export class AppMenuComponent implements OnInit {
         this.modelsociete =
             [
                 {
+                    label: 'Dashboard',
+                    icon: 'pi pi-home',
+                    routerLink: ['/app/societe/']
+                },
+                {
                     label: 'MenuDeclarationCnss',
                     icon: 'pi pi-wallet',
                     items: [

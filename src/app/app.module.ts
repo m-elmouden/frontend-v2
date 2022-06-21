@@ -178,6 +178,7 @@ import {LoginComptableComponent} from './module/comptable/login-comptable/login-
         MenuModule,
         RippleModule,
         AvatarModule,
+        ChartModule,
     ],
     declarations: [
         AppComponent,
