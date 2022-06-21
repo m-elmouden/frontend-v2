@@ -1,0 +1,720 @@
+<div class="grid">
+
+
+    <div class="col-12 xl:col-6">
+        <div class="card">
+            <h5>Listes des Déclarations Valide</h5>
+            <p-table [value]="declarations" [paginator]="true" [rows]="5" >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Réference</th>
+                        <th >Etat de Demande </th>
+                        <th >Total a Payé </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-declaration>
+                    <tr>
+                        <td style="width: 35%; min-width: 7rem;">{{declaration.refrerence}}</td>
+                        <td style="width: 35%; min-width: 7rem;"><p-message text="Validé définitivement" severity="success"> </p-message></td>
+                        <td style="width: 35%; min-width: 8rem;">{{declaration.totalAPaye}} DH</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+    </div>
+
+    <div class="col-12 xl:col-6">
+        <div class="card">
+            <h5>Sales Overview</h5>
+            <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+        </div>
+
+        <div class="card">
+            <div class="flex align-items-center justify-content-between mb-4">
+                <h5>Notifications</h5>
+                <div>
+                    <button pButton type="button" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-text p-button-plain" (click)="menu.toggle($event)"></button>
+                    <p-menu #menu [popup]="true" [model]="items"></p-menu>
+                </div>
+            </div>
+
+            <span class="block text-600 font-medium mb-3">TODAY</span>
+            <ul class="p-0 mx-0 mt-0 mb-4 list-none">
+                <li class="flex align-items-center py-2 border-bottom-1 surface-border">
+                    <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
+                        <i class="pi pi-dollar text-xl text-blue-500"></i>
+                    </div>
+                    <span class="text-900 line-height-3">Richard Jones
+                    <span class="text-700"> has purchased a blue t-shirt for <span class="text-blue-500">79$</span></span>
+                </span>
+                </li>
+                <li class="flex align-items-center py-2">
+                    <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-orange-100 border-circle mr-3 flex-shrink-0">
+                        <i class="pi pi-download text-xl text-orange-500"></i>
+                    </div>
+                    <span class="text-700 line-height-3">Your request for withdrawal of <span class="text-blue-500 font-medium">2500$</span> has been initiated.</span>
+                </li>
+            </ul>
+
+            <span class="block text-600 font-medium mb-3">YESTERDAY</span>
+            <ul class="p-0 m-0 list-none">
+                <li class="flex align-items-center py-2 border-bottom-1 surface-border">
+                    <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
+                        <i class="pi pi-dollar text-xl text-blue-500"></i>
+                    </div>
+                    <span class="text-900 line-height-3">Keyser Wick
+                    <span class="text-700"> has purchased a black jacket for <span class="text-blue-500">59$</span></span>
+                </span>
+                </li>
+                <li class="flex align-items-center py-2 border-bottom-1 surface-border">
+                    <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-pink-100 border-circle mr-3 flex-shrink-0">
+                        <i class="pi pi-question text-xl text-pink-500"></i>
+                    </div>
+                    <span class="text-900 line-height-3">Jane Davis
+                    <span class="text-700"> has posted a new questions about your product.</span>
+                </span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--
+<div class="p-grid layout-dashboard">
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <p-card [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'white','font-size':'20px','font-weight':'bold'}"
+                header="{{this.declarationstotal}}">
+            <p> Total des Declarations</p>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <p-card header="{{this.declarationInitialSoc}}"
+                [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'orange','color':'white','font-size':'20px','font-weight':'bold'}">
+            <p>Depose par Societe</p>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <p-card header="{{this.declarationtraitCompt}}"
+                [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'blue','color':'white','font-size':'20px','font-weight':'bold'}">
+            <p> en cours de traitements</p>
+        </p-card>
+
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+
+        <p-card header="{{this.declarationValide}}"
+                [style]="{'width': '20rem', 'margin-bottom': '1em','background-color':'green','color':'white','font-size':'20px','font-weight':'bold'}">
+            <ng-template pTemplate="header">
+            </ng-template>
+            <p>Validé</p>
+        </p-card>
+
+    </div>
+</div>
+
+<div class="layout-dashboard">
+    <p-toolbar styleClass="p-mb-4">
+        <div class="p-toolbar-group-right" >
+<div class="p-col-12 p-md-6 p-mr-2">
+            <label for="datemin">Date Min:</label>
+            <p-calendar id="datemin"
+                        [(ngModel)]="date1"
+                        dateFormat="{{dateFormat}}"
+                        placeholder="Date Min">
+            </p-calendar>
+</div>
+            <div class="p-col-12 p-md-6 p-mr-2">
+            <label for="datemax">Date Max:</label>
+            <p-calendar id="datemax"
+                         [(ngModel)]="date2"
+                        dateFormat="{{dateFormat}}"
+                        placeholder="Date Max">
+            </p-calendar>
+        </div>
+</div>
+        &lt;!&ndash; <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                 (click)="openCreateComptable('comptable')"></button>
+
+
+         <button pButton pRipple label="Recherche"
+                 icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                 class="p-button-success p-mr-2 p-mb-2"
+                 (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>&ndash;&gt;
+<div class="p-toolbar-group-right">
+    <div class="flex">
+        <p-button (click)="myFunction()" styleClass="p-button-help" label="Recherche" icon="pi pi-search"></p-button>
+    </div>
+
+    &lt;!&ndash; <div class="flex">
+         <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+     </div>&ndash;&gt;
+</div>
+
+</p-toolbar>
+</div>
+
+<div class="layout-dashboard">
+
+    <p-table [value]="statiqueDeclarationIr" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>somme</th>
+                <th>Etat</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-statistique>
+            <tr>
+                <td>{{statistique.somme}}</td>
+                <td>{{statistique.etatDeclarationIr?.libelle}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+&lt;!&ndash;<div>
+<div class="contentis">
+        <div class="p-shadow-14">
+    <table class="w3-table">
+        <tr class="table-header">
+            <th colspan="2" style="font-size: 20px;">Statistique de {{testStat.dateCreationMin}}-{{testStat.dateCreationMax}}</th></tr>
+        <tr>
+
+            <th style="font-size: 20px;">somme</th>
+            <th style="font-size: 20px;">Etat </th>
+        </tr>
+
+        <tr *ngFor="let statistique of statiqueDeclarationIr">
+            <td style="font-size: 18px;">{{statistique.somme}}</td>
+            <td style="font-size: 18px;">{{statistique.etatDeclarationIrVo?.libelle}}</td>
+
+        </tr>
+
+    </table>
+        </div>
+        </div>
+</div>
+
+    <div class="crd">
+        <div class="crd1">
+            <div class="card">
+                <p-table #dt [value]="itemsSte" [rows]="9" [paginator]="true" [globalFilterFields]="['ice','raisonsocial','adresse','dateCreation']"
+                         [rowHover]="true" dataKey="id"
+                         [showCurrentPageReport]="true">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            <h5 class="p-m-0">Sociétés adhérées  <i class="la la-newspaper-o"></i></h5>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="ice" style="width: 7rem">ICE <p-sortIcon field="ice"></p-sortIcon></th>
+                            <th pSortableColumn="price" style="width: 14rem">Raison sociale <p-sortIcon field="price"></p-sortIcon></th>
+                            <th pSortableColumn="category" style="width: 10rem">Adresse <p-sortIcon field="category"></p-sortIcon></th>
+                            <th pSortableColumn="rating" style="width: 12rem">Date de création <p-sortIcon field="rating"></p-sortIcon></th>
+                            <th style="width: 10rem"></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-societe>
+                        <tr>
+                            <td>{{societe.ice}}</td>
+                            <td><mark>{{societe.raisonSociale}}</mark></td>
+                            <td>{{societe.adresse}}</td>
+                            <td>{{societe.dateCreation | date: 'dd-MM-yyyy'}}</td>
+                            <td>
+                                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="viewSociete(societe)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <p-dialog [(visible)]="societeDialog" [style]="{width: '450px'}" header="Détails de la société" [modal]="true" styleClass="p-fluid">
+                <ng-template pTemplate="content">
+                    <div class="p-field">
+                        <label for="ice">ICE</label>
+                        <input type="text" pInputText id="ice" [(ngModel)]="societe.ice" required autofocus disabled />
+                    </div>
+                    <div class="p-field">
+                        <label for="raisonsociale">ICE</label>
+                        <input type="text" pInputText id="raisonsociale" [(ngModel)]="societe.raisonSociale" required autofocus disabled />
+                    </div>
+                    <div class="p-field">
+                        <label for="adresse">Adresse</label>
+                        <input type="text" pInputText id="adresse" [(ngModel)]="societe.adresse" required autofocus disabled />
+                    </div>
+                    <div class="p-field">
+                        <label for="datecreation">Date de création</label>
+                        <input type="text" pInputText id="datecreation" [(ngModel)]="societe.dateCreation" required autofocus disabled />
+                    </div>
+                    <div class="p-field">
+                        <label for="age">Age</label>
+                        <input type="text" pInputText id="age" [(ngModel)]="societe.age" required autofocus disabled />
+                    </div>
+
+                </ng-template>
+
+                <ng-template pTemplate="footer">
+                    <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-warning" (click)="hideDialog()"></button>
+                </ng-template>
+            </p-dialog>
+
+        </div>&ndash;&gt;
+
+&lt;!&ndash;   <div class="textir" style="margin-top: 5%;">
+       <div class="tauxIsDiv">
+           <h3>Taux de l'impôt sur les sociétés</h3>
+           <h4>Barème normal - Année {{date | date: 'yyyy'}}</h4>
+           <p>La loi de finances {{date | date: 'yyyy'}} a introduit une nouvelle grille de l’IS progressif présenté dans la tableau.</p>
+       </div>
+</div>
+  <div class="contentis">
+       <div class="p-shadow-14">
+           <table class="w3-table">
+               <tr class="table-header">
+                   <th colspan="2" style="font-size: 20px;">Bénéfice net fiscal en MAD</th></tr>
+               <tr>
+                   <th style="font-size: 20px;">Taux IS </th>
+                   <th style="font-size: 20px;">Resultat Fiscal Min</th>
+                   <th style="font-size: 20px;">Resultat Fiscal Max</th>
+                   <th style="font-size: 20px;">Pourcentage </th>
+               </tr>
+               <tr *ngFor="let tauxIs of itemsTauxIs">
+                   <td style="font-size: 18px;">{{tauxIs.reference}}</td>
+                   <td style="font-size: 18px;">{{tauxIs.resultatFiscalMin}}</td>
+                   <td *ngIf="tauxIs.resultatFiscalMax != null" style="font-size: 18px;">{{tauxIs.resultatFiscalMax}}</td>
+                   <td *ngIf="tauxIs.resultatFiscalMax == null" style="font-size: 18px;">+&infin;</td>
+                   <td class="pourc" style="font-size: 18px;"><b>{{tauxIs.pourcentage}}% </b></td>
+                  <td style="font-size: 18px;">{{tauxIs.tauxIsConfigVo.dateMin | date: 'dd-MM-yyyy'}}</td>
+                  <td style="font-size: 18px;">{{tauxIs.tauxIsConfigVo.dateMax | date: 'dd-MM-yyyy'}}</td>
+               </tr>
+
+           </table>
+       </div>
+   </div>
+</div>&ndash;&gt;
+
+
+&lt;!&ndash;    <div class="p-col-12 p-md-8 p-lg-8">&ndash;&gt;
+&lt;!&ndash;        <div class="card card-w-title">&ndash;&gt;
+&lt;!&ndash;            <h5>Statistics</h5>&ndash;&gt;
+&lt;!&ndash;            <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-md-4 p-lg-4">&ndash;&gt;
+&lt;!&ndash;        <div class="timeline card card-w-title">&ndash;&gt;
+&lt;!&ndash;            <h5>Timeline</h5>&ndash;&gt;
+&lt;!&ndash;            <ul>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <i class="pi pi-image"></i>&ndash;&gt;
+&lt;!&ndash;                    <span class="timeline-event-title">Uploaded Images</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="timeline-event-time">15m</span>&ndash;&gt;
+&lt;!&ndash;                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>&ndash;&gt;
+&lt;!&ndash;                    <div class="p-grid">&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-6">&ndash;&gt;
+&lt;!&ndash;                            <img src="assets/layout/images/dashboard/image-1.jpg" alt="">&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-6">&ndash;&gt;
+&lt;!&ndash;                            <img src="assets/layout/images/dashboard/image-2.jpg" alt="">&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <i class="pi pi-star"></i>&ndash;&gt;
+&lt;!&ndash;                    <span class="timeline-event-title">Favorites</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="timeline-event-time">1h</span>&ndash;&gt;
+&lt;!&ndash;                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <i class="pi pi-users"></i>&ndash;&gt;
+&lt;!&ndash;                    <span class="timeline-event-title">Meeting</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="timeline-event-time">2h</span>&ndash;&gt;
+&lt;!&ndash;                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <i class="pi pi-money-bill"></i>&ndash;&gt;
+&lt;!&ndash;                    <span class="timeline-event-title">Payment Received</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="timeline-event-time">3h</span>&ndash;&gt;
+&lt;!&ndash;                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;            </ul>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-xl-6">&ndash;&gt;
+&lt;!&ndash;        <div class="expenses card card-w-title">&ndash;&gt;
+&lt;!&ndash;            <h5>Expenses</h5>&ndash;&gt;
+&lt;!&ndash;            <div class="chart">&ndash;&gt;
+&lt;!&ndash;                $5500&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+&lt;!&ndash;            <div class="p-grid expenses-legend">&ndash;&gt;
+&lt;!&ndash;                <div class="p-col-12 p-lg-4">&ndash;&gt;
+&lt;!&ndash;                    <i class="pi pi-circle-on"></i>&ndash;&gt;
+&lt;!&ndash;                    <span class="expenses-title">Printer: Color Cartridge</span>&ndash;&gt;
+&lt;!&ndash;                    <div class="expenses-price">$420</div>&ndash;&gt;
+&lt;!&ndash;                    <span class="legend-status">23+ more than last month</span>&ndash;&gt;
+&lt;!&ndash;                </div>&ndash;&gt;
+&lt;!&ndash;                <div class="p-col-12 p-lg-4">&ndash;&gt;
+&lt;!&ndash;                    <i class="pi pi-circle-on"></i>&ndash;&gt;
+&lt;!&ndash;                    <span class="expenses-title">Printer: B&amp;W Cartridge</span>&ndash;&gt;
+&lt;!&ndash;                    <div class="expenses-price">$680</div>&ndash;&gt;
+&lt;!&ndash;                    <span class="legend-status">60+ more than last month</span>&ndash;&gt;
+&lt;!&ndash;                </div>&ndash;&gt;
+&lt;!&ndash;                <div class="p-col-12 p-lg-4">&ndash;&gt;
+&lt;!&ndash;                    <i class="pi pi-circle-on"></i>&ndash;&gt;
+&lt;!&ndash;                    <span class="expenses-title">Coffee Capsules</span>&ndash;&gt;
+&lt;!&ndash;                    <div class="expenses-price">$150</div>&ndash;&gt;
+&lt;!&ndash;                    <span class="legend-status">8% less than last month</span>&ndash;&gt;
+&lt;!&ndash;                </div>&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+
+&lt;!&ndash;            <div class="expenses-footer">&ndash;&gt;
+&lt;!&ndash;                <a href="#">View more details >></a>&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-xl-6">&ndash;&gt;
+&lt;!&ndash;        <div class="card card-w-title">&ndash;&gt;
+&lt;!&ndash;            <h5>Schedule</h5>&ndash;&gt;
+&lt;!&ndash;            <p-fullCalendar [events]="events" [options]="fullcalendarOptions"></p-fullCalendar>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-lg-6 p-xl-4">&ndash;&gt;
+&lt;!&ndash;        <div class="card card-w-title tasks">&ndash;&gt;
+&lt;!&ndash;            <h5>Tasks</h5>&ndash;&gt;
+&lt;!&ndash;            <p>You have <span class="task-highlight">completed</span> 3 tasks out of 6.</p>&ndash;&gt;
+&lt;!&ndash;            <p-progressBar [value]="50"></p-progressBar>&ndash;&gt;
+
+&lt;!&ndash;            <ul>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <p-checkbox></p-checkbox>&ndash;&gt;
+&lt;!&ndash;                    <span>Sales Reports</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="task-badge-open">Open</span>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <p-checkbox></p-checkbox>&ndash;&gt;
+&lt;!&ndash;                    <span>Pay Invoices</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="task-badge-open">Open</span>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <p-checkbox></p-checkbox>&ndash;&gt;
+&lt;!&ndash;                    <span>Birthday Party</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="task-badge-open">Open</span>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <p-checkbox></p-checkbox>&ndash;&gt;
+&lt;!&ndash;                    <span>Client Meeting</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="task-badge-closed">Closed</span>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <p-checkbox></p-checkbox>&ndash;&gt;
+&lt;!&ndash;                    <span>New Themes</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="task-badge-closed">Closed</span>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <p-checkbox></p-checkbox>&ndash;&gt;
+&lt;!&ndash;                    <span>Flight Ticket</span>&ndash;&gt;
+&lt;!&ndash;                    <span class="task-badge-closed">Closed</span>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;            </ul>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-lg-6 p-xl-4">&ndash;&gt;
+&lt;!&ndash;        <div class="card card-w-title resolution-center p-fluid">&ndash;&gt;
+&lt;!&ndash;            <h5>Resolution Center</h5>&ndash;&gt;
+
+&lt;!&ndash;            <input id="username" type="text" pInputText placeholder="Username">&ndash;&gt;
+
+&lt;!&ndash;            <input id="email" type="text" pInputText placeholder="Email">&ndash;&gt;
+
+&lt;!&ndash;            <textarea rows="5" pInputTextarea placeholder="Message"></textarea>&ndash;&gt;
+
+&lt;!&ndash;            <div class="resolution-button-bar">&ndash;&gt;
+&lt;!&ndash;                <button pButton type="button" label="Send" icon="pi pi-envelope"></button>&ndash;&gt;
+&lt;!&ndash;                <button pButton type="button" label="Save" icon="pi pi-plus" class="p-button-secondary"></button>&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-xl-4">&ndash;&gt;
+&lt;!&ndash;        <div class="card card-w-title team">&ndash;&gt;
+&lt;!&ndash;            <h5>Team</h5>&ndash;&gt;
+&lt;!&ndash;            <ul>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <img src="assets/layout/images/avatar-1.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;                    <div class="team-box">&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member">John Swisher Welch</span>&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member-account">@jswisher</span>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-paperclip"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-comment"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-share-alt"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <img src="assets/layout/images/avatar-2.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;                    <div class="team-box">&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member">Bernd Pfefferberg</span>&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member-account">@pfefferberg</span>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-paperclip"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-comment"></i>&ndash;&gt;
+&lt;!&ndash;                    </a><a href="#">&ndash;&gt;
+&lt;!&ndash;                    <i class="pi pi-share-alt"></i>&ndash;&gt;
+&lt;!&ndash;                </a>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <img src="assets/layout/images/avatar-3.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;                    <div class="team-box">&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member">Chinaza Akachi</span>&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member-account">@chinazzza_</span>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-paperclip"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-comment"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-share-alt"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <img src="assets/layout/images/avatar-4.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;                    <div class="team-box">&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member">Luka Miller</span>&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member-account">@luk4mr</span>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-paperclip"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-comment"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-share-alt"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li>&ndash;&gt;
+&lt;!&ndash;                    <img src="assets/layout/images/avatar-5.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;                    <div class="team-box">&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member">Arlene Welch</span>&ndash;&gt;
+&lt;!&ndash;                        <span class="team-member-account">@arlene</span>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-paperclip"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-comment"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                    <a href="#">&ndash;&gt;
+&lt;!&ndash;                        <i class="pi pi-share-alt"></i>&ndash;&gt;
+&lt;!&ndash;                    </a>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;            </ul>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-xl-8">&ndash;&gt;
+&lt;!&ndash;        <div class="card card-w-title live-support">&ndash;&gt;
+&lt;!&ndash;            <h5>Live Support</h5>&ndash;&gt;
+&lt;!&ndash;            <ul>&ndash;&gt;
+&lt;!&ndash;                <li class="message-from">&ndash;&gt;
+&lt;!&ndash;                    <div class="p-grid">&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-fixed">&ndash;&gt;
+&lt;!&ndash;                            <img src="assets/layout/images/avatar-1.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col">&ndash;&gt;
+&lt;!&ndash;                            <div class="chat-message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.&ndash;&gt;
+&lt;!&ndash;                                Nam ac euismod justo, eget blandit purus.&ndash;&gt;
+&lt;!&ndash;                            </div>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li class="message-to">&ndash;&gt;
+&lt;!&ndash;                    <div class="p-grid">&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col">&ndash;&gt;
+&lt;!&ndash;                            <div class="chat-message">Mauris malesuada quis risus ut consequat.&ndash;&gt;
+&lt;!&ndash;                                Maecenas ornare nunc risus, pulvinar euismod mi pellentesque eget.&ndash;&gt;
+&lt;!&ndash;                            </div>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-fixed">&ndash;&gt;
+&lt;!&ndash;                            <img src="assets/layout/images/avatar-1.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;                <li class="message-from">&ndash;&gt;
+&lt;!&ndash;                    <div class="p-grid">&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-fixed">&ndash;&gt;
+&lt;!&ndash;                            <img src="assets/layout/images/avatar-2.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col">&ndash;&gt;
+&lt;!&ndash;                            <div class="chat-message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.&ndash;&gt;
+&lt;!&ndash;                                Nam ac euismod justo, eget blandit purus.&ndash;&gt;
+&lt;!&ndash;                            </div>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                </li>&ndash;&gt;
+&lt;!&ndash;            </ul>&ndash;&gt;
+
+&lt;!&ndash;            <div class="new-message">&ndash;&gt;
+&lt;!&ndash;                <div class="p-grid p-nogutter">&ndash;&gt;
+&lt;!&ndash;                    <div class="p-col">&ndash;&gt;
+&lt;!&ndash;                        <input id="input" type="text" pInputText placeholder="Write a message..">&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                    <div class="p-col-fixed">&ndash;&gt;
+&lt;!&ndash;                        <button pButton type="button" label="Send"></button>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                </div>&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-xl-4">&ndash;&gt;
+&lt;!&ndash;        <div class="card user-card">&ndash;&gt;
+&lt;!&ndash;            <div class="user-card-header">&ndash;&gt;
+&lt;!&ndash;                <img src="assets/layout/images/dashboard/bg-header.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+&lt;!&ndash;            <div class="user-card-content">&ndash;&gt;
+&lt;!&ndash;                <img src="assets/layout/images/avatar.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;                <button pButton type="button" (click)="menu.toggle($event)" icon="pi pi-cog"></button>&ndash;&gt;
+
+&lt;!&ndash;                <p-menu #menu [popup]="true" [model]="items"></p-menu>&ndash;&gt;
+
+&lt;!&ndash;                <div class="user-card-name">&ndash;&gt;
+&lt;!&ndash;                    <span>Maria Llescas</span>&ndash;&gt;
+&lt;!&ndash;                </div>&ndash;&gt;
+
+&lt;!&ndash;                <div class="user-detail">&ndash;&gt;
+&lt;!&ndash;                    <div class="p-grid">&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-4">&ndash;&gt;
+&lt;!&ndash;                            <div class="user-detail-box">&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-name">Tasks</div>&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-detail">3 open</div>&ndash;&gt;
+&lt;!&ndash;                                <i class="pi pi-list"></i>&ndash;&gt;
+&lt;!&ndash;                                <p-progressBar [value]="60"></p-progressBar>&ndash;&gt;
+&lt;!&ndash;                            </div>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-4">&ndash;&gt;
+&lt;!&ndash;                            <div class="user-detail-box">&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-name">Revenue</div>&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-detail">+20%</div>&ndash;&gt;
+&lt;!&ndash;                                <i class="pi pi-dollar"></i>&ndash;&gt;
+&lt;!&ndash;                                <p-progressBar [value]="80"></p-progressBar>&ndash;&gt;
+&lt;!&ndash;                            </div>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-4">&ndash;&gt;
+&lt;!&ndash;                            <div class="user-detail-box">&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-name">Payments</div>&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-detail">24 New</div>&ndash;&gt;
+&lt;!&ndash;                                <i class="pi pi-money-bill"></i>&ndash;&gt;
+&lt;!&ndash;                                <p-progressBar [value]="60"></p-progressBar>&ndash;&gt;
+&lt;!&ndash;                            </div>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-4">&ndash;&gt;
+&lt;!&ndash;                            <div class="user-detail-box">&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-name">Clients</div>&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-detail">+80%</div>&ndash;&gt;
+&lt;!&ndash;                                <i class="pi pi-users"></i>&ndash;&gt;
+&lt;!&ndash;                                <p-progressBar [value]="50"></p-progressBar>&ndash;&gt;
+&lt;!&ndash;                            </div>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-4">&ndash;&gt;
+&lt;!&ndash;                            <div class="user-detail-box">&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-name">Sales</div>&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-detail">3 open</div>&ndash;&gt;
+&lt;!&ndash;                                <i class="pi pi-money-bill"></i>&ndash;&gt;
+&lt;!&ndash;                                <p-progressBar [value]="60"></p-progressBar>&ndash;&gt;
+&lt;!&ndash;                            </div>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                        <div class="p-col-4">&ndash;&gt;
+&lt;!&ndash;                            <div class="user-detail-box">&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-name">Tasks</div>&ndash;&gt;
+&lt;!&ndash;                                <div class="user-detail-box-detail">3 open</div>&ndash;&gt;
+&lt;!&ndash;                                <i class="pi pi-chart-bar"></i>&ndash;&gt;
+&lt;!&ndash;                                <p-progressBar [value]="60"></p-progressBar>&ndash;&gt;
+&lt;!&ndash;                            </div>&ndash;&gt;
+&lt;!&ndash;                        </div>&ndash;&gt;
+&lt;!&ndash;                    </div>&ndash;&gt;
+&lt;!&ndash;                </div>&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-xl-8">&ndash;&gt;
+&lt;!&ndash;        <div class="card card-w-title global-sales p-fluid">&ndash;&gt;
+&lt;!&ndash;            <h5>Global Sales</h5>&ndash;&gt;
+&lt;!&ndash;            <p-table [value]="products" [paginator]="true" [rows]="5" styleClass="p-datatable-customers">&ndash;&gt;
+&lt;!&ndash;                <ng-template pTemplate="header">&ndash;&gt;
+&lt;!&ndash;                    <tr>&ndash;&gt;
+&lt;!&ndash;                        <th>&ndash;&gt;
+&lt;!&ndash;                            Image&ndash;&gt;
+&lt;!&ndash;                        </th>&ndash;&gt;
+&lt;!&ndash;                        <th pSortableColumn="id">ID&ndash;&gt;
+&lt;!&ndash;                            <p-sortIcon field="id"></p-sortIcon>&ndash;&gt;
+&lt;!&ndash;                        </th>&ndash;&gt;
+&lt;!&ndash;                        <th pSortableColumn="category">Category&ndash;&gt;
+&lt;!&ndash;                            <p-sortIcon field="category"></p-sortIcon>&ndash;&gt;
+&lt;!&ndash;                        </th>&ndash;&gt;
+&lt;!&ndash;                        <th pSortableColumn="price">Price&ndash;&gt;
+&lt;!&ndash;                            <p-sortIcon field="price"></p-sortIcon>&ndash;&gt;
+&lt;!&ndash;                        </th>&ndash;&gt;
+&lt;!&ndash;                        <th pSortableColumn="inventoryStatus">Status&ndash;&gt;
+&lt;!&ndash;                            <p-sortIcon field="inventoryStatus"></p-sortIcon>&ndash;&gt;
+&lt;!&ndash;                        </th>&ndash;&gt;
+&lt;!&ndash;                        <th></th>&ndash;&gt;
+&lt;!&ndash;                    </tr>&ndash;&gt;
+&lt;!&ndash;                </ng-template>&ndash;&gt;
+&lt;!&ndash;                <ng-template pTemplate="body" let-product>&ndash;&gt;
+&lt;!&ndash;                    <tr>&ndash;&gt;
+&lt;!&ndash;                        <td>&ndash;&gt;
+&lt;!&ndash;                            <span class="p-column-title">Image</span>&ndash;&gt;
+&lt;!&ndash;                            <img src="assets/demo/images/product/{{product.image}}" width="50px" [alt]="product.image"&ndash;&gt;
+&lt;!&ndash;                                 class="product-image"/></td>&ndash;&gt;
+&lt;!&ndash;                        <td>&ndash;&gt;
+&lt;!&ndash;                            <span class="p-column-title">Id</span>&ndash;&gt;
+&lt;!&ndash;                            {{product.id}}</td>&ndash;&gt;
+&lt;!&ndash;                        <td>&ndash;&gt;
+&lt;!&ndash;                            <span class="p-column-title">Category</span>&ndash;&gt;
+&lt;!&ndash;                            {{product.category}}</td>&ndash;&gt;
+&lt;!&ndash;                        <td>&ndash;&gt;
+&lt;!&ndash;                            <span class="p-column-title">Price</span>&ndash;&gt;
+&lt;!&ndash;                            {{product.price | currency:'USD'}}</td>&ndash;&gt;
+&lt;!&ndash;                        <td>&ndash;&gt;
+&lt;!&ndash;                            <span class="p-column-title">Status</span>&ndash;&gt;
+&lt;!&ndash;                            <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>&ndash;&gt;
+&lt;!&ndash;                        </td>&ndash;&gt;
+&lt;!&ndash;                        <td style="text-align: center">&ndash;&gt;
+&lt;!&ndash;                            <button pButton type="button" icon="pi pi-search" style="margin-right: .5rem"></button>&ndash;&gt;
+&lt;!&ndash;                            <button pButton type="button" class="p-button-danger" icon="pi pi-times"></button>&ndash;&gt;
+&lt;!&ndash;                        </td>&ndash;&gt;
+&lt;!&ndash;                    </tr>&ndash;&gt;
+&lt;!&ndash;                </ng-template>&ndash;&gt;
+&lt;!&ndash;            </p-table>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="p-col-12 p-xl-4">&ndash;&gt;
+&lt;!&ndash;        <div class="card weather">&ndash;&gt;
+&lt;!&ndash;            <div class="weather-header">&ndash;&gt;
+&lt;!&ndash;                <img src="assets/layout/images/dashboard/weather.png" library="roma-layout"/>&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+&lt;!&ndash;            <div class="weather-content">&ndash;&gt;
+&lt;!&ndash;                <div class="weather-city">Antalya</div>&ndash;&gt;
+&lt;!&ndash;                <div class="weather-status">24&#176; C <i class="pi pi-map-marker"></i></div>&ndash;&gt;
+&lt;!&ndash;                <div class="weather-detail">Feels like 26&#176; Low 14 &#176; High 28 &#176;</div>&ndash;&gt;
+&lt;!&ndash;                <a>Change Location</a>&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+&lt;!&ndash;        </div>&ndash;&gt;
+&lt;!&ndash;    </div>&ndash;&gt;
+
+
+
+-->
